@@ -51,16 +51,18 @@
             android:name=".activity.DrawerActivity"
             android:label="@string/title_activity_drawer" />
         <activity android:name=".activity.ConstraintActivity" />
-        <activity android:name=".activity.BehaviorActivity" />
+        <activity
+            android:name=".activity.BehaviorActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".activity.ViewPager2Activity"
-            android:theme="@style/Theme.AppCompat" />
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".activity.ViewPager2FragmentActivity"
             android:theme="@style/Theme.AppCompat" />
         <activity
             android:name=".activity.AsyncLayoutActivity"
-            android:theme="@style/Theme.AppCompat" />
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
 
         <service
             android:name=".AIDLService"

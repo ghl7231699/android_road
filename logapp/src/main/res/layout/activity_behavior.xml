@@ -17,7 +17,7 @@
         android:textSize="18sp"
         app:layout_behavior="@string/behavior_sample_header" />
 
-    <androidx.appcompat.widget.RecyclerView
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/my_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

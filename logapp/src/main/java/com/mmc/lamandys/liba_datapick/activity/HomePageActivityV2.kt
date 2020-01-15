@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatImageView
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView
@@ -17,7 +18,7 @@ import com.mmc.lamandys.liba_datapick.util.StatusBarUtils
 
 class HomePageActivityV2 : AppCompatActivity() {
 
-    var mRecyclerView: RecyclerView? = null
+    private var mRecyclerView: RecyclerView? = null
     var mBannerRecyclerView: RecyclerView? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,7 +31,7 @@ class HomePageActivityV2 : AppCompatActivity() {
         mRecyclerView = findViewById(R.id.rv_home_page)
         mBannerRecyclerView = findViewById(R.id.tv_home_page_banner)
 
-        val params = LinearLayoutManager(this)
+        val params = GridLayoutManager(this, 2)
         params.orientation = LinearLayoutManager.VERTICAL
         mRecyclerView?.layoutManager = params
         mRecyclerView?.adapter = HomePageAdapter(initData())
@@ -47,15 +48,13 @@ class HomePageActivityV2 : AppCompatActivity() {
 
     private fun initData(): List<String> {
         val list = mutableListOf<String>()
-        list.add("111")
-        list.add("111")
-        list.add("111")
-        list.add("111")
-        list.add("111")
-        list.add("111")
-        list.add("111")
-        list.add("111")
-        list.add("111")
+        list.add("ViewPager2")
+        list.add("RecyclerView")
+        list.add("ToolBar")
+        list.add("Radio")
+        list.add("Drawer")
+        list.add("Animation")
+        list.add("自定义Behavior")
 
         return list
     }
