@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.mmc.lamandys.liba_datapick">
+
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <application
+        android:name=".AutoApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="牛刀小试"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        tools:ignore="GoogleAppIndexingWarning">
+
+        <activity
+            android:name=".activity.HomePageActivityV1"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+
+        </activity>
+
+        <activity
+            android:name=".activity.HomePageActivityV2"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".activity.MainActivity" />
+        <activity
+            android:name=".activity.SecondActivity"
+            android:label="二页面" />
+        <activity
+            android:name=".activity.TabActivity"
+            android:label="Tab页面"
+            android:theme="@style/Theme.AppCompat" />
+        <activity
+            android:name=".activity.ToolBarActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activity.RadioActivity"
+            android:theme="@style/Theme.AppCompat" />
+        <activity
+            android:name=".activity.DrawerActivity"
+            android:label="@string/title_activity_drawer" />
+        <activity android:name=".activity.ConstraintActivity" />
+        <activity android:name=".activity.BehaviorActivity" />
+        <activity
+            android:name=".activity.ViewPager2Activity"
+            android:theme="@style/Theme.AppCompat" />
+        <activity
+            android:name=".activity.ViewPager2FragmentActivity"
+            android:theme="@style/Theme.AppCompat" />
+        <activity
+            android:name=".activity.AsyncLayoutActivity"
+            android:theme="@style/Theme.AppCompat" />
+
+        <service
+            android:name=".AIDLService"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.mmc.sample.action" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </service>
+    </application>
+
+</manifest>
