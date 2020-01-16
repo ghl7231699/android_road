@@ -1,1 +1,12 @@
-include ':plugin', ':logapp', ':kotlin'
+include ':plugin', ':app', ':kotlin'
+setBinding(new Binding([gradle: this]))
+evaluate(new File(
+  settingsDir,
+  'flutter_map/.android/include_flutter.groovy'
+))
+
+setBinding(new Binding([gradle: this]))
+evaluate(new File(
+        rootDir.path + '/flutter_mall/.android/include_flutter.groovy'
+))
+include ':flutter_mall'
