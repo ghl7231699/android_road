@@ -55,6 +55,8 @@ class HomePageActivityV2 : AppCompatActivity() {
         list.add("Drawer")
         list.add("Animation")
         list.add("自定义Behavior")
+        list.add("调用flutter页面")
+        list.add("调用指定flutter页面")
 
         return list
     }

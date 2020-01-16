@@ -11,6 +11,7 @@ import android.widget.Toast.makeText
 import androidx.recyclerview.widget.RecyclerView
 import com.mmc.lamandys.liba_datapick.R
 import com.mmc.lamandys.liba_datapick.activity.*
+import io.flutter.embedding.android.FlutterActivity
 
 class HomePageAdapter(list: List<String>) : RecyclerView.Adapter<HomePageViewHolder>() {
     private val datas: List<String> = list
@@ -44,11 +45,13 @@ class HomePageViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
                 4 -> jump(DrawerActivity::class.java)
                 5 -> makeText(mContext, "属性动画", Toast.LENGTH_SHORT).show()
                 6 -> jump(BehaviorActivity::class.java)
+                7 -> mContext.startActivity(FlutterActivity.createDefaultIntent(mContext))
+                8 -> mContext.startActivity(FlutterActivity.withNewEngine().initialRoute("/login/index").build(mContext))
             }
         }
     }
 
-    fun jump(clazz: Class<*>) {
+    private fun jump(clazz: Class<*>) {
         mContext.startActivity(Intent(mContext, clazz))
     }
 
