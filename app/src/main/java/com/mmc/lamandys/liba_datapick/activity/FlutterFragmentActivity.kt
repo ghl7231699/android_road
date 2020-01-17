@@ -9,13 +9,15 @@ import com.mmc.lamandys.liba_datapick.Constanats.CACHED_FLUTTER_ENGINE
 import com.mmc.lamandys.liba_datapick.R
 import com.mmc.lamandys.liba_datapick.util.StatusBarUtils
 import io.flutter.embedding.android.FlutterFragment
+import io.flutter.plugin.common.MethodChannel
 
 
 class FlutterFragmentActivity : AppCompatActivity(), View.OnClickListener {
 
-
     companion object {
         private const val TAG_FLUTTER_FRAGMENT = "flutter_fragment"
+
+
     }
 
     private var mFlutterFragment: FlutterFragment? = null
@@ -26,6 +28,7 @@ class FlutterFragmentActivity : AppCompatActivity(), View.OnClickListener {
         setContentView(R.layout.activity_flutter_layout)
 
         initView()
+
     }
 
     private fun initView() {

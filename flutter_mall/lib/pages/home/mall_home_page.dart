@@ -1,30 +1,148 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_mall/res/colors.dart';
-import 'package:flutter_mall/widgets/toast_widget.dart';
+import 'package:flutter/rendering.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_mall/common/utils/image_utils.dart';
+import 'package:flutter_mall/res/resources.dart';
+import 'package:flutter_mall/widgets/loading_widget.dart';
+import 'package:flutter_mall/widgets/text_icon_widget.dart';
 
-// 首页
 class MallHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    var image = loadAssetImage('main_login_bg', fit: BoxFit.cover);
     return Scaffold(
-      backgroundColor: Colours.color_9b9b9b,
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+      body: Stack(
+        fit: StackFit.expand,
+        alignment: Alignment.bottomCenter,
         children: <Widget>[
-          Text(
-            "你好，我是首页",
-            textAlign: TextAlign.center,
-            style: TextStyle(fontSize: 16, color: Colours.black),
+          image,
+          loadAssetImage(
+            'main_login_bg_layer',
+            fit: BoxFit.cover,
           ),
-          GestureDetector(
-            child: Text(
-              "点我",
+          Positioned(
+            bottom: 150,
+            left: 10,
+            child: loadAssetImage(
+              'main_login_bg_title',
+              fit: BoxFit.cover,
             ),
-            onTap: () {
-              showToast("点击了我");
-            },
-          )
+          ),
+          UserLoginWidget(),
         ],
+      ),
+    );
+  }
+}
+
+class UserLoginWidget extends StatefulWidget {
+  final bool showIcon;
+
+  const UserLoginWidget({Key key, this.showIcon: false}) : super(key: key);
+
+  @override
+  State<StatefulWidget> createState() => UserLoginMainState();
+}
+
+class UserLoginMainState extends State<UserLoginWidget> {
+  bool loading = true;
+  static const platform = const MethodChannel('com.ghl.flutter/native');
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      fit: StackFit.expand,
+      alignment: Alignment.bottomCenter,
+      children: <Widget>[
+        Positioned(
+          bottom: 0,
+          child: Container(
+            alignment: Alignment.center,
+            child: Padding(
+              padding: EdgeInsets.all(20),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  TextIcon(
+                    showBg: true,
+                    imageAssets: false,
+                    onPressed: () async {
+                      setState(() {
+                        loading = false;
+                      });
+                    },
+                    text: "使用微信一键登录",
+                    fontSize: 16,
+                    textColor: Colours.color_212121,
+                    showRightIcon: false,
+                    showLeftIcon: false,
+                    backgroundColor: Colours.app_main,
+                  ),
+                  TextIcon(
+                    showBg: false,
+                    imageAssets: true,
+                    showRightIcon: true,
+                    showLeftIcon: false,
+                    rightIconPath: 'ic_advance',
+                    rightIconColor: Colours.white,
+                    onPressed: () {
+//                      LoginOnTap.onPhoneTap(
+//                        context,
+//                        from: loginPhone,
+//                        replace: false,
+//                      );
+                      jumpToHomePage();
+                    },
+                    text: '使用手机号登录',
+                    fontSize: 13,
+                    textColor: Colours.white,
+                  )
+                ],
+              ),
+            ),
+          ),
+        ),
+        Offstage(
+          offstage: loading,
+          child: Center(
+            child: loadingView(),
+          ),
+        )
+      ],
+    );
+  }
+
+  Future jumpToHomePage() async {
+    await platform.invokeMethod(
+      'finish',
+    );
+  }
+
+  Widget loadingView() {
+    return Material(
+      //创建透明层
+      type: MaterialType.transparency, //透明类型(dialog的半透明效果)
+      child: GestureDetector(
+        onTap: () {
+          setState(() {
+            loading = true;
+          });
+        },
+        child: Container(
+          color: Colors.black54,
+          child: Center(
+            child: SpinKitWave(
+              color: Colours.app_main,
+              type: SpinKitWaveType.start,
+            ),
+          ),
+        ),
       ),
     );
   }

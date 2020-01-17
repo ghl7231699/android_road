@@ -3,10 +3,10 @@ package com.mmc.lamandys.liba_datapick.activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -15,16 +15,43 @@ import androidx.recyclerview.widget.RecyclerView
 import com.mmc.lamandys.liba_datapick.R
 import com.mmc.lamandys.liba_datapick.adapter.HomePageAdapter
 import com.mmc.lamandys.liba_datapick.util.StatusBarUtils
+import io.flutter.app.FlutterActivity
+import io.flutter.plugin.common.MethodChannel
+import io.flutter.view.FlutterMain
 
-class HomePageActivityV2 : AppCompatActivity() {
+class HomePageActivityV2 : FlutterActivity() {
 
     private var mRecyclerView: RecyclerView? = null
     var mBannerRecyclerView: RecyclerView? = null
+    private lateinit var methodChannel: MethodChannel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         StatusBarUtils.transparencyBar(this)
         setContentView(R.layout.activity_home_page_layout_v2)
+
+
+        //强烈建议放到Application里初始化,初始化一次即可,放这里只是举个例子
+        FlutterMain.startInitialization(this)
+
         initView()
+
+
+        val key = "PageFlutterActivity"
+        val registrar = this.registrarFor(key)
+        methodChannel = MethodChannel(
+                registrar.messenger(),
+                "com.ghl.flutter/native"
+        )
+        methodChannel.setMethodCallHandler { methodCall, result ->
+            if (methodCall.method == "finish") {
+                Log.e("Android", "接收到了Flutter传递的参数:${methodCall.arguments}")
+                result.success("$ ok")
+                Log.e("Android", "主动调用Flutter的methodInvokeMethodPageState方法")
+//                methodChannel.invokeMethod("methodInvokeMethodPageState", "Android发送给Flutter的参数")
+            }
+        }
+
     }
 
     private fun initView() {

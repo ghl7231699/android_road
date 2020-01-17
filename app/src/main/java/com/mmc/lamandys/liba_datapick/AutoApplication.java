@@ -6,9 +6,11 @@ import android.content.Context;
 
 import com.mmc.lamandys.liba_datapick.helper.AutoTrackHelper;
 
+import io.flutter.embedding.android.FlutterActivity;
 import io.flutter.embedding.engine.FlutterEngine;
 import io.flutter.embedding.engine.FlutterEngineCache;
 import io.flutter.embedding.engine.dart.DartExecutor;
+import io.flutter.plugin.common.MethodChannel;
 
 import static com.mmc.lamandys.liba_datapick.Constanats.CACHED_FLUTTER_ENGINE;
 
@@ -43,6 +45,7 @@ public class AutoApplication extends Application {
 
         // Cache the pre-warmed FlutterEngine to be used later by FlutterFragment.
         FlutterEngineCache.getInstance().put(CACHED_FLUTTER_ENGINE, mFlutterEngine);
+
     }
 
     public static AutoApplication getInstance() {
