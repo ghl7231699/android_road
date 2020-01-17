@@ -4,7 +4,6 @@ import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Process;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -132,7 +131,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                 break;
             case R.id.AnBtn:
                 Toast.makeText(this, "点你", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(this, AsyncLayoutActivity.class));
+                startActivity(new Intent(this, FlutterFragmentActivity.class));
                 break;
             case R.id.BehaviorBtn:
                 startActivity(new Intent(this, BehaviorActivity.class));

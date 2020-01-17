@@ -46,7 +46,10 @@ class HomePageViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
                 5 -> makeText(mContext, "属性动画", Toast.LENGTH_SHORT).show()
                 6 -> jump(BehaviorActivity::class.java)
                 7 -> mContext.startActivity(FlutterActivity.createDefaultIntent(mContext))
-                8 -> mContext.startActivity(FlutterActivity.withNewEngine().initialRoute("/login/index").build(mContext))
+                8 -> mContext.startActivity(FlutterActivity
+                        .withNewEngine()
+                        .initialRoute("/login/index")
+                        .build(mContext))
             }
         }
     }

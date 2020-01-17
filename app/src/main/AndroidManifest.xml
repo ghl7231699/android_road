@@ -81,6 +81,9 @@
             android:hardwareAccelerated="true"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".activity.FlutterFragmentActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
     </application>
 
 </manifest>
