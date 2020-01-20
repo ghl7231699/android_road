@@ -11,14 +11,33 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView
+import com.mmc.lamandys.liba_datapick.Constants
+import com.mmc.lamandys.liba_datapick.ENGINE_ID
 import com.mmc.lamandys.liba_datapick.R
+import com.mmc.lamandys.liba_datapick.activity.ui.login.LoginActivity
 import com.mmc.lamandys.liba_datapick.adapter.HomePageAdapter
 import com.mmc.lamandys.liba_datapick.util.StatusBarUtils
 import io.flutter.app.FlutterActivity
+import io.flutter.embedding.engine.FlutterEngineCache
 import io.flutter.plugin.common.MethodChannel
 import io.flutter.view.FlutterMain
 
 class HomePageActivityV2 : FlutterActivity() {
+
+
+    init {
+        val engine = FlutterEngineCache.getInstance().get(ENGINE_ID)
+
+        val channel = MethodChannel(engine?.dartExecutor, Constants.Method_channel)
+
+        channel.setMethodCallHandler { call, _ ->
+            when (call.method) {
+                Constants.method_finish -> {
+                    startActivity(Intent(this, LoginActivity::class.java))
+                }
+            }
+        }
+    }
 
     private var mRecyclerView: RecyclerView? = null
     var mBannerRecyclerView: RecyclerView? = null
@@ -32,6 +51,7 @@ class HomePageActivityV2 : FlutterActivity() {
         FlutterMain.startInitialization(this)
         initView()
     }
+
 
     private fun initView() {
         mRecyclerView = findViewById(R.id.rv_home_page)

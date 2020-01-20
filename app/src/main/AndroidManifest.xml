@@ -16,11 +16,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-
+        <activity
+            android:name=".ui.login.LoginActivity"
+            android:label="@string/title_activity_login"></activity>
         <activity
             android:name=".activity.HomePageActivityV1"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-
         <activity
             android:name=".activity.HomePageActivityV2"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
@@ -30,7 +31,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity android:name=".activity.MainActivity" />
         <activity
             android:name=".activity.SecondActivity"
@@ -84,6 +84,9 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".activity.FlutterNativeActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name=".activity.ui.login.LoginActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
     </application>
 

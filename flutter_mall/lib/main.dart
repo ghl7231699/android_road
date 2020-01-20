@@ -15,9 +15,7 @@ void main() => runApp(_widgetBuildWithRoutes(window.defaultRouteName));
 
 /// The entrypoint for the flutter module.
 //void main() {
-//  // This call ensures the Flutter binding has been set up before creating the
-//  // MethodChannel-based model.
-//  WidgetsFlutterBinding.ensureInitialized();
+
 //
 //  final model = CounterModel();
 //
@@ -32,6 +30,9 @@ void main() => runApp(_widgetBuildWithRoutes(window.defaultRouteName));
 const String method_channel = 'foo';
 
 Widget _widgetBuildWithRoutes(String route) {
+    // This call ensures the Flutter binding has been set up before creating the
+  // MethodChannel-based model.
+  WidgetsFlutterBinding.ensureInitialized();
 //  Routes.navigate(route);
   // TODO 如果属于集成单独的功能模块的话，需要在此对传递的路由做匹配
 

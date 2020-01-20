@@ -19,6 +19,8 @@ class AutoApplication : Application() {
 
     private lateinit var channel: MethodChannel
 
+    public lateinit var flutterEngine: FlutterEngine
+
     override fun onCreate() {
         super.onCreate()
 
@@ -26,7 +28,7 @@ class AutoApplication : Application() {
         AutoTrackHelper.frameDetection2()
         CrashHandler.getinstance().init()
 
-        val flutterEngine = FlutterEngine(this)
+        flutterEngine = FlutterEngine(this)
         flutterEngine
                 .dartExecutor
                 .executeDartEntrypoint(
@@ -48,9 +50,9 @@ class AutoApplication : Application() {
                     reportCounter()
                 }
 
-                Constants.method_finish -> {
-                    Toast.makeText(this, "我跳转了", Toast.LENGTH_SHORT).show()
-                }
+//                Constants.method_finish -> {
+//                    Toast.makeText(this, "我跳转了", Toast.LENGTH_SHORT).show()
+//                }
             }
         }
     }
