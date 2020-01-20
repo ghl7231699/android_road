@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_mall/channel_constants.dart';
 import 'package:flutter_mall/common/utils/image_utils.dart';
 import 'package:flutter_mall/res/resources.dart';
 import 'package:flutter_mall/widgets/loading_widget.dart';
@@ -46,7 +47,7 @@ class UserLoginWidget extends StatefulWidget {
 
 class UserLoginMainState extends State<UserLoginWidget> {
   bool loading = true;
-  static const platform = const MethodChannel('com.ghl.flutter/native');
+  static const platform = const MethodChannel(Method_channel);
 
   @override
   void initState() {
@@ -118,9 +119,9 @@ class UserLoginMainState extends State<UserLoginWidget> {
     );
   }
 
-  Future jumpToHomePage() async {
+  void jumpToHomePage() async {
     await platform.invokeMethod(
-      'finish',
+      method_finish,
     );
   }
 

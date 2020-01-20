@@ -61,7 +61,7 @@ public class CrashHandler implements UncaughtExceptionHandler {
         }
         // 关闭应用中各种activity和服务
         if (needRestart(ex)) {
-            AutoApplication context = AutoApplication.getInstance();
+            AutoApplication context = AutoApplication.Companion.getInstance();
             restartAPP(context);
         } else {
             mDefaultHandler.uncaughtException(thread, ex);

@@ -9,6 +9,7 @@ import android.widget.Button
 import android.widget.Toast
 import android.widget.Toast.makeText
 import androidx.recyclerview.widget.RecyclerView
+import com.mmc.lamandys.liba_datapick.ENGINE_ID
 import com.mmc.lamandys.liba_datapick.R
 import com.mmc.lamandys.liba_datapick.activity.*
 import io.flutter.embedding.android.FlutterActivity
@@ -36,6 +37,8 @@ class HomePageViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     fun bind(text: String, position: Int) {
         mTv.text = text
 
+
+
         mTv.setOnClickListener {
             when (position) {
                 0 -> jump(ViewPager2Activity::class.java)
@@ -49,6 +52,9 @@ class HomePageViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
                 8 -> mContext.startActivity(FlutterActivity
                         .withNewEngine()
                         .initialRoute("/login/index")
+                        .build(mContext))
+                9 -> mContext.startActivity(FlutterActivity
+                        .withCachedEngine(ENGINE_ID)
                         .build(mContext))
             }
         }

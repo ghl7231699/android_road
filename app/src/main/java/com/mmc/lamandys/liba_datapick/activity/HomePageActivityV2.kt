@@ -3,7 +3,6 @@ package com.mmc.lamandys.liba_datapick.activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -29,29 +28,9 @@ class HomePageActivityV2 : FlutterActivity() {
         super.onCreate(savedInstanceState)
         StatusBarUtils.transparencyBar(this)
         setContentView(R.layout.activity_home_page_layout_v2)
-
-
         //强烈建议放到Application里初始化,初始化一次即可,放这里只是举个例子
         FlutterMain.startInitialization(this)
-
         initView()
-
-
-        val key = "PageFlutterActivity"
-        val registrar = this.registrarFor(key)
-        methodChannel = MethodChannel(
-                registrar.messenger(),
-                "com.ghl.flutter/native"
-        )
-        methodChannel.setMethodCallHandler { methodCall, result ->
-            if (methodCall.method == "finish") {
-                Log.e("Android", "接收到了Flutter传递的参数:${methodCall.arguments}")
-                result.success("$ ok")
-                Log.e("Android", "主动调用Flutter的methodInvokeMethodPageState方法")
-//                methodChannel.invokeMethod("methodInvokeMethodPageState", "Android发送给Flutter的参数")
-            }
-        }
-
     }
 
     private fun initView() {
@@ -84,6 +63,7 @@ class HomePageActivityV2 : FlutterActivity() {
         list.add("自定义Behavior")
         list.add("调用flutter页面")
         list.add("调用指定flutter页面")
+        list.add("Flutter与原生交互")
 
         return list
     }

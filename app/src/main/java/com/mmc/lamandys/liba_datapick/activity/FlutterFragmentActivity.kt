@@ -5,11 +5,10 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentManager
-import com.mmc.lamandys.liba_datapick.Constanats.CACHED_FLUTTER_ENGINE
+import com.mmc.lamandys.liba_datapick.Constants.CACHED_FLUTTER_ENGINE
 import com.mmc.lamandys.liba_datapick.R
 import com.mmc.lamandys.liba_datapick.util.StatusBarUtils
 import io.flutter.embedding.android.FlutterFragment
-import io.flutter.plugin.common.MethodChannel
 
 
 class FlutterFragmentActivity : AppCompatActivity(), View.OnClickListener {

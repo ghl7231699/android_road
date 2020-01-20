@@ -19,9 +19,7 @@
 
         <activity
             android:name=".activity.HomePageActivityV1"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-
-        </activity>
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
 
         <activity
             android:name=".activity.HomePageActivityV2"
@@ -83,6 +81,9 @@
             android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".activity.FlutterFragmentActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name=".activity.FlutterNativeActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
     </application>
 

@@ -1,10 +1,5 @@
 include ':plugin', ':app', ':kotlin'
 setBinding(new Binding([gradle: this]))
-//evaluate(new File(
-//  settingsDir,
-//  'flutter_map/.android/include_flutter.groovy'
-//))
-
 evaluate(new File(
         settingsDir,
         '/flutter_mall/.android/include_flutter.groovy'

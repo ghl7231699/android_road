@@ -30,7 +30,7 @@
 //
 //    override fun onAttach(context: Context) {
 //        super.onAttach(context)
-//        this.mContext = context.applicationContext
+//        this.mContext = context.mApplicationContext
 //    }
 //
 //    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {

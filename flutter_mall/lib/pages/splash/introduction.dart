@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_mall/blocs/login/authentication_bloc.dart';
-import 'package:flutter_mall/blocs/login/authentication_events.dart';
 import 'package:flutter_mall/res/resources.dart';
 
 // 引导页
@@ -15,6 +12,7 @@ class IntroductionPage extends StatefulWidget {
 
 class _State extends State<IntroductionPage> {
   PageController _pageController;
+
   @override
   void initState() {
     super.initState();
@@ -91,7 +89,9 @@ class _State extends State<IntroductionPage> {
 class _IndicatorRow extends StatelessWidget {
   final int count;
   final int current;
+
   const _IndicatorRow(this.count, this.current, {Key key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -103,7 +103,9 @@ class _IndicatorRow extends StatelessWidget {
 
 class _CircleIndicator extends StatelessWidget {
   final bool checked;
+
   const _CircleIndicator(this.checked, {Key key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Padding(
