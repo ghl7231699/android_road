@@ -36,4 +36,9 @@
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
+
+    <string name="open_native">open native page</string>
+    <string name="open_flutter">open flutter page</string>
+    <string name="open_flutter_fragment">open flutter fragment page</string>
+    <string name="native_info">This is a native activity</string>
 </resources>

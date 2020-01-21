@@ -12,8 +12,9 @@ import 'package:flutter_mall/router/routes.dart';
 import 'package:flutter_mall/widgets/no_scale_widget.dart';
 import 'package:provider/provider.dart';
 
-void main() => runApp(_widgetBuildWithRoutes(window.defaultRouteName));
+//void main() => runApp(_widgetBuildWithRoutes(window.defaultRouteName));
 //void main() => runApp(_widgetBuildWithRoutes('/login/index'));
+void main() => runApp(_widgetBuildWithRoutes('sample://flutterFragmentPage'));
 
 /// The entrypoint for the flutter module.
 //void main() {
@@ -45,12 +46,12 @@ Widget _widgetBuildWithRoutes(String route) {
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light);
   }
 
-  return FlutterBoostApp();
-
   Widget widget() {
     switch (route) {
       case '/login/index':
         return PersonalCenter();
+//      case 'sample://flutterFragmentPage':
+//        return FlutterBoostApp();
       case '/':
       default:
         return MallHomePage();
@@ -234,7 +235,7 @@ class Contents extends StatelessWidget {
   }
 }
 
-/****************************************Flutter Boost*******************************************/
+/// **************************************Flutter Boost*******************************************/
 
 class FlutterBoostApp extends StatefulWidget {
   @override

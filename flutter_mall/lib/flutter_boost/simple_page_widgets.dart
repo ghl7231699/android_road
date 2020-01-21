@@ -344,13 +344,14 @@ class FragmentRouteWidget extends StatelessWidget {
           ),
           InkWell(
             child: Container(
-                padding: const EdgeInsets.all(8.0),
-                margin: const EdgeInsets.all(8.0),
-                color: Colors.yellow,
-                child: Text(
-                  'open flutter page',
-                  style: TextStyle(fontSize: 22.0, color: Colors.black),
-                )),
+              padding: const EdgeInsets.all(8.0),
+              margin: const EdgeInsets.all(8.0),
+              color: Colors.yellow,
+              child: Text(
+                'open flutter page',
+                style: TextStyle(fontSize: 22.0, color: Colors.black),
+              ),
+            ),
             onTap: () => FlutterBoost.singleton.open("sample://flutterPage"),
           ),
           InkWell(

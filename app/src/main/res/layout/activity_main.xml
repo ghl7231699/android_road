@@ -1,112 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="horizontal"
-    android:paddingTop="56dp">
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@android:color/white"
+              android:orientation="vertical">
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <LinearLayout
-            android:layout_width="match_parent"
+    <TextView
+            android:id="@+id/info"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="vertical">
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="80dp"
+            android:text="@string/native_info"
+            android:textColor="@android:color/holo_blue_dark"
+            android:textSize="28sp" />
 
-            <Button
-                android:id="@+id/jumpButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="第二个"
-                android:textAllCaps="false"
-                android:visibility="visible" />
+    <View
+            android:layout_width="1dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
 
-            <Button
-                android:id="@+id/tabButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="列表"
-                android:visibility="visible" />
+    <TextView
+            android:id="@+id/open_native"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8.0dp"
+            android:background="@android:color/holo_orange_dark"
+            android:padding="8.0dp"
+            android:text="@string/open_native"
+            android:textAllCaps="false"
+            android:textColor="@android:color/black"
+            android:textSize="16sp" />
 
-            <Button
-                android:id="@+id/toolbarButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+    <TextView
+            android:id="@+id/open_flutter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8.0dp"
+            android:background="@android:color/holo_orange_dark"
+            android:padding="8.0dp"
+            android:text="@string/open_flutter"
+            android:textAllCaps="false"
+            android:textColor="@android:color/black"
+            android:textSize="16sp" />
 
-                android:text="Toolbar"
-                android:visibility="visible" />
+    <TextView
+            android:id="@+id/open_flutter_fragment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8.0dp"
+            android:layout_marginTop="8.0dp"
+            android:layout_marginRight="8.0dp"
+            android:layout_marginBottom="80.0dp"
+            android:background="@android:color/holo_orange_dark"
+            android:padding="8.0dp"
+            android:text="@string/open_flutter_fragment"
+            android:textAllCaps="false"
+            android:textColor="@android:color/black"
+            android:textSize="16sp" />
 
-            <Button
-                android:id="@+id/radioButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-
-                android:text="Radio"
-                android:visibility="visible" />
-
-            <Button
-                android:id="@+id/drawerButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-
-                android:text="Drawer"
-                android:visibility="visible" />
-
-            <Button
-                android:id="@+id/moduleButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-
-                android:text="组件"
-                android:visibility="visible" />
-
-            <Button
-                android:id="@+id/videoBtn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-
-                android:text="腾讯视频"
-                android:visibility="visible" />
-
-            <Button
-                android:id="@+id/newsBtn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="腾讯新闻"
-                android:visibility="visible" />
-
-            <Button
-                android:id="@+id/qqBtn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="QQ音乐"
-                android:visibility="visible" />
-
-            <Button
-                android:id="@+id/ConBtn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="约束布局"
-                android:visibility="visible" />
-
-            <Button
-                android:id="@+id/AnBtn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="属性动画"
-                android:visibility="visible" />
-
-            <Button
-                android:id="@+id/BehaviorBtn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="自定义Behavior"
-                android:visibility="visible" />
-        </LinearLayout>
-        <!--<com.mmc.lamandys.liba_datapick.CustomerView-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent"/>-->
-    </ScrollView>
 </LinearLayout>

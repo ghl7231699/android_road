@@ -47,10 +47,10 @@ class TextIconState extends State<TextIcon> {
   Widget build(BuildContext context) {
     final double _width = MediaQuery.of(context).size.width;
     return Container(
+      width: 300,
       child: InkWell(
         onTap: widget.onPressed,
         child: Container(
-          width: _width - 40,
           padding: EdgeInsets.only(top: 14, bottom: 14),
 //          margin: EdgeInsets.only(left: 20.0, right: 20.0),
           child: Row(

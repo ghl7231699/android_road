@@ -15,7 +15,7 @@ class FlutterNativeActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_main_layout)
 
         findViewById<View>(R.id.AnBtn).setOnClickListener {
             val intent = FlutterActivity

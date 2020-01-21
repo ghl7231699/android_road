@@ -25,7 +25,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main_layout);
         StatusBarUtils.transparencyBar(this); //设置状态栏全透明
         StatusBarUtils.StatusBarLightMode(this); //设置白底黑字
         jumpButton = findViewById(R.id.jumpButton);

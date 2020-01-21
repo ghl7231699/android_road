@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.mmc.lamandys.liba_datapick.ENGINE_ID
 import com.mmc.lamandys.liba_datapick.R
 import com.mmc.lamandys.liba_datapick.activity.*
+import com.mmc.lamandys.liba_datapick.activity.flutter.FlutterMainActivity
 import io.flutter.embedding.android.FlutterActivity
 
 class HomePageAdapter(list: List<String>) : RecyclerView.Adapter<HomePageViewHolder>() {
@@ -56,6 +57,8 @@ class HomePageViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
                 9 -> mContext.startActivity(FlutterActivity
                         .withCachedEngine(ENGINE_ID)
                         .build(mContext))
+
+                10 -> mContext.startActivity(Intent(mContext, FlutterMainActivity::class.java))
             }
         }
     }

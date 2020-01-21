@@ -4,6 +4,10 @@ import android.annotation.SuppressLint
 import android.app.Application
 import android.content.Context
 import android.widget.Toast
+import com.idlefish.flutterboost.FlutterBoost
+import com.idlefish.flutterboost.Utils
+import com.idlefish.flutterboost.interfaces.INativeRouter
+import com.mmc.lamandys.liba_datapick.activity.flutter.PageRouter
 import com.mmc.lamandys.liba_datapick.helper.AutoTrackHelper
 import io.flutter.embedding.engine.FlutterEngine
 import io.flutter.embedding.engine.FlutterEngineCache
@@ -27,6 +31,19 @@ class AutoApplication : Application() {
         //AutoTrackHelper.frameDetection();
         AutoTrackHelper.frameDetection2()
         CrashHandler.getinstance().init()
+
+        val router: INativeRouter = INativeRouter { context, url, urlParams, requestCode, exts ->
+            val assembleUrl = Utils.assembleUrl(url, urlParams)
+            PageRouter.openPageByUrl(context, assembleUrl, urlParams)
+        }
+
+        val platform = FlutterBoost.ConfigBuilder(this, router)
+                .isDebug(true)
+                .whenEngineStart(FlutterBoost.ConfigBuilder.ANY_ACTIVITY_CREATED)
+                .build()
+
+        FlutterBoost.instance().init(platform)
+
 
         flutterEngine = FlutterEngine(this)
         flutterEngine
