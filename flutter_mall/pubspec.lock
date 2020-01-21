@@ -104,6 +104,15 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_boost:
+    dependency: "direct main"
+    description:
+      path: "."
+      ref: "v1.12.13-hotfixes"
+      resolved-ref: "7aaec7802c93463724388d44d0463bb6be62219f"
+      url: "https://github.com/alibaba/flutter_boost.git"
+    source: git
+    version: "0.1.66"
   flutter_cache_manager:
     dependency: transitive
     description:

@@ -60,12 +60,18 @@ dependencies:
 
   provider: ^3.1.0
 
+#  flutter_boost:
+#    git:
+#      url: 'https://github.com/alibaba/flutter_boost.git'
+#      ref: 'v1.12.13-hotfixes'
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
+
 
 flutter:
   # The following line ensures that the Material Icons font is

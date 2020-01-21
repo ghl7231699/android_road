@@ -3,6 +3,8 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_boost/flutter_boost.dart';
+import 'package:flutter_mall/flutter_boost/simple_page_widgets.dart';
 import 'package:flutter_mall/pages/home/mall_home_page.dart';
 import 'package:flutter_mall/pages/personalcenter/person_page.dart';
 import 'package:flutter_mall/res/resources.dart';
@@ -15,8 +17,6 @@ void main() => runApp(_widgetBuildWithRoutes(window.defaultRouteName));
 
 /// The entrypoint for the flutter module.
 //void main() {
-
-//
 //  final model = CounterModel();
 //
 //  runApp(
@@ -30,7 +30,7 @@ void main() => runApp(_widgetBuildWithRoutes(window.defaultRouteName));
 const String method_channel = 'foo';
 
 Widget _widgetBuildWithRoutes(String route) {
-    // This call ensures the Flutter binding has been set up before creating the
+  // This call ensures the Flutter binding has been set up before creating the
   // MethodChannel-based model.
   WidgetsFlutterBinding.ensureInitialized();
 //  Routes.navigate(route);
@@ -44,6 +44,8 @@ Widget _widgetBuildWithRoutes(String route) {
   } else {
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light);
   }
+
+  return FlutterBoostApp();
 
   Widget widget() {
     switch (route) {
@@ -230,4 +232,45 @@ class Contents extends StatelessWidget {
       ),
     );
   }
+}
+
+/****************************************Flutter Boost*******************************************/
+
+class FlutterBoostApp extends StatefulWidget {
+  @override
+  _FlutterBoostAppState createState() => _FlutterBoostAppState();
+}
+
+class _FlutterBoostAppState extends State<FlutterBoostApp> {
+  @override
+  void initState() {
+    super.initState();
+
+    FlutterBoost.singleton.registerPageBuilders({
+      'embeded': (pageName, params, _) => EmbededFirstRouteWidget(),
+      'first': (pageName, params, _) => FirstRouteWidget(),
+      'second': (pageName, params, _) => SecondRouteWidget(),
+      'tab': (pageName, params, _) => TabRouteWidget(),
+      'platformView': (pageName, params, _) => PlatformRouteWidget(),
+      'flutterFragment': (pageName, params, _) => FragmentRouteWidget(params),
+
+      ///可以在native层通过 getContainerParams 来传递参数
+      'flutterPage': (pageName, params, _) {
+        print("flutterPage params:$params");
+
+        return FlutterRouteWidget(params: params);
+      },
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+        title: 'Flutter Boost example',
+        builder: FlutterBoost.init(postPush: _onRoutePushed),
+        home: Container());
+  }
+
+  void _onRoutePushed(
+      String pageName, String uniqueId, Map params, Route route, Future _) {}
 }
