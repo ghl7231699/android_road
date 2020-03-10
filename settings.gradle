@@ -5,3 +5,5 @@ evaluate(new File(
         '/flutter_mall/.android/include_flutter.groovy'
 ))
 include ':flutter_mall'
+include ':app:design_mode'
+include ':design_mode'
