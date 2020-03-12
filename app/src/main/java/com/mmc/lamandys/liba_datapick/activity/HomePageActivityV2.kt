@@ -85,6 +85,7 @@ class HomePageActivityV2 : FlutterActivity() {
         list.add("调用指定flutter页面")
         list.add("Flutter与原生交互")
         list.add("咸鱼FlutterBoost")
+        list.add("LiveData+ViewModel")
 
         return list
     }

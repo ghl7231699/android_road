@@ -13,7 +13,9 @@ import com.mmc.lamandys.liba_datapick.ENGINE_ID
 import com.mmc.lamandys.liba_datapick.R
 import com.mmc.lamandys.liba_datapick.activity.*
 import com.mmc.lamandys.liba_datapick.activity.flutter.FlutterMainActivity
+import com.mmc.lamandys.liba_datapick.livedata.NameActivity
 import io.flutter.embedding.android.FlutterActivity
+import io.flutter.embedding.android.FlutterActivity.createDefaultIntent
 
 class HomePageAdapter(list: List<String>) : RecyclerView.Adapter<HomePageViewHolder>() {
     private val datas: List<String> = list
@@ -49,7 +51,7 @@ class HomePageViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
                 4 -> jump(DrawerActivity::class.java)
                 5 -> makeText(mContext, "属性动画", Toast.LENGTH_SHORT).show()
                 6 -> jump(BehaviorActivity::class.java)
-                7 -> mContext.startActivity(FlutterActivity.createDefaultIntent(mContext))
+                7 -> mContext.startActivity(createDefaultIntent(mContext))
                 8 -> mContext.startActivity(FlutterActivity
                         .withNewEngine()
                         .initialRoute("/login/index")
@@ -59,6 +61,7 @@ class HomePageViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
                         .build(mContext))
 
                 10 -> mContext.startActivity(Intent(mContext, FlutterMainActivity::class.java))
+                11 -> mContext.startActivity(Intent(mContext, NameActivity::class.java))
             }
         }
     }
