@@ -10,17 +10,6 @@
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="modules">
           <set>
-            <option value="$USER_HOME$/.pub-cache/git/flutter_boost-7aaec7802c93463724388d44d0463bb6be62219f/android" />
-            <option value="$USER_HOME$/.pub-cache/hosted/pub.flutter-io.cn/connectivity-0.4.6+2/android" />
-            <option value="$USER_HOME$/.pub-cache/hosted/pub.flutter-io.cn/device_info-0.4.1+4/android" />
-            <option value="$USER_HOME$/.pub-cache/hosted/pub.flutter-io.cn/fluttertoast-3.1.3/android" />
-            <option value="$USER_HOME$/.pub-cache/hosted/pub.flutter-io.cn/package_info-0.4.0+13/android" />
-            <option value="$USER_HOME$/.pub-cache/hosted/pub.flutter-io.cn/path_provider-1.5.1/android" />
-            <option value="$USER_HOME$/.pub-cache/hosted/pub.flutter-io.cn/shared_preferences-0.5.6/android" />
-            <option value="$USER_HOME$/.pub-cache/hosted/pub.flutter-io.cn/shared_preferences_macos-0.0.1+3/android" />
-            <option value="$USER_HOME$/.pub-cache/hosted/pub.flutter-io.cn/shared_preferences_web-0.1.2+2/android" />
-            <option value="$USER_HOME$/.pub-cache/hosted/pub.flutter-io.cn/sqflite-1.2.0/android" />
-            <option value="$USER_HOME$/.pub-cache/hosted/pub.flutter-io.cn/uni_links-0.2.0/android" />
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/app/design_mode" />
@@ -29,6 +18,17 @@
             <option value="$PROJECT_DIR$/flutter_mall/.android/Flutter" />
             <option value="$PROJECT_DIR$/kotlin" />
             <option value="$PROJECT_DIR$/plugin" />
+            <option value="$USER_HOME$/flutter/.pub-cache/git/flutter_boost-7aaec7802c93463724388d44d0463bb6be62219f/android" />
+            <option value="$USER_HOME$/flutter/.pub-cache/hosted/pub.flutter-io.cn/connectivity-0.4.6+2/android" />
+            <option value="$USER_HOME$/flutter/.pub-cache/hosted/pub.flutter-io.cn/device_info-0.4.1+4/android" />
+            <option value="$USER_HOME$/flutter/.pub-cache/hosted/pub.flutter-io.cn/fluttertoast-3.1.3/android" />
+            <option value="$USER_HOME$/flutter/.pub-cache/hosted/pub.flutter-io.cn/package_info-0.4.0+13/android" />
+            <option value="$USER_HOME$/flutter/.pub-cache/hosted/pub.flutter-io.cn/path_provider-1.5.1/android" />
+            <option value="$USER_HOME$/flutter/.pub-cache/hosted/pub.flutter-io.cn/shared_preferences-0.5.6/android" />
+            <option value="$USER_HOME$/flutter/.pub-cache/hosted/pub.flutter-io.cn/shared_preferences_macos-0.0.1+3/android" />
+            <option value="$USER_HOME$/flutter/.pub-cache/hosted/pub.flutter-io.cn/shared_preferences_web-0.1.2+2/android" />
+            <option value="$USER_HOME$/flutter/.pub-cache/hosted/pub.flutter-io.cn/sqflite-1.2.0/android" />
+            <option value="$USER_HOME$/flutter/.pub-cache/hosted/pub.flutter-io.cn/uni_links-0.2.0/android" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

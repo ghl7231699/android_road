@@ -18,6 +18,8 @@ fun main(args: Array<String>) {
     demo2()
     demo4()
     demo5()
+
+    getShippingCostCalculator(Delivery.COMMON)
 }
 
 
@@ -227,6 +229,21 @@ class Foo {
 fun demo6() {
     val foo = Foo()
     foo.x = "bar"
+}
+
+/******************Kotlin Lambda*************/
+val myFun: () -> Unit = {
+}
+
+val myGreeting: (String) -> Unit = {
+    println("hello,$it")
+}
+
+val tellWang: (String, Any) -> Boolean = { s, _ ->
+    "Wang" == s
+}
+val tellLi: (String, Any) -> Boolean = { s, _ ->
+    "Li" == s
 }
 
 /******************返回函数的函数*************************/
