@@ -11,15 +11,25 @@ fun main(args: Array<String>) {
 //    let()
 //    also()
 //    with()
-
-
     demo()
     demo1()
     demo2()
     demo4()
     demo5()
 
-    getShippingCostCalculator(Delivery.COMMON)
+    val result = getShippingCostCalculator(Delivery.COMMON)
+    println("普通件的价格为：${result(Order(10))}")
+
+    demoLambda2()
+
+    demoLib()
+
+    demoLambda3()
+
+    demoAsSequence()
+
+    lookForAlice(people)
+    lookForBob(people)
 }
 
 
@@ -246,6 +256,16 @@ val tellLi: (String, Any) -> Boolean = { s, _ ->
     "Li" == s
 }
 
+fun demoLambda(params: (String, Any) -> Boolean) {
+    val result = params("Li", "")
+    println("Lambda result is $result")
+}
+
+fun demoLambda2() {
+    demoLambda(tellLi)
+    demoLambda(tellWang)
+}
+
 /******************返回函数的函数*************************/
 enum class Delivery { COMMON, EXPEDITED }
 
@@ -257,4 +277,96 @@ fun getShippingCostCalculator(delivery: Delivery): (Order) -> Double {
     }
 
     return { order -> 1.2 * order.flee }
+}
+
+/******************Kotlin Lambda库函数******************/
+
+data class Person(val name: String, val age: Int) {
+    fun lock() {
+
+    }
+}
+
+val p = arrayListOf(Person("LiLi", 25), Person("LiYang", 28), Person("LiMei", 21), Person("LiXiao", 30))
+
+fun demoLib() {
+    println(p.filter { it.age >= 25 })
+    println(p.map { it.name })
+    println(p.map { it.name.substring(0, 1) }.reduce { acc, c -> "$acc,$c" })
+    println(p.maxBy { it.age })
+    println(p.groupBy { it.name.length })
+    println(p.flatMap { it.name.toList() })
+}
+
+/****************高阶Lambda**********************/
+
+fun twoAndThree(operation: (Int, Int) -> Int) {
+    val result = operation(2, 3)
+    println("result == $result")
+}
+
+fun demoLambda3() {
+    twoAndThree { a, b -> a + b }
+    twoAndThree { a, b -> a + b }
+    twoAndThree(text)
+}
+
+val text: (Int, Int) -> Int = { a, b ->
+    a - b
+}
+
+/****************优化lambda - 使⽤用内联****************/
+//每个⾮非内联的lambda都会被编译成⼀一个匿匿名类。
+//如果把lambda传给了了标记为inline的Kotlin函数， 就不不会创建任何匿匿名类。
+
+class Lock {
+    fun lock() {
+
+    }
+
+    fun unLock() {
+
+    }
+}
+
+inline fun <T> synchronized(lock: Lock, action: () -> T): T {
+    lock.lock()
+    try {
+        return action()
+    } finally {
+        lock.unLock()
+    }
+}
+
+// 链式操作可能会⽣生成多个中间集合，导致性能问题。
+// 可以调用asSequence把任何集合转为序列，调用toList把序列转换回List
+
+fun demoAsSequence() {
+    val toList = p.asSequence().map { it.name }.filter { it.startsWith("xx") }
+            .toList()
+    println(toList)
+}
+
+
+/********************从Lambda中返回********************/
+
+val people = listOf(Person("Bob", 32), Person("Bob", 32), Person("Alice", 30), Person("Bob", 32))
+fun lookForAlice(p: List<Person>) {
+    p.forEach {
+        if (it.name == "Alice") {
+            println("find it")
+            return
+        }
+        println("Alice is not found")
+    }
+}
+
+//从lambda中返回标签
+fun lookForBob(p: List<Person>) {
+    p.forEach label@{
+        if (it.name == "Alice")
+            println(it.name)
+        return@label
+    }
+    println("Alice might be somewhere")
 }
