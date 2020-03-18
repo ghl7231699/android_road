@@ -12,11 +12,13 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView
+import com.google.gson.Gson
 import com.mmc.lamandys.liba_datapick.Constants
 import com.mmc.lamandys.liba_datapick.ENGINE_ID
 import com.mmc.lamandys.liba_datapick.R
 import com.mmc.lamandys.liba_datapick.activity.ui.login.LoginActivity
 import com.mmc.lamandys.liba_datapick.adapter.HomePageAdapter
+import com.mmc.lamandys.liba_datapick.bean.SecondChildBean
 import com.mmc.lamandys.liba_datapick.util.StatusBarUtils
 import io.flutter.app.FlutterActivity
 import io.flutter.embedding.engine.FlutterEngineCache
@@ -38,6 +40,8 @@ class HomePageActivityV2 : FlutterActivity() {
                 }
             }
         }
+        val secondChildBean = SecondChildBean("","")
+        secondChildBean.name
     }
 
     private var mRecyclerView: RecyclerView? = null
@@ -117,6 +121,12 @@ class HomeV2BannerAdapter : RecyclerView.Adapter<HomeV2BannerViewHolder>() {
     }
 }
 
+const val json = "{\"first\":\"\"lili\",\"last\":\"liyang\"}"
+
+public data class User(var first: String, var last: String)
+
+inline fun <reified T> Gson.fromJson(json: String): T = fromJson(json, T::class.java)
+
 class HomeV2BannerViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     private var mIv: AppCompatImageView? = null
     private var colors: Array<Int>
@@ -144,8 +154,8 @@ class HomeV2BannerViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
                 it.visibility = VISIBLE
             }
         }
+        var gson = Gson().fromJson<User>(json)
     }
-
 
     fun bindData(position: Int) {
         mIv?.setBackgroundResource(colors[position])
