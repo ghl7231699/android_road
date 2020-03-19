@@ -1,6 +1,5 @@
 package com.example.data;
 
-import java.lang.reflect.Constructor;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -13,8 +12,9 @@ import java.util.Map;
 public class ArrayAlgorithmJava {
     public static void main(String[] args) {
         int[] sum = TwoSum();
-        System.out.println("result is " + sum[0] + sum[1]);
+        ThreeSum();
 
+        System.out.println("result is " + sum[0] + sum[1]);
 
         ListNode L1 = new ListNode(2);
         ListNode l1 = new ListNode(4);
@@ -31,39 +31,35 @@ public class ArrayAlgorithmJava {
         ListNode listNode = TwoAdd(L1, L2);
         System.out.println("addTwo result is " + listNode.val);
 
-
         MyThread myThread = new MyThread("run");
         myThread.start();
         myThread.run();
 //        myThread.start();
         new MyThread("start").start();
 
-
-        EnumSingleton instance = EnumSingleton.INSTANCE;
-        instance.doSomeThing();
-        System.out.println(instance);
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                EnumSingleton instance = EnumSingleton.INSTANCE;
-                System.out.println(instance);
-            }
-        }).start();
-
-        Constructor<EnumSingleton> constructor = null;
-        try {
-            constructor = EnumSingleton.class.getDeclaredConstructor();
-            constructor.setAccessible(true);
-
-            EnumSingleton enumSingletonDemo1 = constructor.newInstance();
-            EnumSingleton enumSingletonDemo2 = constructor.newInstance();
-            System.out.println(enumSingletonDemo1);
-            System.out.println(enumSingletonDemo2);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-
+//        EnumSingleton instance = EnumSingleton.INSTANCE;
+//        instance.doSomeThing();
+//        System.out.println(instance);
+//        new Thread(new Runnable() {
+//            @Override
+//            public void run() {
+//                EnumSingleton instance = EnumSingleton.INSTANCE;
+//                System.out.println(instance);
+//            }
+//        }).start();
+//
+//        Constructor<EnumSingleton> constructor = null;
+//        try {
+//            constructor = EnumSingleton.class.getDeclaredConstructor();
+//            constructor.setAccessible(true);
+//
+//            EnumSingleton enumSingletonDemo1 = constructor.newInstance();
+//            EnumSingleton enumSingletonDemo2 = constructor.newInstance();
+//            System.out.println(enumSingletonDemo1);
+//            System.out.println(enumSingletonDemo2);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
     }
 
     //给定数组，是否包含有重复数据
@@ -131,9 +127,9 @@ public class ArrayAlgorithmJava {
         List<List<Integer>> ls = new ArrayList<>();
 
         for (int i = 0; i < nums.length - 2; i++) {
-            if (i == 0 || (i > 0 && nums[i] != nums[i - 1])) {  // 跳过可能重复的答案
+            if (i == 0 || nums[i] != nums[i - 1]) {  // 跳过可能重复的答案
 
-                int l = i + 1, r = nums.length - 1, sum = 0 - nums[i];
+                int l = i + 1, r = nums.length - 1, sum = 10 - nums[i];
                 while (l < r) {
                     if (nums[l] + nums[r] == sum) {
                         ls.add(Arrays.asList(nums[i], nums[l], nums[r]));
@@ -151,8 +147,13 @@ public class ArrayAlgorithmJava {
                 }
             }
         }
+        for (List<Integer> l :
+                ls) {
+            System.out.println("符合三数之和的为" + l);
+        }
         return ls;
     }
+
 
     /**
      * 两数相加
@@ -206,16 +207,6 @@ public class ArrayAlgorithmJava {
             curr.next = new ListNode(carry);
         }
         return dummyHead.next;
-    }
-
-
-    public static class ListNode {
-        int val;
-        ListNode next;
-
-        ListNode(int x) {
-            val = x;
-        }
     }
 
 
