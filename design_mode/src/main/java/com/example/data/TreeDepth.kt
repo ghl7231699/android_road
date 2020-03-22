@@ -1,17 +1,11 @@
 package com.example.data
 
-import java.util.*
 import kotlin.math.max
 import kotlin.math.min
 
 /**
  * 求二叉树的最大深度及直径
  */
-
-class TreeNode<T>(var content: T?) {
-    var mLeft: TreeNode<T>? = null
-    var mRight: TreeNode<T>? = null
-}
 
 /**
  * 递归算法
@@ -60,26 +54,26 @@ fun maxLength(root: TreeNode<Int>?): Int {
  * 迭代方式（堆栈）  todo  correct
  */
 fun maxDepth2(root: TreeNode<Int>?): Int {
-    if (root == null) {
-        return 0
-    }
-
+//    if (root == null) {
+//        return 0
+//    }
+//
     var num = 0
-    val q: Queue<TreeNode<Int>> = LinkedList()
-
-    q.offer(root)
-
-    while (!q.isEmpty()) {
-        ++num
-        val n = q.size
-        for (i in 0..n) {
-            val poll = q.poll()
-            poll?.let {
-                if (poll.mLeft != null) q.offer(poll.mLeft)
-                if (poll.mRight != null) q.offer(poll.mRight)
-            }
-        }
-    }
+//    val q: Queue<TreeNode<Int>> = Queue()
+//
+//    q.offer(root)
+//
+//    while (!q.isEmpty()) {
+//        ++num
+//        val n = q.size
+//        for (i in 0..n) {
+//            val poll = q.poll()
+//            poll?.let {
+//                if (poll.mLeft != null) q.offer(poll.mLeft)
+//                if (poll.mRight != null) q.offer(poll.mRight)
+//            }
+//        }
+//    }
     return num
 }
 

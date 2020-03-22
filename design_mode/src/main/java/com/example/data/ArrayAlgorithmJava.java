@@ -30,36 +30,6 @@ public class ArrayAlgorithmJava {
 
         ListNode listNode = TwoAdd(L1, L2);
         System.out.println("addTwo result is " + listNode.val);
-
-        MyThread myThread = new MyThread("run");
-        myThread.start();
-        myThread.run();
-//        myThread.start();
-        new MyThread("start").start();
-
-//        EnumSingleton instance = EnumSingleton.INSTANCE;
-//        instance.doSomeThing();
-//        System.out.println(instance);
-//        new Thread(new Runnable() {
-//            @Override
-//            public void run() {
-//                EnumSingleton instance = EnumSingleton.INSTANCE;
-//                System.out.println(instance);
-//            }
-//        }).start();
-//
-//        Constructor<EnumSingleton> constructor = null;
-//        try {
-//            constructor = EnumSingleton.class.getDeclaredConstructor();
-//            constructor.setAccessible(true);
-//
-//            EnumSingleton enumSingletonDemo1 = constructor.newInstance();
-//            EnumSingleton enumSingletonDemo2 = constructor.newInstance();
-//            System.out.println(enumSingletonDemo1);
-//            System.out.println(enumSingletonDemo2);
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
     }
 
     //给定数组，是否包含有重复数据
@@ -77,7 +47,7 @@ public class ArrayAlgorithmJava {
         }
 
 //        // 扫描数组，判断下标为i的值是否等于i，若不等于i，则判断下标为numbers[i]的值是否等于numbers[nums[i]]，
-//        // 若等于则重复，不等于则交换，时间复杂度O(n)，空间复杂度O(1)
+//        // 若等于则重复，不等于则交换，时间复杂度O(n)，空间复杂度O(1) 数组内容为0-n-1范围内的数字
 //
 //        int[] duplication = new int[]{};
 //        for (int i = 0; i < nums.length; i++) {
@@ -96,6 +66,9 @@ public class ArrayAlgorithmJava {
 
     }
 
+    /**
+     * 两数之和
+     */
     private static int[] TwoSum() {
         int target = 10;
         int[] nums = new int[]{1, 5, 3, 9, 0, 2, 5};
@@ -209,19 +182,12 @@ public class ArrayAlgorithmJava {
         return dummyHead.next;
     }
 
+    /**
+     * 读取一段英文字符串里的，输出重复字符的次数(C++写 perhaps)
+     */
+    private static void readEnglish() {
+        String[] chars = new String[]{"jfoauhoangaogyoqputnlnoignalsgnerh"};
 
-    static class MyThread extends Thread {
-        private String name;
-
-        public MyThread(String name) {
-            this.name = name;
-        }
-
-        @Override
-        public void run() {
-            super.run();
-            System.out.println("我是run方法,当前线程：" + Thread.currentThread().getName() + "\t我的名字是" + name);
-        }
     }
 }
 

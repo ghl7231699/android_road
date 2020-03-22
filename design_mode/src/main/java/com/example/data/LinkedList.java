@@ -5,7 +5,7 @@ package com.example.data;
  * 创建人：ghl
  * 创建时间：2019-10-17
  */
-public class MyLinkedList {
+public class LinkedList {
     //头结点
     Node head = null;
 
@@ -131,7 +131,7 @@ public class MyLinkedList {
      * 4、然后两个链表同步向前移动，每次移动就比较节点是否相等，第一个相等的节点即为第一个相交点
      */
 
-    public Node firstCrossPoint(MyLinkedList list1, MyLinkedList list2) {
+    public Node firstCrossPoint(LinkedList list1, LinkedList list2) {
         if (!isCross1(list1.head, list2.head))
             return null;
         int len1 = list1.length();
@@ -168,7 +168,7 @@ public class MyLinkedList {
      *
      * https://blog.csdn.net/alpgao/article/details/86509265
      */
-    public void reversedLinkedList(MyLinkedList list1) {
+    public void reversedLinkedList(LinkedList list1) {
 
     }
 }
