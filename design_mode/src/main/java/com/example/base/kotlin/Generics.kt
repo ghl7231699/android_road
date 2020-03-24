@@ -1,4 +1,4 @@
-package com.example.design_mode
+package com.example.base.kotlin
 
 import Lock
 

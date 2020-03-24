@@ -193,3 +193,100 @@ JDK 1.5 以后的 AtomicStampedReference 类就提供了此种能力，其中的
 ##### 循环时间长开销大
 
 ##### 只能保证一个共享变量的原子操作
+
+# 多线程的特性
+多线程的三个特性：原子性、可见性、有序性。
+
+原子性：是指一个操作是不可中断。即使是多个线程一起执行的时候，一个操作一旦开始，就不会被其他线程干扰。比如说对于一个静态变量int a,线程A赋值为1，线程B赋值为-1。
+两个线程同时对它进行赋值，那么不管这两个线程以何种方式、何种步调工作，a的值要么是1，要么是-1。这就是原子性的一个特定，不可被中断。
+
+可见性：是指当一个线程修改了某一个共享变量的值，其他线程是否能立即这个这个修改。显然，对于串行来说，可见性问题是不存在的。
+
+有序性：在并发时，程序的执行可能会出现乱序。给人的感觉就是：写在前面的代码，会在后面执行。有序性问题的存在是因为程序在运行时，可能会进行指令重排。
+
+# ArrayList 源码分析
+
+ArrayList实现了List接口，内部是一个可调整大小的数组实现的。提供了包括CRUD在内的多种方法对数据进行操作。ArrayList是线程不安全的，按照插入的顺序来保存数据。
+
+#### 主要的成员变量
+
+```
+private static final int DEFAULT_CAPACITY = 10;//数组默认初始容量
+ 
+private static final Object[] EMPTY_ELEMENTDATA = {};//定义一个空的数组实例以供其他需要用到空数组的地方调用 
+ 
+private static final Object[] DEFAULTCAPACITY_EMPTY_ELEMENTDATA = {};//定义一个空数组，跟前面的区别就是这个空数组是用来判断ArrayList第一添加数据的时候要扩容多少。默认的构造器情况下返回这个空数组 
+ 
+transient Object[] elementData;//数据存的地方它的容量就是这个数组的长度，同时只要是使用默认构造器（DEFAULTCAPACITY_EMPTY_ELEMENTDATA ）第一次添加数据的时候容量扩容为DEFAULT_CAPACITY = 10 
+ 
+private int size;//当前数组的长度
+
+```
+
+#### ArrayList的构造方法有三种：
+
+```
+//构造一个初始容量为10的空列表
+public ArrayList() 
+
+//构造一个自定义容量的空列表
+public ArrayList(int initialCapacity) 
+
+//构造一个包含指定集合的元素的列表
+public ArrayList(Collection<? extends E> c) 
+
+```
+
+#### 扩容机制
+关于ArrayList的扩容核心方法是ensureCapacityInternal。
+先前提到的成员变量：
+
+**DEFAULTCAPACITY_EMPTY_ELEMENTDATA**：用来默认构造方法时返回的空数组。如果第一次添加数据的话那么数组扩容长度为DEFAULT_CAPACITY=10；
+
+**EMPTY_ELEMENTDATA**：出现在需要用到空数组的地方，其中一处就是使用自定义容量构造方法的时候返回；
+
+
+```
+ public void ensureCapacity(int minCapacity) {
+        int minExpand = (elementData != DEFAULTCAPACITY_EMPTY_ELEMENTDATA)
+            // any size if not default element table
+            ? 0
+            // larger than default for default empty table. It's already
+            // supposed to be at default size.
+            : DEFAULT_CAPACITY;
+
+        if (minCapacity > minExpand) {
+            ensureExplicitCapacity(minCapacity);
+        }
+    }
+```
+最终调用的是ensureExplicitCapacity方法，该方法的作用就是判断是否需要扩容。
+
+```
+  private void ensureExplicitCapacity(int minCapacity) {
+        modCount++;
+
+        // overflow-conscious code
+        if (minCapacity - elementData.length > 0)
+            grow(minCapacity);
+    }
+```
+
+其实我们其他方法都是过程方法，最终扩容还是在grow方法中完成的。
+
+```
+ private void grow(int minCapacity) {
+        // overflow-conscious code
+        int oldCapacity = elementData.length;
+        int newCapacity = oldCapacity + (oldCapacity >> 1);
+        //传入的容量为默认的10，则根据下面的判断我们可以知道
+        if (newCapacity - minCapacity < 0)
+            newCapacity = minCapacity;
+        if (newCapacity - MAX_ARRAY_SIZE > 0)
+            newCapacity = hugeCapacity(minCapacity);
+        // minCapacity is usually close to size, so this is a win:
+        elementData = Arrays.copyOf(elementData, newCapacity);
+    }
+```
+
+

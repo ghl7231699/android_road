@@ -1,13 +1,41 @@
 package com.example.data;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * 类描述：单链表常见算法
  * 创建人：ghl
  * 创建时间：2019-10-17
  */
-public class LinkedList {
+public class LinkedNode {
     //头结点
     Node head = null;
+
+    public static void main(String[] args) {
+        LinkedNode linkedNode = createLinkedNode();
+        reversedLinkedList(linkedNode);
+        List<String> list = new ArrayList<>();
+        list.add("");
+    }
+
+    private static LinkedNode createLinkedNode() {
+        LinkedNode linkedNode = new LinkedNode();
+        Node node = linkedNode.head = new Node(1);
+        Node next = new Node(5);
+        node.next = next;
+        Node next1 = new Node(4);
+        next.next = next1;
+        Node next2 = new Node(3);
+        next1.next = next2;
+        Node next3 = new Node(9);
+        next2.next = next3;
+        while (node != null) {
+            System.out.print(node.data + "\t");
+            node = node.next;
+        }
+        return linkedNode;
+    }
 
     /**
      * 求链表的长度
@@ -131,7 +159,7 @@ public class LinkedList {
      * 4、然后两个链表同步向前移动，每次移动就比较节点是否相等，第一个相等的节点即为第一个相交点
      */
 
-    public Node firstCrossPoint(LinkedList list1, LinkedList list2) {
+    public Node firstCrossPoint(LinkedNode list1, LinkedNode list2) {
         if (!isCross1(list1.head, list2.head))
             return null;
         int len1 = list1.length();
@@ -165,10 +193,27 @@ public class LinkedList {
      * 1.遍历链表，将每个节点的内容存入到一个数组中，然后逆序输出数组
      * 2.使用栈来逆序输出
      * 3.直接将链表逆序
-     *
+     * <p>
      * https://blog.csdn.net/alpgao/article/details/86509265
      */
-    public void reversedLinkedList(LinkedList list1) {
+    private static void reversedLinkedList(LinkedNode head) {
+        if (head.head == null || head.head.next == null) {//空链表或只有一个数据，无需逆序
+            return;
+        }
 
+        Node next = head.head;
+        Node temp = null;
+        Node resultNode = new Node(0);
+        while (next != null) {
+            temp = next.next;
+            next.next = resultNode.next;
+            resultNode.next = next;
+            next = temp;
+        }
+        System.out.print("\n逆序之后的结果：");
+        while (resultNode.next != null) {
+            System.out.print(resultNode.next.data + "\t");
+            resultNode.next = resultNode.next.next;
+        }
     }
 }
