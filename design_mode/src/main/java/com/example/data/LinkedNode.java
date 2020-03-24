@@ -14,9 +14,12 @@ public class LinkedNode {
 
     public static void main(String[] args) {
         LinkedNode linkedNode = createLinkedNode();
-        reversedLinkedList(linkedNode);
+//        reversedLinkedList(linkedNode);
+        printReversedList(linkedNode.head);
+
         List<String> list = new ArrayList<>();
         list.add("");
+
     }
 
     private static LinkedNode createLinkedNode() {
@@ -34,6 +37,8 @@ public class LinkedNode {
             System.out.print(node.data + "\t");
             node = node.next;
         }
+
+        deleteNode(next1);
         return linkedNode;
     }
 
@@ -215,5 +220,34 @@ public class LinkedNode {
             System.out.print(resultNode.next.data + "\t");
             resultNode.next = resultNode.next.next;
         }
+    }
+
+    private static void printReversedList(Node node) {
+        if (node == null) {
+            return;
+        }
+        printReversedList(node.next);
+        System.out.println("逆序输出：" + node.data);
+    }
+
+    /**
+     * 删除一个无头单链表的非尾节点（不能遍历单链表）
+     * <p>
+     * 1.因为单链表是无头的，所以不能从头开始，也不能遍历单链表。
+     * 2.给定一个要删除的节点node
+     * <p>
+     * node.data=node.next.data
+     * node.next=node.next.next
+     */
+
+    private static void deleteNode(Node node) {
+        if (node == null || node.next == null) {
+            return;
+        }
+
+        Node del = node.next;
+        node.data = del.data;
+        node.next = del.next;
+        del = null;
     }
 }
