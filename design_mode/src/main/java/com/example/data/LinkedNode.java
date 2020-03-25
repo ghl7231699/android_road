@@ -1,25 +1,38 @@
 package com.example.data;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Stack;
 
 /**
  * 类描述：单链表常见算法
  * 创建人：ghl
  * 创建时间：2019-10-17
+ * <p>
+ * 单链表相关的可查看
+ * https://blog.csdn.net/qq_41999654/article/details/88962432
  */
 public class LinkedNode {
     //头结点
     Node head = null;
 
+    static int[] a = {1, 2, 5, 6, 8, 9};
+    static int[] b = {0, 3, 4, 7, 10};
+
     public static void main(String[] args) {
         LinkedNode linkedNode = createLinkedNode();
-//        reversedLinkedList(linkedNode);
-        printReversedList(linkedNode.head);
+        LinkedNode node1 = createLinkedNode();
+        reversedLinkedList(linkedNode);
+//        printReversedList(linkedNode.head);
+//        reversedLinkedHead(linkedNode.head);
+        System.out.println("\n递归反转：\n");
+        log(reversedNodeR(linkedNode.head));
 
-        List<String> list = new ArrayList<>();
-        list.add("");
+        midNode(node1.head);
+        findKNode(node1.head, 2);
 
+//        sortNode(linkedNode.head);
+//        Node node = mergeNode(createNode(new Node(0), a), createNode(new Node(0), b));
+//        log(node);
+//        log(linkedNode.head);
     }
 
     private static LinkedNode createLinkedNode() {
@@ -31,15 +44,27 @@ public class LinkedNode {
         next.next = next1;
         Node next2 = new Node(3);
         next1.next = next2;
-        Node next3 = new Node(9);
-        next2.next = next3;
+        next2.next = new Node(9);
         while (node != null) {
             System.out.print(node.data + "\t");
             node = node.next;
         }
 
-        deleteNode(next1);
+//        deleteNode(next1);
+//        insertNode(next1);
+        System.out.println("\n");
         return linkedNode;
+    }
+
+    private static Node createNode(Node head, int[] datas) {
+        Node cur = head;
+        for (int data : datas) {
+            cur.next = new Node(data);
+            cur = cur.next;
+        }
+
+        log(head);
+        return head;
     }
 
     /**
@@ -125,12 +150,11 @@ public class LinkedNode {
         return head;
     }
 
-
     /**
      * 判断两个链表是否相交
      * 两个链表相交，则它们的尾结点一定是相同的,1、同时遍历两个链表到结尾，进行比较 2、使用栈  类似于1，只不过是根据栈顶元素来判断是否相同，原理相同 3、暴力，嵌套循环遍历
      */
-    public boolean isCross1(Node head1, Node head2) {
+    public static boolean isCross1(Node head1, Node head2) {
         Node temp1 = head1;
         Node temp2 = head2;
 
@@ -143,7 +167,7 @@ public class LinkedNode {
         return temp1 == temp2;
     }
 
-    public boolean isCross2(Node head1, Node head2) {
+    public static boolean isCross2(Node head1, Node head2) {
         Node temp1 = head1;
         Node temp2 = head2;
 
@@ -155,6 +179,83 @@ public class LinkedNode {
         }
         return temp1 == temp2;
     }
+
+    /**
+     * 一个链表是否带环
+     */
+    public static boolean isCross3(Node head) {
+        Node fast = head, slow = head;
+
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+            if (slow == fast) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * 链表环的长度
+     */
+
+    private static void lengthCross(Node node) {
+        Node fast = node, slow = node;
+        Node meet = null;
+        Node cur;
+        int len = 0;
+
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+            if (slow == fast) {//相交点
+                meet = fast;
+                break;
+            }
+        }
+        if (meet != null) {
+            cur = meet.next;
+            while (cur != meet) {
+                len++;
+                cur = cur.next;
+            }
+        }
+    }
+
+    /**
+     * 链表的入口
+     * <p>
+     * 通过我们第一个利用开两个指针来判断链表是否带环的原理列出来的，我们得到的结果是 x = k * len - y,表示从开始到入口的结点个数等于 k 倍的环的长度减去入口到相遇结点的个数，那么我们用 cur 指向开始，cur 和 meet 同步向后遍历，当 cur == meet 时，两个指针所在位置即入口。
+     */
+
+    private static void findEntranceNode(Node node, Node meet) {
+        Node cur = node;
+        if (node == null) {
+            return;
+        }
+        while (cur != meet) {
+            cur = cur.next;
+            meet = meet.next;
+        }
+    }
+
+
+    void TestCircle() {
+//        Node plist = null;
+//        Node pos = null;
+//        Node node = createNode(new Node(0), a);
+//        findKNode(node, 1).next = findKNode(node, 3);
+//        pos = isCross3(plist);
+//        if (pos != null) {
+//            System.out.println("带环，相遇点是：%d\n"+ pos.data);
+//            System.out.println("环的长度：%d\n"+lengthCross(pos));
+//            System.out.println("入口点是：%d\n", findEntranceNode(node, pos).data);
+//        } else {
+//            System.out.println("不带环\n");
+//        }
+    }
+
 
     /**
      * 求两个链表相交的第一个节点
@@ -184,7 +285,7 @@ public class LinkedNode {
                 temp2 = temp2.next;
             }
         }
-        //list1 和 list2 同时移动，直到找个相交点9
+        //list1 和 list2 同时移动，直到找个相交点
         while (temp1 != temp2) {
             temp1 = temp1.next;
             temp2 = temp2.next;
@@ -194,11 +295,9 @@ public class LinkedNode {
     }
 
     /**
-     * 逆序一个单链表
+     * 反向输出一个单链表
      * 1.遍历链表，将每个节点的内容存入到一个数组中，然后逆序输出数组
      * 2.使用栈来逆序输出
-     * 3.直接将链表逆序
-     * <p>
      * https://blog.csdn.net/alpgao/article/details/86509265
      */
     private static void reversedLinkedList(LinkedNode head) {
@@ -206,22 +305,25 @@ public class LinkedNode {
             return;
         }
 
-        Node next = head.head;
-        Node temp = null;
-        Node resultNode = new Node(0);
-        while (next != null) {
-            temp = next.next;
-            next.next = resultNode.next;
-            resultNode.next = next;
-            next = temp;
-        }
-        System.out.print("\n逆序之后的结果：");
-        while (resultNode.next != null) {
-            System.out.print(resultNode.next.data + "\t");
-            resultNode.next = resultNode.next.next;
+        Stack<Node> stack = new Stack<>();
+        Node node = head.head;
+        if (node == null) {
+            System.out.println("已经为null");
+        } else {
+            while (node != null) {
+                stack.push(node);
+                node = node.next;
+            }
+            System.out.print("反向输出结果：\n");
+            while (!stack.isEmpty()) {
+                System.out.print(stack.pop().data + "\t");
+            }
         }
     }
 
+    /**
+     * 递归  逆序输出单链表
+     */
     private static void printReversedList(Node node) {
         if (node == null) {
             return;
@@ -229,6 +331,59 @@ public class LinkedNode {
         printReversedList(node.next);
         System.out.println("逆序输出：" + node.data);
     }
+
+    private static void log(Node resultNode) {
+        Node next = resultNode;
+        while (next != null) {
+            System.out.print(next.data + "\t");
+            next = next.next;
+        }
+    }
+
+
+    /**
+     * 反转单链表
+     * 头插法
+     * <p>
+     * 直接将链表逆序
+     */
+    private static void reversedLinkedHead(Node head) {
+        if (head == null || head.next == null) {//空链表或只有一个数据，无需逆序
+            return;
+        }
+
+        Node cur = head;
+        Node newHead = null;
+        Node temp = cur.next;
+        while (cur != null) {
+            //头插
+            cur.next = newHead;
+            newHead = cur;
+            cur = temp;
+            if (temp != null) {
+                temp = temp.next;
+            }
+        }
+
+        log(newHead);
+    }
+
+    /**
+     * 递归反转单链表
+     * <p>
+     * 三个指针反转单链表
+     */
+    private static Node reversedNodeR(Node node) {
+        if (node == null || node.next == null) {//空链表或只有一个数据，无需逆序
+            return node;
+        }
+        Node tail = reversedNodeR(node.next);
+        //下一个节点指向上一个结点
+        node.next.next = node;
+        node.next = null;
+        return tail;
+    }
+
 
     /**
      * 删除一个无头单链表的非尾节点（不能遍历单链表）
@@ -250,4 +405,133 @@ public class LinkedNode {
         node.next = del.next;
         del = null;
     }
+
+    /**
+     * 在无头单链表的一个结点前插入一个结点（不能遍历链表）
+     * <p>
+     * <p>
+     * 第一种方式：在节点后插入一个值，然后将该节点与此节点的值进行交换
+     * <p>
+     * 第二种方式：在节点后插入目标节点，目标节点赋值为该节点的值，然后被插入节点赋值为目标节点的值
+     */
+
+    private static void insertNode(Node node) {
+        // 第一种方式
+//        Node insert = new Node(10);
+//        insert.next = node.next;
+//        node.next = insert;
+//        //交换值
+//        int temp = insert.data;
+//        insert.data = node.data;
+//        node.data = temp;
+
+        //第二种方式
+        Node insert2 = new Node(node.data);
+        insert2.next = node.next;
+        node.next = insert2;
+        node.data = 11;
+    }
+
+    /**
+     * 单链表排序
+     */
+
+    private static void sortNode(Node node) {
+        Node tail = null;
+        if (node == null || node.next == null) {
+            return;
+        }
+
+        while (node != tail) {//外层遍历每个节点
+            Node cur = node;
+            Node next = cur.next;
+            while (next != tail) {//内层遍历将节点逐个进行比较
+                if (cur.data > next.data) {
+                    int tmp = cur.data;
+                    cur.data = next.data;
+                    next.data = tmp;
+                }
+                cur = next;
+                next = cur.next;
+            }
+            tail = cur;
+        }
+        log(node);
+    }
+
+    /**
+     * 合并两个有序链表, 合并后依然有序
+     * <p>
+     * 递归方式：将两个有序链表合并，就好像一个节点后链接两个有序链表合并后的新链表，以此类推
+     */
+
+    private static Node mergeNode(Node node1, Node node2) {
+        Node first, second;
+        if (node1 == node2) {
+            return null;
+        }
+        if (node1 == null) {
+            return node2;
+        }
+
+        if (node2 == null) {
+            return node1;
+        }
+
+        if (node1.data > node2.data) {
+            first = node1;
+            first.next = mergeNode(node1.next, node2);
+        } else {
+            first = node2;
+            first.next = mergeNode(node2.next, node1);
+        }
+        return first;
+    }
+
+    /**
+     * 查找单链表中的中间节点，只能遍历一次
+     * <p>
+     * 定义两个节点，一个走的快fast，一个走的慢slow。
+     * <p>
+     * 当链表结点数为奇数时，fast->next = NULL时，slow所指结点为中间结点；
+     * 当链表结点数为偶数时，fast = NULL时，slow所指结点为中间结点。
+     */
+    private static void midNode(Node node) {
+        Node fast = node, slow = node;
+
+        if (node == null || node.next == null) {
+            return;
+        }
+
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        System.out.println("中间节点为：" + slow.data);
+    }
+
+    /**
+     * 查找单链表的倒数第k个节点，要求只能遍历一次链表
+     * 跟查找中间节点类似：
+     * 既然要查找倒数第k个结点，那么就让一个结点先走k 步，两个结点再同时一步一步走，当快的那个结点为空时，慢的结点所指位置就是倒数第k个结点所在。
+     */
+
+    private static void findKNode(Node node, int k) {
+        Node fast = node, slow = node;
+
+        if (node == null || node.next == null) {
+            return;
+        }
+
+        for (int i = k; i >= 0; i--) {
+            fast = fast.next;
+        }
+        while (fast != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+
+        System.out.println("倒数第k个结点为：" + slow.data);
+    }
+
 }
