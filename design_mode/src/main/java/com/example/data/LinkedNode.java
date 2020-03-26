@@ -1,5 +1,7 @@
 package com.example.data;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Stack;
 
 /**
@@ -35,7 +37,17 @@ public class LinkedNode {
 //        log(node);
 //        log(linkedNode.head);
 
-        findSameSortNode(createNode(a), createNode(c));
+//        findSameSortNode(createNode(a), createNode(c));
+
+        List<String> list = getAnswerList("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
+
+        for (int i = 0; i < list.size(); i++) {
+            String x = list.get(i);
+
+            System.out.println(x);
+        }
+
+//        threadsPrintLetter();
     }
 
     private static LinkedNode createLinkedNode() {
@@ -633,4 +645,61 @@ public class LinkedNode {
         }
     }
 
+    /**
+     * 字母转换为数字  1A2B3C1D2E3F。。。。。。。
+     */
+    public static List<String> getAnswerList(String opt) {
+        List<String> list = new ArrayList<>();
+        char a[] = opt.toCharArray();
+        for (int i = 0; i < a.length; i++) {
+            int r = (a[i] + 1) % 3 + 1;
+            list.add(String.valueOf(r) + a[i]);
+        }
+        return list;
+    }
+
+    private static char aChar = 'A';// 必要的时候声明为volatile类型的
+    private static int i = 0;
+
+    /**
+     * 用三个线程，顺序打印字母A-Z，输出结果是1A 2B 3C 1D 2E...打印完毕最后输出一个Ok
+     */
+    private static void threadsPrintLetter() {
+
+        Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+                synchronized (this) {
+                    try {
+                        int id = Integer.parseInt(Thread.currentThread().getName());
+
+                        while (i < 26) {
+                            if (i % 3 == id - 1) {
+                                System.out.println("当前线程为" + id + aChar++);
+                                i++;
+                                if (i == 26) {
+                                    System.out.println("Ok");
+                                }
+                                notifyAll();//唤醒其他线程
+                            } else {
+                                wait();
+                            }
+
+                        }
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        };
+
+        Thread t1 = new Thread(runnable, "1");
+        Thread t2 = new Thread(runnable, "2");
+        Thread t3 = new Thread(runnable, "3");
+
+
+        t1.start();
+        t2.start();
+        t3.start();
+    }
 }
