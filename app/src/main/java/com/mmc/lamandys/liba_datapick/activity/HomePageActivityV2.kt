@@ -3,6 +3,9 @@ package com.mmc.lamandys.liba_datapick.activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
+import android.os.Message
 import android.view.LayoutInflater
 import android.view.View
 import android.view.View.VISIBLE
@@ -75,7 +78,45 @@ class HomePageActivityV2 : FlutterActivity() {
         mBannerRecyclerView?.layoutManager = manager
         mBannerRecyclerView?.adapter = mAdapter
 
+
+        //        testBtn = findViewById(R.id.videoBtn);
+//        testBtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+////                final AlertDialog.Builder dialog = new AlertDialog.Builder(MainActivity.this);
+//////                dialog.setTitle("我是弹窗");
+//////                dialog.setMessage("点击弹出尝试一下");
+//////                dialog.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+//////                    @Override
+//////                    public void onClick(DialogInterface dialogInterface, int i) {
+//////                        dialogInterface.dismiss();
+//////                    }
+//////                }).setPositiveButton("确定", new DialogInterface.OnClickListener() {
+//////                    @Override
+//////                    public void onClick(DialogInterface dialogInterface, int i) {
+//////                        System.out.println("this is a test ");
+//////                        dialogInterface.dismiss();
+//////                    }
+//////                }).show();
+//
+//                goScheme("qn413e80ac2897://");
+//            }
+//        });
+        val looper = Looper.myLooper()
+
+        Thread(Runnable {
+            handler = Handler(looper, Handler.Callback { msg: Message? ->
+                println("我收到了handler消息")
+                false
+            })
+            handler!!.sendEmptyMessage(0)
+        }).start()
+
+
     }
+
+    var handler: Handler? = null
+
 
     private fun initData(): List<String> {
         val list = mutableListOf<String>()
@@ -154,7 +195,7 @@ class HomeV2BannerViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
                 it.visibility = VISIBLE
             }
         }
-        var gson = Gson().fromJson<User>(json)
+//        var gson = Gson().fromJson<User>(json)
     }
 
     fun bindData(position: Int) {

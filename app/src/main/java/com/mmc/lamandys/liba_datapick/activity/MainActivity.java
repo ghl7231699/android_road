@@ -4,18 +4,22 @@ import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
-
-import androidx.fragment.app.FragmentActivity;
 
 import com.mmc.lamandys.liba_datapick.R;
 import com.mmc.lamandys.liba_datapick.util.StatusBarUtils;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
+
+import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentActivity;
 
 public class MainActivity extends FragmentActivity implements View.OnClickListener {
 
@@ -68,7 +72,26 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
 //                goScheme("qn413e80ac2897://");
 //            }
 //        });
+
+        Looper looper = Looper.myLooper();
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                handler = new Handler(looper, msg -> {
+
+                    System.out.println("我收到了handler消息");
+                    return false;
+                });
+
+                handler.sendEmptyMessage(0);
+            }
+        }).start();
+
+
     }
+
+    Handler handler;
 
     /**
      * scheme协议跳转
