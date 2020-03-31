@@ -6,20 +6,18 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
-import android.os.Message;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
+
+import androidx.fragment.app.FragmentActivity;
 
 import com.mmc.lamandys.liba_datapick.R;
 import com.mmc.lamandys.liba_datapick.util.StatusBarUtils;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
-
-import androidx.annotation.NonNull;
-import androidx.fragment.app.FragmentActivity;
 
 public class MainActivity extends FragmentActivity implements View.OnClickListener {
 
@@ -28,6 +26,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        System.out.println(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_layout);
         StatusBarUtils.transparencyBar(this); //设置状态栏全透明

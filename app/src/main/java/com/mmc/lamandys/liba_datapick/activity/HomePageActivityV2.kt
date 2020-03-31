@@ -8,7 +8,6 @@ import android.os.Looper
 import android.os.Message
 import android.view.LayoutInflater
 import android.view.View
-import android.view.View.VISIBLE
 import android.view.ViewGroup
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.recyclerview.widget.GridLayoutManager
@@ -22,6 +21,7 @@ import com.mmc.lamandys.liba_datapick.R
 import com.mmc.lamandys.liba_datapick.activity.ui.login.LoginActivity
 import com.mmc.lamandys.liba_datapick.adapter.HomePageAdapter
 import com.mmc.lamandys.liba_datapick.bean.SecondChildBean
+import com.mmc.lamandys.liba_datapick.util.HookUtils
 import com.mmc.lamandys.liba_datapick.util.StatusBarUtils
 import io.flutter.app.FlutterActivity
 import io.flutter.embedding.engine.FlutterEngineCache
@@ -43,7 +43,7 @@ class HomePageActivityV2 : FlutterActivity() {
                 }
             }
         }
-        val secondChildBean = SecondChildBean("","")
+        val secondChildBean = SecondChildBean("", "")
         secondChildBean.name
     }
 
@@ -174,25 +174,33 @@ class HomeV2BannerViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
     init {
         mIv = itemView.findViewById(R.id.iv_item)
+
         colors = arrayOf(R.drawable.banner_1, R.drawable.banner_2, R.drawable.banner_3, R.drawable.banner_4)
 
-        mIv?.setOnClickListener { itemView.context.startActivity(Intent(itemView.context, MainActivity::class.java)) }
-
         mIv?.let { it ->
-            // 如果lambda表达式是函数调用的最后一个实参，就可以把它挪到小括号外面
-            it.setOnClickListener() { view: View ->
-                view.visibility = VISIBLE
-            }
-            //当lambda是函数的唯一实参，就可以去掉空的小括号
-            it.setOnClickListener { view: View ->
-                view.visibility = VISIBLE
-            }
-            //如果lambda的参数的类型可以被编译器推导出来，则可以省略
-            it.setOnClickListener { view ->
-                view.visibility = VISIBLE
-            }
+//            // 如果lambda表达式是函数调用的最后一个实参，就可以把它挪到小括号外面
+//            it.setOnClickListener() { view: View ->
+//                view.visibility = VISIBLE
+//            }
+//            //当lambda是函数的唯一实参，就可以去掉空的小括号
+//            it.setOnClickListener { view: View ->
+//                view.visibility = VISIBLE
+//            }
+//            //如果lambda的参数的类型可以被编译器推导出来，则可以省略
+//            it.setOnClickListener { view ->
+//                view.visibility = VISIBLE
+//            }
+//            it.setOnClickListener {
+//                it.visibility = VISIBLE
+//            }
             it.setOnClickListener {
-                it.visibility = VISIBLE
+                itemView.context.startActivity(Intent(itemView.context, MainActivity::class.java))
+                try {
+                    HookUtils.hookOnclickListener(it)
+                    HookUtils.reflectNewInstance("")
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                }
             }
         }
 //        var gson = Gson().fromJson<User>(json)

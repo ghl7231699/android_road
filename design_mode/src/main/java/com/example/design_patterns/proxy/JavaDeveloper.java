@@ -16,4 +16,16 @@ public class JavaDeveloper implements Developer {
     public void debug() {
         System.out.println(this.name + "is debuging Java");
     }
+
+    @Override
+    public void print(String msg) {
+        System.out.println(this.name + "is printing message");
+    }
+
+    @Override
+    public void print(int msg) {
+        System.out.println(this.name + "is printing message");
+    }
+
+
 }

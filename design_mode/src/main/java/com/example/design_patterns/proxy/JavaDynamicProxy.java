@@ -28,6 +28,7 @@ public class JavaDynamicProxy {
              */
             @Override
             public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+                System.out.println("method name is " + method.getName());
                 if ("coding".equals(method.getName())) {
                     System.out.println("jack is praying for the code");
                     return method.invoke(jack, args);
@@ -36,10 +37,23 @@ public class JavaDynamicProxy {
 //                    return method.invoke(jack,args);
                     return null;
                 }
+
                 return null;
             }
         });
         jackProxy.coding();
         jackProxy.debug();
+        jackProxy.print("sssssss");
+        jackProxy.print(11111);
+
+
+        Class<?> aClass = null;
+        try {
+            aClass = Class.forName("com.example.design_patterns.proxy.JavaDeveloper");
+            final Method methodA = aClass.getMethod("print", int.class);
+            System.out.println("方法名为" + methodA.getName());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

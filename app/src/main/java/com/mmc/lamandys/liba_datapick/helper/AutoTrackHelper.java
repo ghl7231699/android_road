@@ -7,10 +7,6 @@ import android.content.DialogInterface;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Looper;
-import androidx.annotation.RequiresApi;
-
-import com.google.android.material.navigation.NavigationView;
-import com.google.android.material.tabs.TabLayout;
 import android.text.TextUtils;
 import android.util.SparseArray;
 import android.view.Choreographer;
@@ -25,8 +21,11 @@ import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 
+import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.tabs.TabLayout;
 import com.mmc.lamandys.liba_datapick.FPSFrameCallBack;
 import com.mmc.lamandys.liba_datapick.FramePrinter;
 import com.mmc.lamandys.liba_datapick.TimeExecutor;
@@ -929,7 +928,11 @@ public class AutoTrackHelper {
      */
     public static void completeApp(Object obj, boolean b) {
         if (b) {
-            TimeExecutor.setAppCompleteTime(obj.getClass().getName(), System.currentTimeMillis());
+            try {
+                TimeExecutor.setAppCompleteTime(obj.getClass().getName(), System.currentTimeMillis());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 
