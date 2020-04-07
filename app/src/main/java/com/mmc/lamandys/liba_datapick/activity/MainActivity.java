@@ -11,42 +11,28 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import androidx.fragment.app.FragmentActivity;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.mmc.lamandys.liba_datapick.R;
+import com.mmc.lamandys.liba_datapick.util.GrayUtilsKt;
 import com.mmc.lamandys.liba_datapick.util.StatusBarUtils;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 
-public class MainActivity extends FragmentActivity implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     Button jumpButton;
     private Button testBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        System.out.println(this);
+        GrayUtilsKt.grayPageColor(getWindow().getDecorView());
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_layout);
         StatusBarUtils.transparencyBar(this); //设置状态栏全透明
         StatusBarUtils.StatusBarLightMode(this); //设置白底黑字
-        jumpButton = findViewById(R.id.jumpButton);
-        findViewById(R.id.jumpButton).setOnClickListener(this);
-        findViewById(R.id.tabButton).setOnClickListener(this);
-        findViewById(R.id.toolbarButton).setOnClickListener(this);
-        findViewById(R.id.radioButton).setOnClickListener(this);
-        findViewById(R.id.drawerButton).setOnClickListener(this);
-        findViewById(R.id.moduleButton).setOnClickListener(this);
-        findViewById(R.id.videoBtn).setOnClickListener(this);
-        findViewById(R.id.newsBtn).setOnClickListener(this);
-        findViewById(R.id.qqBtn).setOnClickListener(this);
-        findViewById(R.id.ConBtn).setOnClickListener(this);
-        findViewById(R.id.BehaviorBtn).setOnClickListener(this);
-        findViewById(R.id.AnBtn).setOnClickListener(this);
-
-        testBtn = findViewById(R.id.AnBtn);
-
+        initView();
         EventBus.getDefault().register(this);
 //        testBtn = findViewById(R.id.videoBtn);
 //        testBtn.setOnClickListener(new View.OnClickListener() {
@@ -88,6 +74,24 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         }).start();
 
 
+    }
+
+    private void initView() {
+        jumpButton = findViewById(R.id.jumpButton);
+        findViewById(R.id.jumpButton).setOnClickListener(this);
+        findViewById(R.id.tabButton).setOnClickListener(this);
+        findViewById(R.id.toolbarButton).setOnClickListener(this);
+        findViewById(R.id.radioButton).setOnClickListener(this);
+        findViewById(R.id.drawerButton).setOnClickListener(this);
+        findViewById(R.id.moduleButton).setOnClickListener(this);
+        findViewById(R.id.videoBtn).setOnClickListener(this);
+        findViewById(R.id.newsBtn).setOnClickListener(this);
+        findViewById(R.id.qqBtn).setOnClickListener(this);
+        findViewById(R.id.ConBtn).setOnClickListener(this);
+        findViewById(R.id.BehaviorBtn).setOnClickListener(this);
+        findViewById(R.id.AnBtn).setOnClickListener(this);
+
+        testBtn = findViewById(R.id.AnBtn);
     }
 
     Handler handler;

@@ -19,6 +19,7 @@
                 android:id="@+id/jumpButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@color/xz_c02e5f"
                 android:text="第二个"
                 android:textAllCaps="false"
                 android:visibility="visible" />
@@ -27,6 +28,7 @@
                 android:id="@+id/tabButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@color/xz_1a9fdb"
                 android:text="列表"
                 android:visibility="visible" />
 
@@ -34,7 +36,6 @@
                 android:id="@+id/toolbarButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
                 android:text="Toolbar"
                 android:visibility="visible" />
 

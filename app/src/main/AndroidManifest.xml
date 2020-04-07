@@ -10,6 +10,7 @@
     <application
         android:name=".AutoApplication"
         android:allowBackup="true"
+        android:hardwareAccelerated="true"
         android:icon="@mipmap/ic_launcher"
         android:label="牛刀小试"
         android:roundIcon="@mipmap/ic_launcher_round"
@@ -31,7 +32,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.MainActivity" />
+        <activity
+            android:name=".activity.MainActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".activity.SecondActivity"
             android:label="二页面" />
