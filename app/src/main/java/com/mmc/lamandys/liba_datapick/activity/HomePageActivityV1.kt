@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -16,13 +15,12 @@ import androidx.viewpager2.widget.MarginPageTransformer
 import androidx.viewpager2.widget.ViewPager2
 import com.mmc.lamandys.liba_datapick.R
 import com.mmc.lamandys.liba_datapick.adapter.HomePageAdapter
+import com.mmc.lamandys.liba_datapick.base.BaseActivity
 import com.mmc.lamandys.liba_datapick.util.StatusBarUtils
 import com.mmc.lamandys.liba_datapick.widgets.transform.ScaleInTransformer
+import kotlinx.android.synthetic.main.activity_home_page_layout_v1.*
 
-class HomePageActivityV1 : AppCompatActivity() {
-
-    var mRecyclerView: RecyclerView? = null
-    var mViewPager2: ViewPager2? = null
+class HomePageActivityV1 : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         StatusBarUtils.transparencyBar(this)
@@ -31,26 +29,18 @@ class HomePageActivityV1 : AppCompatActivity() {
     }
 
     private fun initView() {
-        mRecyclerView = findViewById(R.id.rv_home_page)
-        mViewPager2 = findViewById(R.id.view_pager_home_page)
-
-        val params = GridLayoutManager(this, 4)
-        params.orientation = LinearLayoutManager.VERTICAL
-        mRecyclerView?.layoutManager = params
-
-        mViewPager2?.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
+        view_pager_home_page.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
                 super.onPageSelected(position)
             }
         })
 
         // 设置 三屏同时显示
-        mViewPager2?.apply {
+        view_pager_home_page.apply {
             offscreenPageLimit = 1
             val recyclerView = getChildAt(0) as RecyclerView
             recyclerView.apply {
                 val padding = ViewPager2Activity.dip2px(this@HomePageActivityV1, 20f)
-
                 setPadding(padding, 0, padding, 0)
                 clipToPadding = false
             }
@@ -60,12 +50,17 @@ class HomePageActivityV1 : AppCompatActivity() {
         val compositePageTransformer = CompositePageTransformer()
         compositePageTransformer.addTransformer(ScaleInTransformer())
         compositePageTransformer.addTransformer(MarginPageTransformer(dip2px(this, 10f)))
-        mViewPager2?.setPageTransformer(compositePageTransformer)
+        view_pager_home_page?.setPageTransformer(compositePageTransformer)
 
         val mAdapter = HomeBannerAdapter()
-        mViewPager2?.adapter = mAdapter
+        view_pager_home_page?.adapter = mAdapter
 
-        mRecyclerView?.adapter = HomePageAdapter(initData())
+        with(rv_home_page) {
+            val params = GridLayoutManager(this@HomePageActivityV1, 4)
+            params.orientation = LinearLayoutManager.VERTICAL
+            layoutManager = params
+            adapter = HomePageAdapter(initData())
+        }
     }
 
     private fun initData(): List<String> {
@@ -92,7 +87,6 @@ class HomePageActivityV1 : AppCompatActivity() {
 
 }
 
-
 class HomeBannerAdapter : RecyclerView.Adapter<HomeBannerViewHolder>() {
 
     override fun getItemCount(): Int {
@@ -110,15 +104,11 @@ class HomeBannerAdapter : RecyclerView.Adapter<HomeBannerViewHolder>() {
 }
 
 class HomeBannerViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-    private var mIv: AppCompatImageView? = null
-    private var colors: Array<Int>
+    private val mIv: AppCompatImageView? = itemView.findViewById(R.id.iv_item)
+    private var colors: Array<Int> = arrayOf(R.drawable.banner_1, R.drawable.banner_2, R.drawable.banner_3, R.drawable.banner_4)
 
     init {
-        mIv = itemView.findViewById(R.id.iv_item)
-        colors = arrayOf(R.drawable.banner_1, R.drawable.banner_2, R.drawable.banner_3, R.drawable.banner_4)
-
         mIv?.setOnClickListener { itemView.context.startActivity(Intent(itemView.context, MainActivity::class.java)) }
-
     }
 
 

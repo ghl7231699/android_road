@@ -20,16 +20,16 @@ import com.mmc.lamandys.liba_datapick.ENGINE_ID
 import com.mmc.lamandys.liba_datapick.R
 import com.mmc.lamandys.liba_datapick.activity.ui.login.LoginActivity
 import com.mmc.lamandys.liba_datapick.adapter.HomePageAdapter
+import com.mmc.lamandys.liba_datapick.base.BaseActivity
 import com.mmc.lamandys.liba_datapick.bean.SecondChildBean
 import com.mmc.lamandys.liba_datapick.util.HookUtils
 import com.mmc.lamandys.liba_datapick.util.StatusBarUtils
-import io.flutter.app.FlutterActivity
 import io.flutter.embedding.engine.FlutterEngineCache
 import io.flutter.plugin.common.MethodChannel
 import io.flutter.view.FlutterMain
+import kotlinx.android.synthetic.main.activity_home_page_layout_v2.*
 
-class HomePageActivityV2 : FlutterActivity() {
-
+class HomePageActivityV2 : BaseActivity() {
 
     init {
         val engine = FlutterEngineCache.getInstance().get(ENGINE_ID)
@@ -47,8 +47,6 @@ class HomePageActivityV2 : FlutterActivity() {
         secondChildBean.name
     }
 
-    private var mRecyclerView: RecyclerView? = null
-    var mBannerRecyclerView: RecyclerView? = null
     private lateinit var methodChannel: MethodChannel
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -62,22 +60,22 @@ class HomePageActivityV2 : FlutterActivity() {
 
 
     private fun initView() {
-        mRecyclerView = findViewById(R.id.rv_home_page)
-        mBannerRecyclerView = findViewById(R.id.tv_home_page_banner)
-
         val params = GridLayoutManager(this, 2)
         params.orientation = LinearLayoutManager.VERTICAL
-        mRecyclerView?.layoutManager = params
-        mRecyclerView?.adapter = HomePageAdapter(initData())
+        with(rv_home_page) {
+            layoutManager = params
+            adapter = HomePageAdapter(initData())
+        }
 
         val mAdapter = HomeV2BannerAdapter()
         val manager = LinearLayoutManager(this)
         manager.orientation = LinearLayoutManager.HORIZONTAL
         val snapHelper = PagerSnapHelper()
-        snapHelper.attachToRecyclerView(mBannerRecyclerView)
-        mBannerRecyclerView?.layoutManager = manager
-        mBannerRecyclerView?.adapter = mAdapter
-
+        snapHelper.attachToRecyclerView(tv_home_page_banner)
+        with(tv_home_page_banner) {
+            layoutManager = manager
+            adapter = mAdapter
+        }
 
         //        testBtn = findViewById(R.id.videoBtn);
 //        testBtn.setOnClickListener(new View.OnClickListener() {

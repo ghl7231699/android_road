@@ -49,6 +49,12 @@ fun main(args: Array<String>) {
 
     inlineFunc()
 
+
+    val L1 = ArrayList<String>()
+    val L2 = ArrayList<Int>()
+
+    println(L1.javaClass == L2.javaClass)
+
 }
 
 fun <T> copyWhenGreater(list: List<T>, threshold: T): List<String>

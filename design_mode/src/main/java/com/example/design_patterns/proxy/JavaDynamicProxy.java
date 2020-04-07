@@ -55,5 +55,12 @@ public class JavaDynamicProxy {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+
+        String s;
+        s = "21321321";
+        s = "sfdsfsf";
+
+        System.out.println(s);
     }
 }

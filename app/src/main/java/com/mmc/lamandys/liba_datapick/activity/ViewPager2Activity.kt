@@ -7,16 +7,16 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
 import androidx.viewpager2.widget.ViewPager2
 import com.mmc.lamandys.liba_datapick.R
+import com.mmc.lamandys.liba_datapick.base.BaseActivity
 import com.mmc.lamandys.liba_datapick.widgets.transform.ScaleInTransformer
 
-class ViewPager2Activity : AppCompatActivity(), View.OnClickListener {
+class ViewPager2Activity : BaseActivity(), View.OnClickListener {
 
     private var mViewPager2: ViewPager2? = null
     private var mChange: TextView? = null
@@ -133,14 +133,14 @@ class ViewPager2Adapter(list: List<String>) : RecyclerView.Adapter<ViewPager2Hol
 
 class ViewPager2Holder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     private val mIv: AppCompatImageView = itemView.findViewById(R.id.iv_item)
+    private val mGiv: AppCompatImageView = itemView.findViewById(R.id.giv_item)
     private var colors = arrayOf(R.drawable.banner_1, R.drawable.banner_2, R.drawable.banner_3, R.drawable.banner_4)
 
     fun bindData(i: String, position: Int) {
-//        mIv.text = i
-
 //        val random = Random
 //        val nextInt = random.nextInt(3)
 //        mIv.setBackgroundColor(Color.parseColor(colors[nextInt]))
         mIv.setBackgroundResource(colors[position])
+//        mGiv.setBackgroundResource(colors[position])
     }
 }
