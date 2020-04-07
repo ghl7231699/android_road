@@ -110,6 +110,9 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:windowSoftInputMode="adjustResize"
             tools:ignore="DuplicateActivity" />
+        <activity
+            android:name=".activity.ui.webview.WebViewActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
     </application>
 
 </manifest>

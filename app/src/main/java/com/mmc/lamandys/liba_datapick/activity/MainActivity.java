@@ -2,18 +2,22 @@ package com.mmc.lamandys.liba_datapick.activity;
 
 import android.animation.ObjectAnimator;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
 import android.view.View;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.mmc.lamandys.liba_datapick.R;
+import com.mmc.lamandys.liba_datapick.activity.ui.webview.WebViewActivity;
 import com.mmc.lamandys.liba_datapick.util.GrayUtilsKt;
 import com.mmc.lamandys.liba_datapick.util.StatusBarUtils;
 
@@ -141,7 +145,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 goScheme("qn413e80ac2897://");
                 break;
             case R.id.qqBtn:
-                goScheme("4uau8k3tskx7y0://");
+//                goScheme("4uau8k3tskx7y0://");
+                Intent intent = new Intent(this, WebViewActivity.class);
+//                intent.putExtra(WebViewActivity.KEY_URL, "https://mp.weixin.qq.com/s/EioJ8ogsCxQEFm44mKFiOQ");
+//                intent.putExtra(WebViewActivity.KEY_URL, "https://blog.csdn.net/qq_41999654/article/details/88962432");
+                intent.putExtra(WebViewActivity.KEY_URL, "http://note.youdao.com/noteshare?id=d27b3b46156dc25d16cefd7eb44c9376");
+//                https://blog.csdn.net/gxx_csdn/article/details/78971630
+                startActivity(intent);
                 break;
             case R.id.ConBtn:
 //                startActivity(new Intent(this, ConstraintActivity.class));
@@ -203,6 +213,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onStop() {
         System.out.println("onStop 执行时");
         super.onStop();
+
+
+
     }
 
     @Subscribe

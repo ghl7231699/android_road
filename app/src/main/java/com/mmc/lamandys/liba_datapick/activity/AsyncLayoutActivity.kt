@@ -16,7 +16,6 @@ class AsyncLayoutActivity : AppCompatActivity(), View.OnClickListener {
         AsyncLayoutInflater(this).inflate(R.layout.activity_async_layout, null) { view, resid, parent -> initView(view, resid, parent) }
     }
 
-
     private fun initView(view: View, resid: Int, parent: ViewGroup?) {
         setContentView(view)
 

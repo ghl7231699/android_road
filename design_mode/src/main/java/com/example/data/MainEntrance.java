@@ -25,6 +25,15 @@ public class MainEntrance {
         shortestRoad(matrix, 3, 3);
 
         shortestRoad(matrix);
+
+
+        int num = 1234;
+        while (num != 0) {
+            System.out.print(num % 10);
+            num /= 10;
+
+            System.out.println("最终结果为" + num);
+        }
     }
 
     private static void printSample(int[][] matrix) {
