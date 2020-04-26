@@ -2,6 +2,12 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-android'
 apply plugin: 'com.xiaozhu.autotrack'
+
+
+def app_android = rootProject.ext.android
+def app_implementation = rootProject.ext.app_implementation
+
+
 android {
 
     packagingOptions {
@@ -12,14 +18,14 @@ android {
         exclude 'META-INF/NOTICE.txt'
     }
 
-    compileSdkVersion 29
+    compileSdkVersion app_android.compileSdkVersion
 
     defaultConfig {
         applicationId "com.mmc.sample"
-        minSdkVersion 21
-        targetSdkVersion 29
-        versionCode 1
-        versionName "1.0"
+        minSdkVersion app_android.minSdkVersion
+        targetSdkVersion app_android.targetSdkVersion
+        versionCode app_android.versionCode
+        versionName app_android.versionName
         vectorDrawables.useSupportLibrary = true
     }
 
@@ -57,23 +63,12 @@ android {
 }
 
 dependencies {
-    implementation 'androidx.annotation:annotation:1.0.2'
-    implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0'
-    compileOnly fileTree(include: ['*.jar'], dir: 'libs')
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
-    //noinspection GradleCompatible
-    implementation 'androidx.appcompat:appcompat:1.1.0'
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    implementation 'com.google.android.material:material:1.0.0'
-    implementation 'androidx.recyclerview:recyclerview:1.1.0'
-    implementation 'androidx.cardview:cardview:1.0.0'
-    implementation 'androidx.vectordrawable:vectordrawable:1.1.0'
-//    implementation project(path: ':find')
-    //    implementation project(':injectLib')
-    implementation 'com.google.code.gson:gson:2.8.5'
-    implementation 'org.greenrobot:eventbus:3.1.1'
-    implementation "androidx.viewpager2:viewpager2:1.0.0"
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    // 更简洁的方式，由于我们config那边定义的是 map，遍历
+    app_implementation.each {
+        k, v -> implementation v
+    }
+
     implementation project(':flutter')
     implementation project(path: ':flutter_boost')
 }

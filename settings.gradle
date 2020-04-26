@@ -7,3 +7,4 @@ evaluate(new File(
 include ':flutter_mall'
 include ':design_mode'
 include ':hot_fix'
+include ':lib_dirty'

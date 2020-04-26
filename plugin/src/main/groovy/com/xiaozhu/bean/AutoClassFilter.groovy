@@ -8,6 +8,6 @@ class AutoClassFilter {
     String InterfaceName = ''
     String MethodName = ''
     String MethodDes = ''
-    Closure MethodVisitor
+    public Closure MethodVisitor
     boolean isAnnotation = false
 }

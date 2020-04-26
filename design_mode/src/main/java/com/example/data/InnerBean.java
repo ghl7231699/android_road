@@ -1,5 +1,9 @@
 package com.example.data;
 
+/**
+ * 测试内部类编译之后的文件
+ * javac 绝对路径
+ */
 public class InnerBean {
 
 //    public CallBackTest mCallBackTest = new CallBackTest() {
@@ -21,11 +25,15 @@ public class InnerBean {
 //        a.doSomething();
     }
 
-    public void doSomething() {
+
+    public void doSomething(final int i, final B bb) {
+        final B b;
         print(0, new CallBackTest() {
             @Override
             public void doSomething() {
-                x = 0;
+//                x = 0;
+                x = i;
+                doSomething();
             }
         });
     }
@@ -43,6 +51,10 @@ public class InnerBean {
 //            mCallBackTest.doSomething();
 //        }
 //    }
+
+    class B {
+        String name;
+    }
 
 
     public interface CallBackTest {
