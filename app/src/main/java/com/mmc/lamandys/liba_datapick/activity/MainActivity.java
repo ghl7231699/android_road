@@ -2,27 +2,25 @@ package com.mmc.lamandys.liba_datapick.activity;
 
 import android.animation.ObjectAnimator;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
 import android.view.View;
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
 import android.widget.Button;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import com.mmc.lamandys.liba_datapick.R;
+import com.mmc.lamandys.liba_datapick.activity.ui.main.AidlActivity;
 import com.mmc.lamandys.liba_datapick.activity.ui.webview.WebViewActivity;
 import com.mmc.lamandys.liba_datapick.util.GrayUtilsKt;
 import com.mmc.lamandys.liba_datapick.util.StatusBarUtils;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -94,6 +92,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.ConBtn).setOnClickListener(this);
         findViewById(R.id.BehaviorBtn).setOnClickListener(this);
         findViewById(R.id.AnBtn).setOnClickListener(this);
+        findViewById(R.id.AidlBtn).setOnClickListener(this);
 
         testBtn = findViewById(R.id.AnBtn);
     }
@@ -172,6 +171,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.BehaviorBtn:
                 startActivity(new Intent(this, BehaviorActivity.class));
                 break;
+            case R.id.AidlBtn:
+                startActivity(new Intent(this, AidlActivity.class));
+                break;
             default:
                 break;
         }
@@ -213,7 +215,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onStop() {
         System.out.println("onStop 执行时");
         super.onStop();
-
 
 
     }
