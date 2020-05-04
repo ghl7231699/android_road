@@ -1,4 +1,7 @@
-package com.example.design_patterns.proxy;
+package com.example.design_patterns.proxy.dynamic;
+
+import com.example.design_patterns.proxy.Developer;
+import com.example.design_patterns.proxy.JavaDeveloper;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
@@ -7,13 +10,12 @@ import java.lang.reflect.Proxy;
 /**
  * 动态代理类
  * <p>
- * https://www.jianshu.com/p/95970b089360
  */
 public class JavaDynamicProxy {
     public static void main(String[] args) {
         final JavaDeveloper jack = new JavaDeveloper("Jack");
         /*
-          loder，选用的类加载器。因为代理的是jack，所以一般都会用加载jack的类加载器。
+          classloader，选用的类加载器。因为代理的是jack，所以一般都会用加载jack的类加载器。
           interfaces，被代理的类所实现的接口，这个接口可以是多个。
           h，绑定代理类的一个方法。
          */

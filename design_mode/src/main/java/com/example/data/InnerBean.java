@@ -6,12 +6,12 @@ package com.example.data;
  */
 public class InnerBean {
 
-//    public CallBackTest mCallBackTest = new CallBackTest() {
-//        @Override
-//        public void doSomething() {
-//            System.out.println("hello java kotlin ");
-//        }
-//    };
+    public CallBackTest mCallBackTest = new CallBackTest() {
+        @Override
+        public void doSomething() {
+            System.out.println("hello java kotlin ");
+        }
+    };
 
     private int x = 10;
 
@@ -39,18 +39,18 @@ public class InnerBean {
     }
 
 
-//    private class A implements CallBackTest {
-//        private CallBackTest mCallBackTest;
-//
-//        public A(CallBackTest callBackTest) {
-//            mCallBackTest = callBackTest;
-//        }
-//
-//        @Override
-//        public void doSomething() {
-//            mCallBackTest.doSomething();
-//        }
-//    }
+    private class A implements CallBackTest {
+        private CallBackTest mCallBackTest;
+
+        public A(CallBackTest callBackTest) {
+            mCallBackTest = callBackTest;
+        }
+
+        @Override
+        public void doSomething() {
+            mCallBackTest.doSomething();
+        }
+    }
 
     class B {
         String name;
