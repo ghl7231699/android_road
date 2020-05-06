@@ -1,4 +1,4 @@
-package com.example.data;
+package com.example.design_mode;
 
 /**
  * 枚举类型单例

@@ -30,6 +30,8 @@ public class NativePageActivity extends AppCompatActivity implements View.OnClic
         mOpenNative.setOnClickListener(this);
         mOpenFlutter.setOnClickListener(this);
         mOpenFlutterFragment.setOnClickListener(this);
+
+        getIntent();
     }
 
     @Override

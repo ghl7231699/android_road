@@ -1,4 +1,4 @@
-package com.example.data;
+package com.example.design_mode;
 
 /**
  * 类描述：DCL 双重检查锁

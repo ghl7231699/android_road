@@ -2,15 +2,13 @@ package com.mmc.lamandys.liba_datapick.activity;
 
 import android.animation.ObjectAnimator;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.os.Message;
 import android.util.Log;
 import android.view.View;
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -20,9 +18,12 @@ import com.mmc.lamandys.liba_datapick.R;
 import com.mmc.lamandys.liba_datapick.activity.ui.webview.WebViewActivity;
 import com.mmc.lamandys.liba_datapick.util.GrayUtilsKt;
 import com.mmc.lamandys.liba_datapick.util.StatusBarUtils;
+import com.mmc.lamandys.liba_datapick.widgets.rvlooper.LooperActivity;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
+
+import java.lang.reflect.Field;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -69,11 +70,41 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             public void run() {
                 handler = new Handler(looper, msg -> {
 
-                    System.out.println("我收到了handler消息");
+//                    System.out.println("我收到了handler消息");
                     return false;
                 });
 
                 handler.sendEmptyMessage(0);
+
+                Message message = Message.obtain();
+                message.arg1 = 1;
+                message.what = 1000;
+
+                try {
+                    Field sPool = message.getClass().getDeclaredField("next");
+                    sPool.setAccessible(true);
+                    Message msg = (Message) sPool.get(message);
+                    if (msg != null) {
+                        System.out.println("我是" + msg.hashCode());
+                    }
+                } catch (NoSuchFieldException e) {
+                    e.printStackTrace();
+                } catch (IllegalAccessException e) {
+                    e.printStackTrace();
+                }
+
+                System.out.println("我是第一次" + message.hashCode());
+
+                message = Message.obtain();
+                message.arg1 = 2;
+                message.what = 1001;
+
+                System.out.println("我是第二次" + message.hashCode());
+
+                message = Message.obtain();
+                message.arg1 = 3;
+                message.what = 1002;
+                System.out.println("我是第三次" + message.hashCode());
             }
         }).start();
 
@@ -124,7 +155,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //                StateManger manger = new StateManger(state);
 //                manger.doAction();
 //                startActivity(new Intent(this, SecondActivity.class));
-                startActivity(new Intent(this, ViewPager2Activity.class));
+//                startActivity(new Intent(this, ViewPager2Activity.class));
+                startActivity(new Intent(this, LooperActivity.class));
                 break;
             case R.id.tabButton:
                 startActivity(new Intent(this, TabActivity.class));
@@ -213,7 +245,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onStop() {
         System.out.println("onStop 执行时");
         super.onStop();
-
 
 
     }

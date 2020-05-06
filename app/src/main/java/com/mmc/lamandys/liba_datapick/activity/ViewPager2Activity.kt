@@ -60,13 +60,15 @@ class ViewPager2Activity : BaseActivity(), View.OnClickListener {
             offscreenPageLimit = 1
             val recyclerView = getChildAt(0) as RecyclerView
             recyclerView.apply {
-                val padding = dip2px(this@ViewPager2Activity, 20f)
+                val padding = dip2px(this@ViewPager2Activity, 40f)
 
                 setPadding(padding, 0, padding, 0)
                 clipToPadding = false
+
             }
 
         }
+
 
 //        mViewPager2?.isUserInputEnabled=false//设置禁止滑动
         //设置页面间距
@@ -74,7 +76,7 @@ class ViewPager2Activity : BaseActivity(), View.OnClickListener {
         //集合式的PageTransformer
         val compositePageTransformer = CompositePageTransformer()
         compositePageTransformer.addTransformer(ScaleInTransformer())
-        compositePageTransformer.addTransformer(MarginPageTransformer(dip2px(this, 10f)))
+        compositePageTransformer.addTransformer(MarginPageTransformer(dip2px(this, 20f)))
         mViewPager2?.setPageTransformer(compositePageTransformer)
 
 

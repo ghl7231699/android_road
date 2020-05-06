@@ -113,6 +113,9 @@
         <activity
             android:name=".activity.ui.webview.WebViewActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name=".widgets.rvlooper.LooperActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
     </application>
 
 </manifest>
