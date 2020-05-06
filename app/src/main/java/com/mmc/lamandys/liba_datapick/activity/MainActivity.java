@@ -12,9 +12,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import com.mmc.lamandys.liba_datapick.R;
+import com.mmc.lamandys.liba_datapick.activity.ui.main.AidlActivity;
 import com.mmc.lamandys.liba_datapick.activity.ui.webview.WebViewActivity;
 import com.mmc.lamandys.liba_datapick.util.GrayUtilsKt;
 import com.mmc.lamandys.liba_datapick.util.StatusBarUtils;
@@ -24,6 +23,8 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 
 import java.lang.reflect.Field;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -70,41 +71,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             public void run() {
                 handler = new Handler(looper, msg -> {
 
-//                    System.out.println("我收到了handler消息");
+                    System.out.println("我收到了handler消息");
                     return false;
                 });
 
                 handler.sendEmptyMessage(0);
-
-                Message message = Message.obtain();
-                message.arg1 = 1;
-                message.what = 1000;
-
-                try {
-                    Field sPool = message.getClass().getDeclaredField("next");
-                    sPool.setAccessible(true);
-                    Message msg = (Message) sPool.get(message);
-                    if (msg != null) {
-                        System.out.println("我是" + msg.hashCode());
-                    }
-                } catch (NoSuchFieldException e) {
-                    e.printStackTrace();
-                } catch (IllegalAccessException e) {
-                    e.printStackTrace();
-                }
-
-                System.out.println("我是第一次" + message.hashCode());
-
-                message = Message.obtain();
-                message.arg1 = 2;
-                message.what = 1001;
-
-                System.out.println("我是第二次" + message.hashCode());
-
-                message = Message.obtain();
-                message.arg1 = 3;
-                message.what = 1002;
-                System.out.println("我是第三次" + message.hashCode());
             }
         }).start();
 
@@ -125,6 +96,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.ConBtn).setOnClickListener(this);
         findViewById(R.id.BehaviorBtn).setOnClickListener(this);
         findViewById(R.id.AnBtn).setOnClickListener(this);
+        findViewById(R.id.AidlBtn).setOnClickListener(this);
 
         testBtn = findViewById(R.id.AnBtn);
     }
@@ -203,6 +175,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.BehaviorBtn:
                 startActivity(new Intent(this, BehaviorActivity.class));
+                break;
+            case R.id.AidlBtn:
+                startActivity(new Intent(this, AidlActivity.class));
                 break;
             default:
                 break;

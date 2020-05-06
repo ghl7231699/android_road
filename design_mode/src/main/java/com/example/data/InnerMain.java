@@ -33,13 +33,6 @@ public class InnerMain {
             }
 
 
-            instance.print(10, new CallBackTest() {
-                @Override
-                public void doSomething() {
-                    a = "aaaa";
-                }
-            });
-
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } catch (IllegalAccessException e) {

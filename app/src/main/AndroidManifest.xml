@@ -15,11 +15,11 @@
         android:label="牛刀小试"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme"
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         tools:ignore="GoogleAppIndexingWarning">
         <activity
-            android:name=".ui.login.LoginActivity"
-            android:label="@string/title_activity_login"></activity>
+            android:name=".activity.ui.login.LoginActivity"
+            android:label="@string/title_activity_login" />
         <activity
             android:name=".activity.HomePageActivityV1"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
@@ -89,9 +89,6 @@
             android:name=".activity.FlutterNativeActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
-            android:name=".activity.ui.login.LoginActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity
             android:name=".activity.flutter.FlutterMainActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
@@ -116,6 +113,7 @@
         <activity
             android:name=".widgets.rvlooper.LooperActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity android:name="com.mmc.lamandys.liba_datapick.activity.ui.main.AidlActivity" />
     </application>
 
 </manifest>

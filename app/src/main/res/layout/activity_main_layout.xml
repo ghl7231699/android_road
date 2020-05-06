@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal"
-    android:paddingTop="56dp">
+    android:paddingTop="10dp">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -104,6 +104,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="自定义Behavior"
+                android:visibility="visible" />
+
+            <Button
+                android:id="@+id/AidlBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/xz_1a9fdb"
+                android:text="Aidl"
                 android:visibility="visible" />
         </LinearLayout>
         <!--<com.mmc.lamandys.liba_datapick.CustomerView-->
