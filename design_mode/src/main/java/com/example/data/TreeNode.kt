@@ -5,10 +5,10 @@ package com.example.data
  */
 
 class TreeNode<T>(var content: T?) {
-    public var mLeft: TreeNode<T>? = null
-    public var mRight: TreeNode<T>? = null
+    var left: TreeNode<T>? = null
+    var right: TreeNode<T>? = null
 
-    override fun toString(): String {
-        return "当前节点的值为：$content\n左节点的值为：${mLeft?.content}\t右节点的值为：${mRight?.content}"
-    }
+//    override fun toString(): String {
+//        return "当前节点的值为：$content\n左节点的值为：${left?.content}\t右节点的值为：${right?.content}"
+//    }
 }

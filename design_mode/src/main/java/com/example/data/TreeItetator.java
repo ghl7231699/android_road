@@ -7,17 +7,17 @@ public class TreeItetator {
     public static void main(String[] args) {
         TreeNode next = next();
 
-        check(next);
+        preCheck(next);
 
     }
 
     private static TreeNode next() {
         TreeNode root = new TreeNode<>(1);
-        root.setMLeft(new TreeNode<>(2));
-        root.setMRight(new TreeNode<>(3));
-        root.getMLeft().setMLeft(new TreeNode<>(4));
-        root.getMLeft().setMRight(new TreeNode<>(5));
-        root.getMLeft().getMLeft().setMLeft(new TreeNode<>(6));
+        root.setLeft(new TreeNode<>(2));
+        root.setRight(new TreeNode<>(3));
+        root.getLeft().setLeft(new TreeNode<>(4));
+        root.getLeft().setRight(new TreeNode<>(5));
+        root.getLeft().getLeft().setLeft(new TreeNode<>(6));
 
         System.out.println(root);
 
@@ -25,15 +25,16 @@ public class TreeItetator {
     }
 
 
-    private static void check(TreeNode root) {
+
+    private static void preCheck(TreeNode root) {
         if (root == null) {
             return;
         }
 
         System.out.println(root.getContent());
 
-        check(root.getMLeft());
-        check(root.getMRight());
+        preCheck(root.getLeft());
+        preCheck(root.getRight());
 
     }
 }

@@ -14,7 +14,7 @@ fun maxDepth(root: TreeNode<Int>?): Int {
     return if (root == null) {
         0
     } else {
-        val max = max(maxDepth(root.mLeft), maxDepth(root.mRight))
+        val max = max(maxDepth(root.left), maxDepth(root.right))
         println("max------------${1 + max}--------${root.content}")
         (1 + max)
     }
@@ -28,7 +28,7 @@ fun minDepth(root: TreeNode<Int>?): Int {
     return if (root == null) {
         0
     } else {
-        val min = min(minDepth(root.mLeft), minDepth(root.mRight))
+        val min = min(minDepth(root.left), minDepth(root.right))
         println("min------------$min")
         (1 + min)
     }
@@ -42,8 +42,8 @@ fun maxLength(root: TreeNode<Int>?): Int {
     return if (root == null) {
         0
     } else {
-        val left = maxLength(root.mLeft)
-        val right = maxLength(root.mRight)
+        val left = maxLength(root.left)
+        val right = maxLength(root.right)
         max = max(max, left + right)
         println("max------------$max--------${root.content}")
         max(left, right) + 1
@@ -90,11 +90,11 @@ fun maxDepth2(root: TreeNode<Int>?): Int {
  */
 fun main(args: Array<String>) {
     val root = TreeNode<Int>(1)
-    root.mLeft = TreeNode(2)
-    root.mRight = TreeNode(3)
-    root.mLeft?.mLeft = TreeNode(4)
-    root.mLeft?.mRight = TreeNode(5)
-    root.mLeft?.mLeft?.mLeft = TreeNode(6)
+    root.left = TreeNode(2)
+    root.right = TreeNode(3)
+    root.left?.left = TreeNode(4)
+    root.left?.right = TreeNode(5)
+    root.left?.left?.left = TreeNode(6)
     println("start---------------")
     println("递归最大深度为：${maxDepth(root)}")
     println("堆栈方式最大深度为：${maxDepth2(root)}")

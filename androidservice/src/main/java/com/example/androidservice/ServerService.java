@@ -8,14 +8,21 @@ import android.util.Log;
 
 import com.mmc.sample.IMyAidlInterface;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import androidx.annotation.Nullable;
 
 public class ServerService extends Service {
-    private static final String TAG = "ghl";
+    private static final String TAG = "gh";
+
+    final List<String> list=new ArrayList<>();
 
     @Nullable
     @Override
     public IBinder onBind(Intent intent) {
+
+        list.add("fafa");
         Log.i(TAG, "onBind\t" + intent);
         return new MyBinder();
     }

@@ -51,12 +51,12 @@ public class TreeNodeMain {
                 TreeNode<Integer> left = reBuildTree(preOrder, preStart + 1, preStart + temp, inOrder
                         , inStart, inEnd);
 
-                root.setMLeft(left);
+                root.setLeft(left);
 
                 //右子树
                 TreeNode<Integer> mRight = reBuildTree(preOrder, temp + preStart + 1, preEnd, inOrder, i + 1,
                         inEnd);
-                root.setMRight(mRight);
+                root.setRight(mRight);
                 if (mRight != null) {
                     System.out.println(mRight.toString());
                 }

@@ -15,6 +15,8 @@ public class InnerBean {
 
     private int x = 10;
 
+    private static final LinkedNode node = new LinkedNode();
+
     public void print(int a, CallBackTest backTest) {
         debug(backTest);
     }

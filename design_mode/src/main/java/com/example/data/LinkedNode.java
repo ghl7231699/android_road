@@ -14,7 +14,7 @@ import java.util.Stack;
  */
 public class LinkedNode {
     //头结点
-    private Node head = null;
+    private static Node head = null;
 
     private static int[] a = {1, 2, 5, 6, 8, 9};
     private static int[] b = {0, 3, 4, 7, 10};
@@ -32,22 +32,26 @@ public class LinkedNode {
 //        midNode(node1.head);
 //        findKNode(node1.head, 2);
 
-//        sortNode(linkedNode.head);
+        sortNode(linkedNode.head);
 //        Node node = mergeNode(createNode(a), createNode(b));
 //        log(node);
 //        log(linkedNode.head);
 
 //        findSameSortNode(createNode(a), createNode(c));
 
-        List<String> list = getAnswerList("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
-
-        for (int i = 0; i < list.size(); i++) {
-            String x = list.get(i);
-
-            System.out.println(x);
-        }
+//        List<String> list = getAnswerList("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
+//
+//        for (int i = 0; i < list.size(); i++) {
+//            String x = list.get(i);
+//
+//            System.out.println(x);
+//        }
 
 //        threadsPrintLetter();
+
+        Node node = linkSort();
+//        log(node);
+
     }
 
     private static LinkedNode createLinkedNode() {
@@ -60,10 +64,10 @@ public class LinkedNode {
         Node next2 = new Node(3);
         next1.next = next2;
         next2.next = new Node(9);
-        while (node != null) {
-            System.out.print(node.data + "\t");
-            node = node.next;
-        }
+//        while (node != null) {
+//            System.out.print(node.data + "\t");
+//            node = node.next;
+//        }
 
 //        deleteNode(next1);
 //        insertNode(next1);
@@ -100,7 +104,7 @@ public class LinkedNode {
     /**
      * 链表添加结点
      * <p>
-     * 找打链表的末尾结点，将新添加的数据作为末尾结点的后续结点
+     * 找到链表的末尾结点，将新添加的数据作为末尾结点的后续结点
      */
 
     public void addNode(int data) {
@@ -148,7 +152,7 @@ public class LinkedNode {
      * 链表结点排序，并返回排序后的头结点
      * 选择排序算法，即每次都选出未排序结点中最小的结点，与第一个未排序结点交换
      */
-    public Node linkSort() {
+    public static Node linkSort() {
         Node curNode = head;
         while (curNode != null) {
             Node nextNode = curNode.next;
@@ -162,6 +166,8 @@ public class LinkedNode {
             }
             curNode = curNode.next;
         }
+
+        log(head);
         return head;
     }
 
