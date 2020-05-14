@@ -1,6 +1,6 @@
 package com.example.data.tree;
 
-public class TreeItetator {
+public class TreeIterator {
 
     static int preOrder[] = {1, 2, 4, 7, 3, 5, 6, 8};
 

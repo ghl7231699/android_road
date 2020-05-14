@@ -6,11 +6,12 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
-import android.os.Message;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.mmc.lamandys.liba_datapick.R;
 import com.mmc.lamandys.liba_datapick.activity.ui.main.AidlActivity;
@@ -21,10 +22,6 @@ import com.mmc.lamandys.liba_datapick.widgets.rvlooper.LooperActivity;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
-
-import java.lang.reflect.Field;
-
-import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -70,7 +67,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public void run() {
                 handler = new Handler(looper, msg -> {
-
                     System.out.println("我收到了handler消息");
                     return false;
                 });
