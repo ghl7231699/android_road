@@ -70,8 +70,8 @@ class Routes {
         transitionBuilder: transitionBuilder);
   }
 
-  static bool pop(BuildContext context, [dynamic result]) {
-    return Navigator.of(context).pop(result);
+  static void pop(BuildContext context, [dynamic result]) {
+    Navigator.of(context).pop(result);
   }
 
   // 路由跳转, 不带context

@@ -31,7 +31,7 @@ dependencies:
   device_info: ^0.4.1+4
 
   # https://pub.dev/packages/fluro  router框架
-  fluro: ^1.5.1
+  fluro: ^1.6.0
 
   # https://pub.dev/packages/cached_network_image
   cached_network_image: ^2.0.0

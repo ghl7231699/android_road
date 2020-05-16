@@ -1,4 +1,4 @@
-package com.mmc.lamandys.liba_datapick.main.ui.ui.dashboard
+package com.mmc.lamandys.liba_datapick.main.ui.ui.flutter
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

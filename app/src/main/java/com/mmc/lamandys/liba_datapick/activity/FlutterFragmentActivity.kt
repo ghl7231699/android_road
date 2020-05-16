@@ -14,7 +14,7 @@ import io.flutter.embedding.android.FlutterFragment
 class FlutterFragmentActivity : AppCompatActivity(), View.OnClickListener {
 
     companion object {
-        private const val TAG_FLUTTER_FRAGMENT = "flutter_fragment"
+        const val TAG_FLUTTER_FRAGMENT = "flutter_fragment"
 
 
     }
@@ -60,10 +60,10 @@ class FlutterFragmentActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onClick(v: View?) {
 
-        when {
-            v?.id == R.id.tv_a -> replaceFragment(1)
-            v?.id == R.id.tv_b -> replaceFragment(2)
-            v?.id == R.id.tv_c -> replaceFragment(3)
+        when (v?.id) {
+            R.id.tv_a -> replaceFragment(1)
+            R.id.tv_b -> replaceFragment(2)
+            R.id.tv_c -> replaceFragment(3)
             else -> replaceFragment(1)
         }
 

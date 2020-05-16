@@ -12,14 +12,19 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="com.mmc.lamandys.liba_datapick.main.ui.ui.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        android:id="@+id/navigation_flutter"
+        android:name="com.mmc.lamandys.liba_datapick.main.ui.ui.flutter.DashboardFragment"
+        android:label="@string/title_flutter"
+        tools:layout="@layout/fragment_flutter" />
 
     <fragment
         android:id="@+id/navigation_notifications"
         android:name="com.mmc.lamandys.liba_datapick.main.ui.ui.notifications.NotificationsFragment"
+        android:label="@string/title_notifications"
+        tools:layout="@layout/fragment_notifications" />
+    <fragment
+        android:id="@+id/navigation_mine"
+        android:name="com.mmc.lamandys.liba_datapick.main.ui.ui.home.HomeFragment"
         android:label="@string/title_notifications"
         tools:layout="@layout/fragment_notifications" />
 </navigation>

@@ -42,7 +42,8 @@
     <string name="open_flutter_fragment">open flutter fragment page</string>
     <string name="native_info">This is a native activity</string>
     <string name="title_activity_main_home_page">MainHomePageActivity</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_home">首页</string>
+    <string name="title_flutter">Flutter</string>
+    <string name="title_notifications">消息</string>
+    <string name="title_mine">我</string>
 </resources>
