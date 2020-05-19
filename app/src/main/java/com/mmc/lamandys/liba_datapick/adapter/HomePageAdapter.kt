@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.mmc.lamandys.liba_datapick.ENGINE_ID
 import com.mmc.lamandys.liba_datapick.R
 import com.mmc.lamandys.liba_datapick.activity.*
-import com.mmc.lamandys.liba_datapick.activity.flutter.FlutterMainActivity
+import com.mmc.lamandys.liba_datapick.flutter.ui.FlutterMainActivity
 import com.mmc.lamandys.liba_datapick.livedata.NameActivity
 import io.flutter.embedding.android.FlutterActivity
 import io.flutter.embedding.android.FlutterActivity.createDefaultIntent

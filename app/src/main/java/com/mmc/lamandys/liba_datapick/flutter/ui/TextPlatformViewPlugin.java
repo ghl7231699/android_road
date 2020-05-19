@@ -1,4 +1,4 @@
-package com.mmc.lamandys.liba_datapick.activity.flutter;
+package com.mmc.lamandys.liba_datapick.flutter.ui;
 
 import io.flutter.app.FlutterPluginRegistry;
 import io.flutter.plugin.common.StandardMessageCodec;

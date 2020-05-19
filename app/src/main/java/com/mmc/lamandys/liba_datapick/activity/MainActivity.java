@@ -14,7 +14,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.mmc.lamandys.liba_datapick.R;
-import com.mmc.lamandys.liba_datapick.activity.ui.main.AidlActivity;
+import com.mmc.lamandys.liba_datapick.aldl.AidlActivity;
 import com.mmc.lamandys.liba_datapick.activity.ui.webview.WebViewActivity;
 import com.mmc.lamandys.liba_datapick.util.GrayUtilsKt;
 import com.mmc.lamandys.liba_datapick.util.StatusBarUtils;

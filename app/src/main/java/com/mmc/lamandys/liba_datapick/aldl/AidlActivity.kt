@@ -1,4 +1,4 @@
-package com.mmc.lamandys.liba_datapick.activity.ui.main
+package com.mmc.lamandys.liba_datapick.aldl
 
 import android.content.ComponentName
 import android.content.Context

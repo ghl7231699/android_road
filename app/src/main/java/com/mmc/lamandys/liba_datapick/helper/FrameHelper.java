@@ -2,7 +2,7 @@ package com.mmc.lamandys.liba_datapick.helper;
 
 import android.view.Choreographer;
 
-import com.mmc.lamandys.liba_datapick.FPSFrameCallBack;
+import com.mmc.lamandys.liba_datapick.performance.FPSFrameCallBack;
 
 /**
  * 类描述：帧率检测

@@ -1,4 +1,4 @@
-package com.mmc.lamandys.liba_datapick.activity.flutter;
+package com.mmc.lamandys.liba_datapick.flutter.ui;
 
 import android.os.Bundle;
 import android.view.View;

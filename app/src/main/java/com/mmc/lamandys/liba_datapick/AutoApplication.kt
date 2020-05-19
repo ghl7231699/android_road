@@ -7,8 +7,9 @@ import android.widget.Toast
 import com.idlefish.flutterboost.FlutterBoost
 import com.idlefish.flutterboost.Utils
 import com.idlefish.flutterboost.interfaces.INativeRouter
-import com.mmc.lamandys.liba_datapick.activity.flutter.PageRouter
+import com.mmc.lamandys.liba_datapick.flutter.ui.flutter.PageRouter
 import com.mmc.lamandys.liba_datapick.helper.AutoTrackHelper
+import com.mmc.lamandys.liba_datapick.performance.CrashHandler
 import io.flutter.embedding.engine.FlutterEngine
 import io.flutter.embedding.engine.FlutterEngineCache
 import io.flutter.embedding.engine.dart.DartExecutor

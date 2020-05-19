@@ -1,9 +1,9 @@
-package com.mmc.lamandys.liba_datapick;
+package com.mmc.lamandys.liba_datapick.hook;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class test {
+public class Regular {
 
     public static void main(String args[]) {
         String str = "aaa";

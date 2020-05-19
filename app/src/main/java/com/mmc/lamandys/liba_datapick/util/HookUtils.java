@@ -3,7 +3,7 @@ package com.mmc.lamandys.liba_datapick.util;
 import android.annotation.SuppressLint;
 import android.view.View;
 
-import com.mmc.lamandys.liba_datapick.HookedClickListenerProxy;
+import com.mmc.lamandys.liba_datapick.hook.HookedClickListenerProxy;
 import com.mmc.lamandys.liba_datapick.R;
 import com.mmc.lamandys.liba_datapick.activity.MainActivity;
 

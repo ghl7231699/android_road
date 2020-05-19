@@ -1,6 +1,8 @@
-package com.mmc.lamandys.liba_datapick;
+package com.mmc.lamandys.liba_datapick.flutter;
 
 import android.widget.Toast;
+
+import com.mmc.lamandys.liba_datapick.AutoApplication;
 
 import io.flutter.plugin.common.MethodCall;
 import io.flutter.plugin.common.MethodChannel;

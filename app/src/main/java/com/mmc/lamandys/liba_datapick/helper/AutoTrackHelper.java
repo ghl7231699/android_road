@@ -26,8 +26,8 @@ import androidx.fragment.app.Fragment;
 
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabLayout;
-import com.mmc.lamandys.liba_datapick.FPSFrameCallBack;
-import com.mmc.lamandys.liba_datapick.FramePrinter;
+import com.mmc.lamandys.liba_datapick.performance.FPSFrameCallBack;
+import com.mmc.lamandys.liba_datapick.performance.FramePrinter;
 import com.mmc.lamandys.liba_datapick.TimeExecutor;
 import com.mmc.lamandys.liba_datapick.core.AutoTrackUtil;
 import com.mmc.lamandys.liba_datapick.core.LogConstants;

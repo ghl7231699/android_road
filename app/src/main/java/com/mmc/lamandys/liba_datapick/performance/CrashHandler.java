@@ -1,9 +1,10 @@
-package com.mmc.lamandys.liba_datapick;
+package com.mmc.lamandys.liba_datapick.performance;
 
 import android.content.Context;
 import android.content.Intent;
 import android.os.Process;
 
+import com.mmc.lamandys.liba_datapick.AutoApplication;
 import com.mmc.lamandys.liba_datapick.activity.MainActivity;
 
 import java.lang.Thread.UncaughtExceptionHandler;

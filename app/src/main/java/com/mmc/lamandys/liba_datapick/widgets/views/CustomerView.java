@@ -1,4 +1,4 @@
-package com.mmc.lamandys.liba_datapick;
+package com.mmc.lamandys.liba_datapick.widgets.views;
 
 import android.content.Context;
 import android.content.res.Resources;
@@ -12,6 +12,8 @@ import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
 import android.view.View;
+
+import com.mmc.lamandys.liba_datapick.R;
 
 public class CustomerView extends View {
     // 刻度尺高度

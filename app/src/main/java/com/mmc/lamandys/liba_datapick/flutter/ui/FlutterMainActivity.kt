@@ -1,4 +1,4 @@
-package com.mmc.lamandys.liba_datapick.activity.flutter
+package com.mmc.lamandys.liba_datapick.flutter.ui
 
 import android.os.Bundle
 import android.util.Log
@@ -8,10 +8,9 @@ import com.mmc.lamandys.liba_datapick.R
 import kotlinx.android.synthetic.main.activity_main.*
 import java.lang.ref.WeakReference
 
+const val TAG = "FlutterMainActivity"
+
 class FlutterMainActivity : AppCompatActivity(), View.OnClickListener {
-
-
-    private val TAG = "FlutterMainActivity"
 
     companion object {
 
