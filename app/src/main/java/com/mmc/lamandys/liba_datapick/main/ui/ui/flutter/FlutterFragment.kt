@@ -10,7 +10,7 @@ import com.mmc.lamandys.liba_datapick.R
 import com.mmc.lamandys.liba_datapick.activity.FlutterFragmentActivity
 import io.flutter.embedding.android.FlutterFragment
 
-class DashboardFragment : Fragment() {
+class FlutterFragment : Fragment() {
 
     private lateinit var dashboardViewModel: DashboardViewModel
 

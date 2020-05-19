@@ -13,7 +13,7 @@
 
     <fragment
         android:id="@+id/navigation_flutter"
-        android:name="com.mmc.lamandys.liba_datapick.main.ui.ui.flutter.DashboardFragment"
+        android:name="com.mmc.lamandys.liba_datapick.main.ui.ui.flutter.FlutterFragment"
         android:label="@string/title_flutter"
         tools:layout="@layout/fragment_flutter" />
 

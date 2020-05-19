@@ -60,7 +60,7 @@ class HomePageActivityV2 : BaseActivity() {
 
 
     private fun initView() {
-        val params = GridLayoutManager(this, 2)
+        val params = GridLayoutManager(this, 3)
         params.orientation = LinearLayoutManager.VERTICAL
         with(rv_home_page) {
             layoutManager = params

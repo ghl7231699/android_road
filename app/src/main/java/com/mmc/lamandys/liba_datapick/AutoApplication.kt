@@ -7,7 +7,7 @@ import android.widget.Toast
 import com.idlefish.flutterboost.FlutterBoost
 import com.idlefish.flutterboost.Utils
 import com.idlefish.flutterboost.interfaces.INativeRouter
-import com.mmc.lamandys.liba_datapick.flutter.ui.flutter.PageRouter
+import com.mmc.lamandys.liba_datapick.flutter.ui.PageRouter
 import com.mmc.lamandys.liba_datapick.helper.AutoTrackHelper
 import com.mmc.lamandys.liba_datapick.performance.CrashHandler
 import io.flutter.embedding.engine.FlutterEngine
@@ -24,7 +24,7 @@ class AutoApplication : Application() {
 
     private lateinit var channel: MethodChannel
 
-    public lateinit var flutterEngine: FlutterEngine
+    lateinit var flutterEngine: FlutterEngine
 
     override fun onCreate() {
         super.onCreate()
@@ -33,7 +33,7 @@ class AutoApplication : Application() {
         AutoTrackHelper.frameDetection2()
         CrashHandler.getinstance().init()
 
-        val router: INativeRouter = INativeRouter { context, url, urlParams, requestCode, exts ->
+        val router: INativeRouter = INativeRouter { context, url, urlParams, _, _ ->
             val assembleUrl = Utils.assembleUrl(url, urlParams)
             PageRouter.openPageByUrl(context, assembleUrl, urlParams)
         }
