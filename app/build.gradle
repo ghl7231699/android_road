@@ -1,7 +1,8 @@
 apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-android'
-apply plugin: 'com.xiaozhu.autotrack'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+//apply plugin: 'com.xiaozhu.autotrack'
 
 
 def app_android = rootProject.ext.android
@@ -55,9 +56,6 @@ android {
         }
     }
 
-
-// To inline the bytecode built with JVM target 1.8 into
-// bytecode that is being built with JVM target 1.6. (e.g. navArgs)
     //flutter相关声明
     compileOptions {
         sourceCompatibility 1.8
@@ -77,6 +75,10 @@ dependencies {
 
     implementation project(':flutter')
     implementation project(path: ':flutter_boost')
+    implementation project(':router')
+    implementation project(':router:router_annotation')
+    kapt project(':router:router_apt')
+
 }
 repositories {
     mavenCentral()
