@@ -6,6 +6,7 @@ import java.lang.reflect.Field;
 public class InnerMain {
     private static String a;
 
+
     public static void main(String[] args) {
         try {
             Class<?> target = Class.forName(InnerBean.class.getName());

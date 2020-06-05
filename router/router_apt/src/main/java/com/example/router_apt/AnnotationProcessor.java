@@ -1,7 +1,7 @@
 package com.example.router_apt;
 
+import com.example.router_annotation.Ignore;
 import com.example.router_annotation.Router;
-import com.squareup.javapoet.ClassName;
 import com.squareup.javapoet.JavaFile;
 import com.squareup.javapoet.MethodSpec;
 import com.squareup.javapoet.TypeSpec;
@@ -19,16 +19,19 @@ import javax.annotation.processing.RoundEnvironment;
 import javax.annotation.processing.SupportedAnnotationTypes;
 import javax.annotation.processing.SupportedSourceVersion;
 import javax.lang.model.SourceVersion;
-import javax.lang.model.element.Modifier;
 import javax.lang.model.element.TypeElement;
 import javax.lang.model.util.ElementFilter;
 import javax.tools.Diagnostic;
 
+import static javax.lang.model.element.Modifier.FINAL;
+import static javax.lang.model.element.Modifier.PUBLIC;
+import static javax.lang.model.element.Modifier.STATIC;
+
 @SupportedSourceVersion(SourceVersion.RELEASE_8)//java版本支持
 @SupportedAnnotationTypes({//标注注解处理器支持的注解类型
-        "com.example.router_annotation.Router"
+        "com.xiaozhu.xzdz.router.annotation.Ignore"
 })
-public class RouterAnnotationProcessor extends AbstractProcessor {
+public class AnnotationProcessor extends AbstractProcessor {
 
     /**
      * 根据 gradle 跟配置的 project_name 来获得相应的名称
@@ -49,15 +52,12 @@ public class RouterAnnotationProcessor extends AbstractProcessor {
     @Override
     public synchronized void init(ProcessingEnvironment processingEnvironment) {
         super.init(processingEnvironment);
-        Map<String, String> options = processingEnv.getOptions();
-
-        projectName = options.get("project_name");
-
+        Map<String, String> op = processingEnv.getOptions();
+        projectName = op.get("project_name");
         mMessager = processingEnvironment.getMessager();
-
         mFiler = processingEnvironment.getFiler();
-
     }
+
 
     @Override
     public SourceVersion getSupportedSourceVersion() {
@@ -80,57 +80,34 @@ public class RouterAnnotationProcessor extends AbstractProcessor {
 //        if (projectName == null || projectName.length() == 0) {
 //            return false;
 //        } else {
-//            log("你好啊");
+//            log(projectName);
 //        }
-
         log("---------------------->Start Processor");
+        final String className = "IgnoreFragment";
+        //类生成
+        TypeSpec.Builder tb = TypeSpec.classBuilder(className).addModifiers(PUBLIC, FINAL);
 
-        StringBuilder className = new StringBuilder(projectName + "RouterData");
+        //方法生成
+        MethodSpec.Builder getClass = MethodSpec.methodBuilder("ignoreFragment")
+                .returns(void.class)
+                .addModifiers(PUBLIC, STATIC);
 
-        //生成类
-        TypeSpec.Builder clazz = TypeSpec.classBuilder(className.toString())
-                .addModifiers(Modifier.PUBLIC, Modifier.FINAL)
-                .addSuperinterface(ClassName.get("com.example.router", "RouterClassProvider"));
-
-        //生成方法
-
-        MethodSpec.Builder method = MethodSpec.methodBuilder("getPageClass")
-                .addParameter(String.class, "page")
-                .addModifiers(Modifier.PUBLIC)
-                .returns(Class.class)
-                .addAnnotation(Override.class)
-                .addCode("switch(page){\n");
-
-        Set<TypeElement> typeElements = ElementFilter.typesIn(roundEnvironment.getElementsAnnotatedWith(Router.class));
-
-        for (TypeElement element : typeElements
-        ) {
-            String[] value = element.getAnnotation(Router.class).value();
-            className.append(value[0]);
-            for (String page : value
-            ) {
-                method.addCode("case $S :\n", page);
-            }
-            String pageNames = element.getQualifiedName().toString();
-            method.addCode("\tSystem.out.println($S);\n", pageNames);
-            method.addCode("\treturn $L.class;\n ", element);
+        for (TypeElement typeElement : ElementFilter.typesIn(roundEnvironment.getElementsAnnotatedWith(Ignore.class))) {
+            String pageNames = typeElement.getQualifiedName().toString();
+            getClass.addCode("\tSystem.out.println($S);", pageNames);
         }
-
-        method.addCode("}\n").addCode("return null;\n");
-        clazz.addMethod(method.build());
-
-        //生成java文件
-
+        tb.addMethod(getClass.build());
         try {
-            JavaFile javaFile = JavaFile.builder("com.mmc.lamandys.liba_datapick", clazz.build()).build();
-            javaFile.writeTo(mFiler);
-
-            log("--------------------------------------->complete Processor");
+            JavaFile javaFile = JavaFile.builder("com.mmc.lamandys.liba_datapick", tb.build()).build();// 生成源代码
+            javaFile.writeTo(mFiler);// 在 app module/build/generated/source/apt 生成一份源代码
+            log("---------------------->end Processor");
         } catch (IOException e) {
-            e.printStackTrace();
+//            e.printStackTrace();
+//            log( "warning");
+            log("---------------------->Error Processor");
         }
 
-        return false;
+        return true;
     }
 
     private void log(String content) {
