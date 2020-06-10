@@ -44,4 +44,40 @@ ext {
             flexbox          : 'com.google.android:flexbox:2.0.1'
     ]
 
+    android_library_biz = { projectLibrary, projectName, version_code = 1, version_name = "1.0" ->
+        projectLibrary.apply {
+            plugin 'com.android.library'
+            plugin 'kotlin-android'
+            plugin 'kotlin-android-extensions'
+            plugin 'kotlin-kapt'
+            plugin 'com.xiaozhu.autotrack'
+        }
+        projectLibrary.android {
+            compileSdkVersion rootProject.ext.android.compileSdkVersion
+            defaultConfig {
+                minSdkVersion rootProject.ext.android.minSdkVersion
+                targetSdkVersion rootProject.ext.android.targetSdkVersion
+                versionCode version_code
+                versionName version_name
+                vectorDrawables.useSupportLibrary = true
+
+                javaCompileOptions {
+                    annotationProcessorOptions {
+                        arguments = [project_name: projectName]
+                    }
+                }
+            }
+        }
+
+        projectLibrary.dependencies {
+            implementation fileTree(include: ['*.jar', '*.aar'], dir: 'libs')
+            app_implementation.each {
+                k, v -> implementation v
+            }
+            if (projectLibrary.name != 'lib_dirty') {
+                implementation project(':lib_dirty')
+            }
+        }
+    }
+
 }

@@ -1,6 +1,6 @@
 package com.xiaozhu
 
-import com.android.build.gradle.AppExtension
+
 import com.android.build.gradle.AppPlugin
 import com.android.build.gradle.BaseExtension
 import com.xiaozhu.asm.AutoTransform
@@ -34,13 +34,21 @@ class PluginEntry implements Plugin<Project> {
 //            }
 //        }
 
+//        //开始为apt设置相应的项目数据
+//        def android = project.extensions.findByName("android")
+//        if (android) {
+//            //在android 的 闭包下才能设置
+//            String inputName = project.name.replaceAll("[^0-9a-zA-Z\u4e00-\u9fa5.，,。？“”]+", "")
+//            inputName = inputName.substring(0, 1).toUpperCase() + inputName.substring(1)
+//            android.defaultConfig.javaCompileOptions.annotationProcessorOptions.argument("project_name", inputName)
+//        }
+
         project.extensions.create('xiaozhu', AutoSettingParams)
         GlobalConfig.setProject(project)
         println(GlobalConfig.getParams().name)
 
         //使用Transform实行遍历
         if (project.plugins.hasPlugin(AppPlugin)) {
-            def android = project.getExtensions().findByType(AppExtension)
             registerTransform(android)
         }
 

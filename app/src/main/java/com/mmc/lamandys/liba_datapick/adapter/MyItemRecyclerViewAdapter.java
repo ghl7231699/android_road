@@ -1,17 +1,17 @@
 package com.mmc.lamandys.liba_datapick.adapter;
 
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.mmc.lamandys.liba_datapick.R;
 import com.mmc.lamandys.liba_datapick.dummy.DummyContent;
 import com.mmc.lamandys.liba_datapick.fragment.ItemFragment;
 
 import java.util.List;
-
 
 /**
  * {@link RecyclerView.Adapter} that can display a {@link DummyContent.DummyItem} and makes a call to the

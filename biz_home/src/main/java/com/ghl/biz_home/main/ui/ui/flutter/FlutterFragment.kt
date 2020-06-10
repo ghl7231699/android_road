@@ -1,4 +1,4 @@
-package com.mmc.lamandys.liba_datapick.main.ui.ui.flutter
+package com.ghl.biz_home.main.ui.ui.flutter
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,8 +7,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import com.ghl.biz_home.R
-import com.ghl.biz_home.main.ui.ui.flutter.DashboardViewModel
-import io.flutter.embedding.android.FlutterFragment
 
 class FlutterFragment : Fragment() {
 
@@ -25,7 +23,7 @@ class FlutterFragment : Fragment() {
 
 //        val build = FlutterFragment.withNewEngine().initialRoute("/login/index").build()
 
-        val build = FlutterFragment.createDefault()
+//        val build = FlutterFragment.createDefault()
 
         fragmentManager?.apply {
 //            beginTransaction()

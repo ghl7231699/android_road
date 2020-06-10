@@ -77,11 +77,11 @@ public class RouterAnnotationProcessor extends AbstractProcessor {
 
     @Override
     public boolean process(Set<? extends TypeElement> set, RoundEnvironment roundEnvironment) {
-//        if (projectName == null || projectName.length() == 0) {
-//            return false;
-//        } else {
-//            log("你好啊");
-//        }
+        if (projectName == null || projectName.length() == 0) {
+            return false;
+        } else {
+            log("你想咋的");
+        }
 
         log("---------------------->Start Processor");
 
@@ -122,7 +122,7 @@ public class RouterAnnotationProcessor extends AbstractProcessor {
         //生成java文件
 
         try {
-            JavaFile javaFile = JavaFile.builder("com.mmc.lamandys.liba_datapick", clazz.build()).build();
+            JavaFile javaFile = JavaFile.builder("com.ghl.biz", clazz.build()).build();
             javaFile.writeTo(mFiler);
 
             log("--------------------------------------->complete Processor");
