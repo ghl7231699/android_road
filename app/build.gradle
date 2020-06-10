@@ -73,6 +73,7 @@ dependencies {
         k, v -> implementation v
     }
 
+    implementation project(':lib_dirty')
     implementation project(':flutter')
     implementation project(path: ':flutter_boost')
     implementation project(':router')

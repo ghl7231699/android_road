@@ -13,8 +13,8 @@ import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
 import androidx.viewpager2.widget.ViewPager2
 import com.mmc.lamandys.liba_datapick.R
-import com.mmc.lamandys.liba_datapick.base.BaseActivity
-import com.mmc.lamandys.liba_datapick.widgets.transform.ScaleInTransformer
+import com.ghl.lib_dirty.base.BaseActivity
+import com.ghl.lib_dirty.widgets.transform.ScaleInTransformer
 
 class ViewPager2Activity : BaseActivity(), View.OnClickListener {
 

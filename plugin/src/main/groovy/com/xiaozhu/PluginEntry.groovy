@@ -109,7 +109,7 @@ class PluginEntry implements Plugin<Project> {
         // 不对系统类进行操作，避免非预期错误
         exclude.add('android.support')
         exclude.add('androidx')
-        exclude.add('com.mmc.lamandys.liba_datapick.base')
+        exclude.add('com.ghl.lib_dirty.base')
         exclude.add('com.google.code.gson')
         exclude.add('com.google.gson')
         if (excludePackages != null) {

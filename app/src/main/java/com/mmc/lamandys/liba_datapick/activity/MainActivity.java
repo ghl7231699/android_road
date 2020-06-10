@@ -18,15 +18,14 @@ import com.example.router_annotation.Router;
 import com.mmc.lamandys.liba_datapick.R;
 import com.mmc.lamandys.liba_datapick.activity.ui.webview.WebViewActivity;
 import com.mmc.lamandys.liba_datapick.aldl.AidlActivity;
-import com.mmc.lamandys.liba_datapick.util.GrayUtilsKt;
-import com.mmc.lamandys.liba_datapick.util.StatusBarUtils;
-import com.mmc.lamandys.liba_datapick.widgets.rvlooper.LooperActivity;
+import com.ghl.lib_dirty.util.GrayUtilsKt;
+import com.ghl.lib_dirty.util.StatusBarUtils;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 
 @Router("MainActivity")
-@Ignore("aaaaa")
+@Ignore("a")
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     Button jumpButton;

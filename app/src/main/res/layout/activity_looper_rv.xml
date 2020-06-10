@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.mmc.lamandys.liba_datapick.widgets.rvlooper.AutoRollRecyclerView
+    <com.ghl.lib_dirty.widgets.rvlooper.AutoRollRecyclerView
         android:id="@+id/rv_recycleView"
         android:layout_width="match_parent"
         android:layout_height="120dp" />

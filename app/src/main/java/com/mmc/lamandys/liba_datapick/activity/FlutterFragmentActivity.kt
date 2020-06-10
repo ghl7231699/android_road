@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentManager
 import com.mmc.lamandys.liba_datapick.Constants.CACHED_FLUTTER_ENGINE
 import com.mmc.lamandys.liba_datapick.R
-import com.mmc.lamandys.liba_datapick.util.StatusBarUtils
+import com.ghl.lib_dirty.util.StatusBarUtils
 import io.flutter.embedding.android.FlutterFragment
 
 

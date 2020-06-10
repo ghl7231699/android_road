@@ -31,7 +31,7 @@ fun main() {
 
 }
 
-private fun getFields(declaredFields: Array<Field>, t: Any) {
+private fun getFields(declaredFields: Array<Field>, t: Any?) {
     try {
         for (field in declaredFields) {
             field.isAccessible = true

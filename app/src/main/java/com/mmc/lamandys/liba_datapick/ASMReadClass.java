@@ -1,10 +1,9 @@
 package com.mmc.lamandys.liba_datapick;
 
-import com.mmc.lamandys.liba_datapick.util.IOUtils;
+import com.ghl.lib_dirty.util.IOUtils;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 
 /**

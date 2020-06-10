@@ -1,3 +1,4 @@
+include ':biz_home'
 include ':plugin', ':app', ':kotlin'
 setBinding(new Binding([gradle: this]))
 evaluate(new File(

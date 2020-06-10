@@ -17,15 +17,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
-        <activity
-            android:name=".main.ui.MainHomePageActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
         <activity
             android:name=".activity.ui.login.LoginActivity"
             android:label="@string/title_activity_login" />
@@ -112,7 +104,7 @@
             android:name=".activity.ui.webview.WebViewActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
-            android:name=".widgets.rvlooper.LooperActivity"
+            android:name="com.mmc.lamandys.liba_datapick.activity.LooperActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity android:name=".aldl.AidlActivity" />
     </application>

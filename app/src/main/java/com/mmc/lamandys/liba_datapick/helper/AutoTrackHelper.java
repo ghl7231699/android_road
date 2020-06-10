@@ -31,7 +31,7 @@ import com.mmc.lamandys.liba_datapick.performance.FramePrinter;
 import com.mmc.lamandys.liba_datapick.TimeExecutor;
 import com.mmc.lamandys.liba_datapick.core.AutoTrackUtil;
 import com.mmc.lamandys.liba_datapick.core.LogConstants;
-import com.mmc.lamandys.liba_datapick.util.ReflectUtil;
+import com.ghl.lib_dirty.util.ReflectUtil;
 
 import org.json.JSONObject;
 

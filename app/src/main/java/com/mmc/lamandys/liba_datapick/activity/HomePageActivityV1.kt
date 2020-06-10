@@ -13,11 +13,11 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
 import androidx.viewpager2.widget.ViewPager2
+import com.ghl.lib_dirty.base.BaseActivity
+import com.ghl.lib_dirty.widgets.transform.ScaleInTransformer
 import com.mmc.lamandys.liba_datapick.R
 import com.mmc.lamandys.liba_datapick.adapter.HomePageAdapter
-import com.mmc.lamandys.liba_datapick.base.BaseActivity
-import com.mmc.lamandys.liba_datapick.util.StatusBarUtils
-import com.mmc.lamandys.liba_datapick.widgets.transform.ScaleInTransformer
+import com.ghl.lib_dirty.util.StatusBarUtils
 import kotlinx.android.synthetic.main.activity_home_page_layout_v1.*
 
 class HomePageActivityV1 : BaseActivity() {

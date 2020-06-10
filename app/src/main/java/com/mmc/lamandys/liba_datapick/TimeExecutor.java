@@ -1,11 +1,11 @@
 package com.mmc.lamandys.liba_datapick;
 
-import com.mmc.lamandys.liba_datapick.util.TimeUtil;
+import com.ghl.lib_dirty.util.TimeUtil;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.mmc.lamandys.liba_datapick.util.TimeUtil.TIMESTAMP;
+import static com.ghl.lib_dirty.util.TimeUtil.TIMESTAMP;
 
 /**
  * 类描述：方法执行时间
