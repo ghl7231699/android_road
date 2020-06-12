@@ -1,13 +1,13 @@
+import com.ghl.plugin.RouterPlugin
+
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
-apply plugin: 'com.xiaozhu.autotrack'
-
+apply plugin: RouterPlugin
 
 def app_android = rootProject.ext.android
 def app_implementation = rootProject.ext.app_implementation
-
 
 android {
 
@@ -76,9 +76,6 @@ dependencies {
     implementation project(':lib_dirty')
     implementation project(':flutter')
     implementation project(path: ':flutter_boost')
-    implementation project(':router')
-    implementation project(':router:router_annotation')
-    kapt project(':router:router_apt')
 
 }
 repositories {

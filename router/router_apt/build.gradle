@@ -2,7 +2,7 @@ apply plugin: 'java-library'
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation project(":router:router_annotation")
+    api project(":router:router_annotation")
     implementation 'com.squareup:javapoet:1.12.1'
 }
 

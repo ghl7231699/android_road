@@ -13,8 +13,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.router_annotation.Ignore;
-import com.example.router_annotation.Router;
+import com.ghl.router_annotation.Ignore;
+import com.ghl.router_annotation.Router;
 import com.mmc.lamandys.liba_datapick.R;
 import com.mmc.lamandys.liba_datapick.activity.ui.webview.WebViewActivity;
 import com.mmc.lamandys.liba_datapick.aldl.AidlActivity;

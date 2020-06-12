@@ -1,3 +1,5 @@
+import com.ghl.plugin.RouterPlugin
+
 ext {
     android = [
             compileSdkVersion        : 29,
@@ -50,7 +52,7 @@ ext {
             plugin 'kotlin-android'
             plugin 'kotlin-android-extensions'
             plugin 'kotlin-kapt'
-            plugin 'com.xiaozhu.autotrack'
+            plugin RouterPlugin
         }
         projectLibrary.android {
             compileSdkVersion rootProject.ext.android.compileSdkVersion

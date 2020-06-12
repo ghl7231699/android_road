@@ -1,2 +1,2 @@
-com.example.router_apt.RouterAnnotationProcessor
-com.example.router_apt.AnnotationProcessor
+com.ghl.router_apt.RouterAnnotationProcessor
+com.ghl.router_apt.AnnotationProcessor

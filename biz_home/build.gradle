@@ -1,6 +1,1 @@
 rootProject.ext.android_library_biz this, "bizHome"
-dependencies {
-    implementation project(':router:router_annotation')
-    implementation project(':router')
-    kapt project(':router:router_apt')
-}

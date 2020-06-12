@@ -1,10 +1,10 @@
-include ':biz_home'
-include ':plugin', ':app', ':kotlin'
 setBinding(new Binding([gradle: this]))
 evaluate(new File(
         settingsDir,
         '/flutter_mall/.android/include_flutter.groovy'
 ))
+include ':biz_home'
+include ':app', ':kotlin'
 include ':flutter_mall'
 include ':design_mode'
 include ':hot_fix'
