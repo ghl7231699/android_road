@@ -90,14 +90,17 @@ public class TargetCodeScanner {
      * @return
      */
     void scanClass(InputStream inputStream, String filePath) {
-        if (inputStream == null) {
-            return
+
+        try {
+
+            ClassReader cr = new ClassReader(inputStream)
+            ClassWriter cw = new ClassWriter(cr, 0)
+            ScanClassVisitor cv = new ScanClassVisitor(Opcodes.ASM5, cw, filePath, TARGET_INTERFACE)
+            cr.accept(cv, ClassReader.EXPAND_FRAMES)
+            inputStream.close()
+        } catch (Exception e) {
+
         }
-        ClassReader cr = new ClassReader(inputStream)
-        ClassWriter cw = new ClassWriter(cr, 0)
-        ScanClassVisitor cv = new ScanClassVisitor(Opcodes.ASM5, cw, filePath, TARGET_INTERFACE)
-        cr.accept(cv, ClassReader.EXPAND_FRAMES)
-        inputStream.close()
     }
 
     class ScanClassVisitor extends ClassVisitor {

@@ -66,6 +66,15 @@ android {
     }
 }
 
+def modules_biz = [
+        ':biz_home',
+        ':hot_fix',
+        ':androidservice',
+        ':flutter',
+        ':lib_dirty',
+        ':flutter_boost'
+]
+
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     // 更简洁的方式，由于我们config那边定义的是 map，遍历
@@ -73,14 +82,11 @@ dependencies {
         k, v -> implementation v
     }
 
-    implementation project(':lib_dirty')
-    implementation project(':flutter')
-    implementation project(path: ':flutter_boost')
+    modules_biz.each { biz ->
+        implementation project(biz)
+    }
+}
 
-}
-repositories {
-    mavenCentral()
-}
 
 //import com.xixi.plugin.asm.AutoMethodVisitor
 //import org.objectweb.asm.AnnotationVisitor
