@@ -1,6 +1,5 @@
 package com.ghl.inject
 
-
 public class InjectInfo {
     /**
      * 注入的目标文件
@@ -40,7 +39,5 @@ public class InjectInfo {
      * eg. bindService
      */
     String invokingMethodName
-
-
 
 }

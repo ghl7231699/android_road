@@ -2,7 +2,7 @@ package com.ghl.router.lib;
 
 import android.content.Context;
 
-class Router {
+public class Router {
     //方便代码插入
     static {
 

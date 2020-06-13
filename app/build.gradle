@@ -67,8 +67,9 @@ android {
 }
 
 def modules_biz = [
-        ':biz_home',
         ':hot_fix',
+        ':biz_login',
+        ':biz_home',
         ':androidservice',
         ':flutter',
         ':lib_dirty',
@@ -77,13 +78,12 @@ def modules_biz = [
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
+    modules_biz.each { biz ->
+        implementation project(biz)
+    }
     // 更简洁的方式，由于我们config那边定义的是 map，遍历
     app_implementation.each {
         k, v -> implementation v
-    }
-
-    modules_biz.each { biz ->
-        implementation project(biz)
     }
 }
 

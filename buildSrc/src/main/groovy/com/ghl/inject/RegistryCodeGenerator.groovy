@@ -1,5 +1,6 @@
 package com.ghl.inject
 
+import com.ghl.util.Logger
 import org.apache.commons.io.IOUtils
 import org.objectweb.asm.*
 
@@ -22,6 +23,7 @@ public class RegistryCodeGenerator {
 
     public static void insertInitCodeTo(InjectInfo extension) {
         if (extension != null && !extension.allInter.isEmpty()) {
+            Logger.info("||---找到目标类，开始进行注入。。。。。。")
             RegistryCodeGenerator processor = new RegistryCodeGenerator(extension)
             File file = extension.targetFile
             if (file.getName().endsWith('.jar'))

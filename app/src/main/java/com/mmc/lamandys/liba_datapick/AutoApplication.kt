@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.app.Application
 import android.content.Context
 import android.widget.Toast
+import com.ghl.lib_dirty.constants.Constants
 import com.idlefish.flutterboost.FlutterBoost
 import com.idlefish.flutterboost.Utils
 import com.idlefish.flutterboost.interfaces.INativeRouter

@@ -19,9 +19,6 @@
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
 
         <activity
-            android:name=".activity.ui.login.LoginActivity"
-            android:label="@string/title_activity_login" />
-        <activity
             android:name=".activity.HomePageActivityV1"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
@@ -76,7 +73,7 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".activity.FlutterFragmentActivity"
+            android:name="com.ghl.biz_home.ui.flutter.FlutterFragmentActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".activity.FlutterNativeActivity"
@@ -85,11 +82,13 @@
             android:name="com.mmc.lamandys.liba_datapick.flutter.ui.FlutterMainActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
-            android:name="com.mmc.lamandys.liba_datapick.flutter.ui.flutter.FlutterFragmentPageActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+            android:name=".flutter.ui.FlutterFragmentPageActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            tools:ignore="MissingClass" />
         <activity
-            android:name="com.mmc.lamandys.liba_datapick.flutter.ui.flutter.NativePageActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+            android:name=".flutter.ui.NativePageActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            tools:ignore="MissingClass" />
         <activity
             android:name=".livedata.NameActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />

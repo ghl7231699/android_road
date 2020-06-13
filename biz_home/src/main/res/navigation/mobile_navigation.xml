@@ -7,24 +7,25 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.ghl.biz_home.main.ui.ui.home.HomeFragment"
+        android:name="com.ghl.biz_home.ui.home.HomeFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/navigation_flutter"
-        android:name="com.ghl.biz_home.main.ui.ui.flutter.FlutterFragment"
+        android:name="com.ghl.biz_home.ui.flutter.FlutterFragment"
         android:label="@string/title_flutter"
         tools:layout="@layout/fragment_flutter" />
 
     <fragment
         android:id="@+id/navigation_notifications"
-        android:name="com.ghl.biz_home.main.ui.ui.notifications.NotificationsFragment"
+        android:name="com.ghl.biz_home.ui.notifications.NotificationsFragment"
         android:label="@string/title_notifications"
         tools:layout="@layout/fragment_notifications" />
+
     <fragment
         android:id="@+id/navigation_mine"
-        android:name="com.ghl.biz_home.main.ui.ui.home.HomeFragment"
+        android:name="com.ghl.biz_home.ui.mine.MineFragment"
         android:label="@string/title_notifications"
         tools:layout="@layout/fragment_notifications" />
 </navigation>

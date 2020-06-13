@@ -2,8 +2,13 @@ package com.ghl.plugin
 
 import com.android.build.api.transform.JarInput
 import com.android.build.gradle.AppPlugin
+import com.ghl.PigTransform
+import com.ghl.flow.EachEveryone
+import com.ghl.flow.TargetCodeScanner
 import com.ghl.inject.InjectInfo
+import com.ghl.inject.RegistryCodeGenerator
 import com.ghl.util.CheckUtils
+import com.ghl.util.Logger
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 
@@ -35,13 +40,13 @@ public class RouterPlugin implements Plugin<Project> {
 
         // 只有主项目才会加入transform 插入代码
         if (project.plugins.hasPlugin(AppPlugin)) {
-            android.registerTransform(new com.ghl.PigTransform("PigRouter", { transformInvocation ->
+            android.registerTransform(new PigTransform("PigRouter", { transformInvocation ->
                 //常量
-                final String targetClass = "com/ghl/router/lib.Router"
-                final String interfaceClass = "com/ghl/router/lib/RouterClassProvider.java"
+                final String targetClass = "com/ghl/router/lib/Router.class"
+                final String interfaceClass = "com/ghl/router/lib/RouterClassProvider"
                 final String invokingMethodName = "bindClassProvider"
-                com.ghl.flow.TargetCodeScanner mScanner = new com.ghl.flow.TargetCodeScanner(targetClass, interfaceClass)
-                com.ghl.flow.EachEveryone.each(transformInvocation,
+                TargetCodeScanner mScanner = new TargetCodeScanner(targetClass, interfaceClass)
+                EachEveryone.each(transformInvocation,
                         { jarInput, dest ->
                             if (isNeedScanJar(jarInput)) {
                                 mScanner.scanJar(jarInput.file, dest)
@@ -71,10 +76,12 @@ public class RouterPlugin implements Plugin<Project> {
                 //父类
                 // info 生成 end
 
+                Logger.info("||---目标类，${info.targetClass}\t${info.allInter}")
                 //生成代码
                 if (info.targetClass && info.allInter.size() > 0) {
                     //文件存在 ，并且实现类存在时，才修改字节码
                     RegistryCodeGenerator.insertInitCodeTo(info)
+                    Logger.info("||---找到目标类，开始进行替换。。。。。。")
                 }
             }))
         }

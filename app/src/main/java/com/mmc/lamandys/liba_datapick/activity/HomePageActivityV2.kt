@@ -16,10 +16,10 @@ import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.ghl.lib_dirty.base.BaseActivity
 import com.google.gson.Gson
-import com.mmc.lamandys.liba_datapick.Constants
+import com.ghl.lib_dirty.constants.Constants
 import com.mmc.lamandys.liba_datapick.ENGINE_ID
 import com.mmc.lamandys.liba_datapick.R
-import com.mmc.lamandys.liba_datapick.activity.ui.login.LoginActivity
+import com.ghl.biz_login.ui.LoginActivity
 import com.mmc.lamandys.liba_datapick.adapter.HomePageAdapter
 import com.mmc.lamandys.liba_datapick.bean.SecondChildBean
 import com.ghl.lib_dirty.util.HookUtils

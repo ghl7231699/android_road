@@ -80,10 +80,8 @@ public class RouterAnnotationProcessor extends AbstractProcessor {
         if (projectName == null || projectName.length() == 0) {
             return false;
         } else {
-            log("你想咋的");
+            log("没有名字就想往下走？");
         }
-
-        log("---------------------->Start Processor");
 
         StringBuilder className = new StringBuilder(projectName + "RouterData");
 
@@ -107,12 +105,11 @@ public class RouterAnnotationProcessor extends AbstractProcessor {
         ) {
             String[] value = element.getAnnotation(Router.class).value();
             className.append(value[0]);
-            for (String page : value
-            ) {
+            for (String page : value) {
                 method.addCode("case $S :\n", page);
             }
-            String pageNames = element.getQualifiedName().toString();
-            method.addCode("\tSystem.out.println($S);\n", pageNames);
+//            String pageNames = element.getQualifiedName().toString();
+//            method.addCode("\tSystem.out.println($S);\n", pageNames);
             method.addCode("\treturn $L.class;\n ", element);
         }
 
@@ -124,10 +121,8 @@ public class RouterAnnotationProcessor extends AbstractProcessor {
         try {
             JavaFile javaFile = JavaFile.builder("com.ghl.biz", clazz.build()).build();
             javaFile.writeTo(mFiler);
-
-            log("--------------------------------------->complete Processor");
         } catch (IOException e) {
-            e.printStackTrace();
+            //ignore
         }
 
         return false;

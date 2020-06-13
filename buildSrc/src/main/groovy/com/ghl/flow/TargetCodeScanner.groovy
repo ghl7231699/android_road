@@ -1,5 +1,6 @@
 package com.ghl.flow
 
+import com.ghl.util.Logger
 import org.objectweb.asm.ClassReader
 import org.objectweb.asm.ClassVisitor
 import org.objectweb.asm.ClassWriter
@@ -69,13 +70,16 @@ public class TargetCodeScanner {
         while (enumeration.hasMoreElements()) {
             JarEntry jarEntry = enumeration.nextElement()
             String entryName = jarEntry.getName()
+            Logger.info("||---类详情：目标类为\tentryName=${entryName};")
             if (entryName.startsWith("android/support") || !entryName.endsWith(".class")) {
                 //support 不扫描
+                Logger.info("||---类详情：不扫描-------------\tentryName=${entryName};")
                 break
             }
             if (TARGET_CLASS == entryName) {
                 //找到需要注入代码的目标类
                 fileHasClass = destFile
+                Logger.info("||---类详情：找到目标类为-------------\tentryName=${entryName};")
             } else {
                 //如果不是目标类 则通过ASM来查找是否实现接口
                 scanClass(file.getInputStream(jarEntry), jarFile.absolutePath)
@@ -90,16 +94,14 @@ public class TargetCodeScanner {
      * @return
      */
     void scanClass(InputStream inputStream, String filePath) {
-
         try {
-
             ClassReader cr = new ClassReader(inputStream)
             ClassWriter cw = new ClassWriter(cr, 0)
             ScanClassVisitor cv = new ScanClassVisitor(Opcodes.ASM5, cw, filePath, TARGET_INTERFACE)
             cr.accept(cv, ClassReader.EXPAND_FRAMES)
             inputStream.close()
-        } catch (Exception e) {
-
+        } catch (Exception ignored) {
+            Logger.info("||---类详情：出现异常-------------\tfilePath=${filePath};")
         }
     }
 

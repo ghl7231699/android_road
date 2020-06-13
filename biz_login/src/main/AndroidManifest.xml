@@ -1,0 +1,9 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.ghl.biz_login">
+
+    <application>
+        <activity
+            android:name="com.ghl.biz_login.ui.LoginActivity"
+            android:label="@string/title_activity_login" />
+    </application>
+</manifest>
