@@ -8,7 +8,7 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
-        android:name=".AutoApplication"
+        android:name="com.ghl.lib_dirty.AutoApplication"
         android:allowBackup="true"
         android:hardwareAccelerated="true"
         android:icon="@mipmap/ic_launcher"
@@ -18,12 +18,6 @@
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
 
-        <activity
-            android:name=".activity.HomePageActivityV1"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity
-            android:name=".activity.HomePageActivityV2"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".activity.MainActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
@@ -49,9 +43,6 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".activity.ViewPager2Activity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity
-            android:name=".activity.AsyncLayoutActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
 
         <service
@@ -79,14 +70,14 @@
             android:name=".activity.FlutterNativeActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
-            android:name="com.mmc.lamandys.liba_datapick.flutter.ui.FlutterMainActivity"
+            android:name="com.ghl.biz_flutter.ui.FlutterMainActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
-            android:name=".flutter.ui.FlutterFragmentPageActivity"
+            android:name="com.ghl.biz_flutter.ui.FlutterFragmentPageActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             tools:ignore="MissingClass" />
         <activity
-            android:name=".flutter.ui.NativePageActivity"
+            android:name="com.ghl.biz_flutter.ui.NativePageActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             tools:ignore="MissingClass" />
         <activity
@@ -100,7 +91,7 @@
             android:windowSoftInputMode="adjustResize"
             tools:ignore="DuplicateActivity" />
         <activity
-            android:name=".activity.ui.webview.WebViewActivity"
+            android:name="com.mmc.lamandys.liba_datapick.activity.webview.WebViewActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name="com.mmc.lamandys.liba_datapick.activity.LooperActivity"

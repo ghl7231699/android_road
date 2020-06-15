@@ -67,9 +67,10 @@ android {
 }
 
 def modules_biz = [
-        ':hot_fix',
+        ':biz_main',
         ':biz_login',
-        ':biz_home',
+        ':biz_flutter',
+        ':hot_fix',
         ':androidservice',
         ':flutter',
         ':lib_dirty',

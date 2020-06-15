@@ -1,5 +1,6 @@
 package com.mmc.lamandys.liba_datapick;
 
+import com.ghl.lib_dirty.AutoApplication;
 import com.ghl.lib_dirty.util.TimeUtil;
 
 import java.util.HashMap;

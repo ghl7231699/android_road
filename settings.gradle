@@ -3,8 +3,9 @@ evaluate(new File(
         settingsDir,
         '/flutter_mall/.android/include_flutter.groovy'
 ))
-include ':biz_home'
+include ':biz_main'
 include ':biz_login'
+include ':biz_flutter'
 include ':app', ':kotlin'
 include ':flutter_mall'
 include ':design_mode'

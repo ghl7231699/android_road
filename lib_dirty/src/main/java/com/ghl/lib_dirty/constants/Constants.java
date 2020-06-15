@@ -16,4 +16,6 @@ public class Constants {
     public static final String method_increment_counter = "incrementCounter";
     public static final String method_request_counter = "requestCounter";
 
+    public static final String View_Pager2_Activity = "ViewPager2Activity";
+    public static final String Tab_Activity = "TabActivity";
 }

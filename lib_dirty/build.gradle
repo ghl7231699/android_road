@@ -22,9 +22,17 @@ android {
 
 }
 
+def modules_biz = [
+        ':flutter',
+        ':flutter_boost'
+]
+
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     app_implementation.each {
         k, v -> implementation v
+    }
+    modules_biz.each { biz ->
+        implementation project(biz)
     }
 }

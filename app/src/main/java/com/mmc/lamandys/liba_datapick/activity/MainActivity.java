@@ -14,19 +14,16 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.ghl.biz_home.ui.flutter.FlutterFragmentActivity;
-import com.ghl.router_annotation.Ignore;
-import com.ghl.router_annotation.Router;
-import com.mmc.lamandys.liba_datapick.R;
-import com.mmc.lamandys.liba_datapick.activity.ui.webview.WebViewActivity;
-import com.mmc.lamandys.liba_datapick.aldl.AidlActivity;
 import com.ghl.lib_dirty.util.GrayUtilsKt;
 import com.ghl.lib_dirty.util.StatusBarUtils;
+import com.mmc.lamandys.liba_datapick.R;
+import com.mmc.lamandys.liba_datapick.activity.webview.WebViewActivity;
+import com.mmc.lamandys.liba_datapick.aldl.AidlActivity;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 
-@Router("MainActivity")
-@Ignore("a")
+//@Router("MainActivity")
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     Button jumpButton;

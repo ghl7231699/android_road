@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Process;
 
-import com.mmc.lamandys.liba_datapick.AutoApplication;
+import com.ghl.lib_dirty.AutoApplication;
 import com.mmc.lamandys.liba_datapick.activity.MainActivity;
 
 import java.lang.Thread.UncaughtExceptionHandler;

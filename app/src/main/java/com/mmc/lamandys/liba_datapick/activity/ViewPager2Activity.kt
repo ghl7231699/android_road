@@ -12,10 +12,13 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
 import androidx.viewpager2.widget.ViewPager2
-import com.mmc.lamandys.liba_datapick.R
 import com.ghl.lib_dirty.base.BaseActivity
+import com.ghl.lib_dirty.constants.Constants.View_Pager2_Activity
 import com.ghl.lib_dirty.widgets.transform.ScaleInTransformer
+import com.ghl.router_annotation.Router
+import com.mmc.lamandys.liba_datapick.R
 
+@Router(View_Pager2_Activity)
 class ViewPager2Activity : BaseActivity(), View.OnClickListener {
 
     private var mViewPager2: ViewPager2? = null

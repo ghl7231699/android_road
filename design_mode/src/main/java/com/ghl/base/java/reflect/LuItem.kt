@@ -36,7 +36,10 @@ private fun getFields(declaredFields: Array<Field>, t: Any?) {
         for (field in declaredFields) {
             field.isAccessible = true
             val annotation = field.getAnnotation(StatisticsVar::class.java)
-            val get = field.get(t)
+            val value = field.get(t)
+            val key = field.name
+
+            println("$value\tvalue is\t key is\t$key")
             val declaringClass = field.type
             when (declaringClass.name) {
                 String::class.java.name,
@@ -46,13 +49,13 @@ private fun getFields(declaredFields: Array<Field>, t: Any?) {
                 Double::class.java.name,
                 Float::class.java.name -> {
                     annotation?.apply {
-                        val value = annotation.value
-                        caches[value] = get as String
-                        println("$get\ttype is\t ${field.type}")
+//                        val value = annotation.value
+//                        caches[value] = value as String
+//                        println("$value\ttype is\t ${field.type}")
                     }
                 }
                 else -> {
-                    getFields(get.javaClass.declaredFields, get)
+                    getFields(value.javaClass.declaredFields, value)
                 }
             }
         }

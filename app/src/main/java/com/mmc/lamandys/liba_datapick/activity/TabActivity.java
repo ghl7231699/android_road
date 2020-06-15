@@ -1,20 +1,23 @@
 package com.mmc.lamandys.liba_datapick.activity;
 
 import android.os.Bundle;
-import com.google.android.material.tabs.TabLayout;
+
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
-import androidx.appcompat.app.AppCompatActivity;
 
+import com.ghl.lib_dirty.constants.Constants;
+import com.ghl.router_annotation.Router;
+import com.google.android.material.tabs.TabLayout;
 import com.mmc.lamandys.liba_datapick.R;
 import com.mmc.lamandys.liba_datapick.dummy.DummyContent;
 import com.mmc.lamandys.liba_datapick.fragment.ExpendListViewFragment;
 import com.mmc.lamandys.liba_datapick.fragment.ItemFragment;
 import com.mmc.lamandys.liba_datapick.fragment.ListItemFragment;
 
-
+@Router(Constants.Tab_Activity)
 public class TabActivity extends AppCompatActivity implements ItemFragment.OnListFragmentInteractionListener {
 
     ViewPager mViewPager;
