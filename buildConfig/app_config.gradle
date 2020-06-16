@@ -1,4 +1,5 @@
 import com.ghl.plugin.RouterPlugin
+import com.ghl.plugin.ModuleServicePlugin
 
 ext {
     android = [
@@ -53,6 +54,7 @@ ext {
             plugin 'kotlin-android-extensions'
             plugin 'kotlin-kapt'
             plugin RouterPlugin
+            plugin ModuleServicePlugin
         }
         projectLibrary.android {
             compileSdkVersion rootProject.ext.android.compileSdkVersion

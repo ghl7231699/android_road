@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.app.Application
 import android.content.Context
 import android.widget.Toast
+import com.ghl.imc.ModuleServiceManager
 import com.ghl.lib_dirty.constants.Constants
 import com.idlefish.flutterboost.FlutterBoost
 import com.idlefish.flutterboost.Utils
@@ -26,7 +27,7 @@ class AutoApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
-
+        ModuleServiceManager.createApp(this)
         //TODO  moduleService实现
         //AutoTrackHelper.frameDetection();
 //        AutoTrackHelper.frameDetection2()

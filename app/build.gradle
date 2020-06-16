@@ -1,3 +1,4 @@
+import com.ghl.plugin.ModuleServicePlugin
 import com.ghl.plugin.RouterPlugin
 
 apply plugin: 'com.android.application'
@@ -5,6 +6,7 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 apply plugin: RouterPlugin
+apply plugin: ModuleServicePlugin
 
 def app_android = rootProject.ext.android
 def app_implementation = rootProject.ext.app_implementation
@@ -173,7 +175,7 @@ dependencies {
 //                 [
 //                         //方法的匹配，可以通过类名或者实现的接口名匹配
 //                         'ClassName'    : 'android.support.v7.widget.RecyclerView',
-//                         'InterfaceName': 'com.mmc.lamandys.liba_datapick.Counter3',
+//                         'InterfaceName': 'com.ghl.opt.auto.Counter3',
 //                         'MethodName'   : 'clearOnChildAttachStateChangeListeners',
 //                         'MethodDes'    : '()V',
 //                         'isAnnotation' : false,

@@ -1,7 +1,11 @@
 package com.ghl.plugin
 
 import com.android.build.gradle.AppPlugin
+import com.ghl.PigTransform
+import com.ghl.flow.EachEveryone
+import com.ghl.flow.TargetCodeScanner
 import com.ghl.inject.InjectInfo
+import com.ghl.util.CheckUtils
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 
@@ -28,19 +32,19 @@ public class ModuleServicePlugin implements Plugin<Project> {
 
         // 只有主项目才会加入transform 插入代码
         if (project.plugins.hasPlugin(AppPlugin)) {
-            android.registerTransform(new com.ghl.PigTransform("PigModuleService", { transformInvocation ->
-                final String targetClass = "com/xiaozhu/xzdz/imc/ModuleServiceManager.class"
-                final String interfaceClass = "com/xiaozhu/xzdz/imc/ModuleService"
-                final String superClass = "com/xiaozhu/xzdz/imc/AbsModuleService"
+            android.registerTransform(new PigTransform("ModuleService", { transformInvocation ->
+                final String targetClass = "com/ghl/imc/ModuleServiceManager.class"
+                final String interfaceClass = "com/ghl/imc/ModuleService"
+                final String superClass = "com/ghl/imc/AbsModuleService"
 
-                com.ghl.flow.TargetCodeScanner codeScanner = new com.ghl.flow.TargetCodeScanner(targetClass, interfaceClass, superClass)
+                TargetCodeScanner codeScanner = new TargetCodeScanner(targetClass, interfaceClass, superClass)
 
-                com.ghl.flow.EachEveryone.each(transformInvocation, { jarInput, dest ->
-                    if (com.ghl.util.CheckUtils.isNeedScanJar(jarInput)) {
+                EachEveryone.each(transformInvocation, { jarInput, dest ->
+                    if (CheckUtils.isNeedScanJar(jarInput)) {
                         codeScanner.scanJar(jarInput.file, dest)
                     }
                 }, { file ->
-                    if (com.ghl.util.CheckUtils.isNeedScanFile(file)) {
+                    if (CheckUtils.isNeedScanFile(file)) {
                         codeScanner.scanClass(file.newInputStream(), file.absolutePath)
                     }
                 })
@@ -63,7 +67,7 @@ public class ModuleServicePlugin implements Plugin<Project> {
                 println "rain === ${info.targetClass}"
                 if (info.targetClass && info.allInter.size() > 0) {
                     //文件存在 ，并且实现类存在时，才修改字节码
-                    com.ghl.inject.RegistryCodeGenerator.insertInitCodeTo(info)
+                    RegistryCodeGenerator.insertInitCodeTo(info)
                 }
             }))
         }

@@ -5,10 +5,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.ghl.biz_home.R
+import com.ghl.lib_dirty.constants.main.ACTIVITY_HOME
 import com.ghl.router_annotation.Router
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
-@Router("MainHomePageActivity")
+@Router(ACTIVITY_HOME)
 class MainHomePageActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
