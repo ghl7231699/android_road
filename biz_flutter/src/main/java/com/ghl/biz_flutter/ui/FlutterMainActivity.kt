@@ -33,7 +33,7 @@ class FlutterMainActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onClick(v: View) {
 
-        val params = HashMap<String, String>()
+        val params = HashMap<String, Any>()
 
         params["test1"] = "v_test1"
         params["test2"] = "v_test2"

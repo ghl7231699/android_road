@@ -1,7 +1,9 @@
 package com.ghl.data.map;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * 类描述：SparseArray  vs   HashMap
@@ -11,6 +13,22 @@ import java.util.Map;
 public class SparseArrayVSHashMap {
     public static void main(String[] args) {
         normalInsertMap();
+
+        Set<Short> set = new HashSet<>();
+        for (int i = 0; i < 100; i++) {
+            set.add((short) i);
+            set.remove(i - 1);
+        }
+        System.out.println(set.size());
+
+
+        for (short i = 0; i < 100; i++) {
+            set.add(i);
+            short o = (short) (i - 1);
+            set.remove(o);
+        }
+        System.out.println(set.size());
+
     }
 
 

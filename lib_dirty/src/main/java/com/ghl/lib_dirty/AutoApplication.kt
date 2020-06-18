@@ -6,6 +6,8 @@ import android.content.Context
 import android.widget.Toast
 import com.ghl.imc.ModuleServiceManager
 import com.ghl.lib_dirty.constants.Constants
+import com.ghl.lib_dirty.service.AutoModuleService
+import com.ghl.lib_dirty.service.FlutterModuleService
 import com.idlefish.flutterboost.FlutterBoost
 import com.idlefish.flutterboost.Utils
 import com.idlefish.flutterboost.interfaces.INativeRouter
@@ -28,16 +30,12 @@ class AutoApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         ModuleServiceManager.createApp(this)
-        //TODO  moduleService实现
-        //AutoTrackHelper.frameDetection();
-//        AutoTrackHelper.frameDetection2()
-//        CrashHandler.getinstance().init()
 
         val router: INativeRouter = INativeRouter { context, url, urlParams, _, _ ->
             val assembleUrl = Utils.assembleUrl(url, urlParams)
-            //TODO  moduleService解决
-//            PageRouter.openPageByUrl(context, assembleUrl, urlParams)
+            ModuleServiceManager.getClassTarget(FlutterModuleService::class.java).openPageByUrl(context, assembleUrl, urlParams)
         }
+        ModuleServiceManager.getClassTarget(AutoModuleService::class.java).init()
 
         val platform = FlutterBoost.ConfigBuilder(this, router)
                 .isDebug(true)
@@ -45,7 +43,6 @@ class AutoApplication : Application() {
                 .build()
 
         FlutterBoost.instance().init(platform)
-
 
         flutterEngine = FlutterEngine(this)
         flutterEngine

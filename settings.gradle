@@ -1,3 +1,4 @@
+include ':opt_track'
 setBinding(new Binding([gradle: this]))
 evaluate(new File(
         settingsDir,
@@ -11,7 +12,7 @@ include ':flutter_mall'
 include ':design_mode'
 include ':hot_fix'
 include ':lib_dirty'
-include ':opt_auto_track'
+include ':opt_track'
 include ':imc'
 include ':androidservice'
 include ':router'

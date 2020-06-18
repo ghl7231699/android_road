@@ -1,12 +1,13 @@
 package com.ghl.imc;
 
 import android.app.Application;
+import android.util.Log;
+
+import androidx.annotation.NonNull;
 
 import java.util.List;
 import java.util.Vector;
 import java.util.concurrent.ConcurrentHashMap;
-
-import androidx.annotation.NonNull;
 
 /**
  * 组件间通信管理类
@@ -98,11 +99,13 @@ public class ModuleServiceManager {
             return;
         }
         mServiceMap.put(name, service);
+        Log.i("ghl", "bindService 方法执行了");
     }
 
     public static void createApp(Application app) {
         for (ModuleService service : mTempSaveList) {
             service.onCreateApp(app);
+            Log.i("ghl", "createApp 方法执行了" + mTempSaveList);
         }
     }
 }

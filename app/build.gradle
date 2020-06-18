@@ -74,6 +74,7 @@ def modules_biz = [
         ':biz_flutter',
         ':hot_fix',
         ':androidservice',
+        ':opt_track',
         ':flutter',
         ':lib_dirty',
         ':flutter_boost'

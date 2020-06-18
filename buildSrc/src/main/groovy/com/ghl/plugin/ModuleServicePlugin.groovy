@@ -5,7 +5,9 @@ import com.ghl.PigTransform
 import com.ghl.flow.EachEveryone
 import com.ghl.flow.TargetCodeScanner
 import com.ghl.inject.InjectInfo
+import com.ghl.inject.RegistryCodeGenerator
 import com.ghl.util.CheckUtils
+import com.ghl.util.Logger
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 
@@ -14,7 +16,6 @@ public class ModuleServicePlugin implements Plugin<Project> {
     @Override
     void apply(Project project) {
         println "imc --- start"
-
         //加载相应的lib 与 apt
         def compile = "implementation"
         def apt = "annotationProcessor"
@@ -32,6 +33,7 @@ public class ModuleServicePlugin implements Plugin<Project> {
 
         // 只有主项目才会加入transform 插入代码
         if (project.plugins.hasPlugin(AppPlugin)) {
+            println "imc --- start"
             android.registerTransform(new PigTransform("ModuleService", { transformInvocation ->
                 final String targetClass = "com/ghl/imc/ModuleServiceManager.class"
                 final String interfaceClass = "com/ghl/imc/ModuleService"
@@ -64,12 +66,13 @@ public class ModuleServicePlugin implements Plugin<Project> {
                 info.invokingMethodName = "bindService"
                 //父类
                 info.superClass = superClass
-                println "rain === ${info.targetClass}"
+                Logger.info("||---目标类，${info.targetClass}\t${info.allInter}")
                 if (info.targetClass && info.allInter.size() > 0) {
                     //文件存在 ，并且实现类存在时，才修改字节码
                     RegistryCodeGenerator.insertInitCodeTo(info)
                 }
             }))
         }
+        println "imc --- end"
     }
 }
