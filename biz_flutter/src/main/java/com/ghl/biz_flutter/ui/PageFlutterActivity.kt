@@ -1,4 +1,4 @@
-package com.mmc.lamandys.liba_datapick.activity
+package com.ghl.biz_flutter.ui
 
 import android.os.Bundle
 import android.util.Log
@@ -42,8 +42,8 @@ class PageFlutterActivity : FlutterActivity() {
         if (this.hasPlugin(key)) return
         val registrar = this.registrarFor(key)
         methodChannel = MethodChannel(
-            registrar.messenger(),
-            channelName
+                registrar.messenger(),
+                channelName
         )
         methodChannel.setMethodCallHandler { methodCall, result ->
             if (methodCall.method == "finish") {

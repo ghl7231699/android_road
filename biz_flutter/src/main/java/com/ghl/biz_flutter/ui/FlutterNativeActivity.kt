@@ -1,14 +1,10 @@
-// Copyright 2019 The Flutter team. All rights reserved.
-// Use of this source code is governed by a BSD-style license that can be
-// found in the LICENSE file.
-
-package com.mmc.lamandys.liba_datapick.activity
+package com.ghl.biz_flutter.ui
 
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import com.ghl.biz_flutter.R
 import com.ghl.lib_dirty.ENGINE_ID
-import com.mmc.lamandys.liba_datapick.R
 import io.flutter.embedding.android.FlutterActivity
 
 class FlutterNativeActivity : AppCompatActivity() {

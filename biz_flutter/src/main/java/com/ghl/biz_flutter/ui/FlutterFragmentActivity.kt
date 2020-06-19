@@ -1,17 +1,18 @@
-package com.ghl.biz_home.ui.flutter
+package com.ghl.biz_flutter.ui
 
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentManager
-import com.ghl.biz_home.R
+import com.ghl.biz_flutter.R
 import com.ghl.lib_dirty.constants.Constants.CACHED_FLUTTER_ENGINE
+import com.ghl.lib_dirty.constants.flutter.ACTIVITY_FLUTTER_FRAGMENT
 import com.ghl.lib_dirty.util.StatusBarUtils
 import com.ghl.router_annotation.Router
 import io.flutter.embedding.android.FlutterFragment
 
-@Router("FlutterFragmentActivity")
+@Router(ACTIVITY_FLUTTER_FRAGMENT)
 class FlutterFragmentActivity : AppCompatActivity(), View.OnClickListener {
 
     companion object {

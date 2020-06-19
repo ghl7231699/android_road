@@ -7,6 +7,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import com.ghl.biz_home.R
+import com.ghl.imc.ModuleServiceManager
+import com.ghl.lib_dirty.service.FlutterModuleService
 import io.flutter.embedding.android.FlutterFragment
 
 class FlutterFragment : Fragment() {
@@ -28,7 +30,8 @@ class FlutterFragment : Fragment() {
 
         fragmentManager?.apply {
             beginTransaction()
-                    .replace(R.id.fragment_container, build, FlutterFragmentActivity.TAG_FLUTTER_FRAGMENT)
+                    .replace(R.id.fragment_container, build, ModuleServiceManager
+                            .getClassTarget(FlutterModuleService::class.java).getPageTag("flutter_fragment"))
                     .commit()
         }
 //        val textView: TextView = root.findViewById(R.id.text_dashboard)

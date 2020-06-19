@@ -1,4 +1,4 @@
-package com.mmc.lamandys.liba_datapick.activity.webview
+package com.ghl.lib_dirty.base
 
 import android.annotation.SuppressLint
 import android.graphics.Bitmap
@@ -9,7 +9,7 @@ import android.webkit.WebView
 import android.webkit.WebViewClient
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.mmc.lamandys.liba_datapick.R
+import com.ghl.lib_dirty.R
 import kotlinx.android.synthetic.main.activity_webview.*
 
 class WebViewActivity : AppCompatActivity() {

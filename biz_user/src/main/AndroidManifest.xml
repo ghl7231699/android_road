@@ -1,0 +1,9 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.ghl.biz_mine">
+
+    <application>
+        <activity
+            android:name="com.ghl.lib_dirty.base.WebViewActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+    </application>
+</manifest>
