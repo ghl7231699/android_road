@@ -1,7 +1,7 @@
-package com.ghl.design_patterns.proxy.dynamic;
+package com.ghl.design_mode.proxy.dynamic;
 
-import com.ghl.design_patterns.proxy.Developer;
-import com.ghl.design_patterns.proxy.JavaDeveloper;
+import com.ghl.design_mode.proxy.Developer;
+import com.ghl.design_mode.proxy.JavaDeveloper;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
@@ -51,7 +51,7 @@ public class JavaDynamicProxy {
 
         Class<?> aClass = null;
         try {
-            aClass = Class.forName("com.ghl.design_patterns.proxy.JavaDeveloper");
+            aClass = Class.forName("com.ghl.design_mode.proxy.JavaDeveloper");
             final Method methodA = aClass.getMethod("print", int.class);
             System.out.println("方法名为" + methodA.getName());
         } catch (Exception e) {

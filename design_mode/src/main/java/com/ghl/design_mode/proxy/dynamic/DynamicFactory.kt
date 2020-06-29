@@ -1,4 +1,4 @@
-package com.ghl.design_patterns.proxy.dynamic
+package com.ghl.design_mode.proxy.dynamic
 
 import java.lang.reflect.InvocationHandler
 import java.lang.reflect.Method

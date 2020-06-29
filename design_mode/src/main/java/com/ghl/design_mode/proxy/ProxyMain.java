@@ -1,6 +1,6 @@
-package com.ghl.design_patterns.proxy;
+package com.ghl.design_mode.proxy;
 
-import com.ghl.design_patterns.proxy.dynamic.DynamicJavaFactory;
+import com.ghl.design_mode.proxy.dynamic.DynamicJavaFactory;
 
 public class ProxyMain {
     public static void main(String[] args) {

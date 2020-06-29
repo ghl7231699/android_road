@@ -1,4 +1,4 @@
-package com.ghl.design_patterns.proxy;
+package com.ghl.design_mode.proxy;
 
 public interface Developer {
     void coding();
