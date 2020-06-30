@@ -1,4 +1,4 @@
-package com.mmc.lamandys.liba_datapick.bean;
+package com.ghl.biz_track.bean;
 
 import android.os.Parcel;
 import android.os.Parcelable;

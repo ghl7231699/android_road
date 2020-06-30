@@ -6,17 +6,21 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.ghl.biz_home.R
 import com.ghl.lib_dirty.constants.main.ACTIVITY_HOME
-import com.ghl.router_annotation.Router
+import com.ghl.lib_dirty.util.StatusBarUtils
+import com.ghl.router_annotation.Route
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
-@Router(ACTIVITY_HOME)
+@Route(ACTIVITY_HOME)
 class MainHomePageActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main_home_page)
-        val navView: BottomNavigationView = findViewById(R.id.nav_view)
 
+        StatusBarUtils.transparencyBar(this) //设置状态栏全透明
+        StatusBarUtils.StatusBarLightMode(this) //设置白底黑字
+
+        val navView: BottomNavigationView = findViewById(R.id.nav_view)
         val navController = findNavController(R.id.nav_host_fragment)
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.

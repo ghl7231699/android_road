@@ -1,4 +1,4 @@
-package com.ghl.biz_track;
+package com.ghl.biz_track.activity;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,8 +10,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.mmc.lamandys.liba_datapick.R;
+import com.ghl.biz_track.R;
+import com.ghl.router_annotation.Route;
 
+import static com.ghl.lib_dirty.constants.track.TrackConstantsKt.ACTIVITY_BEHAVIOR;
+
+@Route(ACTIVITY_BEHAVIOR)
 public class BehaviorActivity extends AppCompatActivity {
 
     private RecyclerView mRecyclerView;

@@ -1,9 +1,7 @@
-package com.ghl.biz_track;
+package com.ghl.biz_track.activity;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.CheckBox;
@@ -17,12 +15,19 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.mmc.lamandys.liba_datapick.R;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.ghl.biz_track.R;
+import com.ghl.router_annotation.Route;
+
+import static com.ghl.lib_dirty.constants.track.TrackConstantsKt.ACTIVITY_RADIO;
 
 
 /**
  * 测试ToolBar，RadioGroup和CompoundButton
  */
+@Route(ACTIVITY_RADIO)
 public class RadioActivity extends AppCompatActivity implements SeekBar.OnSeekBarChangeListener {
 
     private RadioGroup sex;

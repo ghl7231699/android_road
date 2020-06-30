@@ -19,15 +19,14 @@ public class StatusBarUtils {
      */
     @TargetApi(19)
     public static void transparencyBar(Activity activity) {
+        Window window = activity.getWindow();
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            Window window = activity.getWindow();
             window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
             window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
                     | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
             window.setStatusBarColor(Color.TRANSPARENT);
         } else {
-            Window window = activity.getWindow();
             window.setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS,
                     WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         }
@@ -42,21 +41,19 @@ public class StatusBarUtils {
      */
     public static int StatusBarLightMode(Activity activity) {
         int result = 0;
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            if (MIUISetStatusBarLightMode(activity, true)) {
-                //小米
-                result = 1;
-            } else if (FlymeSetStatusBarLightMode(activity.getWindow(), true)) {
-                //魅族
-                result = 2;
-            } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                //6.0以上
-                activity.getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
-                result = 3;
-            } else {
-                //其他的都设置状态栏成半透明的,以下设置半透明是调用第三方的，根据个人需求更改
+        if (MIUISetStatusBarLightMode(activity, true)) {
+            //小米
+            result = 1;
+        } else if (FlymeSetStatusBarLightMode(activity.getWindow(), true)) {
+            //魅族
+            result = 2;
+        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            //6.0以上
+            activity.getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+            result = 3;
+        } else {
+            //其他的都设置状态栏成半透明的,以下设置半透明是调用第三方的，根据个人需求更改
 //    ImmersionBar.with(activity).statusBarDarkFont(true, 0.5f).init();
-            }
         }
         return result;
     }

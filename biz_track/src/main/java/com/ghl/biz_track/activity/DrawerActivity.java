@@ -1,4 +1,4 @@
-package com.ghl.biz_track;
+package com.ghl.biz_track.activity;
 
 import android.app.ActionBar;
 import android.app.Activity;
@@ -10,9 +10,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.mmc.lamandys.liba_datapick.R;
-import com.mmc.lamandys.liba_datapick.fragment.NavigationDrawerFragment;
+import com.ghl.biz_track.R;
+import com.ghl.biz_track.fragment.NavigationDrawerFragment;
+import com.ghl.router_annotation.Route;
 
+import static com.ghl.lib_dirty.constants.track.TrackConstantsKt.ACTIVITY_DRAWER;
+
+@Route(ACTIVITY_DRAWER)
 public class DrawerActivity extends Activity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks {
 

@@ -16,9 +16,9 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.ghl.biz_login.R
 import com.ghl.lib_dirty.constants.login.LOGIN_MAIN_PAGE
-import com.ghl.router_annotation.Router
+import com.ghl.router_annotation.Route
 
-@Router(LOGIN_MAIN_PAGE)
+@Route(LOGIN_MAIN_PAGE)
 class LoginActivity : AppCompatActivity() {
 
     private lateinit var loginViewModel: LoginViewModel

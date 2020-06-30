@@ -1,11 +1,11 @@
-package com.ghl.biz_track;
+package com.ghl.biz_track.activity;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.widget.TabHost;
 import android.widget.Toast;
 
-import com.mmc.lamandys.liba_datapick.R;
+import com.ghl.biz_track.R;
 import com.ghl.lib_dirty.util.ItemUtils;
 
 import org.greenrobot.eventbus.EventBus;

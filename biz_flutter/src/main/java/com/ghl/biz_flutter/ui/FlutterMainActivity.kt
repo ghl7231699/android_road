@@ -5,13 +5,14 @@ import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.ghl.biz_flutter.R
-import com.ghl.router_annotation.Router
+import com.ghl.lib_dirty.constants.flutter.ACTIVITY_FLUTTER_MAIN
+import com.ghl.router_annotation.Route
 import kotlinx.android.synthetic.main.activity_main.*
 import java.lang.ref.WeakReference
 
 const val TAG = "FlutterMainActivity"
 
-@Router("FlutterMainActivity")
+@Route(ACTIVITY_FLUTTER_MAIN)
 class FlutterMainActivity : AppCompatActivity(), View.OnClickListener {
 
     companion object {

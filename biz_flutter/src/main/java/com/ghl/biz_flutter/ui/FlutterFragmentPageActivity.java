@@ -16,7 +16,7 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.ghl.biz_flutter.R;
-import com.ghl.router_annotation.Router;
+import com.ghl.router_annotation.Route;
 import com.idlefish.flutterboost.containers.FlutterFragment;
 
 import io.flutter.embedding.android.DrawableSplashScreen;
@@ -24,7 +24,7 @@ import io.flutter.embedding.android.SplashScreen;
 import io.flutter.embedding.android.SplashScreenProvider;
 import io.flutter.plugin.platform.PlatformPlugin;
 
-@Router("FlutterFragmentPageActivity")
+@Route("FlutterFragmentPageActivity")
 public class FlutterFragmentPageActivity extends AppCompatActivity implements View.OnClickListener, SplashScreenProvider {
     protected static final String SPLASH_SCREEN_META_DATA_KEY = "io.flutter.embedding.android.SplashScreenDrawable";
 

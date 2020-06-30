@@ -1,4 +1,4 @@
-package com.mmc.lamandys.liba_datapick.widgets.rvlooper;
+package com.ghl.biz_track.rvlooper;
 
 import android.graphics.Color;
 import android.os.CountDownTimer;
@@ -15,8 +15,8 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.mmc.lamandys.liba_datapick.R;
-import com.mmc.lamandys.liba_datapick.widgets.rvlooper.bean.GroupBookingEntity;
+import com.ghl.biz_track.R;
+import com.ghl.biz_track.rvlooper.bean.GroupBookingEntity;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -67,7 +67,7 @@ public class AutoRollAdapter extends RecyclerView.Adapter<AutoRollAdapter.BaseVi
         spannableString.setSpan(new ForegroundColorSpan(Color.parseColor("#FFFD4747")), 2, spannableString.length() - 3, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
 
         holder.mTvleaveMembers.setText(spannableString);
-        String id = data.id;
+        final String id = data.id;
         if (!timerKeyList.contains(index)) {
             timerKeyList.add(index);
         }

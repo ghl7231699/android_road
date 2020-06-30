@@ -1,4 +1,4 @@
-package com.mmc.lamandys.liba_datapick.adapter;
+package com.ghl.biz_track.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -7,9 +7,9 @@ import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.TextView;
 
-import com.mmc.lamandys.liba_datapick.R;
-import com.mmc.lamandys.liba_datapick.bean.SecondChildBean;
-import com.mmc.lamandys.liba_datapick.bean.SecondGroupBean;
+import com.ghl.biz_track.R;
+import com.ghl.biz_track.bean.SecondChildBean;
+import com.ghl.biz_track.bean.SecondGroupBean;
 
 import java.util.ArrayList;
 

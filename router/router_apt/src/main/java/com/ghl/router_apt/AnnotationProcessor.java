@@ -1,7 +1,7 @@
 package com.ghl.router_apt;
 
 import com.ghl.router_annotation.Ignore;
-import com.ghl.router_annotation.Router;
+import com.ghl.router_annotation.Route;
 import com.squareup.javapoet.JavaFile;
 import com.squareup.javapoet.MethodSpec;
 import com.squareup.javapoet.TypeSpec;
@@ -71,7 +71,7 @@ public class AnnotationProcessor extends AbstractProcessor {
     @Override
     public Set<String> getSupportedAnnotationTypes() {
         LinkedHashSet<String> types = new LinkedHashSet<>();
-        types.add(Router.class.getCanonicalName());
+        types.add(Route.class.getCanonicalName());
         return types;
     }
 

@@ -1,4 +1,4 @@
-package com.ghl.biz_track;
+package com.ghl.biz_track.activity;
 
 import android.os.Bundle;
 
@@ -8,11 +8,16 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import com.ghl.biz_track.R;
+import com.ghl.biz_track.dummy.DummyContent;
+import com.ghl.biz_track.fragment.ExpendListViewFragment;
+import com.ghl.biz_track.fragment.ItemFragment;
+import com.ghl.biz_track.fragment.ListItemFragment;
 import com.ghl.lib_dirty.constants.Constants;
-import com.ghl.router_annotation.Router;
+import com.ghl.router_annotation.Route;
 import com.google.android.material.tabs.TabLayout;
 
-@Router(Constants.Tab_Activity)
+@Route(Constants.Tab_Activity)
 public class TabActivity extends AppCompatActivity implements ItemFragment.OnListFragmentInteractionListener {
 
     ViewPager mViewPager;

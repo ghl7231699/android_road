@@ -8,8 +8,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModelProviders
+import com.ghl.lib_dirty.constants.main.ACTIVITY_LIVE_DATA_VIEW_MODEL
+import com.ghl.router_annotation.Route
 import com.mmc.lamandys.liba_datapick.R
 
+@Route(ACTIVITY_LIVE_DATA_VIEW_MODEL)
 class NameActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var model: NameViewModel
     private var nameTv: TextView? = null

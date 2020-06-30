@@ -1,4 +1,4 @@
-package com.mmc.lamandys.liba_datapick.widgets.rvlooper.bean;
+package com.ghl.biz_track.rvlooper.bean;
 
 import java.io.Serializable;
 

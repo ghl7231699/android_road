@@ -1,13 +1,14 @@
-package com.ghl.biz_track;
+package com.ghl.biz_track.activity;
 
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
-import androidx.annotation.Nullable;
-import androidx.constraintlayout.widget.Group;
 import android.view.View;
 
-import com.mmc.lamandys.liba_datapick.R;
+import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.Group;
+
+import com.ghl.biz_track.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +27,7 @@ public class ConstraintActivity extends Activity implements View.OnClickListener
 
         mGroup.setSelected(true);
 
-        Random random=new Random();
+        Random random = new Random();
         int nextInt = random.nextInt(3);
         List<String> list = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
@@ -40,18 +41,17 @@ public class ConstraintActivity extends Activity implements View.OnClickListener
         final float scale = context.getResources().getDisplayMetrics().density;
         return (int) (dpValue * scale + 0.5f);
     }
+
     @Override
     public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.button1:
-                if (mGroup.isSelected()) {
-                    mGroup.setVisibility(View.INVISIBLE);
-                    mGroup.setSelected(false);
-                } else {
-                    mGroup.setVisibility(View.VISIBLE);
-                    mGroup.setSelected(true);
-                }
-                break;
+        if (v.getId() == R.id.button1) {
+            if (mGroup.isSelected()) {
+                mGroup.setVisibility(View.INVISIBLE);
+                mGroup.setSelected(false);
+            } else {
+                mGroup.setVisibility(View.VISIBLE);
+                mGroup.setSelected(true);
+            }
         }
     }
 }

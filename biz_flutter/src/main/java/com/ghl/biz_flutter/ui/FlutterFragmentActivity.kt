@@ -9,10 +9,10 @@ import com.ghl.biz_flutter.R
 import com.ghl.lib_dirty.constants.Constants.CACHED_FLUTTER_ENGINE
 import com.ghl.lib_dirty.constants.flutter.ACTIVITY_FLUTTER_FRAGMENT
 import com.ghl.lib_dirty.util.StatusBarUtils
-import com.ghl.router_annotation.Router
+import com.ghl.router_annotation.Route
 import io.flutter.embedding.android.FlutterFragment
 
-@Router(ACTIVITY_FLUTTER_FRAGMENT)
+@Route(ACTIVITY_FLUTTER_FRAGMENT)
 class FlutterFragmentActivity : AppCompatActivity(), View.OnClickListener {
 
     companion object {

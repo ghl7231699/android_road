@@ -14,12 +14,12 @@
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="200dp"
         android:visibility="visible">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
             android:layout_width="match_parent"
-            android:layout_height="300dp"
+            android:layout_height="wrap_content"
             android:minHeight="?attr/actionBarSize"
             app:layout_scrollFlags="exitUntilCollapsed|scroll">
 
@@ -27,6 +27,18 @@
                 android:id="@+id/tv_home_page_banner"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:layout_gravity="bottom"
+                android:layout_marginTop="20dp"
+                android:background="@color/xz_ffffff"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="Android之路"
+                android:textColor="@color/xz_ff5a7a"
+                android:textSize="20sp" />
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
 

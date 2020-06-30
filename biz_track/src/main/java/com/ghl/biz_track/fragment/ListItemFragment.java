@@ -1,9 +1,7 @@
-package com.mmc.lamandys.liba_datapick.fragment;
+package com.ghl.biz_track.fragment;
 
 import android.content.Context;
 import android.os.Bundle;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,8 +12,11 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.mmc.lamandys.liba_datapick.R;
-import com.mmc.lamandys.liba_datapick.dummy.DummyContent;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+
+import com.ghl.biz_track.R;
+import com.ghl.biz_track.dummy.DummyContent;
 
 import java.util.List;
 
@@ -61,9 +62,9 @@ public class ListItemFragment extends Fragment implements AdapterView.OnItemClic
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         Context context = view.getContext();
-        Button button = (Button) view.findViewById(R.id.item_button);
+        Button button = view.findViewById(R.id.item_button);
         button.setText(mContent);
-        ListView listView = (ListView) view.findViewById(R.id.list);
+        ListView listView = view.findViewById(R.id.list);
         listView.setAdapter(new ListAdapter(getActivity(), DummyContent.ITEMS));
         listView.setOnItemClickListener(this);
         listView.setOnItemSelectedListener(this);
@@ -119,8 +120,8 @@ public class ListItemFragment extends Fragment implements AdapterView.OnItemClic
                 //并没有加载View
                 convertView = LayoutInflater.from(context).inflate(R.layout.fragment_item, null);
                 holder = new ViewHolder();
-                holder.numberTv = (TextView) convertView.findViewById(R.id.id);
-                holder.contentTv = (TextView) convertView.findViewById(R.id.content);
+                holder.numberTv = convertView.findViewById(R.id.id);
+                holder.contentTv = convertView.findViewById(R.id.content);
 
                 holder.numberTv.setText(dummyItemLists.get(position).id);
                 holder.contentTv.setText(dummyItemLists.get(position).content);

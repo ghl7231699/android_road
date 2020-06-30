@@ -1,4 +1,4 @@
-package com.mmc.lamandys.liba_datapick.adapter;
+package com.ghl.biz_track.adapter;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,9 +7,9 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.mmc.lamandys.liba_datapick.R;
-import com.mmc.lamandys.liba_datapick.dummy.DummyContent;
-import com.mmc.lamandys.liba_datapick.fragment.ItemFragment;
+import com.ghl.biz_track.dummy.DummyContent;
+import com.ghl.biz_track.R;
+import com.ghl.biz_track.fragment.ItemFragment;
 
 import java.util.List;
 

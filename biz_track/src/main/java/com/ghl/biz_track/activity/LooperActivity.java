@@ -1,4 +1,4 @@
-package com.ghl.biz_track;
+package com.ghl.biz_track.activity;
 
 import android.os.Bundle;
 
@@ -6,10 +6,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import com.mmc.lamandys.liba_datapick.R;
-import com.mmc.lamandys.liba_datapick.widgets.rvlooper.AutoRollAdapter;
-import com.mmc.lamandys.liba_datapick.widgets.rvlooper.AutoRollRecyclerView;
-import com.mmc.lamandys.liba_datapick.widgets.rvlooper.bean.GroupBookingEntity;
+import com.ghl.biz_track.R;
+import com.ghl.biz_track.rvlooper.AutoRollAdapter;
+import com.ghl.biz_track.rvlooper.AutoRollRecyclerView;
+import com.ghl.biz_track.rvlooper.bean.GroupBookingEntity;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -4,11 +4,22 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
+import android.widget.TextView
+import android.widget.Toast
+import android.widget.Toast.makeText
 import androidx.recyclerview.widget.RecyclerView
 import com.ghl.biz_home.R
+import com.ghl.lib_dirty.ENGINE_ID
 import com.ghl.lib_dirty.constants.Constants
+import com.ghl.lib_dirty.constants.flutter.ACTIVITY_FLUTTER_MAIN
+import com.ghl.lib_dirty.constants.main.ACTIVITY_LIVE_DATA_VIEW_MODEL
+import com.ghl.lib_dirty.constants.track.ACTIVITY_BEHAVIOR
+import com.ghl.lib_dirty.constants.track.ACTIVITY_DRAWER
+import com.ghl.lib_dirty.constants.track.ACTIVITY_RADIO
+import com.ghl.lib_dirty.constants.track.ACTIVITY_TOOL_BAR
 import com.ghl.router.lib.Router
+import com.idlefish.flutterboost.containers.BoostFlutterActivity.createDefaultIntent
+import io.flutter.embedding.android.FlutterActivity
 
 class HomePageAdapter(list: List<String>) : RecyclerView.Adapter<HomePageViewHolder>() {
     private val datas: List<String> = list
@@ -21,38 +32,35 @@ class HomePageAdapter(list: List<String>) : RecyclerView.Adapter<HomePageViewHol
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomePageViewHolder {
-
         return HomePageViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_home_page, parent, false))
     }
 }
 
 class HomePageViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-    private val mTv: Button = itemView.findViewById(R.id.item_tv)
+    private val mTv: TextView = itemView.findViewById(R.id.item_tv)
     private val mContext: Context = itemView.context
     fun bind(text: String, position: Int) {
         mTv.text = text
-
         mTv.setOnClickListener {
             when (position) {
                 0 -> jump(Constants.View_Pager2_Activity)
                 1 -> jump(Constants.Tab_Activity)
-//                2 -> jump(ToolBarActivity::class.java)
-//                3 -> jump(RadioActivity::class.java)
-//                4 -> jump(DrawerActivity::class.java)
-//                5 -> makeText(mContext, "属性动画", Toast.LENGTH_SHORT).show()
-//                6 -> jump(BehaviorActivity::class.java)
-//                7 -> mContext.startActivity(createDefaultIntent(mContext))
-//                8 -> mContext.startActivity(FlutterActivity
-//                        .withNewEngine()
-//                        .initialRoute("/login/index")
-//                        .build(mContext))
-//                9 -> mContext.startActivity(FlutterActivity
-//                        .withCachedEngine(ENGINE_ID)
-//                        .build(mContext))
-//
-//                10 -> mContext.startActivity(Intent(mContext, FlutterMainActivity::class.java))
-//                11 -> mContext.startActivity(Intent(mContext, NameActivity::class.java))
+                2 -> jump(ACTIVITY_TOOL_BAR)
+                3 -> jump(ACTIVITY_RADIO)
+                4 -> jump(ACTIVITY_DRAWER)
+                5 -> makeText(mContext, "属性动画", Toast.LENGTH_SHORT).show()
+                6 -> jump(ACTIVITY_BEHAVIOR)
+                7 -> mContext.startActivity(createDefaultIntent(mContext))
+                8 -> mContext.startActivity(FlutterActivity
+                        .withNewEngine()
+                        .initialRoute("/login/index")
+                        .build(mContext))
+                9 -> mContext.startActivity(FlutterActivity
+                        .withCachedEngine(ENGINE_ID)
+                        .build(mContext))
+                10 -> jump(ACTIVITY_FLUTTER_MAIN)
+                11 -> jump(ACTIVITY_LIVE_DATA_VIEW_MODEL)
             }
         }
     }

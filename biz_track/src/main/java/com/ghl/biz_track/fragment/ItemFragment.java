@@ -1,4 +1,4 @@
-package com.mmc.lamandys.liba_datapick.fragment;
+package com.ghl.biz_track.fragment;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -13,10 +13,10 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.mmc.lamandys.liba_datapick.R;
-import com.mmc.lamandys.liba_datapick.adapter.MyItemRecyclerViewAdapter;
-import com.mmc.lamandys.liba_datapick.bean.Person;
-import com.mmc.lamandys.liba_datapick.dummy.DummyContent;
+import com.ghl.biz_track.dummy.DummyContent;
+import com.ghl.biz_track.R;
+import com.ghl.biz_track.adapter.MyItemRecyclerViewAdapter;
+import com.ghl.biz_track.bean.Person;
 
 
 public class ItemFragment extends Fragment {

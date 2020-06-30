@@ -36,7 +36,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun initView() {
-        val params = GridLayoutManager(activity, 3)
+        val params = GridLayoutManager(activity, 2)
         params.orientation = LinearLayoutManager.VERTICAL
         with(rv_home_page) {
             layoutManager = params
@@ -67,7 +67,7 @@ class HomeFragment : Fragment() {
         list.add("调用指定flutter页面")
         list.add("Flutter与原生交互")
         list.add("咸鱼FlutterBoost")
-        list.add("LiveData+ViewModel")
+        list.add("LiveData+VM")
 
         return list
     }
@@ -90,14 +90,10 @@ class HomeV2BannerAdapter : RecyclerView.Adapter<HomeV2BannerViewHolder>() {
 }
 
 class HomeV2BannerViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-    private var mIv: AppCompatImageView? = null
-    private var colors: Array<Int>
+    private var mIv: AppCompatImageView? = itemView.findViewById(R.id.iv_item)
+    private val colors: Array<Int> = arrayOf(R.drawable.banner_1, R.drawable.banner_2, R.drawable.banner_3, R.drawable.banner_4)
 
     init {
-        mIv = itemView.findViewById(R.id.iv_item)
-
-        colors = arrayOf(R.drawable.banner_1, R.drawable.banner_2, R.drawable.banner_3, R.drawable.banner_4)
-
         mIv?.let { it ->
             it.setOnClickListener {
 //                itemView.context.startActivity(Intent(itemView.context, MainActivity::class.java))

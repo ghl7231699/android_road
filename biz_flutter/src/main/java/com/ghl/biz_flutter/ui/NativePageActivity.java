@@ -8,12 +8,12 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.ghl.biz_flutter.R;
-import com.ghl.router_annotation.Router;
+import com.ghl.router_annotation.Route;
 
 import java.util.HashMap;
 import java.util.Map;
 
-@Router("NativePageActivity")
+@Route("NativePageActivity")
 public class NativePageActivity extends AppCompatActivity implements View.OnClickListener {
 
     private TextView mOpenNative;

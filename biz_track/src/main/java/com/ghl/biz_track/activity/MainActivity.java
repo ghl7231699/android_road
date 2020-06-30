@@ -1,4 +1,4 @@
-package com.ghl.biz_track;
+package com.ghl.biz_track.activity;
 
 import android.animation.ObjectAnimator;
 import android.content.Intent;
@@ -13,20 +13,20 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.ghl.biz_flutter.ui.FlutterFragmentActivity;
+import com.ghl.biz_track.R;
 import com.ghl.lib_dirty.base.WebViewActivity;
+import com.ghl.lib_dirty.constants.main.HomeConstantsKt;
 import com.ghl.lib_dirty.util.GrayUtilsKt;
 import com.ghl.lib_dirty.util.StatusBarUtils;
-import com.ghl.router_annotation.Router;
-import com.mmc.lamandys.liba_datapick.R;
-import com.mmc.lamandys.liba_datapick.aldl.AidlActivity;
+import com.ghl.router.lib.Router;
+import com.ghl.router_annotation.Route;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 
-import static com.ghl.lib_dirty.constants.main.HomeConstantsKt.ACTIVITY_MAIN;
+import static com.ghl.lib_dirty.constants.flutter.FlutterConstantsKt.ACTIVITY_FLUTTER_FRAGMENT;
 
-@Router(HomeConstantsKt.ACTIVITY_MAIN)
+@Route(HomeConstantsKt.ACTIVITY_MAIN)
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     Button jumpButton;
@@ -67,16 +67,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         Looper looper = Looper.myLooper();
 
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                handler = new Handler(looper, msg -> {
-                    System.out.println("我收到了handler消息");
-                    return false;
-                });
+        new Thread(() -> {
+            handler = new Handler(looper, msg -> {
+                System.out.println("我收到了handler消息");
+                return false;
+            });
 
-                handler.sendEmptyMessage(0);
-            }
+            handler.sendEmptyMessage(0);
         }).start();
 
 
@@ -121,66 +118,48 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.jumpButton:
-//                State state = new StartState();
+        int id = v.getId();
+        if (id == R.id.jumpButton) {//                State state = new StartState();
 //                StateManger manger = new StateManger(state);
 //                manger.doAction();
 //                startActivity(new Intent(this, SecondActivity.class));
 //                startActivity(new Intent(this, ViewPager2Activity.class));
-                startActivity(new Intent(this, LooperActivity.class));
-                break;
-            case R.id.tabButton:
-                startActivity(new Intent(this, TabActivity.class));
-                break;
-            case R.id.toolbarButton:
-                startActivity(new Intent(MainActivity.this, ToolBarActivity.class));
-                break;
-            case R.id.radioButton:
-                startActivity(new Intent(this, RadioActivity.class));
-                break;
-            case R.id.drawerButton:
-                startActivity(new Intent(this, DrawerActivity.class));
-                break;
-            case R.id.videoBtn:
-                goScheme("qn2at72s9jb3xk://");
-                break;
-            case R.id.newsBtn:
-                goScheme("qn413e80ac2897://");
-                break;
-            case R.id.qqBtn:
-//                goScheme("4uau8k3tskx7y0://");
-                Intent intent = new Intent(this, WebViewActivity.class);
+            startActivity(new Intent(this, LooperActivity.class));
+        } else if (id == R.id.tabButton) {
+            startActivity(new Intent(this, TabActivity.class));
+        } else if (id == R.id.toolbarButton) {
+            startActivity(new Intent(MainActivity.this, ToolBarActivity.class));
+        } else if (id == R.id.radioButton) {
+            startActivity(new Intent(this, RadioActivity.class));
+        } else if (id == R.id.drawerButton) {
+            startActivity(new Intent(this, DrawerActivity.class));
+        } else if (id == R.id.videoBtn) {
+            goScheme("qn2at72s9jb3xk://");
+        } else if (id == R.id.newsBtn) {
+            goScheme("qn413e80ac2897://");
+        } else if (id == R.id.qqBtn) {//                goScheme("4uau8k3tskx7y0://");
+            Intent intent = new Intent(this, WebViewActivity.class);
 //                intent.putExtra(WebViewActivity.KEY_URL, "https://mp.weixin.qq.com/s/EioJ8ogsCxQEFm44mKFiOQ");
 //                intent.putExtra(WebViewActivity.KEY_URL, "https://blog.csdn.net/qq_41999654/article/details/88962432");
-                intent.putExtra(WebViewActivity.KEY_URL, "http://note.youdao.com/noteshare?id=d27b3b46156dc25d16cefd7eb44c9376");
+            intent.putExtra(WebViewActivity.KEY_URL, "http://note.youdao.com/noteshare?id=d27b3b46156dc25d16cefd7eb44c9376");
 //                https://blog.csdn.net/gxx_csdn/article/details/78971630
-                startActivity(intent);
-                break;
-            case R.id.ConBtn:
-//                startActivity(new Intent(this, ConstraintActivity.class));
-                if (click) {
-                    ObjectAnimator.ofFloat(testBtn, "translationX", 200f, 0f).setDuration(500).start();
-                    click = false;
-                    Log.e("ghl", testBtn.getScrollX() + "");
-                    return;
-                }
-                ObjectAnimator.ofFloat(testBtn, "translationX", 0f, 200f).setDuration(500).start();
-                click = true;
+            startActivity(intent);
+        } else if (id == R.id.ConBtn) {//                startActivity(new Intent(this, ConstraintActivity.class));
+            if (click) {
+                ObjectAnimator.ofFloat(testBtn, "translationX", 200f, 0f).setDuration(500).start();
+                click = false;
                 Log.e("ghl", testBtn.getScrollX() + "");
-                break;
-            case R.id.AnBtn:
-                Toast.makeText(this, "点你", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(this, FlutterFragmentActivity.class));
-                break;
-            case R.id.BehaviorBtn:
-                startActivity(new Intent(this, BehaviorActivity.class));
-                break;
-            case R.id.AidlBtn:
-                startActivity(new Intent(this, AidlActivity.class));
-                break;
-            default:
-                break;
+                return;
+            }
+            ObjectAnimator.ofFloat(testBtn, "translationX", 0f, 200f).setDuration(500).start();
+            click = true;
+            Log.e("ghl", testBtn.getScrollX() + "");
+        } else if (id == R.id.AnBtn) {
+            Router.with(this).target(ACTIVITY_FLUTTER_FRAGMENT).start();
+        } else if (id == R.id.BehaviorBtn) {
+            startActivity(new Intent(this, BehaviorActivity.class));
+        } else if (id == R.id.AidlBtn) {
+            Router.with(this).target("AidlActivity").start();
         }
     }
 

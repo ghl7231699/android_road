@@ -1,20 +1,26 @@
-package com.ghl.biz_track;
+package com.ghl.biz_track.activity;
 
 import android.os.Bundle;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.SearchView;
-import androidx.appcompat.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
-import com.mmc.lamandys.liba_datapick.R;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
+import androidx.appcompat.widget.Toolbar;
+
+import com.ghl.biz_track.R;
+import com.ghl.router_annotation.Route;
+
+import static com.ghl.lib_dirty.constants.track.TrackConstantsKt.ACTIVITY_TOOL_BAR;
 
 
 /**
  * 测试ToolBar，RadioGroup和CompoundButton
  */
+
+@Route(ACTIVITY_TOOL_BAR)
 public class ToolBarActivity extends AppCompatActivity {
 
     private Toolbar mToolbar;
@@ -64,22 +70,20 @@ public class ToolBarActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int menuId = item.getItemId();
-        switch (menuId) {
-            case R.id.action_search:
-                Toast.makeText(this, "点击了搜素", Toast.LENGTH_SHORT).show();
-                return true;
-            case R.id.action_notifi:
-                Toast.makeText(this, "点击了提示", Toast.LENGTH_SHORT).show();
-                return true;
-            case R.id.action_menu_item0:
-                Toast.makeText(this, "点击了item0", Toast.LENGTH_SHORT).show();
-                return true;
-            case R.id.action_menu_item1:
-                Toast.makeText(this, "点击了item1", Toast.LENGTH_SHORT).show();
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
+        if (menuId == R.id.action_search) {
+            Toast.makeText(this, "点击了搜素", Toast.LENGTH_SHORT).show();
+            return true;
+        } else if (menuId == R.id.action_notifi) {
+            Toast.makeText(this, "点击了提示", Toast.LENGTH_SHORT).show();
+            return true;
+        } else if (menuId == R.id.action_menu_item0) {
+            Toast.makeText(this, "点击了item0", Toast.LENGTH_SHORT).show();
+            return true;
+        } else if (menuId == R.id.action_menu_item1) {
+            Toast.makeText(this, "点击了item1", Toast.LENGTH_SHORT).show();
+            return true;
         }
+        return super.onOptionsItemSelected(item);
     }
 
 }

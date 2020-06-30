@@ -1,6 +1,6 @@
 package com.ghl.router_apt;
 
-import com.ghl.router_annotation.Router;
+import com.ghl.router_annotation.Route;
 import com.squareup.javapoet.ClassName;
 import com.squareup.javapoet.JavaFile;
 import com.squareup.javapoet.MethodSpec;
@@ -71,7 +71,7 @@ public class RouterAnnotationProcessor extends AbstractProcessor {
     @Override
     public Set<String> getSupportedAnnotationTypes() {
         LinkedHashSet<String> types = new LinkedHashSet<>();
-        types.add(Router.class.getCanonicalName());
+        types.add(Route.class.getCanonicalName());
         return types;
     }
 
@@ -99,11 +99,11 @@ public class RouterAnnotationProcessor extends AbstractProcessor {
                 .addAnnotation(Override.class)
                 .addCode("switch(page){\n");
 
-        Set<TypeElement> typeElements = ElementFilter.typesIn(roundEnvironment.getElementsAnnotatedWith(Router.class));
+        Set<TypeElement> typeElements = ElementFilter.typesIn(roundEnvironment.getElementsAnnotatedWith(Route.class));
 
         for (TypeElement element : typeElements
         ) {
-            String[] value = element.getAnnotation(Router.class).value();
+            String[] value = element.getAnnotation(Route.class).value();
             className.append(value[0]);
             for (String page : value) {
                 method.addCode("case $S :\n", page);

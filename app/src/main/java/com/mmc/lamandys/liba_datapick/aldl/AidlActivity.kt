@@ -9,6 +9,7 @@ import android.os.IBinder
 import android.os.RemoteException
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import com.ghl.router_annotation.Route
 import com.mmc.lamandys.liba_datapick.R
 import com.mmc.sample.IMyAidlInterface
 import kotlinx.android.synthetic.main.dial_activity.*
@@ -16,6 +17,7 @@ import kotlinx.android.synthetic.main.dial_activity.*
 const val ACTION = "com.example.androidservice.ServerService"
 private const val TAG = "ghl"
 
+@Route("AidlActivity")
 class AidlActivity : AppCompatActivity() {
 
     private var myAidlInterface: IMyAidlInterface? = null

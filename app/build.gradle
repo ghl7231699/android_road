@@ -73,6 +73,7 @@ def modules_biz = [
         ':biz_login',
         ':biz_flutter',
         ':biz_user',
+        ':biz_track',
         ':androidservice',
         ':opt_track',
         ':hot_fix',
