@@ -1,4 +1,4 @@
-package com.mmc.lamandys.liba_datapick.activity;
+package com.ghl.biz_track;
 
 import android.animation.ObjectAnimator;
 import android.content.Intent;
@@ -26,7 +26,7 @@ import org.greenrobot.eventbus.Subscribe;
 
 import static com.ghl.lib_dirty.constants.main.HomeConstantsKt.ACTIVITY_MAIN;
 
-@Router(ACTIVITY_MAIN)
+@Router(HomeConstantsKt.ACTIVITY_MAIN)
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     Button jumpButton;

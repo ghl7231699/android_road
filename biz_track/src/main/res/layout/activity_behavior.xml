@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.mmc.lamandys.liba_datapick.activity.BehaviorActivity">
+    tools:context="com.mmc.lamandys.liba_datapick.com.ghl.biz_track.BehaviorActivity">
 
     <TextView
         android:id="@+id/header"
