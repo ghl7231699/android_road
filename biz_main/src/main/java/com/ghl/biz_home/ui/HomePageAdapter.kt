@@ -17,9 +17,14 @@ import com.ghl.lib_dirty.constants.track.ACTIVITY_BEHAVIOR
 import com.ghl.lib_dirty.constants.track.ACTIVITY_DRAWER
 import com.ghl.lib_dirty.constants.track.ACTIVITY_RADIO
 import com.ghl.lib_dirty.constants.track.ACTIVITY_TOOL_BAR
+import com.ghl.lib_dirty.network.NetApi
+import com.ghl.lib_dirty.network.RetrofitManager
 import com.ghl.router.lib.Router
 import com.idlefish.flutterboost.containers.BoostFlutterActivity.createDefaultIntent
 import io.flutter.embedding.android.FlutterActivity
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class HomePageAdapter(list: List<String>) : RecyclerView.Adapter<HomePageViewHolder>() {
     private val datas: List<String> = list
@@ -61,6 +66,23 @@ class HomePageViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
                         .build(mContext))
                 10 -> jump(ACTIVITY_FLUTTER_MAIN)
                 11 -> jump(ACTIVITY_LIVE_DATA_VIEW_MODEL)
+                12 -> {
+                    val api = NetApi()
+//                    api.get("http://www.baidu.com")
+//                    api.post("http://www.baidu.com")
+                    RetrofitManager.getInstance()
+                            .createApi(HomeService::class.java)
+                            .getCall()
+                            .enqueue(object : Callback<ResultBean> {
+                                override fun onFailure(call: Call<ResultBean>, t: Throwable) {
+                                    t.printStackTrace()
+                                }
+
+                                override fun onResponse(call: Call<ResultBean>, response: Response<ResultBean>) {
+                                    println(response.body())
+                                }
+                            })
+                }
             }
         }
     }

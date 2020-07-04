@@ -29,6 +29,9 @@ class AutoApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
+        instance = this
+        mContext = applicationContext
+
         ModuleServiceManager.createApp(this)
 
         val router: INativeRouter = INativeRouter { context, url, urlParams, _, _ ->
@@ -78,7 +81,8 @@ class AutoApplication : Application() {
     }
 
     companion object {
-        var mApplicationContext: Context? = null
-        var instance: AutoApplication? = null
+        lateinit var mContext: Context
+        lateinit var instance: AutoApplication
     }
+
 }

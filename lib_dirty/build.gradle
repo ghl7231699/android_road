@@ -6,10 +6,6 @@ def modules_biz = [
 ]
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    app_implementation.each {
-        k, v -> implementation v
-    }
     modules_biz.each { biz ->
         implementation project(biz)
     }

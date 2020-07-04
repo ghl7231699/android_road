@@ -13,7 +13,7 @@ public class FlutterNetworkPlugin implements MethodChannel.MethodCallHandler {
     public void onMethodCall(MethodCall methodCall, final MethodChannel.Result result) {
         switch (methodCall.method) {
             case "finish":
-                Toast.makeText(AutoApplication.Companion.getInstance(), "finishing", Toast.LENGTH_SHORT).show();
+                Toast.makeText(AutoApplication.instance, "finishing", Toast.LENGTH_SHORT).show();
                 break;
 
             default:

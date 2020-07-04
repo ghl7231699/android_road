@@ -1,7 +1,6 @@
 package com.ghl.imc;
 
 import android.app.Application;
-import android.util.Log;
 
 import androidx.annotation.NonNull;
 
@@ -99,13 +98,11 @@ public class ModuleServiceManager {
             return;
         }
         mServiceMap.put(name, service);
-        Log.i("ghl", "bindService 方法执行了");
     }
 
     public static void createApp(Application app) {
         for (ModuleService service : mTempSaveList) {
             service.onCreateApp(app);
-            Log.i("ghl", "createApp 方法执行了" + mTempSaveList);
         }
     }
 }

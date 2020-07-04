@@ -1,5 +1,5 @@
-import com.ghl.plugin.RouterPlugin
 import com.ghl.plugin.ModuleServicePlugin
+import com.ghl.plugin.RouterPlugin
 
 ext {
     android = [
@@ -13,6 +13,8 @@ ext {
     ]
 
     kotlin_version = "1.3.70"
+    def version_okHttp = "3.12.6"
+    def version_retrofit = "2.6.4"
 
     app_implementation = [
             "annotation"             : "androidx.annotation:annotation:1.0.2",
@@ -30,8 +32,7 @@ ext {
             "navigation-ui"          : "androidx.navigation:navigation-ui:2.2.2",
             "navigation-fragment-ktx": "androidx.navigation:navigation-fragment-ktx:2.2.2",
             "navigation-ui-ktx"      : "androidx.navigation:navigation-ui-ktx:2.2.2",
-            "material"               : "com.google.android.material:material:1.1.0"
-
+            "material"               : "com.google.android.material:material:1.1.0",
     ]
 
     supportDeps = [
@@ -44,8 +45,23 @@ ext {
             recyclerView     : 'androidx.recyclerview:recyclerview:1.1.0',
             constraintLayout : 'androidx.constraintlayout:constraintlayout:1.1.3',
             coordinatorlayout: 'androidx.coordinatorlayout:coordinatorlayout:1.1.0',
-            flexbox          : 'com.google.android:flexbox:2.0.1'
+            flexbox          : 'com.google.android:flexbox:2.0.1',
     ]
+
+    okHttp = [
+            okhttp: "com.squareup.okhttp3:okhttp:$version_okHttp",
+            logger: "com.squareup.okhttp3:logging-interceptor:$version_okHttp"
+    ]
+
+    retrofit = [
+            retrofit     : "com.squareup.retrofit2:retrofit:$version_retrofit",
+            rxAdapter    : "com.squareup.retrofit2:adapter-rxjava2:$version_retrofit",
+            gsonConverter: "com.squareup.retrofit2:converter-gson:$version_retrofit",
+    ]
+
+    networkLibs = okHttp.values() + retrofit.values()
+
+    baseModulesLib = [networkLibs]
 
     android_library_biz = { projectLibrary, projectName, version_code = 1, version_name = "1.0" ->
         projectLibrary.apply {
@@ -79,6 +95,7 @@ ext {
 
         projectLibrary.dependencies {
             implementation fileTree(include: ['*.jar', '*.aar'], dir: 'libs')
+            implementation baseModulesLib
             app_implementation.each {
                 k, v -> implementation v
             }

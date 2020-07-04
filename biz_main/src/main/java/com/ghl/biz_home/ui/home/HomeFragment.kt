@@ -68,6 +68,7 @@ class HomeFragment : Fragment() {
         list.add("Flutter与原生交互")
         list.add("咸鱼FlutterBoost")
         list.add("LiveData+VM")
+        list.add("OkHttp使用")
 
         return list
     }

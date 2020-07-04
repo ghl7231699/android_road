@@ -1,4 +1,4 @@
-# volatile和synchronize的区别
+# volatile和synchronized的区别
 
 ### 原子性（atomicity）和可见性（visibility）
 
