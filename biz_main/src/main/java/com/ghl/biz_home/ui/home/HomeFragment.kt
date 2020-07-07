@@ -69,6 +69,7 @@ class HomeFragment : Fragment() {
         list.add("咸鱼FlutterBoost")
         list.add("LiveData+VM")
         list.add("OkHttp使用")
+        list.add("侧滑删除")
 
         return list
     }
