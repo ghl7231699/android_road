@@ -1,4 +1,4 @@
-package com.ghl.biz_home.ui.full_demo
+package com.ghl.biz_home.ui.sideslip
 
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
@@ -45,6 +45,7 @@ class SwipeMenuLayout @JvmOverloads constructor(context: Context, attrs: Attribu
 
     //左滑右滑的开关,默认左滑打开菜单
     private var isLeftSwipe = false
+    private var isSwipeEnable = false
 
     init {
         init(context, attrs, defStyleAttr)
@@ -62,20 +63,30 @@ class SwipeMenuLayout @JvmOverloads constructor(context: Context, attrs: Attribu
         return this
     }
 
+    fun setSwipeEnable(swipeEnable: Boolean) {
+        isSwipeEnable = swipeEnable;
+    }
+
     private fun init(context: Context, attrs: AttributeSet?, defStyleAttr: Int) {
         //IOS、QQ式交互，默认开
         isIos = true
         //左滑右滑的开关,默认左滑打开菜单
         isLeftSwipe = true
+        isSwipeEnable = false
         val ta = context.theme.obtainStyledAttributes(attrs, R.styleable.SwipeMenuLayout, defStyleAttr, 0)
         val count = ta.indexCount
         for (i in 0 until count) {
-            val attr = ta.getIndex(i)
             //如果引用成AndroidLib 资源都不是常量，无法使用switch case
-            if (attr == R.styleable.SwipeMenuLayout_ios) {
-                isIos = ta.getBoolean(attr, true)
-            } else if (attr == R.styleable.SwipeMenuLayout_leftSwipe) {
-                isLeftSwipe = ta.getBoolean(attr, true)
+            when (val attr = ta.getIndex(i)) {
+                R.styleable.SwipeMenuLayout_swipeEnable -> {
+                    isSwipeEnable = ta.getBoolean(attr, true)
+                }
+                R.styleable.SwipeMenuLayout_ios -> {
+                    isIos = ta.getBoolean(attr, true)
+                }
+                R.styleable.SwipeMenuLayout_leftSwipe -> {
+                    isLeftSwipe = ta.getBoolean(attr, true)
+                }
             }
         }
         ta.recycle()
@@ -173,154 +184,158 @@ class SwipeMenuLayout @JvmOverloads constructor(context: Context, attrs: Attribu
     }
 
     override fun dispatchTouchEvent(ev: MotionEvent): Boolean {
-        acquireVelocityTracker(ev)
-        val verTracker = mVelocityTracker
-        when (ev.action) {
-            MotionEvent.ACTION_DOWN -> {
-                isUserSwiped = false //判断手指起始落点，如果距离属于滑动了，就屏蔽一切点击事件。
-                isUnMoved = true //仿QQ，侧滑菜单展开时，点击内容区域，关闭侧滑菜单。
-                iosInterceptFlag = false //每次DOWN时，默认是不拦截的
-                isTouching = if (isTouching) { //如果有别的指头摸过了，那么就return false。这样后续的move..等事件也不会再来找这个View了。
-                    return false
-                } else {
-                    true //第一个摸的指头，赶紧改变标志，宣誓主权。
-                }
-                mLastP[ev.rawX] = ev.rawY
-                mFirstP[ev.rawX] = ev.rawY //判断手指起始落点，如果距离属于滑动了，就屏蔽一切点击事件。
+        if (isSwipeEnable) {
+            acquireVelocityTracker(ev)
+            val verTracker = mVelocityTracker
+            when (ev.action) {
+                MotionEvent.ACTION_DOWN -> {
+                    isUserSwiped = false //判断手指起始落点，如果距离属于滑动了，就屏蔽一切点击事件。
+                    isUnMoved = true //仿QQ，侧滑菜单展开时，点击内容区域，关闭侧滑菜单。
+                    iosInterceptFlag = false //每次DOWN时，默认是不拦截的
+                    isTouching = if (isTouching) { //如果有别的指头摸过了，那么就return false。这样后续的move..等事件也不会再来找这个View了。
+                        return false
+                    } else {
+                        true //第一个摸的指头，赶紧改变标志，宣誓主权。
+                    }
+                    mLastP[ev.rawX] = ev.rawY
+                    mFirstP[ev.rawX] = ev.rawY //判断手指起始落点，如果距离属于滑动了，就屏蔽一切点击事件。
 
-                //如果down，view和cacheView不一样，则立马让它还原。且把它置为null
-                viewCache?.apply {
-                    if (this !== this@SwipeMenuLayout) {
-                        smoothClose()
-                        iosInterceptFlag = isIos //IOS模式开启的话，且当前有侧滑菜单的View，且不是自己的，就该拦截事件咯。
+                    //如果down，view和cacheView不一样，则立马让它还原。且把它置为null
+                    viewCache?.apply {
+                        if (this !== this@SwipeMenuLayout) {
+                            smoothClose()
+                            iosInterceptFlag = isIos //IOS模式开启的话，且当前有侧滑菜单的View，且不是自己的，就该拦截事件咯。
+                        }
+                        //只要有一个侧滑菜单处于打开状态， 就不给外层布局上下滑动了
+                        parent.requestDisallowInterceptTouchEvent(true)
                     }
-                    //只要有一个侧滑菜单处于打开状态， 就不给外层布局上下滑动了
-                    parent.requestDisallowInterceptTouchEvent(true)
+                    //求第一个触点的id， 此时可能有多个触点，但至少一个，计算滑动速率用
+                    mPointerId = ev.getPointerId(0)
                 }
-                //求第一个触点的id， 此时可能有多个触点，但至少一个，计算滑动速率用
-                mPointerId = ev.getPointerId(0)
-            }
-            MotionEvent.ACTION_MOVE -> {
-                //IOS模式开启的话，且当前有侧滑菜单的View，且不是自己的，就该拦截事件咯。滑动也不该出现
-                if (iosInterceptFlag) {
-                    return super.dispatchTouchEvent(ev)
-                }
-                val gap = mLastP.x - ev.rawX
-                //为了在水平滑动中禁止父类ListView等再竖直滑动
-                if (abs(gap) > 10 || abs(scrollX) > 10) { //修改此处，使屏蔽父布局滑动更加灵敏，
-                    parent.requestDisallowInterceptTouchEvent(true)
-                }
-                //仿QQ，侧滑菜单展开时，点击内容区域，关闭侧滑菜单。begin
-                if (abs(gap) > mScaleTouchSlop) {
-                    isUnMoved = false
-                }
-                //仿QQ，侧滑菜单展开时，点击内容区域，关闭侧滑菜单。end
-                //如果scroller还没有滑动结束 停止滑动动画
-                scrollBy(gap.toInt(), 0) //滑动使用scrollBy
-                //越界修正
-                if (isLeftSwipe) { //左滑
-                    if (scrollX < 0) {
-                        scrollTo(0, 0)
+                MotionEvent.ACTION_MOVE -> {
+                    //IOS模式开启的话，且当前有侧滑菜单的View，且不是自己的，就该拦截事件咯。滑动也不该出现
+                    if (iosInterceptFlag) {
+                        return super.dispatchTouchEvent(ev)
                     }
-                    if (scrollX > mRightMenuWidths) {
-                        scrollTo(mRightMenuWidths, 0)
+                    val gap = mLastP.x - ev.rawX
+                    //为了在水平滑动中禁止父类ListView等再竖直滑动
+                    if (abs(gap) > 10 || abs(scrollX) > 10) { //修改此处，使屏蔽父布局滑动更加灵敏，
+                        parent.requestDisallowInterceptTouchEvent(true)
                     }
-                } else { //右滑
-                    if (scrollX < -mRightMenuWidths) {
-                        scrollTo(-mRightMenuWidths, 0)
+                    //仿QQ，侧滑菜单展开时，点击内容区域，关闭侧滑菜单。begin
+                    if (abs(gap) > mScaleTouchSlop) {
+                        isUnMoved = false
                     }
-                    if (scrollX > 0) {
-                        scrollTo(0, 0)
+                    //仿QQ，侧滑菜单展开时，点击内容区域，关闭侧滑菜单。end
+                    //如果scroller还没有滑动结束 停止滑动动画
+                    scrollBy(gap.toInt(), 0) //滑动使用scrollBy
+                    //越界修正
+                    if (isLeftSwipe) { //左滑
+                        if (scrollX < 0) {
+                            scrollTo(0, 0)
+                        }
+                        if (scrollX > mRightMenuWidths) {
+                            scrollTo(mRightMenuWidths, 0)
+                        }
+                    } else { //右滑
+                        if (scrollX < -mRightMenuWidths) {
+                            scrollTo(-mRightMenuWidths, 0)
+                        }
+                        if (scrollX > 0) {
+                            scrollTo(0, 0)
+                        }
                     }
+                    mLastP[ev.rawX] = ev.rawY
                 }
-                mLastP[ev.rawX] = ev.rawY
-            }
-            MotionEvent.ACTION_UP, MotionEvent.ACTION_CANCEL -> {
-                //判断手指起始落点，如果距离属于滑动了，就屏蔽一切点击事件。¬
-                if (abs(ev.rawX - mFirstP.x) > mScaleTouchSlop) {
-                    isUserSwiped = true
-                }
+                MotionEvent.ACTION_UP, MotionEvent.ACTION_CANCEL -> {
+                    //判断手指起始落点，如果距离属于滑动了，就屏蔽一切点击事件。¬
+                    if (abs(ev.rawX - mFirstP.x) > mScaleTouchSlop) {
+                        isUserSwiped = true
+                    }
 
-                //IOS模式开启的话，且当前有侧滑菜单的View，且不是自己的，就该拦截事件咯。滑动也不该出现
-                if (!iosInterceptFlag) { //且滑动了 才判断是否要收起、展开menu
-                    //求伪瞬时速度
-                    verTracker?.apply {
-                        computeCurrentVelocity(1000, mMaxVelocity.toFloat())
-                        val velocityX = verTracker.getXVelocity(mPointerId)
-                        if (abs(velocityX) > 1000) { //滑动速度超过阈值
-                            if (velocityX < -1000) {
-                                if (isLeftSwipe) { //左滑
+                    //IOS模式开启的话，且当前有侧滑菜单的View，且不是自己的，就该拦截事件咯。滑动也不该出现
+                    if (!iosInterceptFlag) { //且滑动了 才判断是否要收起、展开menu
+                        //求伪瞬时速度
+                        verTracker?.apply {
+                            computeCurrentVelocity(1000, mMaxVelocity.toFloat())
+                            val velocityX = verTracker.getXVelocity(mPointerId)
+                            if (abs(velocityX) > 1000) { //滑动速度超过阈值
+                                if (velocityX < -1000) {
+                                    if (isLeftSwipe) { //左滑
+                                        //平滑展开Menu
+                                        smoothExpand()
+                                    } else {
+                                        //平滑关闭Menu
+                                        smoothClose()
+                                    }
+                                } else {
+                                    if (isLeftSwipe) { //左滑
+                                        // 平滑关闭Menu
+                                        smoothClose()
+                                    } else {
+                                        //平滑展开Menu
+                                        smoothExpand()
+                                    }
+                                }
+                            } else {
+                                if (abs(scrollX) > mLimit) { //否则就判断滑动距离
                                     //平滑展开Menu
                                     smoothExpand()
                                 } else {
-                                    //平滑关闭Menu
-                                    smoothClose()
-                                }
-                            } else {
-                                if (isLeftSwipe) { //左滑
                                     // 平滑关闭Menu
                                     smoothClose()
-                                } else {
-                                    //平滑展开Menu
-                                    smoothExpand()
                                 }
-                            }
-                        } else {
-                            if (abs(scrollX) > mLimit) { //否则就判断滑动距离
-                                //平滑展开Menu
-                                smoothExpand()
-                            } else {
-                                // 平滑关闭Menu
-                                smoothClose()
                             }
                         }
                     }
+                    //释放
+                    releaseVelocityTracker()
+                    isTouching = false //没有手指在摸我了
                 }
-                //释放
-                releaseVelocityTracker()
-                isTouching = false //没有手指在摸我了
-            }
-            else -> {
+                else -> {
+                }
             }
         }
         return super.dispatchTouchEvent(ev)
     }
 
     override fun onInterceptTouchEvent(ev: MotionEvent): Boolean {
-        //禁止侧滑时，点击事件不受干扰。
-        when (ev.action) {
-            MotionEvent.ACTION_MOVE ->                 //屏蔽滑动时的事件
-                if (abs(ev.rawX - mFirstP.x) > mScaleTouchSlop) {
-                    return true
-                }
-            MotionEvent.ACTION_UP -> {
-                //为了在侧滑时，屏蔽子View的点击事件
-                if (isLeftSwipe) {
-                    if (scrollX > mScaleTouchSlop) {
-                        //解决一个智障问题~ 居然不给点击侧滑菜单 我跪着谢罪
-                        //这里判断落点在内容区域屏蔽点击，内容区域外，允许传递事件继续向下的的。。。
-                        if (ev.x < width - scrollX) {
-                            //仿QQ，侧滑菜单展开时，点击内容区域，关闭侧滑菜单。
-                            if (isUnMoved) {
-                                smoothClose()
+        if (isSwipeEnable) {
+            //禁止侧滑时，点击事件不受干扰。
+            when (ev.action) {
+                MotionEvent.ACTION_MOVE ->                 //屏蔽滑动时的事件
+                    if (abs(ev.rawX - mFirstP.x) > mScaleTouchSlop) {
+                        return true
+                    }
+                MotionEvent.ACTION_UP -> {
+                    //为了在侧滑时，屏蔽子View的点击事件
+                    if (isLeftSwipe) {
+                        if (scrollX > mScaleTouchSlop) {
+                            //解决一个智障问题~ 居然不给点击侧滑菜单 我跪着谢罪
+                            //这里判断落点在内容区域屏蔽点击，内容区域外，允许传递事件继续向下的的。。。
+                            if (ev.x < width - scrollX) {
+                                //仿QQ，侧滑菜单展开时，点击内容区域，关闭侧滑菜单。
+                                if (isUnMoved) {
+                                    smoothClose()
+                                }
+                                return true //true表示拦截
                             }
-                            return true //true表示拦截
+                        }
+                    } else {
+                        if (-scrollX > mScaleTouchSlop) {
+                            if (ev.x > -scrollX) { //点击范围在菜单外 屏蔽
+                                //仿QQ，侧滑菜单展开时，点击内容区域，关闭侧滑菜单。
+                                if (isUnMoved) {
+                                    smoothClose()
+                                }
+                                return true
+                            }
                         }
                     }
-                } else {
-                    if (-scrollX > mScaleTouchSlop) {
-                        if (ev.x > -scrollX) { //点击范围在菜单外 屏蔽
-                            //仿QQ，侧滑菜单展开时，点击内容区域，关闭侧滑菜单。
-                            if (isUnMoved) {
-                                smoothClose()
-                            }
-                            return true
-                        }
+                    // 判断手指起始落点，如果距离属于滑动了，就屏蔽一切点击事件。
+                    if (isUserSwiped) {
+                        return true
                     }
-                }
-                // 判断手指起始落点，如果距离属于滑动了，就屏蔽一切点击事件。
-                if (isUserSwiped) {
-                    return true
                 }
             }
         }

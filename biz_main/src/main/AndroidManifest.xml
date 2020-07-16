@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.ghl.biz_home">
 
-    <application>
+    <application android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity
             android:name=".ui.MainHomePageActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
@@ -13,7 +13,8 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.full_demo.FullDelDemoActivity"
+            android:name=".ui.sideslip.SideSlipActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity android:name=".ui.MyExpandableListActivity" />
     </application>
 </manifest>

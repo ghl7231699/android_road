@@ -70,6 +70,7 @@ class HomeFragment : Fragment() {
         list.add("LiveData+VM")
         list.add("OkHttp使用")
         list.add("侧滑删除")
+        list.add("展开列表")
 
         return list
     }

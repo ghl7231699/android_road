@@ -12,7 +12,8 @@ import com.ghl.biz_home.R
 import com.ghl.lib_dirty.ENGINE_ID
 import com.ghl.lib_dirty.constants.Constants
 import com.ghl.lib_dirty.constants.flutter.ACTIVITY_FLUTTER_MAIN
-import com.ghl.lib_dirty.constants.main.ACTIVITY_FULL_DEL_DEMO
+import com.ghl.lib_dirty.constants.main.ACTIVITY_EXPANDABLE_LIST
+import com.ghl.lib_dirty.constants.main.ACTIVITY_SIDE_SLIP
 import com.ghl.lib_dirty.constants.main.ACTIVITY_LIVE_DATA_VIEW_MODEL
 import com.ghl.lib_dirty.constants.track.ACTIVITY_BEHAVIOR
 import com.ghl.lib_dirty.constants.track.ACTIVITY_DRAWER
@@ -85,7 +86,10 @@ class HomePageViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
                             })
                 }
                 13 -> {
-                    jump(ACTIVITY_FULL_DEL_DEMO)
+                    jump(ACTIVITY_SIDE_SLIP)
+                }
+                14 -> {
+                    jump(ACTIVITY_EXPANDABLE_LIST)
                 }
             }
         }
