@@ -1,14 +1,14 @@
-package com.xzdz.common.base;
+package com.ghl.lib_dirty.base;
 
 import android.os.Bundle;
 import android.widget.Toast;
 
 import androidx.annotation.LayoutRes;
 import androidx.annotation.Nullable;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
-import com.xzdz.common.tools.TUtil;
+import com.ghl.lib_dirty.net.ClassTUtilKt;
+import com.ghl.lib_dirty.net.base.BaseViewModel;
 
 public abstract class BaseAacActivity<T extends BaseViewModel> extends BaseActivity {
     protected T mViewModel;
@@ -35,12 +35,12 @@ public abstract class BaseAacActivity<T extends BaseViewModel> extends BaseActiv
 
     private void subscribeToDefaultEvents() {
         if (mViewModel != null) {
-            mViewModel.getMsgLiveData().observe(this, new Observer<String>() {
-                @Override
-                public void onChanged(@Nullable String errorMsg) {
-                    showMessage(errorMsg);
-                }
-            });
+//            mViewModel.getMsgLiveData().observe(this, new Observer<String>() {
+//                @Override
+//                public void onChanged(@Nullable String errorMsg) {
+//                    showMessage(errorMsg);
+//                }
+//            });
         }
     }
 
@@ -73,7 +73,7 @@ public abstract class BaseAacActivity<T extends BaseViewModel> extends BaseActiv
     }
 
     protected Class<T> getViewModel() {
-        return TUtil.<T>getT1(this, 0);
+        return ClassTUtilKt.getT1(this, 0);
     }
 
     /**

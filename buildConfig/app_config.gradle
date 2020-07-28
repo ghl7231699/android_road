@@ -60,7 +60,11 @@ ext {
             gsonConverter: "com.squareup.retrofit2:converter-gson:$version_retrofit",
     ]
 
-    networkLibs = okHttp.values() + retrofit.values()
+    rxJava = [
+            rxAndroid: 'io.reactivex.rxjava2:rxandroid:2.1.1'
+    ]
+
+    networkLibs = okHttp.values() + retrofit.values() + rxJava.values()
 
     baseModulesLib = [networkLibs]
 

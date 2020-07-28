@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.xzdz.common.net.exception;
+package com.ghl.lib_dirty.net.exception;
 
 import android.net.ParseException;
 import android.text.TextUtils;
@@ -126,7 +126,7 @@ public class ExceptionHandle {
         }
     }
 
-    public class ERROR {
+    public static class ERROR {
         public static final int UNKNOWN = 1000;
         public static final int PARSE_ERROR = 1001;
         public static final int NETWORK_ERROR = 1002;

@@ -1,5 +1,6 @@
-package com.xzdz.common.tools;
+package com.ghl.lib_dirty.util;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
@@ -8,14 +9,14 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.xiaozhu.lib.dirty.R;
-import com.xzdz.business.application.AppContext;
+import com.ghl.lib_dirty.AutoApplication;
+import com.ghl.lib_dirty.R;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.lang.reflect.Field;
 
-/**
- * Created by wsy on 01/08/2018
- */
+
 public class SafeToast {
 
     private static Field sFieldTn;
@@ -29,7 +30,7 @@ public class SafeToast {
             sFieldTn.setAccessible(true);
             sFieldTnHandler = sFieldTn.getType().getDeclaredField("mHandler");
             sFieldTnHandler.setAccessible(true);
-        } catch (Exception e) {
+        } catch (Exception ignored) {
 
         }
     }
@@ -50,15 +51,15 @@ public class SafeToast {
 
 
     private static Toast makeToast(String msg, int duration) {
-        Context appContext = AppContext.getInstance().getAppContext();
+        Context appContext = AutoApplication.mContext;
         // 创建吐司类
-        Toast toast = Toast.makeText(appContext, "", Toast.LENGTH_LONG);
+        @SuppressLint("ShowToast") Toast toast = Toast.makeText(appContext, "", Toast.LENGTH_LONG);
         toast.setDuration(duration);
 
         // 创建自定布局
         LayoutInflater inflate = (LayoutInflater) appContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         if (inflate != null) {
-            View v = inflate.inflate(R.layout.toast_layout, null);
+            @SuppressLint("InflateParams") View v = inflate.inflate(R.layout.toast_layout, null);
             TextView tv = v.findViewById(R.id.tv_msg);
             tv.setText(msg);
 
@@ -97,15 +98,15 @@ public class SafeToast {
         }
 
         @Override
-        public void dispatchMessage(Message msg) {
+        public void dispatchMessage(@NotNull Message msg) {
             try {
                 super.dispatchMessage(msg);
-            } catch (Exception e) {
+            } catch (Exception ignored) {
             }
         }
 
         @Override
-        public void handleMessage(Message msg) {
+        public void handleMessage(@NotNull Message msg) {
             impl.handleMessage(msg);//需要委托给原Handler执行
         }
     }

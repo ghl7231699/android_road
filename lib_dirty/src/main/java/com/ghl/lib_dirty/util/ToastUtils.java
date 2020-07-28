@@ -1,4 +1,4 @@
-package com.xzdz.common.tools;
+package com.ghl.lib_dirty.util;
 
 import android.content.Context;
 import android.os.Build;
@@ -9,10 +9,8 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.xiaozhu.lib.dirty.R;
-import com.xzdz.business.application.AppContext;
-import com.xzdz.common.tools.HandlerUtils;
-import com.xzdz.common.tools.SafeToast;
+import com.ghl.lib_dirty.AutoApplication;
+import com.ghl.lib_dirty.R;
 
 /**
  * author: zhy
@@ -98,7 +96,7 @@ public class ToastUtils {
     }
 
     public static Toast makeToast(String msg, int duration) {
-        Context appContext = AppContext.getInstance().getAppContext();
+        Context appContext = AutoApplication.mContext;
         // 创建吐司类
         Toast toast = new Toast(appContext);
         toast.setDuration(duration);

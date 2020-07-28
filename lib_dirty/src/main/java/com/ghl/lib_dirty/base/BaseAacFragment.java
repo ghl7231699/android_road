@@ -1,11 +1,13 @@
-package com.xzdz.common.base;
-
-import androidx.lifecycle.ViewModelProviders;
+package com.ghl.lib_dirty.base;
 
 import android.content.Context;
 import android.os.Bundle;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.lifecycle.ViewModelProviders;
+
+import com.ghl.lib_dirty.net.base.BaseViewModel;
 
 import java.lang.reflect.ParameterizedType;
 

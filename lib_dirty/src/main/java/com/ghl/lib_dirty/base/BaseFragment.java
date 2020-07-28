@@ -1,17 +1,14 @@
-package com.xzdz.common.base;
+package com.ghl.lib_dirty.base;
 
 import android.content.Context;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import java.lang.reflect.Field;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 
 public abstract class BaseFragment extends Fragment {
     private static String STATE_SAVE_IS_HIDDEN = "STATE_SAVE_IS_HIDDEN";

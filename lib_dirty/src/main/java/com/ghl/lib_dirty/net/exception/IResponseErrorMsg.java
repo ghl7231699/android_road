@@ -13,12 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.xzdz.common.net.exception;
+package com.ghl.lib_dirty.net.exception;
 
 /**
- *  如果自定义的异常类  实现此接口
+ * 如果自定义的异常类  实现此接口
  */
 public interface IResponseErrorMsg {
-	void getErrorMsg(int errorCode);
-
+    void getErrorMsg(int errorCode);
 }

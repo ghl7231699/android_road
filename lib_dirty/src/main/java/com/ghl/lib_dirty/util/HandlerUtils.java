@@ -1,4 +1,4 @@
-package com.xzdz.common.tools;
+package com.ghl.lib_dirty.util;
 
 import android.os.Handler;
 import android.os.Looper;
