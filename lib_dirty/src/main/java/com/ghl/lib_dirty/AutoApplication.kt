@@ -6,6 +6,8 @@ import android.content.Context
 import android.widget.Toast
 import com.ghl.imc.ModuleServiceManager
 import com.ghl.lib_dirty.constants.Constants
+import com.ghl.lib_dirty.network.RetrofitManager
+import com.ghl.lib_dirty.network.loginterceptor.LogInterceptor
 import com.ghl.lib_dirty.service.AutoModuleService
 import com.ghl.lib_dirty.service.FlutterModuleService
 import com.idlefish.flutterboost.FlutterBoost
@@ -15,6 +17,7 @@ import io.flutter.embedding.engine.FlutterEngine
 import io.flutter.embedding.engine.FlutterEngineCache
 import io.flutter.embedding.engine.dart.DartExecutor
 import io.flutter.plugin.common.MethodChannel
+import okhttp3.OkHttpClient
 
 const val ENGINE_ID = "1"
 
@@ -33,6 +36,10 @@ class AutoApplication : Application() {
         mContext = applicationContext
 
         ModuleServiceManager.createApp(this)
+
+        val builder = OkHttpClient.Builder()
+        builder.addInterceptor(LogInterceptor())
+        RetrofitManager.getInstance().init(builder)
 
         val router: INativeRouter = INativeRouter { context, url, urlParams, _, _ ->
             val assembleUrl = Utils.assembleUrl(url, urlParams)
