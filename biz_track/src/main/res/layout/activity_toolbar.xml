@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="45dp"
         android:background="?attr/colorPrimary"
-        app:logo="@mipmap/ic_login"
+        app:logo="@drawable/ic_drawer"
         app:navigationIcon="@drawable/action_bar_back"
         app:popupTheme="@style/AppTheme.PopupOverlay"
         app:subtitle="Subtitle" />

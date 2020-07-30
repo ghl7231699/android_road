@@ -14,7 +14,7 @@
         android:icon="@mipmap/ic_launcher"
         android:label="Android之路"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+        android:theme="@style/SplashTheme"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
 
         <activity
