@@ -7,8 +7,9 @@ import com.ghl.imc.AbsModuleService
 import com.ghl.lib_dirty.service.FlutterModuleService
 
 class FlutterModuleImp : AbsModuleService(), FlutterModuleService {
-    override fun openPageByUrl(context: Context?, url: String?, params: Map<*, *>?): Boolean {
-        return PageRouter.openPageByUrl(context, url, params)
+    override fun openPageByUrl(context: Context?, url: String?, params: Map<String?, *>?): Boolean {
+        return PageRouter.openPageByUrl(context, url,
+                params)
     }
 
     override fun getPageTag(key: String): String {

@@ -24,9 +24,10 @@ class FlutterFragment : Fragment() {
                 ViewModelProviders.of(this).get(DashboardViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_flutter, container, false)
 
-//        val build = FlutterFragment.withNewEngine().initialRoute("/login/index").build()
+        val initialRoute = FlutterFragment.withNewEngine().initialRoute("/")
+        val build = initialRoute.build<FlutterFragment>()
 
-        val build = FlutterFragment.createDefault()
+//        val build = FlutterFragment.createDefault()
 
         fragmentManager?.apply {
             beginTransaction()

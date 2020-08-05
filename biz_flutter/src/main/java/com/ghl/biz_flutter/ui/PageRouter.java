@@ -16,17 +16,18 @@ public class PageRouter {
         put("second", "second");
         put("tab", "tab");
         put("sample://flutterPage", "flutterPage");
+        put("/", "/");
     }};
 
     public static final String NATIVE_PAGE_URL = "sample://nativePage";
     public static final String FLUTTER_PAGE_URL = "sample://flutterPage";
     public static final String FLUTTER_FRAGMENT_PAGE_URL = "sample://flutterFragmentPage";
 
-    public static boolean openPageByUrl(Context context, String url, Map params) {
+    public static boolean openPageByUrl(Context context, String url, Map<String, ?> params) {
         return openPageByUrl(context, url, params, 0);
     }
 
-    public static boolean openPageByUrl(Context context, String url, Map params, int requestCode) {
+    public static boolean openPageByUrl(Context context, String url, Map<String, ?> params, int requestCode) {
 
         String path = url.split("\\?")[0];
 
@@ -34,10 +35,12 @@ public class PageRouter {
 
         try {
             if (pageName.containsKey(path)) {
-                Intent intent = BoostFlutterActivity.withNewEngine().url(pageName.get(path)).params(params)
-                        .backgroundMode(BoostFlutterActivity.BackgroundMode.opaque).build(context);
-
-                context.startActivity(intent);
+                String value = pageName.get(path);
+                if (value != null) {
+                    Intent intent = BoostFlutterActivity.withNewEngine().url(value).params(params)
+                            .backgroundMode(BoostFlutterActivity.BackgroundMode.opaque).build(context);
+                    context.startActivity(intent);
+                }
 
             } else if (url.startsWith(FLUTTER_FRAGMENT_PAGE_URL)) {
                 context.startActivity(new Intent(context, FlutterFragmentPageActivity.class));
@@ -49,6 +52,7 @@ public class PageRouter {
                 return false;
             }
         } catch (Throwable t) {
+            t.printStackTrace();
             return false;
         }
         return false;

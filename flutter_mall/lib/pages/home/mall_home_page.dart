@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_boost/flutter_boost.dart';
 import 'package:flutter_mall/channel_constants.dart';
 import 'package:flutter_mall/common/utils/image_utils.dart';
 import 'package:flutter_mall/res/resources.dart';
@@ -77,6 +78,7 @@ class UserLoginMainState extends State<UserLoginWidget> {
                       setState(() {
                         loading = false;
                       });
+                      FlutterBoost.singleton.open("sample://nativePage");
                     },
                     text: "使用微信一键登录",
                     fontSize: 16,
