@@ -8,6 +8,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.ghl.biz_flutter.R;
+import com.ghl.lib_dirty.flutter.PageRouter;
 import com.ghl.router_annotation.Route;
 
 import java.util.HashMap;

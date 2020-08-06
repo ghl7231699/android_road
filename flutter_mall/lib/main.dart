@@ -345,3 +345,6 @@ class TestBoostNavigatorObserver extends NavigatorObserver {
     print("flutterboost#didReplace");
   }
 }
+
+
+//TODO  手势侧滑  可能需要用一个手势来包裹全部的view 重写侧滑的事件

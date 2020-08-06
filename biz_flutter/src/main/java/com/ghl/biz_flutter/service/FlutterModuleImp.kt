@@ -2,7 +2,7 @@ package com.ghl.biz_flutter.service
 
 import android.content.Context
 import com.ghl.biz_flutter.ui.FlutterFragmentActivity.Companion.TAG_FLUTTER_FRAGMENT
-import com.ghl.biz_flutter.ui.PageRouter
+import com.ghl.lib_dirty.flutter.PageRouter
 import com.ghl.imc.AbsModuleService
 import com.ghl.lib_dirty.service.FlutterModuleService
 

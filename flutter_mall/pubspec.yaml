@@ -120,7 +120,7 @@ flutter:
   # identifiers, which may be completely independent or the same as these.
   module:
     androidX: true
-    androidPackage: com.example.flutter_mall
+    androidPackage: com.xiaozhu.flutter_mall
     iosBundleIdentifier: com.example.flutterMall
 
   assets:

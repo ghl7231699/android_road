@@ -1,9 +1,10 @@
-package com.ghl.biz_flutter.ui;
+package com.ghl.lib_dirty.flutter;
 
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 
+import com.ghl.router.lib.Router;
 import com.idlefish.flutterboost.containers.BoostFlutterActivity;
 
 import java.util.HashMap;
@@ -43,10 +44,10 @@ public class PageRouter {
                 }
 
             } else if (url.startsWith(FLUTTER_FRAGMENT_PAGE_URL)) {
-                context.startActivity(new Intent(context, FlutterFragmentPageActivity.class));
+                Router.with(context).target("FlutterFragmentPageActivity").start();
                 return true;
             } else if (url.startsWith(NATIVE_PAGE_URL)) {
-                context.startActivity(new Intent(context, NativePageActivity.class));
+                Router.with(context).target("NativePageActivity").start();
                 return true;
             } else {
                 return false;
