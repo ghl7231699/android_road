@@ -143,11 +143,11 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: "v1.12.13-hotfixes"
-      resolved-ref: d151649e151226d4e3768fc89e3a487ebb443a8e
+      ref: "v1.17.1-hotfixes"
+      resolved-ref: "20514081fb4bbab11af3c326f01630627e23ce70"
       url: "https://github.com/alibaba/flutter_boost.git"
     source: git
-    version: "1.12.13+3"
+    version: "1.12.13+2"
   flutter_cache_manager:
     dependency: transitive
     description:
