@@ -38,7 +38,7 @@ public class PageRouter {
             if (pageName.containsKey(path)) {
                 String value = pageName.get(path);
                 if (value != null) {
-                    Intent intent = BoostFlutterActivity.withNewEngine().url(value).params(params)
+                    Intent intent = BoostFlutterActivity.withNewEngine().url(value).params((Map<String, Object>) params)
                             .backgroundMode(BoostFlutterActivity.BackgroundMode.opaque).build(context);
                     context.startActivity(intent);
                 }
@@ -47,7 +47,7 @@ public class PageRouter {
                 Router.with(context).target("FlutterFragmentPageActivity").start();
                 return true;
             } else if (url.startsWith(NATIVE_PAGE_URL)) {
-                Router.with(context).target("NativePageActivity").start();
+                Router.with(context).target("NativePageActivity").requestCode(10000).start();
                 return true;
             } else {
                 return false;

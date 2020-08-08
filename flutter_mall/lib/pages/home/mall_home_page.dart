@@ -7,6 +7,7 @@ import 'package:flutter_mall/common/utils/image_utils.dart';
 import 'package:flutter_mall/res/resources.dart';
 import 'package:flutter_mall/widgets/loading_widget.dart';
 import 'package:flutter_mall/widgets/text_icon_widget.dart';
+import 'package:flutter_mall/widgets/toast_widget.dart';
 
 class MallHomePage extends StatelessWidget {
   @override
@@ -78,7 +79,12 @@ class UserLoginMainState extends State<UserLoginWidget> {
                       setState(() {
                         loading = false;
                       });
-                      FlutterBoost.singleton.open("sample://nativePage");
+                      FlutterBoost.singleton
+                          .open("sample://nativePage")
+                          .then((Map value) {
+                        print('$value');
+                        ShowToast().showToast(value['native']);
+                      });
                     },
                     text: "使用微信一键登录",
                     fontSize: 16,

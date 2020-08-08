@@ -280,6 +280,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_boost/flutter_boost.dart';
+import 'package:flutter_mall/pages/home/mall_home_page.dart';
 
 import 'flutter_boost/simple_page_widgets.dart';
 
@@ -309,7 +310,8 @@ class _MyAppState extends State<MyApp> {
       'flutterPage': (pageName, params, _) {
         print("flutterPage params:$params");
 
-        return FlutterRouteWidget(params: params);
+        return MallHomePage();
+//        return FlutterRouteWidget(params: params);
       },
     });
     FlutterBoost.singleton
@@ -345,6 +347,5 @@ class TestBoostNavigatorObserver extends NavigatorObserver {
     print("flutterboost#didReplace");
   }
 }
-
 
 //TODO  手势侧滑  可能需要用一个手势来包裹全部的view 重写侧滑的事件
