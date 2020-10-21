@@ -1,6 +1,9 @@
 package com.ghl.asm
 
 import com.ghl.bean.LogMethodCell
+import com.ghl.config.LogHookConfig
+import com.ghl.util.LogAnalyticsUtil
+import com.ghl.util.Logger
 import org.objectweb.asm.AnnotationVisitor
 import org.objectweb.asm.Label
 import org.objectweb.asm.MethodVisitor
@@ -255,20 +258,19 @@ class LogMethodVisitor extends AdviceAdapter {
  */
     @Override
     AnnotationVisitor visitAnnotation(String s, boolean b) {
-        if (s == 'Lcom/mmc/lamandys/liba_datapick/AutoTrackDataViewOnClick;') {
-            isAutoTrackViewOnClickAnnotation = true
-            Logger.info("||发现 ${methodName}${methodDesc} 有注解 @AutoTrackDataViewOnClick")
-        }
-
-        if (s == 'Lcom/mmc/lamandys/liba_datapick/AutoIgnoreTrackDataOnClick;') {
-            isAutoTrackIgnoreTrackOnClick = true
-            Logger.info("||发现 ${methodName}${methodDesc} 有注解 @AutoIgnoreTrackDataOnClick")
-        }
-
-        if (s == 'Lcom/mmc/lamandys/liba_datapick/AutoDataInstrumented;') {
-            isHasInstrumented = true
-        }
-
+//        if (s == 'Lcom/mmc/lamandys/liba_datapick/AutoTrackDataViewOnClick;') {
+//            isAutoTrackViewOnClickAnnotation = true
+//            Logger.info("||发现 ${methodName}${methodDesc} 有注解 @AutoTrackDataViewOnClick")
+//        }
+//
+//        if (s == 'Lcom/mmc/lamandys/liba_datapick/AutoIgnoreTrackDataOnClick;') {
+//            isAutoTrackIgnoreTrackOnClick = true
+//            Logger.info("||发现 ${methodName}${methodDesc} 有注解 @AutoIgnoreTrackDataOnClick")
+//        }
+//
+//        if (s == 'Lcom/mmc/lamandys/liba_datapick/AutoDataInstrumented;') {
+//            isHasInstrumented = true
+//        }
         return super.visitAnnotation(s, b)
     }
 

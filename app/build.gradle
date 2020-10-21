@@ -1,5 +1,6 @@
 import com.ghl.plugin.ModuleServicePlugin
 import com.ghl.plugin.RouterPlugin
+import com.ghl.sensors.plugin.PigMethodPlugin
 
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
@@ -7,6 +8,7 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 apply plugin: RouterPlugin
 apply plugin: ModuleServicePlugin
+apply plugin: PigMethodPlugin
 
 def app_android = rootProject.ext.android
 def app_implementation = rootProject.ext.app_implementation

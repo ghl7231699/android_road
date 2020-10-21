@@ -1,5 +1,6 @@
 package com.ghl.asm
 
+import com.ghl.util.Logger
 import org.objectweb.asm.ClassReader
 import org.objectweb.asm.ClassVisitor
 import org.objectweb.asm.ClassWriter
@@ -29,11 +30,11 @@ class AutoModify {
         ClassWriter classWriter = new ClassWriter(ClassWriter.COMPUTE_MAXS)
         ClassVisitor adapter = new AutoClassVisitor(classWriter)
         ClassReader cr = new ClassReader(srcClass)
-//        try {
-        cr.accept(adapter, ClassReader.EXPAND_FRAMES)
-//        } catch (Exception e) {
+        try {
+            cr.accept(adapter, ClassReader.EXPAND_FRAMES)
+        } catch (Exception e) {
 //            Logger.info("------------->accept error " + e.getMessage())
-//        }
+        }
         return classWriter.toByteArray()
     }
     /**

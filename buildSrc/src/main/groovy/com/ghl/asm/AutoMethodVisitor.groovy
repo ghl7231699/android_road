@@ -1,5 +1,6 @@
 package com.ghl.asm
 
+import com.ghl.util.Logger
 import org.objectweb.asm.*
 import org.objectweb.asm.commons.AdviceAdapter
 

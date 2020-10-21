@@ -11,12 +11,9 @@ class LogHookConfig {
     /**
      * 日志采集埋点入口类
      */
-//    public static final String LOG_ANALYTICS_BASE = "com/mmc/lamandys/liba_datapick/AutoTrackHelper"
     public static
-    final String LOG_ANALYTICS_BASE = "com/mmc/lamandys/liba_datapick/helper/AutoTrackHelper"
-//    public static final String LOG_ANALYTICS_BASE = "com/xzdz/common/inject/AutoTrackHelper"
-    public final
-    static HashMap<String, LogMethodCell> sInterfaceMethods = new HashMap<>()
+    final String LOG_ANALYTICS_BASE = "com/ghl/opt_track/helper/AutoTrackHelper.java"
+    public final static HashMap<String, LogMethodCell> sInterfaceMethods = new HashMap<>()
 
     static {
         sInterfaceMethods.put('onClick(Landroid/view/View;)V', new LogMethodCell(

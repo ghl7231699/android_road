@@ -79,16 +79,6 @@ class AutoTransform extends Transform {
         println '##########                 -isOpenLogTrack:' + GlobalConfig.getParams().isOpenLogTrack
         println '##########                 -exclude:' + GlobalConfig.exclude
         println '##########                 -include:' + GlobalConfig.include
-//        List<AutoClassFilter> autoClassFilterList = GlobalConfig.getAutoClassFilter()
-////        autoClassFilterList.each {
-////            AutoClassFilter filter ->
-////                println '##########                                                    '
-////                println '##########                 -methodName:' + filter.MethodName
-////                println '##########                 -methodDes:' + filter.MethodDes
-////                println '##########                 -className:' + filter.ClassName
-////                println '##########                 -interfaceName:' + filter.InterfaceName
-////                println '##########                 -isAnnotation:' + filter.isAnnotation
-////        }
     }
 
     @Override
@@ -274,6 +264,7 @@ class AutoTransform extends Transform {
                     outputStream.close()
                 }
             } catch (Exception e) {
+                e.printStackTrace()
             }
         }
         return modified
