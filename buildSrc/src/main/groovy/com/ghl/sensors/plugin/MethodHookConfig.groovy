@@ -1,6 +1,5 @@
 package com.ghl.sensors.plugin
 
-import com.ghl.bean.LogMethodCell
 import org.objectweb.asm.Opcodes
 
 class MethodHookConfig {
@@ -274,7 +273,7 @@ class MethodHookConfig {
     public final static HashMap<String, AutoMethodCell> sActivityMethods = new HashMap<>()
 
     static {
-//        sActivityMethods.put('onCreate(Landroid/os/Bundle;)V', new LogMethodCell(
+//        sActivityMethods.put('onCreate(Landroid/os/Bundle;)V', new AutoMethodCell(
 //                'onCreate',
 //                '(Landroid/os/Bundle;)V',
 //                'android/app/Activity',
@@ -282,7 +281,7 @@ class MethodHookConfig {
 //                '(Ljava/lang/Object;)V',
 //                0, 1,
 //                [Opcodes.ALOAD]))
-//        sActivityMethods.put('onCreate(Landroid/os/Bundle;)V', new LogMethodCell(
+//        sActivityMethods.put('onCreate(Landroid/os/Bundle;)V', new AutoMethodCell(
 //                'onCreate',
 //                '(Landroid/os/Bundle;)V',
 //                'android/support/v7/app/AppCompatActivity',
@@ -291,7 +290,7 @@ class MethodHookConfig {
 //                1, 1,
 //                [Opcodes.ALOAD]))
 
-//        sActivityMethods.put('onRestart()V', new LogMethodCell(
+//        sActivityMethods.put('onRestart()V', new AutoMethodCell(
 //                'onRestart',
 //                '()V',
 //                'android/app/Activity',
@@ -299,7 +298,7 @@ class MethodHookConfig {
 //                '(Ljava/lang/Object;)V',
 //                0, 1,
 //                [Opcodes.ALOAD]))
-//        sActivityMethods.put('onDestroy()V', new LogMethodCell(
+//        sActivityMethods.put('onDestroy()V', new AutoMethodCell(
 //                'onDestroy',
 //                '()V',
 //                'android/app/Activity',
@@ -307,7 +306,7 @@ class MethodHookConfig {
 //                '(Ljava/lang/Object;)V',
 //                0, 1,
 //                [Opcodes.ALOAD]))
-//        sActivityMethods.put('onResume()V', new LogMethodCell(
+//        sActivityMethods.put('onResume()V', new AutoMethodCell(
 //                'onResume',
 //                '()V',
 //                'android/app/Activity',
@@ -316,7 +315,7 @@ class MethodHookConfig {
 //                0, 1,
 //                [Opcodes.ALOAD]))
 
-        sActivityMethods.put('onCreate(Landroid/os/Bundle;)V', new LogMethodCell(
+        sActivityMethods.put('onCreate(Landroid/os/Bundle;)V', new AutoMethodCell(
                 'onCreate',
                 '(Landroid/os/Bundle;)V',
                 'android/app/Activity',
@@ -325,7 +324,7 @@ class MethodHookConfig {
                 0, 1,
                 [Opcodes.ALOAD]))
 
-//        sActivityMethods.put('onDestroy()V', new LogMethodCell(
+//        sActivityMethods.put('onDestroy()V', new AutoMethodCell(
 //                'onDestroy',
 //                '()V',
 //                'android/support/v7/app/AppCompatActivity',
@@ -333,7 +332,7 @@ class MethodHookConfig {
 //                '()V',
 //                1, 1,
 //                [Opcodes.ALOAD]))
-        sActivityMethods.put('onRestart()V', new LogMethodCell(
+        sActivityMethods.put('onRestart()V', new AutoMethodCell(
                 'onRestart',
                 '()V',
                 'android/app/Activity',
@@ -341,7 +340,7 @@ class MethodHookConfig {
                 '(Ljava/lang/Object;)V',
                 0, 1,
                 [Opcodes.ALOAD]))
-        sActivityMethods.put('onResume()V', new LogMethodCell(
+        sActivityMethods.put('onResume()V', new AutoMethodCell(
                 'onResume',
                 '()V',
                 'android/app/Activity',
@@ -349,7 +348,7 @@ class MethodHookConfig {
                 '(Ljava/lang/Object;)V',
                 0, 1,
                 [Opcodes.ALOAD]))
-        sActivityMethods.put('onDestroy()V', new LogMethodCell(
+        sActivityMethods.put('onDestroy()V', new AutoMethodCell(
                 'onDestroy',
                 '()V',
                 'android/app/Activity',
@@ -357,7 +356,7 @@ class MethodHookConfig {
                 '(Ljava/lang/Object;)V',
                 0, 1,
                 [Opcodes.ALOAD]))
-        sActivityMethods.put('onWindowFocusChanged(Z)V', new LogMethodCell(
+        sActivityMethods.put('onWindowFocusChanged(Z)V', new AutoMethodCell(
                 'onWindowFocusChanged',
                 '(Z)V',
                 '',
@@ -373,16 +372,16 @@ class MethodHookConfig {
     public final static HashMap<String, AutoMethodCell> sApplicationMethods = new HashMap<>()
 
     static {
-        sApplicationMethods.put('onCreate()V', new LogMethodCell(
+        sApplicationMethods.put('onCreate()V', new AutoMethodCell(
                 'onCreate',
                 '()V',
                 'android/app/Application',
-                'appStart',
-                '()V',
-                1, 0,
+                'startApp',
+                '(Ljava/lang/Object;)V',
+                0, 1,
                 [Opcodes.ALOAD]))
 
-//        sApplicationMethods.put('attachBaseContext(Landroid/content/Context;)V', new LogMethodCell(
+//        sApplicationMethods.put('attachBaseContext(Landroid/content/Context;)V', new AutoMethodCell(
 //                'attachBaseContext',
 //                '(Landroid/content/Context;)V',
 //                'android/app/Application',
