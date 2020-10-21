@@ -1,5 +1,6 @@
 package com.ghl.sensors.plugin
 
+
 import com.ghl.sensors.plugin.log.InjectLogger
 import org.objectweb.asm.*
 
@@ -8,6 +9,7 @@ class AutoClassVisitor extends ClassVisitor {
     private String mSuperName
     private String[] mInterfaces
     private HashSet<String> visitedFragMethods = new HashSet<>()// 无需判空
+    public HashSet<String> sActivityMethods
     private ClassVisitor classVisitor
 
     private AutoTransformHelper transformHelper
@@ -67,7 +69,6 @@ class AutoClassVisitor extends ClassVisitor {
         }
     }
 
-
     /**
      * 该方法是当扫描器完成类扫描时才会调用，如果想在类中追加某些方法，可以在该方法中实现。
      */
@@ -106,7 +107,6 @@ class AutoClassVisitor extends ClassVisitor {
             InjectLogger.info("结束扫描类：${mClassName}\n")
         }
     }
-
 
     @Override
     FieldVisitor visitField(int access, String name, String descriptor, String signature, Object value) {
@@ -162,7 +162,6 @@ class AutoClassVisitor extends ClassVisitor {
             boolean isHasInstrumented = false
             boolean isHasTracked = false
             int variableID = 0
-            //nameDesc是'onClick(Landroid/view/View;)V'字符串
             boolean isOnClickMethod = false
             boolean isOnItemClickMethod = false
             //name + desc
@@ -332,6 +331,32 @@ class AutoClassVisitor extends ClassVisitor {
             void handleCode() {
                 if (isHasInstrumented || classNameAnalytics.isSensorsDataAPI) {
                     return
+                }
+
+                /**
+                 * Activity
+                 */
+                if (AutoAnalyticsUtil.isInstanceOfActivity(mSuperName)) {
+                    AutoMethodCell sensorsAnalyticsMethodCell = MethodHookConfig.sActivityMethods.get(nameDesc)
+                    if (sensorsAnalyticsMethodCell != null) {
+                        if (sActivityMethods != null) {
+                            sActivityMethods.add(nameDesc)
+                        }
+                        visitMethodWithLoadedParams(methodVisitor, Opcodes.INVOKESTATIC, MethodHookConfig.SENSORS_ANALYTICS_API, sensorsAnalyticsMethodCell.agentName, sensorsAnalyticsMethodCell.agentDesc, sensorsAnalyticsMethodCell.paramsStart, sensorsAnalyticsMethodCell.paramsCount, sensorsAnalyticsMethodCell.opcodes)
+                        isHasTracked = true
+                        return
+                    }
+                }
+                /**
+                 * Application
+                 */
+                if (AutoAnalyticsUtil.isInstanceOfApplication(mSuperName)) {
+                    AutoMethodCell sensorsAnalyticsMethodCell = MethodHookConfig.sApplicationMethods.get(nameDesc)
+                    if (sensorsAnalyticsMethodCell != null) {
+                        visitMethodWithLoadedParams(methodVisitor, Opcodes.INVOKESTATIC, MethodHookConfig.SENSORS_ANALYTICS_API, sensorsAnalyticsMethodCell.agentName, sensorsAnalyticsMethodCell.agentDesc, sensorsAnalyticsMethodCell.paramsStart, sensorsAnalyticsMethodCell.paramsCount, sensorsAnalyticsMethodCell.opcodes)
+                        isHasTracked = true
+                        return
+                    }
                 }
 
                 /**

@@ -107,7 +107,7 @@ class AutoTransform extends Transform {
     private void beforeTransform(TransformInvocation transformInvocation) {
         //打印提示信息
         InjectLogger.printCopyright()
-        InjectLogger.setDebug(transformHelper.extension.debug)
+        InjectLogger.setDebug(true)
         transformHelper.onTransform()
         println("[SensorsAnalytics]: 是否开启多线程编译:${!transformHelper.disableSensorsAnalyticsMultiThread}")
         println("[SensorsAnalytics]: 是否开启增量编译:${!transformHelper.disableSensorsAnalyticsIncremental}")

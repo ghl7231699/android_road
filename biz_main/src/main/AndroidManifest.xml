@@ -6,6 +6,9 @@
         <activity
             android:name=".ui.MainHomePageActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name="com.ghl.biz_home.ui.MainActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
 
         <activity
             android:name=".ui.sideslip.SideSlipActivity"

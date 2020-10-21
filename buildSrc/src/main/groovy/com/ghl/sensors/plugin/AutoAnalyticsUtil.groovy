@@ -27,6 +27,8 @@ class AutoAnalyticsUtil {
     private static final HashSet<String> targetFragmentClass = new HashSet()
     private static final HashSet<String> targetMenuMethodDesc = new HashSet()
     private static final HashSet<String> specialClass = new HashSet()
+    private static final HashSet<String> targetActivityMethodDesc = new HashSet()
+    private static final HashSet<String> targetApplicationMethodDesc = new HashSet<>()
 
     static {
         /**
@@ -56,6 +58,20 @@ class AutoAnalyticsUtil {
         targetFragmentClass.add('androidx/fragment/app/ListFragment')
         targetFragmentClass.add('androidx/fragment/app/DialogFragment')
 
+        /**
+         * Activity
+         */
+        targetActivityMethodDesc.add('android/app/Activity')
+        targetActivityMethodDesc.add('androidx/appcompat/app/AppCompatActivity')
+//        targetActivityMethodDesc.add('com/mmc/lamandys/liba_datapick/base/BaseActivity')
+
+        /**
+         * Application
+         */
+
+        targetApplicationMethodDesc.add('android/app/Application')
+
+
         for (className in AutoTransformHelper.special) {
             specialClass.add(className.replace('.', '/'))
         }
@@ -76,6 +92,14 @@ class AutoAnalyticsUtil {
 
     static boolean isInstanceOfFragment(String superName) {
         return targetFragmentClass.contains(superName)
+    }
+
+    static boolean isInstanceOfActivity(String superName) {
+        return targetActivityMethodDesc.contains(superName)
+    }
+
+    static boolean isInstanceOfApplication(String superName) {
+        return targetApplicationMethodDesc.contains(superName)
     }
 
     static boolean isTargetClassInSpecial(String className) {

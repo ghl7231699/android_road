@@ -65,6 +65,11 @@ public class AutoTrackHelper {
         return isDeBounceTrack;
     }
 
+
+    public static void onCreate() {
+        System.out.println("Page事件：" + "我是activity执行了");
+    }
+
     /**
      * 对应的埋点方法{@link Fragment#onViewCreated(View, Bundle)}
      *

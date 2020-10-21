@@ -150,7 +150,6 @@ class AutoClassVisitor extends ClassVisitor {
                 String key = entry.getKey()
                 LogMethodCell methodCell = entry.getValue()
                 if (visitedActivityMethods.contains(key)) {
-                    StatusBarUtils.java
                     continue
                 }
                 Logger.info("||Hooked class:injected method:" + methodCell.agentName)

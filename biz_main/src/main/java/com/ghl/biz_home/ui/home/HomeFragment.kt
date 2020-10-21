@@ -35,6 +35,10 @@ class HomeFragment : Fragment() {
         initView()
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+    }
+
     private fun initView() {
         val params = GridLayoutManager(activity, 2)
         params.orientation = LinearLayoutManager.VERTICAL

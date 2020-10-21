@@ -73,15 +73,15 @@ android {
 def modules_biz = [
         ':biz_main',
         ':biz_login',
-        ':biz_flutter',
+//        ':biz_flutter',
         ':biz_user',
         ':biz_track',
-        ':androidservice',
+//        ':androidservice',
         ':opt_track',
-        ':hot_fix',
-        ':flutter',
+//        ':hot_fix',
+//        ':flutter',
         ':lib_dirty',
-        ':flutter_boost'
+//        ':flutter_boost'
 ]
 
 dependencies {
