@@ -7,9 +7,6 @@ repositories {
     mavenCentral()
 }
 
-//targetCompatibility = JavaVersion.VERSION_1_7
-//sourceCompatibility = JavaVersion.VERSION_1_7
-
 dependencies {
     implementation gradleApi()
     implementation localGroovy()
@@ -22,13 +19,7 @@ dependencies {
 def groupId = 'com.xiaozhu'
 version = '1.0.2'
 def artifactId = 'injectcode-gradle-plugin'
-////是否提交到仓库
-//def uploadDataGatherSdk = true
-////是否为正式版
-//def release = false
 
-//打包到远程或本地Maven仓库
-//设置maven deployer
 uploadArchives {
     version = version
     repositories {
@@ -36,12 +27,20 @@ uploadArchives {
             pom.groupId = groupId
             pom.artifactId = artifactId
             pom.version = version
-//            repository(url: uri('/Users/guhongliang/.m2/repository'))
-            repository(url: uri('/Users/guhongliang/apache-maven-3.6.0/repository'))
-//            repository(url: uri('../snapshotRepo'))
+            repository(url: uri('../snapshotRepo'))
         }
     }
 }
+
+////是否提交到仓库
+//def uploadDataGatherSdk = true
+////是否为正式版
+//def release = false
+//打包到远程或本地Maven仓库
+//设置maven deployer
+
+//targetCompatibility = JavaVersion.VERSION_1_7
+//sourceCompatibility = JavaVersion.VERSION_1_7
 
 // 提交到服务器maven库
 //if (uploadDataGatherSdk) {

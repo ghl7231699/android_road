@@ -657,6 +657,14 @@ class AutoClassVisitor extends ClassVisitor {
         return sensorsAnalyticsDefaultMethodVisitor
     }
 
+    @Override
+    AnnotationVisitor visitAnnotation(String descriptor, boolean visible) {
+        if (descriptor == 'Lcom/ghl/router_annotation/Route;') {
+            InjectLogger.info("扫描到想要的注解类${descriptor}")
+        }
+        InjectLogger.info("扫描到注解类：${descriptor}----->${mClassName}")
+        return super.visitAnnotation(descriptor, visible)
+    }
     /**
      * 获取方法参数下标为 index 的对应 ASM index
      * @param types 方法参数类型数组
