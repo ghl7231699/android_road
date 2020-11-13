@@ -10,6 +10,7 @@ import com.ghl.lib_dirty.util.StatusBarUtils
 import com.ghl.router_annotation.Route
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
+@Route(ACTIVITY_HOME)
 class MainHomePageActivity : AppCompatActivity() {
 
     private val mNavigator: BottomNavigationView by lazy {
