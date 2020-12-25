@@ -10,7 +10,7 @@ class SplashActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        Router.with(this).target(ACTIVITY_MAIN).start()
+        Router.with(this).target(ACTIVITY_HOME).start()
         finish()
     }
 }

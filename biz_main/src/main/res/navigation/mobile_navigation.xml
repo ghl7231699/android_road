@@ -13,7 +13,7 @@
 
     <fragment
         android:id="@+id/navigation_flutter"
-        android:name="com.ghl.biz_home.ui.flutter.FlutterFragment"
+        android:name="com.ghl.biz_flutter.flutter.MyFlutterFragment"
         android:label="@string/title_flutter"
         tools:layout="@layout/fragment_flutter" />
 

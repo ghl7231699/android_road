@@ -1,7 +1,6 @@
 rootProject.ext.android_library_biz this, "bizLogin"
 def modules_biz = [
-        ':flutter',
-        ':flutter_boost'
+        ':biz_flutter',
 ]
 dependencies {
     modules_biz.each { biz ->

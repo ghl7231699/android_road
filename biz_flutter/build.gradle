@@ -1,10 +1,4 @@
 rootProject.ext.android_library_biz this, "bizFlutter"
-def modules_biz = [
-        ':flutter',
-        ':flutter_boost'
-]
 dependencies {
-    modules_biz.each { biz ->
-        implementation project(biz)
-    }
+    implementation files('libs/flutter-release.aar')
 }

@@ -7,7 +7,7 @@ import android.view.View
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.ghl.biz_flutter.R
-import com.ghl.lib_dirty.flutter.PageRouter
+import com.ghl.biz_flutter.flutter.PageRouter
 import com.ghl.router_annotation.Route
 import com.idlefish.flutterboost.interfaces.IFlutterViewContainer
 import java.io.Serializable

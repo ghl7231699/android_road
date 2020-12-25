@@ -12,6 +12,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/xz_ffffff"
+        app:itemBackground="@color/xz_f5b64f"
+        app:itemIconTint="@color/xz_ff5a7a"
+        app:itemTextColor="@color/xz_ff5a7a"
         app:layout_constraintBottom_toBottomOf="parent"
         app:menu="@menu/bottom_nav_menu" />
 

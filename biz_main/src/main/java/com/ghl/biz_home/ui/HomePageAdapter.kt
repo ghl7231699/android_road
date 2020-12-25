@@ -8,8 +8,8 @@ import android.widget.TextView
 import android.widget.Toast
 import android.widget.Toast.makeText
 import androidx.recyclerview.widget.RecyclerView
+import com.ghl.biz_flutter.flutter.PageRouter
 import com.ghl.biz_home.R
-import com.ghl.lib_dirty.ENGINE_ID
 import com.ghl.lib_dirty.constants.Constants
 import com.ghl.lib_dirty.constants.login.LOGIN_TEST_PAGE
 import com.ghl.lib_dirty.constants.main.ACTIVITY_EXPANDABLE_LIST
@@ -19,10 +19,7 @@ import com.ghl.lib_dirty.constants.track.ACTIVITY_BEHAVIOR
 import com.ghl.lib_dirty.constants.track.ACTIVITY_DRAWER
 import com.ghl.lib_dirty.constants.track.ACTIVITY_RADIO
 import com.ghl.lib_dirty.constants.track.ACTIVITY_TOOL_BAR
-import com.ghl.lib_dirty.flutter.PageRouter
 import com.ghl.router.lib.Router
-import com.idlefish.flutterboost.containers.BoostFlutterActivity.createDefaultIntent
-import io.flutter.embedding.android.FlutterActivity
 
 class HomePageAdapter(list: List<String>) : RecyclerView.Adapter<HomePageViewHolder>() {
     private val datas: List<String> = list
@@ -54,14 +51,14 @@ class HomePageViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
                 4 -> jump(ACTIVITY_DRAWER)
                 5 -> makeText(mContext, "属性动画", Toast.LENGTH_SHORT).show()
                 6 -> jump(ACTIVITY_BEHAVIOR)
-                7 -> mContext.startActivity(createDefaultIntent(mContext))
-                8 -> mContext.startActivity(FlutterActivity
-                        .withNewEngine()
-                        .initialRoute("/login/index")
-                        .build(mContext))
-                9 -> mContext.startActivity(FlutterActivity
-                        .withCachedEngine(ENGINE_ID)
-                        .build(mContext))
+//                7 -> mContext.startActivity(createDefaultIntent(mContext))
+//                8 -> mContext.startActivity(FlutterActivity
+//                        .withNewEngine()
+//                        .initialRoute("/login/index")
+//                        .build(mContext))
+//                9 -> mContext.startActivity(FlutterActivity
+//                        .withCachedEngine(ENGINE_ID)
+//                        .build(mContext))
 //                10 -> jump(ACTIVITY_FLUTTER_MAIN)
                 10 -> {
                     val params = HashMap<String, Any>()

@@ -5,7 +5,7 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.ghl.biz_flutter.R
 import com.ghl.lib_dirty.constants.flutter.ACTIVITY_FLUTTER_MAIN
-import com.ghl.lib_dirty.flutter.PageRouter
+import com.ghl.biz_flutter.flutter.PageRouter
 import com.ghl.router_annotation.Route
 import java.lang.ref.WeakReference
 

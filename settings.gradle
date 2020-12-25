@@ -1,8 +1,3 @@
-setBinding(new Binding([gradle: this]))
-evaluate(new File(
-        settingsDir,
-        '/flutter_mall/.android/include_flutter.groovy'
-))
 include ':biz_main'
 include ':biz_login'
 include ':biz_flutter'
@@ -11,7 +6,7 @@ include ':biz_user'
 include ':app', ':kotlin'
 
 include ':flutter_mall'
-include ':design_mode'
+//include ':design_mode'
 include ':hot_fix'
 include ':lib_dirty'
 include ':opt_track'
@@ -21,3 +16,12 @@ include ':androidservice'
 include ':router'
 include ':router:router_annotation'
 include ':router:router_apt'
+
+
+
+
+//setBinding(new Binding([gradle: this]))
+//evaluate(new File(
+//        settingsDir,
+//        '/flutter_mall/.android/include_flutter.groovy'
+//))
