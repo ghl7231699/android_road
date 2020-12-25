@@ -4,8 +4,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Process;
 
-import com.ghl.lib_dirty.AutoApplication;
-import com.ghl.lib_dirty.constants.main.HomeConstantsKt;
+import com.ghl.common.AutoApplication;
+import com.ghl.common.constants.main.HomeConstantsKt;
 import com.ghl.router.lib.Router;
 
 import java.lang.Thread.UncaughtExceptionHandler;

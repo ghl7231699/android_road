@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.ghl.biz_track.R;
 import com.ghl.router_annotation.Route;
 
-import static com.ghl.lib_dirty.constants.track.TrackConstantsKt.ACTIVITY_BEHAVIOR;
+import static com.ghl.common.constants.track.TrackConstantsKt.ACTIVITY_BEHAVIOR;
 
 @Route(ACTIVITY_BEHAVIOR)
 public class BehaviorActivity extends AppCompatActivity {

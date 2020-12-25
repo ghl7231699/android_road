@@ -6,9 +6,6 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.ghl.biz_home.R;
-import com.ghl.router_annotation.Route;
-
-import static com.ghl.lib_dirty.constants.main.HomeConstantsKt.ACTIVITY_HOME;
 
 public class MainActivity extends AppCompatActivity {
     @Override

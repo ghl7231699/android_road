@@ -1,12 +1,12 @@
 package com.ghl.opt_track.timer;
 
-import com.ghl.lib_dirty.AutoApplication;
-import com.ghl.lib_dirty.util.TimeUtil;
+import com.ghl.common.AutoApplication;
+import com.ghl.common.util.TimeUtil;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.ghl.lib_dirty.util.TimeUtil.TIMESTAMP;
+import static com.ghl.common.util.TimeUtil.TIMESTAMP;
 
 /**
  * 类描述：计时类，编译器加入指定方法中

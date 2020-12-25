@@ -1,9 +1,4 @@
-rootProject.ext.android_library_biz this, "bizMain"
-def modules_biz = [
-        ':biz_flutter',
-]
+rootProject.ext.android_library_biz this, "bizMain", 1, "1.0", true, "com.ghl.biz_home"
 dependencies {
-    modules_biz.each { biz ->
-        implementation project(biz)
-    }
+    implementation project(':biz_flutter')
 }

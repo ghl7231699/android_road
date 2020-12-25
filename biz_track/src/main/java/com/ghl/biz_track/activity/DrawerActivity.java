@@ -14,7 +14,7 @@ import com.ghl.biz_track.R;
 import com.ghl.biz_track.fragment.NavigationDrawerFragment;
 import com.ghl.router_annotation.Route;
 
-import static com.ghl.lib_dirty.constants.track.TrackConstantsKt.ACTIVITY_DRAWER;
+import static com.ghl.common.constants.track.TrackConstantsKt.ACTIVITY_DRAWER;
 
 @Route(ACTIVITY_DRAWER)
 public class DrawerActivity extends Activity

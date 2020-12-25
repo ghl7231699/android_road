@@ -82,7 +82,7 @@ def modules_biz = [
         ':androidservice',
         ':opt_track',
         ':hot_fix',
-        ':lib_dirty',
+        ':lib_common',
 ]
 
 dependencies {

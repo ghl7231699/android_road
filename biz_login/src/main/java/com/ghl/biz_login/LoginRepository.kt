@@ -1,6 +1,6 @@
 package com.ghl.biz_login
 
-import com.ghl.lib_dirty.net.base.BaseRepository
+import com.ghl.common.net.base.BaseRepository
 import io.reactivex.Observable
 
 class LoginRepository : BaseRepository() {

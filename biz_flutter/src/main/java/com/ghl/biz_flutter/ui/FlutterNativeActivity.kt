@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.ghl.biz_flutter.R
-import com.ghl.lib_dirty.ENGINE_ID
+import com.ghl.common.ENGINE_ID
 import io.flutter.embedding.android.FlutterActivity
 
 class FlutterNativeActivity : AppCompatActivity() {

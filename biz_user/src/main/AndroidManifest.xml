@@ -3,7 +3,7 @@
 
     <application>
         <activity
-            android:name="com.ghl.lib_dirty.base.WebViewActivity"
+            android:name="com.ghl.common.base.WebViewActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
     </application>
 </manifest>

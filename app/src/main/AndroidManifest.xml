@@ -3,12 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.mmc.lamandys.liba_datapick">
 
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-
     <application
-        android:name="com.ghl.lib_dirty.AutoApplication"
+        android:name="com.ghl.common.AutoApplication"
         android:allowBackup="true"
         android:hardwareAccelerated="true"
         android:icon="@mipmap/ic_launcher"

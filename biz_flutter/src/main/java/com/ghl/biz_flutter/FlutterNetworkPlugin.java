@@ -2,7 +2,7 @@ package com.ghl.biz_flutter;
 
 import android.widget.Toast;
 
-import com.ghl.lib_dirty.AutoApplication;
+import com.ghl.common.AutoApplication;
 
 import io.flutter.plugin.common.MethodCall;
 import io.flutter.plugin.common.MethodChannel;

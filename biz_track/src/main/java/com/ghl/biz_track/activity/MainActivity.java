@@ -14,17 +14,17 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.ghl.biz_track.R;
-import com.ghl.lib_dirty.base.WebViewActivity;
-import com.ghl.lib_dirty.constants.main.HomeConstantsKt;
-import com.ghl.lib_dirty.util.GrayUtilsKt;
-import com.ghl.lib_dirty.util.StatusBarUtils;
+import com.ghl.common.base.WebViewActivity;
+import com.ghl.common.constants.main.HomeConstantsKt;
+import com.ghl.common.util.GrayUtilsKt;
+import com.ghl.common.util.StatusBarUtils;
 import com.ghl.router.lib.Router;
 import com.ghl.router_annotation.Route;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 
-import static com.ghl.lib_dirty.constants.flutter.FlutterConstantsKt.ACTIVITY_FLUTTER_FRAGMENT;
+import static com.ghl.common.constants.flutter.FlutterConstantsKt.ACTIVITY_FLUTTER_FRAGMENT;
 
 @Route(HomeConstantsKt.ACTIVITY_MAIN)
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {

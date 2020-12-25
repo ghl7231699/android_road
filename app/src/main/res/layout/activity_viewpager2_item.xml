@@ -16,7 +16,7 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.ghl.lib_dirty.widgets.gray_layer.GrayImageView
+    <com.ghl.common.widgets.gray_layer.GrayImageView
         android:id="@+id/giv_item"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.ghl.biz_home.R
 import com.ghl.biz_home.ui.sideslip.SideSlipAdapter.OnSwipeListener
 import com.ghl.biz_home.ui.sideslip.SwipeMenuLayout.Companion.viewCache
-import com.ghl.lib_dirty.constants.main.ACTIVITY_SIDE_SLIP
+import com.ghl.common.constants.main.ACTIVITY_SIDE_SLIP
 import com.ghl.router_annotation.Route
 import java.util.*
 

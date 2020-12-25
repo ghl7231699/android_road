@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import com.ghl.biz_flutter.R
 import com.ghl.imc.ModuleServiceManager
-import com.ghl.lib_dirty.service.FlutterModuleService
+import com.ghl.common.service.FlutterModuleService
 import io.flutter.embedding.android.FlutterFragment
 
 class MyFlutterFragment : Fragment() {

@@ -24,7 +24,7 @@ import android.widget.RadioGroup;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 
-import com.ghl.lib_dirty.util.ReflectUtil;
+import com.ghl.common.util.ReflectUtil;
 import com.ghl.opt_track.core.AutoTrackUtil;
 import com.ghl.opt_track.performance.FPSFrameCallBack;
 import com.ghl.opt_track.timer.TimeExecutor;

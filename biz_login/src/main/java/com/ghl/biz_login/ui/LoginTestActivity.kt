@@ -4,9 +4,9 @@ import android.os.Bundle
 import androidx.lifecycle.Observer
 import com.ghl.biz_login.LoginViewModel
 import com.ghl.biz_login.R
-import com.ghl.lib_dirty.base.BaseAacActivity
-import com.ghl.lib_dirty.constants.login.LOGIN_TEST_PAGE
-import com.ghl.lib_dirty.util.ToastUtils
+import com.ghl.common.base.BaseAacActivity
+import com.ghl.common.constants.login.LOGIN_TEST_PAGE
+import com.ghl.common.util.ToastUtils
 import com.ghl.router_annotation.Route
 
 @Route(LOGIN_TEST_PAGE)

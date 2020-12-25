@@ -21,7 +21,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.ghl.biz_track.R;
 import com.ghl.router_annotation.Route;
 
-import static com.ghl.lib_dirty.constants.track.TrackConstantsKt.ACTIVITY_RADIO;
+import static com.ghl.common.constants.track.TrackConstantsKt.ACTIVITY_RADIO;
 
 
 /**

@@ -1,6 +1,6 @@
 package com.ghl.biz_home.ui
 
-import com.ghl.lib_dirty.net.base.BaseBean
+import com.ghl.common.net.base.BaseBean
 import retrofit2.Call
 import retrofit2.http.GET
 

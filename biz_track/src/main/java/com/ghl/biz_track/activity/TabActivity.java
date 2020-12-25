@@ -13,7 +13,7 @@ import com.ghl.biz_track.dummy.DummyContent;
 import com.ghl.biz_track.fragment.ExpendListViewFragment;
 import com.ghl.biz_track.fragment.ItemFragment;
 import com.ghl.biz_track.fragment.ListItemFragment;
-import com.ghl.lib_dirty.constants.Constants;
+import com.ghl.common.constants.Constants;
 import com.ghl.router_annotation.Route;
 import com.google.android.material.tabs.TabLayout;
 

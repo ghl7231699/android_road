@@ -9,9 +9,9 @@ import com.ghl.biz_flutter.flutter.TextPlatformViewFactory
 import com.ghl.biz_flutter.ui.FlutterFragmentActivity.Companion.TAG_FLUTTER_FRAGMENT
 import com.ghl.imc.AbsModuleService
 import com.ghl.imc.ModuleServiceManager
-import com.ghl.lib_dirty.ENGINE_ID
-import com.ghl.lib_dirty.constants.Constants
-import com.ghl.lib_dirty.service.FlutterModuleService
+import com.ghl.common.ENGINE_ID
+import com.ghl.common.constants.Constants
+import com.ghl.common.service.FlutterModuleService
 import com.idlefish.flutterboost.FlutterBoost
 import com.idlefish.flutterboost.Utils
 import com.idlefish.flutterboost.interfaces.INativeRouter

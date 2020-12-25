@@ -15,7 +15,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.ghl.biz_login.R
-import com.ghl.lib_dirty.constants.login.LOGIN_MAIN_PAGE
+import com.ghl.common.constants.login.LOGIN_MAIN_PAGE
 import com.ghl.router_annotation.Route
 
 @Route(LOGIN_MAIN_PAGE)

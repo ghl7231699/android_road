@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.ghl.biz_home.R
 import com.ghl.biz_home.ui.HomePageAdapter
-import com.ghl.lib_dirty.util.HookUtils
+import com.ghl.common.util.HookUtils
 import kotlinx.android.synthetic.main.fragment_home.*
 
 class HomeFragment : Fragment() {

@@ -13,7 +13,7 @@ import androidx.appcompat.widget.Toolbar;
 import com.ghl.biz_track.R;
 import com.ghl.router_annotation.Route;
 
-import static com.ghl.lib_dirty.constants.track.TrackConstantsKt.ACTIVITY_TOOL_BAR;
+import static com.ghl.common.constants.track.TrackConstantsKt.ACTIVITY_TOOL_BAR;
 
 
 /**

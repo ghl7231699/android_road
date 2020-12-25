@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.ghl.biz_home.R
-import com.ghl.lib_dirty.constants.login.LOGIN_MAIN_PAGE
+import com.ghl.common.constants.login.LOGIN_MAIN_PAGE
 import com.ghl.router.lib.Router
 import kotlinx.android.synthetic.main.fragment_mine.*
 

@@ -2,9 +2,9 @@ package com.ghl.biz_login
 
 import android.app.Application
 import androidx.lifecycle.MutableLiveData
-import com.ghl.lib_dirty.net.base.BaseViewModel
-import com.ghl.lib_dirty.net.base.bizSubscribe
-import com.ghl.lib_dirty.util.ToastUtils
+import com.ghl.common.net.base.BaseViewModel
+import com.ghl.common.net.base.bizSubscribe
+import com.ghl.common.util.ToastUtils
 
 class LoginViewModel(application: Application) : BaseViewModel<LoginRepository>(application) {
     val articleListData: MutableLiveData<ArticleListInfo> by lazy {

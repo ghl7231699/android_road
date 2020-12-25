@@ -1,6 +1,6 @@
 package com.ghl.opt_track;
 
-import com.ghl.lib_dirty.util.IOUtils;
+import com.ghl.common.util.IOUtils;
 
 import java.io.File;
 import java.io.FileInputStream;

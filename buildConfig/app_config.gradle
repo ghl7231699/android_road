@@ -69,9 +69,14 @@ ext {
 
     baseModulesLib = [networkLibs]
 
-    android_library_biz = { projectLibrary, projectName, version_code = 1, version_name = "1.0" ->
+    android_library_biz = { projectLibrary, projectName, version_code = 1, version_name = "1.0",
+                            buildMode = false, applicationIds = null ->
         projectLibrary.apply {
-            plugin 'com.android.library'
+            if (buildMode) {
+                plugin 'com.android.application'
+            } else {
+                plugin 'com.android.library'
+            }
             plugin 'kotlin-android'
             plugin 'kotlin-android-extensions'
             plugin 'kotlin-kapt'
@@ -86,7 +91,9 @@ ext {
                 versionCode version_code
                 versionName version_name
                 vectorDrawables.useSupportLibrary = true
-
+                if (buildMode) {
+                    applicationId "$applicationIds"
+                }
                 javaCompileOptions {
                     annotationProcessorOptions {
                         arguments = [project_name: projectName]
@@ -97,6 +104,19 @@ ext {
                 sourceCompatibility 1.8
                 targetCompatibility 1.8
             }
+
+            sourceSets {
+                main {
+                    jniLibs.srcDirs = ['libs']
+                    if (buildMode) {
+                        manifest.srcFile "src/main/debug/AndroidManifest.xml"
+                    } else {
+                        manifest.srcFile 'src/main/AndroidManifest.xml'
+                    }
+                }
+
+            }
+
         }
 
         projectLibrary.dependencies {
@@ -105,8 +125,8 @@ ext {
             app_implementation.each {
                 k, v -> implementation v
             }
-            if (projectLibrary.name != 'lib_dirty') {
-                implementation project(':lib_dirty')
+            if (projectLibrary.name != 'lib_common') {
+                implementation project(':lib_common')
             }
         }
     }

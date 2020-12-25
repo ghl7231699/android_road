@@ -10,15 +10,15 @@ import android.widget.Toast.makeText
 import androidx.recyclerview.widget.RecyclerView
 import com.ghl.biz_flutter.flutter.PageRouter
 import com.ghl.biz_home.R
-import com.ghl.lib_dirty.constants.Constants
-import com.ghl.lib_dirty.constants.login.LOGIN_TEST_PAGE
-import com.ghl.lib_dirty.constants.main.ACTIVITY_EXPANDABLE_LIST
-import com.ghl.lib_dirty.constants.main.ACTIVITY_LIVE_DATA_VIEW_MODEL
-import com.ghl.lib_dirty.constants.main.ACTIVITY_SIDE_SLIP
-import com.ghl.lib_dirty.constants.track.ACTIVITY_BEHAVIOR
-import com.ghl.lib_dirty.constants.track.ACTIVITY_DRAWER
-import com.ghl.lib_dirty.constants.track.ACTIVITY_RADIO
-import com.ghl.lib_dirty.constants.track.ACTIVITY_TOOL_BAR
+import com.ghl.common.constants.Constants
+import com.ghl.common.constants.login.LOGIN_TEST_PAGE
+import com.ghl.common.constants.main.ACTIVITY_EXPANDABLE_LIST
+import com.ghl.common.constants.main.ACTIVITY_LIVE_DATA_VIEW_MODEL
+import com.ghl.common.constants.main.ACTIVITY_SIDE_SLIP
+import com.ghl.common.constants.track.ACTIVITY_BEHAVIOR
+import com.ghl.common.constants.track.ACTIVITY_DRAWER
+import com.ghl.common.constants.track.ACTIVITY_RADIO
+import com.ghl.common.constants.track.ACTIVITY_TOOL_BAR
 import com.ghl.router.lib.Router
 
 class HomePageAdapter(list: List<String>) : RecyclerView.Adapter<HomePageViewHolder>() {

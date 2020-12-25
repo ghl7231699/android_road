@@ -15,7 +15,7 @@ import android.widget.Toast;
 
 import com.ghl.router_annotation.Route;
 
-import static com.ghl.lib_dirty.constants.main.HomeConstantsKt.ACTIVITY_EXPANDABLE_LIST;
+import static com.ghl.common.constants.main.HomeConstantsKt.ACTIVITY_EXPANDABLE_LIST;
 
 @Route(ACTIVITY_EXPANDABLE_LIST)
 public class MyExpandableListActivity extends ExpandableListActivity {

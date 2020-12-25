@@ -6,9 +6,9 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentManager
 import com.ghl.biz_flutter.R
-import com.ghl.lib_dirty.constants.Constants.CACHED_FLUTTER_ENGINE
-import com.ghl.lib_dirty.constants.flutter.ACTIVITY_FLUTTER_FRAGMENT
-import com.ghl.lib_dirty.util.StatusBarUtils
+import com.ghl.common.constants.Constants.CACHED_FLUTTER_ENGINE
+import com.ghl.common.constants.flutter.ACTIVITY_FLUTTER_FRAGMENT
+import com.ghl.common.util.StatusBarUtils
 import com.ghl.router_annotation.Route
 import io.flutter.embedding.android.FlutterFragment
 
