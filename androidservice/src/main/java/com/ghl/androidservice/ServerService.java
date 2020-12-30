@@ -6,7 +6,7 @@ import android.os.IBinder;
 import android.os.RemoteException;
 import android.util.Log;
 
-import com.mmc.sample.IMyAidlInterface;
+import com.ghl.sample.IMyAidlInterface;
 
 import java.util.ArrayList;
 import java.util.List;

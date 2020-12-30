@@ -1,8 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.ghl.biz_home">
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.ghl.biz_home"
+    tools:ignore="WrongManifestParent">
 
-    <application>
+    <application
+        android:allowBackup="true"
+        android:hardwareAccelerated="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="Android之路"
+        android:supportsRtl="true"
+        android:theme="@style/SplashTheme"
+        tools:ignore="AllowBackup,GoogleAppIndexingWarning">
         <activity
             android:name=".ui.MainHomePageActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />

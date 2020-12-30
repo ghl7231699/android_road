@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.mmc.lamandys.liba_datapick">
+    package="com.ghl">
 
     <application
         android:name="com.ghl.common.AutoApplication"
@@ -11,53 +11,6 @@
         android:label="Android之路"
         android:supportsRtl="true"
         android:theme="@style/SplashTheme"
-        tools:ignore="AllowBackup,GoogleAppIndexingWarning">
-
-        <activity
-            android:name="com.ghl.biz_track.activity.MainActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity
-            android:name="com.ghl.biz_track.activity.SecondActivity"
-            android:label="二页面" />
-
-        <activity
-            android:name=".activity.ViewPager2Activity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-
-        <service
-            android:name=".aldl.AIDLService"
-            android:enabled="true"
-            android:exported="true"
-            tools:ignore="ExportedService">
-            <intent-filter>
-                <action android:name="com.mmc.sample.action" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </service>
-
-        <activity
-            android:name="com.ghl.biz_flutter.ui.FlutterMainActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity
-            android:name="com.ghl.biz_flutter.ui.FlutterFragmentPageActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-            tools:ignore="MissingClass" />
-        <activity
-            android:name="com.ghl.biz_flutter.ui.NativePageActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-            tools:ignore="MissingClass" />
-        <activity
-            android:name=".livedata.NameActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity
-            android:name="io.flutter.embedding.android.FlutterActivity"
-            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
-            android:hardwareAccelerated="true"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-            android:windowSoftInputMode="adjustResize"
-            tools:ignore="DuplicateActivity" />
-        <activity android:name=".aldl.AidlActivity" />
-    </application>
+        tools:ignore="AllowBackup,GoogleAppIndexingWarning" />
 
 </manifest>

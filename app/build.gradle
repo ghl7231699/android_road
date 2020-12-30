@@ -9,12 +9,19 @@ apply plugin: 'kotlin-kapt'
 apply plugin: RouterPlugin
 apply plugin: ModuleServicePlugin
 apply plugin: PigMethodPlugin
+apply plugin: "org.ajoberstar.grgit"
 
 def app_android = rootProject.ext.android
 def app_implementation = rootProject.ext.app_implementation
+def mode = liteMode == "true"
+
+configurations {
+    profileImplementation {
+
+    }
+}
 
 android {
-
     packagingOptions {
         exclude 'META-INF/DEPENDENCIES'
         exclude 'META-INF/NOTICE'
@@ -26,7 +33,7 @@ android {
     compileSdkVersion app_android.compileSdkVersion
 
     defaultConfig {
-        applicationId "com.mmc.sample"
+        applicationId "com.ghl"
         minSdkVersion app_android.minSdkVersion
         targetSdkVersion app_android.targetSdkVersion
         versionCode app_android.versionCode
@@ -57,9 +64,17 @@ android {
     }
     sourceSets {
         main {
-            java.srcDirs = ['src/main/java', 'src/main/aidl']
-            resources.srcDirs = ['src/main/java', 'src/main/aidl']
-            aidl.srcDirs = ['src/main/aidl']
+//            java.srcDirs = ['src/main/java', 'src/main/aidl']
+//            resources.srcDirs = ['src/main/java', 'src/main/aidl']
+//            aidl.srcDirs = ['src/main/aidl']
+            jniLibs.srcDirs = ['libs']
+            if (mode) {
+                println "Lite模式依赖：${liteMode.asType(boolean)}"
+                manifest.srcFile "src/main/debug/AndroidManifest.xml"
+            } else {
+                println "非Lite模式依赖：$liteMode"
+                manifest.srcFile 'src/main/AndroidManifest.xml'
+            }
         }
     }
 
@@ -86,12 +101,19 @@ def modules_biz = [
 ]
 
 dependencies {
-    implementation fileTree(include: ['*.jar'], dir: 'libs')
-    modules_biz.each { biz ->
-        implementation project(biz)
-    }
     // 更简洁的方式，由于我们config那边定义的是 map，遍历
     app_implementation.each {
         k, v -> implementation v
+    }
+
+    if (mode) {// 集成模式
+        println "集成模式"
+        modules_biz.each { biz ->
+            implementation project(biz)
+        }
+    } else {
+        println "aar 依赖"
+        implementation fileTree(include: ['*.jar', '*.aar'], dir: 'libs')
+        implementation "com.xiaozhu:lib_common:1.0"
     }
 }

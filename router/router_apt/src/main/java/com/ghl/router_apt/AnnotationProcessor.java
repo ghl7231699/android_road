@@ -98,7 +98,7 @@ public class AnnotationProcessor extends AbstractProcessor {
         }
         tb.addMethod(getClass.build());
         try {
-            JavaFile javaFile = JavaFile.builder("com.mmc.lamandys.liba_datapick", tb.build()).build();// 生成源代码
+            JavaFile javaFile = JavaFile.builder("com.ghl.biz_home.liba_datapick", tb.build()).build();// 生成源代码
             javaFile.writeTo(mFiler);// 在 app module/build/generated/source/apt 生成一份源代码
             log("---------------------->end Processor");
         } catch (IOException e) {

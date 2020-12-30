@@ -12,6 +12,7 @@ const val ENGINE_ID = "1"
 class AutoApplication : Application() {
     override fun onCreate() {
         super.onCreate()
+        println("我是release模式下的组合模式")
         instance = this
         mContext = applicationContext
 

@@ -1,4 +1,4 @@
 rootProject.ext.android_library_biz this, "bizFlutter"
 dependencies {
-    implementation files('libs/flutter-release.aar')
+    provided files('libs/flutter-release.aar')
 }

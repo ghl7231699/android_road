@@ -1,0 +1,30 @@
+apply plugin: "maven"
+
+// 本地调试
+def groupId = 'com.xiaozhu'
+def artifactId = artifactId
+def version = version_name
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            pom.groupId = groupId
+            pom.artifactId = artifactId
+            pom.version = version
+            repository(url: uri('../snapshotRepo'))
+        }
+    }
+}
+
+//utils.gradle中定义了一个获取AndroidManifests.xmlversionName的函数
+def getVersionNameAdvanced() {
+    println "结果是：执行了这个方法"
+}
+
+ext {
+//    getVersionNameAdvanced = this.&getVersionNameAdvanced
+    setVersionProperties = { versionName, _, artifact ->
+        artifactId = artifact
+        println "版本是：$versionName,groupId：$groupId,artifactId：$artifact"
+    }
+}
+

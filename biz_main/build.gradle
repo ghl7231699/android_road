@@ -1,4 +1,23 @@
-rootProject.ext.android_library_biz this, "bizMain", 1, "1.0", true, "com.ghl.biz_home"
+rootProject.ext.android_library_biz this, "bizMain", 1, "1.0", isBuildModule == "true", "com.ghl.biz_home"
+
+if (liteMode) {
+    android {
+        buildTypes {
+            debug {
+                minifyEnabled false
+                shrinkResources false
+                zipAlignEnabled false
+                debuggable true
+                testProguardFile 'proguard-test-rules.pro'
+                ndk {
+                    abiFilters 'armeabi-v7a'
+                }
+            }
+        }
+    }
+}
+
 dependencies {
     implementation project(':biz_flutter')
+    implementation project(':androidservice')
 }

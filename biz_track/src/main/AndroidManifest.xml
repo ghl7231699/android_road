@@ -3,6 +3,12 @@
 
     <application>
         <activity
+            android:name="com.ghl.biz_track.activity.MainActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name="com.ghl.biz_track.activity.SecondActivity"
+            android:label="二页面" />
+        <activity
             android:name="com.ghl.biz_track.activity.TabActivity"
             android:label="Tab页面"
             android:theme="@style/Theme.AppCompat" />

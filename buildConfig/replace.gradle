@@ -6,7 +6,7 @@ xiaozhu {
     //支持自定义配置,可选,默认空
     matchData = [[
                          //方法的匹配，可以通过类名或者实现的接口名匹配
-                         'ClassName'    : 'com.mmc.lamandys.liba_datapick.Counter2',
+                         'ClassName'    : 'com.ghl.biz_home.liba_datapick.Counter2',
                          'InterfaceName': '',
                          'MethodName'   : 'test2',
                          'MethodDes'    : '(Landroid/view/View;)V',
@@ -54,7 +54,7 @@ xiaozhu {
                  ],
                  [
                          //方法的匹配，可以通过类名或者实现的接口名匹配
-                         'ClassName'    : 'com.mmc.lamandys.liba_datapick.Counter',
+                         'ClassName'    : 'com.ghl.biz_home.liba_datapick.Counter',
                          'InterfaceName': '',
                          'MethodName'   : 'test',
                          'MethodDes'    : '()V',

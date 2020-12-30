@@ -118,7 +118,7 @@ public class TimeExecutor {
      */
     public static void setAppCompleteTime(String name, long end) {
         //如果是启动页
-        if ("com.mmc.lamandys.liba_datapick.activity.MainActivity".equals(name) && !foucs) {
+        if ("com.ghl.biz_home.liba_datapick.activity.MainActivity".equals(name) && !foucs) {
             long start = appTime.get(AutoApplication.class.getName());
             long dex = end - start;
             printLog("冷启动耗时", name, dex);

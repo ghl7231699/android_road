@@ -27,7 +27,7 @@ public class HookUtils {
 
     public static void reflectNewInstance(String className) {
 //        try {
-//            Class<?> aClass = Class.forName("com.mmc.lamandys.liba_datapick.activity.MainActivity");
+//            Class<?> aClass = Class.forName("com.ghl.biz_home.liba_datapick.activity.MainActivity");
 //            Object newInstance = aClass.newInstance();
 //            MainActivity activity = (MainActivity) newInstance;
 //            System.out.println(activity);
