@@ -102,9 +102,9 @@ def modules_biz = [
 
 dependencies {
     // 更简洁的方式，由于我们config那边定义的是 map，遍历
-    app_implementation.each {
-        k, v -> implementation v
-    }
+//    app_implementation.each {
+//        k, v -> implementation v
+//    }
 
     if (mode) {// 集成模式
         println "集成模式"
