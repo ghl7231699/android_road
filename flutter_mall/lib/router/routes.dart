@@ -13,10 +13,10 @@ import 'routes/root_routes.dart';
 typedef Widget RouterHandlerFunc(BuildContext context, dynamic arguments);
 
 class Routes {
-  static Router router = Router.appRouter;
+  static FluroRouter router = FluroRouter.appRouter;
   static Map<String, dynamic> _routerArguments = {};
   static GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
-  static RouteFactory generator = Router.appRouter.generator;
+  static RouteFactory generator = FluroRouter.appRouter.generator;
   static RouteObserver<PageRoute> observer = RouteObserver<PageRoute>();
 
   static void init() {
@@ -37,7 +37,7 @@ class Routes {
       Widget page,
       RouterHandlerFunc handler,
       TransitionType transitionType}) {
-    Router.appRouter.define(path, handler: Handler(handlerFunc:
+    FluroRouter.appRouter.define(path, handler: Handler(handlerFunc:
             (BuildContext context, Map<String, List<String>> params) {
       if (handler != null) {
         return handler(context, _routerArguments[path]);

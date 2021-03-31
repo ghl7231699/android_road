@@ -10,14 +10,13 @@ include ':flutter_mall'
 include ':hot_fix'
 include ':lib_common'
 include ':opt_track'
+include ':opt_startup'
 include ':imc'
 include ':androidservice'
 
 include ':router'
 include ':router:router_annotation'
 include ':router:router_apt'
-
-
 
 
 //setBinding(new Binding([gradle: this]))

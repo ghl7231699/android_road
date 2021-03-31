@@ -98,6 +98,7 @@ def modules_biz = [
         ':opt_track',
         ':hot_fix',
         ':lib_common',
+        ':opt_startup',
 ]
 
 dependencies {
