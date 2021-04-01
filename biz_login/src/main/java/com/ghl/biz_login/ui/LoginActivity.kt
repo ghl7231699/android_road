@@ -4,6 +4,7 @@ import android.app.Activity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.Button
@@ -15,6 +16,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.ghl.biz_login.R
+import com.ghl.biz_login.contract.MyActivityResultContract
+import com.ghl.biz_login.data.LoggedInUserView
+import com.ghl.biz_login.model.LoginViewModel
+import com.ghl.biz_login.model.LoginViewModelFactory
 import com.ghl.common.constants.login.LOGIN_MAIN_PAGE
 import com.ghl.router_annotation.Route
 
@@ -22,6 +27,11 @@ import com.ghl.router_annotation.Route
 class LoginActivity : AppCompatActivity() {
 
     private lateinit var loginViewModel: LoginViewModel
+
+    private val getContent = registerForActivityResult(MyActivityResultContract()) { result ->
+        Log.e("MainActivity", "query data by activity result API, and data is ==>$result")
+    }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,6 +42,11 @@ class LoginActivity : AppCompatActivity() {
         val password = findViewById<EditText>(R.id.password)
         val login = findViewById<Button>(R.id.login)
         val loading = findViewById<ProgressBar>(R.id.loading)
+        val editPwd = findViewById<Button>(R.id.edit_pwd)
+
+        editPwd.setOnClickListener {
+            getContent.launch("这是我第一次用 New Result API")
+        }
 
         loginViewModel = ViewModelProviders.of(this, LoginViewModelFactory())
                 .get(LoginViewModel::class.java)

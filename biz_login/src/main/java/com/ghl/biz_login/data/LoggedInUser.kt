@@ -1,4 +1,4 @@
-package com.ghl.biz_login.data.model
+package com.ghl.biz_login.data
 
 /**
  * Data class that captures user information for logged in users retrieved from LoginRepository

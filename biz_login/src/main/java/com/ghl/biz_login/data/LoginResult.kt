@@ -1,4 +1,4 @@
-package com.ghl.biz_login.ui
+package com.ghl.biz_login.data
 
 /**
  * Authentication result : success (user details) or error message.

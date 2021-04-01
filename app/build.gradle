@@ -98,16 +98,15 @@ def modules_biz = [
         ':opt_track',
         ':hot_fix',
         ':lib_common',
-        ':opt_startup',
 ]
 
 dependencies {
     // 更简洁的方式，由于我们config那边定义的是 map，遍历
-//    app_implementation.each {
-//        k, v -> implementation v
-//    }
+    app_implementation.each {
+        k, v -> implementation v
+    }
 
-    if (mode) {// 集成模式
+    if (!mode) {// 集成模式
         println "集成模式"
         modules_biz.each { biz ->
             implementation project(biz)

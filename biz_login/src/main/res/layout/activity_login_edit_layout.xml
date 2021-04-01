@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusable="true"
+    android:focusableInTouchMode="true">
+
+    <ImageView
+        android:id="@+id/iv_pwd_login_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="40dp"
+        android:padding="5dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/back_black_new"
+        android:visibility="visible"
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        android:id="@+id/tv_login_pwd_welcome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/iv_pwd_login_back"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="49dp"
+        android:text="@string/login_welcome_login"
+        android:textColor="@color/xz_212121"
+        android:textSize="28sp" />
+
+    <LinearLayout
+        android:id="@+id/ll_pwd_login_input_wrap"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_login_pwd_welcome"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:orientation="vertical">
+
+
+        <com.ghl.common.widgets.views.LoginInputBox
+            android:id="@+id/login_pw_phoneNum"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/phoneTopMargin"
+            android:background="@drawable/input_box_bg"
+            android:paddingBottom="12dp" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="61dp"
+            android:background="@drawable/input_box_bg"
+            android:gravity="bottom"
+            android:paddingBottom="12dp">
+
+            <com.ghl.common.widgets.views.LoginInputBox
+                android:id="@+id/login_pw_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/login_pw_authImg_wrap"
+            android:layout_width="match_parent"
+            android:layout_height="61dp"
+            android:background="@drawable/input_box_bg"
+            android:gravity="bottom"
+            android:paddingBottom="12dp"
+            android:visibility="gone"
+            tools:visibility="visible">
+
+            <com.ghl.common.widgets.views.LoginInputBox
+                android:id="@+id/login_pw_authImg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/tv_login_pwd_error_tip"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="* 系统检测到您在新设备上登录了，请输入收到的短信验证码进行验证，以保证您的账号安全"
+            android:textColor="@color/xz_757575"
+            android:textSize="12sp"
+            android:visibility="gone"
+            tools:visibility="visible" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_pwd_login_agreementWrap"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:paddingStart="26dp"
+        android:paddingEnd="30dp"
+        android:paddingBottom="31dp">
+
+        <CheckBox
+            android:id="@+id/cb_pwd_login_agreement"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:background="@null"
+            android:button="@null"
+            android:checked="false"
+            android:drawableStart="@drawable/login_agreement_checkbox_selector"
+            android:paddingStart="5dp"
+            android:paddingTop="4dp"
+            android:paddingEnd="5dp"
+            android:paddingBottom="5dp" />
+
+        <TextView
+            android:id="@+id/tv_pwd_login_agreement"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingTop="6dp"
+            android:textColor="@color/xz_757575"
+            android:textSize="12sp"
+            tools:text="登录即表示您已同意《服务协议》、《我的世界隐私政策协议》" />
+    </LinearLayout>
+</RelativeLayout>

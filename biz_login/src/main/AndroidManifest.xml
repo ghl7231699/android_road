@@ -6,5 +6,8 @@
             android:name="com.ghl.biz_login.ui.LoginActivity"
             android:label="@string/title_activity_login" />
         <activity android:name=".ui.LoginTestActivity" />
+        <activity
+            android:name=".LoginEditPwdActivity"
+            android:screenOrientation="portrait" />
     </application>
 </manifest>

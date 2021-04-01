@@ -86,89 +86,89 @@
 #---------------renderscript-------------------------------------------------------
 -keep class android.support.v8.renderscript.** { *; }
 
-##------------小猪--------------------------------------------------------------------------
--keep class com.xiaozhu.xzdz.support.mycontrol.** {*;}
--keep class com.xiaozhu.xzdz.support.model.** {*;}
--keep class com.xiaozhu.xzdz.support.viewmodel.** {*;}
+##------------我的世界--------------------------------------------------------------------------
+-keep class com.ghl.support.mycontrol.** {*;}
+-keep class com.ghl.support.model.** {*;}
+-keep class com.ghl.support.viewmodel.** {*;}
 
--keep class com.xiaozhu.xzdz.personal.model.** {*;}
--keep class com.xiaozhu.xzdz.personal.viewmodel.** {*;}
+-keep class com.ghl.personal.model.** {*;}
+-keep class com.ghl.personal.viewmodel.** {*;}
 
--keep class com.xiaozhu.xzdz.comment.model.** {*;}
--keep class com.xiaozhu.xzdz.comment.viewmodel.** {*;}
+-keep class com.ghl.comment.model.** {*;}
+-keep class com.ghl.comment.viewmodel.** {*;}
 
--keep class com.xiaozhu.xzdz.im.model.** {*;}
--keep class com.xiaozhu.xzdz.im.viewmodel.** {*;}
+-keep class com.ghl.im.model.** {*;}
+-keep class com.ghl.im.viewmodel.** {*;}
 
--keep class com.xiaozhu.xzdz.imV2.model.** {*;}
+-keep class com.ghl.imV2.model.** {*;}
 
--keep class com.xiaozhu.xzdz.order.model.** {*;}
--keep class com.xiaozhu.xzdz.order.viewmodel.** {*;}
+-keep class com.ghl.order.model.** {*;}
+-keep class com.ghl.order.viewmodel.** {*;}
 
--keep class com.xiaozhu.xzdz.orderV2.model.** {*;}
+-keep class com.ghl.orderV2.model.** {*;}
 
--keep class com.xiaozhu.xzdz.cleaning.model.** {*;}
--keep class com.xiaozhu.xzdz.cleaning.viewmodel.** {*;}
+-keep class com.ghl.cleaning.model.** {*;}
+-keep class com.ghl.cleaning.viewmodel.** {*;}
 
--keep class com.xiaozhu.xzdz.publish.bean.** {*;}
--keep class com.xiaozhu.xzdz.publish.model.** {*;}
--keep class com.xiaozhu.xzdz.publish.viewmodel.** {*;}
--keep class com.xiaozhu.xzdz.publish.viewmodel2.** {*;}
--keep class com.xiaozhu.xzdz.publish.fragment.** {*;}
+-keep class com.ghl.publish.bean.** {*;}
+-keep class com.ghl.publish.model.** {*;}
+-keep class com.ghl.publish.viewmodel.** {*;}
+-keep class com.ghl.publish.viewmodel2.** {*;}
+-keep class com.ghl.publish.fragment.** {*;}
 
--keep class com.xiaozhu.xzdz.realshot.model.** {*;}
+-keep class com.ghl.realshot.model.** {*;}
 
--keep class com.xiaozhu.xzdz.settlement.model.** {*;}
--keep class com.xiaozhu.xzdz.settlement.viewmodel.** {*;}
+-keep class com.ghl.settlement.model.** {*;}
+-keep class com.ghl.settlement.viewmodel.** {*;}
 
--keep class com.xiaozhu.xzdz.find.model.** {*;}
--keep class com.xiaozhu.xzdz.find.viewmodel.** {*;}
+-keep class com.ghl.find.model.** {*;}
+-keep class com.ghl.find.viewmodel.** {*;}
 
--keep class com.xiaozhu.xzdz.invoice.model.** {*;}
+-keep class com.ghl.invoice.model.** {*;}
 
--keep class com.xiaozhu.xzdz.lock.model.** {*;}
+-keep class com.ghl.lock.model.** {*;}
 
--keep class com.xiaozhu.xzdz.splash.model.** {*;}
+-keep class com.ghl.splash.model.** {*;}
 
--keep class com.xiaozhu.xzdz.pay.model.** {*;}
+-keep class com.ghl.pay.model.** {*;}
 
--keep class com.xiaozhu.xzdz.voucher.model.** {*;}
--keep class com.xiaozhu.xzdz.voucher.viewmodel.** {*;}
+-keep class com.ghl.voucher.model.** {*;}
+-keep class com.ghl.voucher.viewmodel.** {*;}
 
 # 物流
--keep class com.xiaozhu.xzdz.logistics.model.** {*;}
--keep class com.xiaozhu.xzdz.logistics.viewmodel.** {*;}
+-keep class com.ghl.logistics.model.** {*;}
+-keep class com.ghl.logistics.viewmodel.** {*;}
 
 # 实拍
--keep class com.xiaozhu.xzdz.realshot.model.** {*;}
--keep class com.xiaozhu.xzdz.realshot.viewmodel.** {*;}
+-keep class com.ghl.realshot.model.** {*;}
+-keep class com.ghl.realshot.viewmodel.** {*;}
 
 #相册
--keep class com.xiaozhu.xzdz.support.photo.photoselector.model.** {*;}
+-keep class com.ghl.support.photo.photoselector.model.** {*;}
 
 #收款设置
--keep class com.xiaozhu.xzdz.income.model.** {*;}
+-keep class com.ghl.income.model.** {*;}
 
 #资质认证
--keep class com.xiaozhu.xzdz.qualification.bean.** {*;}
+-keep class com.ghl.qualification.bean.** {*;}
 
--keep class com.xiaozhu.xzdz.support.tools.TextWithColorsTool$* {*;}
--keep class com.xiaozhu.xzdz.activity.XZWebViewActivity$* {*;}
+-keep class com.ghl.support.tools.TextWithColorsTool$* {*;}
+-keep class com.ghl.activity.XZWebViewActivity$* {*;}
 
--keep class com.xiaozhu.xzdz.servicecenter.model.** {*;}
--keep class com.xiaozhu.xzdz.servicecenter.viewmodel.** {*;}
+-keep class com.ghl.servicecenter.model.** {*;}
+-keep class com.ghl.servicecenter.viewmodel.** {*;}
 
--keep class com.xiaozhu.xzdz.**.model.** {*;}# 通用数据bean
--keep class com.xiaozhu.xzdz.**.viewmodel.** {*;}# 通用数据bean
+-keep class com.ghl.**.model.** {*;}# 通用数据bean
+-keep class com.ghl.**.viewmodel.** {*;}# 通用数据bean
 
 ##---------------mi push start ----------------------------------------------------------------
 #这里com.xiaomi.mipushdemo.DemoMessageRreceiver改成app中定义的完整类名
 -keep class com.xiaomi.mipush.sdk.DemoMessageReceiver {*;}
 #可以防止一个误报的 warning 导致无法成功编译，如果编译使用的 Android 版本是 23。
 -dontwarn com.xiaomi.push.**
--keep class com.xiaozhu.xzdz.push.PushInfo {*;}
--keep class com.xiaozhu.xzdz.push.PushInfo$* {*;}
--keep class com.xiaozhu.xzdz.push.RefreshPushInfo {*;}
+-keep class com.ghl.push.PushInfo {*;}
+-keep class com.ghl.push.PushInfo$* {*;}
+-keep class com.ghl.push.RefreshPushInfo {*;}
 
 ##---------------mi push end ----------------------------------------------------------------
 
@@ -222,7 +222,7 @@
 }
 
 #################屏蔽报错信息########################
--dontwarn com.xiaozhu.xzdz.support.tools.hotfix.AntilazyLoad
+-dontwarn com.ghl.support.tools.hotfix.AntilazyLoad
 -dontwarn cn.sharesdk.sina.weibo.**
 -dontwarn com.google.android.gms.**
 -dontwarn com.unionpay.mobile.android.**
@@ -238,7 +238,7 @@
 -dontwarn java.time.**
 -dontwarn java.awt.**
 
--dontwarn com.xiaozhu.xzdz.support.tools.DownloadApkXutis.**
+-dontwarn com.ghl.support.tools.DownloadApkXutis.**
 
 # universal-image-loader
 -dontwarn com.nostra13.universalimageloader.**
@@ -303,7 +303,7 @@
 
 ##--------------榉树SDK------------------
 -keep class cn.zelkova.** {*;}
-#-keep class com.xiaozhu.xzdz.lock.sdk.XZ4BluetoothLockSDKManager {*;}
+#-keep class com.ghl.lock.sdk.XZ4BluetoothLockSDKManager {*;}
 ##--------------榉树SDK------------------
 
 
@@ -314,7 +314,7 @@
 ##---------------听云end------------------
 
 ##--------------apk升级------------------
--keep class com.xiaozhu.xzdz.bizBase.update.SoftVersion {*;}
+-keep class com.ghl.bizBase.update.SoftVersion {*;}
 ##--------------apk升级-----------------
 
 ##---------------Begin: proguard configuration for Gson  ----------
@@ -343,12 +343,12 @@
 -keep class com.umeng.** {*;}
 -keep class com.umeng.commonsdk.** {*;}
 
--keep public class com.xiaozhu.xzdz.R$*{
+-keep public class com.ghl.R$*{
     public static final int *;
 }
 
 ##--------------提醒V2强弹层-------------
--keep class com.xiaozhu.xzdz.support.shade.** {*;}
+-keep class com.ghl.support.shade.** {*;}
 
 ##---------------QuestMobile------------------
 -dontwarn com.sijla.**

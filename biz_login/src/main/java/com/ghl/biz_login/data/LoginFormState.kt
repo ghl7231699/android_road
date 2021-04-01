@@ -1,4 +1,4 @@
-package com.ghl.biz_login.ui
+package com.ghl.biz_login.data
 
 /**
  * Data validation state of the login form.

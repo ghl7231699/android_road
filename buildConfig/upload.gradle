@@ -1,7 +1,7 @@
 apply plugin: "maven"
 
 // 本地调试
-def groupId = 'com.xiaozhu'
+def groupId = 'com.ghl'
 def artifactId = artifactId
 def version = version_name
 uploadArchives {

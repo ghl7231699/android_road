@@ -1,11 +1,14 @@
-package com.ghl.biz_login.ui
+package com.ghl.biz_login.model
 
 import android.util.Patterns
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.ghl.biz_login.R
+import com.ghl.biz_login.data.LoggedInUserView
+import com.ghl.biz_login.data.LoginFormState
 import com.ghl.biz_login.data.LoginRepository
+import com.ghl.biz_login.data.LoginResult
 
 class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel() {
 

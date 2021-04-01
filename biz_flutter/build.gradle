@@ -1,4 +1,6 @@
 rootProject.ext.android_library_biz this, "bizFlutter"
 dependencies {
-    provided files('libs/flutter-release.aar')
+    implementation files('libs/flutter-release.aar')
+    // 集成模式这里需要修改为implementation
+//    provided files('libs/flutter-release.aar')
 }

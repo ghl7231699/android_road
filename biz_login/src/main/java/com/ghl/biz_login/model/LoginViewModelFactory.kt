@@ -1,4 +1,4 @@
-package com.ghl.biz_login.ui
+package com.ghl.biz_login.model
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

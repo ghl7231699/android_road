@@ -1,4 +1,4 @@
-package com.ghl.biz_login.ui
+package com.ghl.biz_login.data
 
 /**
  * User details post authentication that is exposed to the UI
