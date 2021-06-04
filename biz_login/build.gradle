@@ -1,9 +1,4 @@
-rootProject.ext.android_library_biz this, "bizLogin"
-def modules_biz = [
-        ':biz_flutter',
-]
-dependencies {
-    modules_biz.each { biz ->
-        implementation project(biz)
-    }
+plugins {
+    id 'handOver-plugin'
 }
+rootProject.ext.android_library_biz this, "bizLogin", 1, "1.0", true, "com.ghl.login"

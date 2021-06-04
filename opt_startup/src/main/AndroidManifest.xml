@@ -16,9 +16,9 @@
 
 
 
-        <!-- 禁用即时初始化 -->
-        <meta-data android:name="com.example.WorkManagerInitializer"
-            tools:node="remove" />
+<!--        &lt;!&ndash; 禁用即时初始化 &ndash;&gt;-->
+<!--        <meta-data android:name="com.example.WorkManagerInitializer"-->
+<!--            tools:node="remove" />-->
 
     </provider>
 </manifest>

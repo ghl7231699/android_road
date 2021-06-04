@@ -30,14 +30,4 @@
         <item name="overlapAnchor">false</item>  <!--把该属性改为false即可使menu位置位于toolbar之下-->
         <item name="actionMenuTextColor">@android:color/white</item>
     </style>
-
-    <style name="SplashTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <!-- Customize your theme here. -->
-        <item name="android:windowBackground">@drawable/splash</item>
-        <!--状态栏透明-->
-        <item name="android:windowTranslucentStatus">true</item>
-        <!--Navigation栏透明-->
-        <item name="android:windowTranslucentNavigation">false</item>
-    </style>
-
 </resources>

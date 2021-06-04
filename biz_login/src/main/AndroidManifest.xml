@@ -1,13 +1,27 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.ghl.biz_login">
 
-    <application>
-        <activity
-            android:name="com.ghl.biz_login.ui.LoginActivity"
-            android:label="@string/title_activity_login" />
+    <application
+        android:allowBackup="true"
+        android:hardwareAccelerated="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="Android之路"
+        android:supportsRtl="true"
+        android:theme="@style/SplashTheme"
+        tools:ignore="AllowBackup">
+        <activity android:name="com.ghl.biz_login.ui.LoginActivity">
+            <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+
         <activity android:name=".ui.LoginTestActivity" />
         <activity
             android:name=".LoginEditPwdActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
+
     </application>
 </manifest>

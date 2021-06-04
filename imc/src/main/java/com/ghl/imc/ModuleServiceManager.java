@@ -1,6 +1,7 @@
 package com.ghl.imc;
 
 import android.app.Application;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 
@@ -102,6 +103,7 @@ public class ModuleServiceManager {
 
     public static void createApp(Application app) {
         for (ModuleService service : mTempSaveList) {
+            Log.e("ghl", service.getClass().getCanonicalName());
             service.onCreateApp(app);
         }
     }

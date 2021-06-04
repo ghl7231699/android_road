@@ -79,7 +79,7 @@ ext {
     android_library_biz = { projectLibrary, projectName, version_code = 1, version_name = "1.0",
                             buildMode = false, applicationIds = null ->
 
-        println "xxxxxxxxx------------>${rootProject.getName()}"
+        println "xxxxxxxxx------------>${rootProject.project.getName()}"
         projectLibrary.apply {
             if (buildMode) {
                 plugin 'com.android.application'
@@ -114,19 +114,6 @@ ext {
                 sourceCompatibility 1.8
                 targetCompatibility 1.8
             }
-
-            sourceSets {
-                main {
-                    jniLibs.srcDirs = ['libs']
-                    if (buildMode) {
-                        manifest.srcFile "src/main/debug/AndroidManifest.xml"
-                    } else {
-                        manifest.srcFile 'src/main/AndroidManifest.xml'
-                    }
-                }
-
-            }
-
         }
 
         projectLibrary.dependencies {

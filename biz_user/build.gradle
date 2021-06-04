@@ -1,1 +1,4 @@
-rootProject.ext.android_library_biz this, "bizMine"
+plugins {
+    id 'handOver-plugin'
+}
+rootProject.ext.android_library_biz this, "bizMine", 1, "1.0", true, "com.ghl.biz_mine"

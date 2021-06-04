@@ -3,7 +3,7 @@ package com.ghl.util
 import java.lang.reflect.Array
 
 class Logger {
-    private static boolean isDebug = true
+    private static boolean isDebug = false
     public static HashMap<Integer, String> accCodeMap = new HashMap<>()
     public static HashMap<Integer, String> opCodeMap = new HashMap<>()
 

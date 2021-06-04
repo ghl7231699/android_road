@@ -1,4 +1,34 @@
-apply plugin: 'groovy'
+buildscript {
+    repositories {
+        mavenLocal()
+        mavenCentral()
+        google()
+        jcenter()
+        maven { url 'https://oss.sonatype.org/content/repositories/public/' }
+        maven { url 'https://oss.sonatype.org/content/repositories/snapshots/' }
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:4.1.1'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.10"
+    }
+}
+
+plugins {
+    id 'java-gradle-plugin'
+    id 'groovy'
+}
+
+apply plugin: 'kotlin'
+
+// 生成 plugins id
+gradlePlugin {
+    plugins {
+        HandOverPlugin {
+            id = 'handOver-plugin'
+            implementationClass = 'com.ghl.plugins.HandOverPlugin'
+        }
+    }
+}
 
 dependencies {
     implementation gradleApi()//gradle sdk
@@ -10,5 +40,22 @@ repositories {
     jcenter()
     maven {
         url 'https://maven.google.com'
+    }
+}
+
+def compile = single_compile == "true"
+
+def modules = ["biz_login", "biz_main", "biz_user"]
+
+project.afterEvaluate { evaluate ->
+    println "------start"
+    modules.forEach { name ->
+        project.exec {
+            if (compile) {
+                commandLine 'bash', "build.sh", "${name}", "false", "true"
+            }else{
+                commandLine 'bash', "build.sh", "${name}", "true", "false"
+            }
+        }
     }
 }

@@ -3,8 +3,12 @@ package com.ghl.biz_login
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.CheckBox
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleObserver
+import androidx.lifecycle.OnLifecycleEvent
 import com.ghl.common.constants.login.LOGIN_EDIT_PWD_PAGE
 import com.ghl.router_annotation.Route
 
@@ -25,6 +29,13 @@ class LoginEditPwdActivity : AppCompatActivity() {
             finish()
             true
         }
+
+        lifecycle.addObserver(object : LifecycleObserver {
+            @OnLifecycleEvent(Lifecycle.Event.ON_RESUME)
+            fun onResume() {
+                Log.d("ghl", "LifecycleObserver onResume() called")
+            }
+        })
     }
 
     override fun onBackPressed() {
@@ -32,6 +43,10 @@ class LoginEditPwdActivity : AppCompatActivity() {
             putExtra("result", "Hello  依然范特西，我是回来的数据！")
         })
         super.onBackPressed()
+    }
+
+    override fun onResume() {
+        super.onResume()
     }
 }
 

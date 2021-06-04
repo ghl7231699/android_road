@@ -62,21 +62,6 @@ android {
             }
         }
     }
-    sourceSets {
-        main {
-//            java.srcDirs = ['src/main/java', 'src/main/aidl']
-//            resources.srcDirs = ['src/main/java', 'src/main/aidl']
-//            aidl.srcDirs = ['src/main/aidl']
-            jniLibs.srcDirs = ['libs']
-            if (mode) {
-                println "Lite模式依赖：${liteMode.asType(boolean)}"
-                manifest.srcFile "src/main/debug/AndroidManifest.xml"
-            } else {
-                println "非Lite模式依赖：$liteMode"
-                manifest.srcFile 'src/main/AndroidManifest.xml'
-            }
-        }
-    }
 
     //flutter相关声明
     compileOptions {
@@ -104,16 +89,5 @@ dependencies {
     // 更简洁的方式，由于我们config那边定义的是 map，遍历
     app_implementation.each {
         k, v -> implementation v
-    }
-
-    if (!mode) {// 集成模式
-        println "集成模式"
-        modules_biz.each { biz ->
-            implementation project(biz)
-        }
-    } else {
-        println "aar 依赖"
-        implementation fileTree(include: ['*.jar', '*.aar'], dir: 'libs')
-        implementation "com.xiaozhu:lib_common:1.0"
     }
 }

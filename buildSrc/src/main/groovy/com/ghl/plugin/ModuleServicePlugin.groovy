@@ -66,7 +66,7 @@ public class ModuleServicePlugin implements Plugin<Project> {
                 info.invokingMethodName = "bindService"
                 //父类
                 info.superClass = superClass
-                Logger.info("||---目标类，${info.targetClass}\t${info.allInter}")
+//                Logger.info("||---目标类，${info.targetClass}\t${info.allInter}")
                 if (info.targetClass && info.allInter.size() > 0) {
                     //文件存在 ，并且实现类存在时，才修改字节码
                     RegistryCodeGenerator.insertInitCodeTo(info)
