@@ -1,6 +1,6 @@
 package com.ghl.sensors.plugin
 
-import com.ghl.sensors.plugin.log.InjectLogger
+import InjectLogger
 import org.objectweb.asm.MethodVisitor
 import org.objectweb.asm.Opcodes
 import org.objectweb.asm.Type

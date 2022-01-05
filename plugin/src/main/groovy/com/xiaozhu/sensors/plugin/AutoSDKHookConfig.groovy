@@ -1,7 +1,7 @@
 package com.ghl.sensors.plugin
 
 
-import com.ghl.sensors.plugin.AutoMethodCell
+import AutoMethodCell
 import org.objectweb.asm.ClassVisitor
 import org.objectweb.asm.Opcodes
 

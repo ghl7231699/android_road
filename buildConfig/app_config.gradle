@@ -3,12 +3,12 @@ import com.ghl.plugin.RouterPlugin
 
 ext {
     android = [
-            compileSdkVersion        : 29,
+            compileSdkVersion        : 30,
             minSdkVersion            : 21,
-            targetSdkVersion         : 29,
+            targetSdkVersion         : 30,
             versionCode              : 1,
             versionName              : "1.0",
-            buildToolsVersion        : "29.0.2",
+            buildToolsVersion        : "30.0.2",
             testInstrumentationRunner: "androidx.test.runner.AndroidJUnitRunner"
     ]
 
@@ -80,7 +80,6 @@ ext {
                 plugin 'com.android.library'
             }
             plugin 'kotlin-android'
-            plugin 'kotlin-android-extensions'
             plugin 'kotlin-kapt'
             plugin RouterPlugin
             plugin ModuleServicePlugin

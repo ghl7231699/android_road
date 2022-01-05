@@ -1,24 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.ghl.opt_startup"
     android:installLocation="auto">
 
-    <provider
-        android:name="androidx.startup.InitializationProvider"
-        android:authorities="${applicationId}.androidx-startup"
-        android:exported="false"
-        tools:ignore="WrongManifestParent"
-        tools:node="merge">
-        <!-- This entry makes WorkManagerInitializer discoverable. -->
-        <meta-data
-            android:name="com.example.WorkManagerInitializer"
-            android:value="androidx.startup" />
-
-
-
-        <!-- 禁用即时初始化 -->
-        <meta-data android:name="com.example.WorkManagerInitializer"
-            tools:node="remove" />
-
-    </provider>
+    <application>
+        <provider
+            android:name="androidx.startup.InitializationProvider"
+            android:authorities="${applicationId}.androidx-startup"
+            android:exported="false"
+            tools:ignore="WrongManifestParent"
+            tools:node="merge">
+            <!-- This entry makes WorkManagerInitializer discoverable. -->
+            <meta-data
+                android:name="com.example.WorkManagerInitializer"
+                android:value="androidx.startup"
+                tools:node="remove" />
+            <!-- 禁用即时初始化 -->
+        </provider>
+    </application>
 </manifest>

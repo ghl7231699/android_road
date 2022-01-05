@@ -3,7 +3,7 @@ package com.ghl.sensors.plugin
 import com.android.build.api.transform.*
 import com.android.build.gradle.internal.pipeline.TransformManager
 import com.android.ide.common.internal.WaitableExecutor
-import com.ghl.sensors.plugin.log.InjectLogger
+import InjectLogger
 import groovy.io.FileType
 import org.apache.commons.codec.digest.DigestUtils
 import org.apache.commons.io.FileUtils

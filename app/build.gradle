@@ -1,15 +1,11 @@
 import com.ghl.plugin.ModuleServicePlugin
 import com.ghl.plugin.RouterPlugin
-import com.ghl.sensors.plugin.PigMethodPlugin
 
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 apply plugin: RouterPlugin
 apply plugin: ModuleServicePlugin
-apply plugin: PigMethodPlugin
-apply plugin: "org.ajoberstar.grgit"
 
 def app_android = rootProject.ext.android
 def app_implementation = rootProject.ext.app_implementation
@@ -91,30 +87,19 @@ android {
 def modules_biz = [
         ':biz_main',
         ':biz_login',
-        ':biz_flutter',
         ':biz_user',
         ':biz_track',
-        ':androidservice',
         ':opt_track',
-        ':hot_fix',
         ':lib_common',
         ':opt_startup',
 ]
 
 dependencies {
     // 更简洁的方式，由于我们config那边定义的是 map，遍历
-//    app_implementation.each {
-//        k, v -> implementation v
-//    }
-
-    if (mode) {// 集成模式
-        println "集成模式"
-        modules_biz.each { biz ->
-            implementation project(biz)
-        }
-    } else {
-        println "aar 依赖"
-        implementation fileTree(include: ['*.jar', '*.aar'], dir: 'libs')
-        implementation "com.xiaozhu:lib_common:1.0"
+    app_implementation.each {
+        k, v -> implementation v
+    }
+    modules_biz.each { biz ->
+        implementation project(biz)
     }
 }

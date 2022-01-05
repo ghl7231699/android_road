@@ -1,5 +1,6 @@
 package com.ghl.biz_home.liba_datapick.aldl
 
+import android.annotation.SuppressLint
 import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
@@ -8,11 +9,12 @@ import android.os.Bundle
 import android.os.IBinder
 import android.os.RemoteException
 import android.util.Log
+import android.widget.Button
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.ghl.biz_home.R
 import com.ghl.router_annotation.Route
 import com.ghl.sample.IMyAidlInterface
-import kotlinx.android.synthetic.main.dial_activity.*
 
 const val ACTION = "com.example.androidservice.ServerService"
 private const val TAG = "ghl"
@@ -21,6 +23,19 @@ private const val TAG = "ghl"
 class AidlActivity : AppCompatActivity() {
 
     private var myAidlInterface: IMyAidlInterface? = null
+
+    private val btnBind: Button by lazy {
+        findViewById(R.id.btn_bind)
+    }
+    private val btnGetData: Button by lazy {
+        findViewById(R.id.btn_getdata)
+    }
+    private val btnSendData: Button by lazy {
+        findViewById(R.id.btn_sendData)
+    }
+    private val textView: TextView by lazy {
+        findViewById(R.id.textView)
+    }
 
     private val mConn: ServiceConnection = object : ServiceConnection {
         override fun onServiceConnected(name: ComponentName, service: IBinder) {
@@ -39,7 +54,7 @@ class AidlActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.dial_activity)
 
-        btn_bind.setOnClickListener {
+        btnBind.setOnClickListener {
             val intent = Intent()
             intent.action = ACTION
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
@@ -50,7 +65,7 @@ class AidlActivity : AppCompatActivity() {
         }
 
 
-        btn_getdata.setOnClickListener {
+        btnGetData.setOnClickListener {
             myAidlInterface?.apply {
                 val result = data
 
@@ -59,7 +74,7 @@ class AidlActivity : AppCompatActivity() {
             }
         }
 
-        btn_sendData.setOnClickListener {
+        btnSendData.setOnClickListener {
             try {
                 val ret = myAidlInterface!!.sendData("I send data from client!!")
                 Log.i(TAG, "onBtnSendDataClicked: $ret")
@@ -78,6 +93,7 @@ class AidlActivity : AppCompatActivity() {
     }
 
 
+    @SuppressLint("QueryPermissionsNeeded")
     private fun createExplicitIntent(context: Context, implicitIntent: Intent): Intent? {
         val pm = context.packageManager
         val resolveInfo = pm.queryIntentServices(implicitIntent, 0)

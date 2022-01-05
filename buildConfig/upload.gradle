@@ -1,30 +1,26 @@
-apply plugin: "maven"
-
-// 本地调试
-def groupId = 'com.xiaozhu'
-def artifactId = artifactId
-def version = version_name
-uploadArchives {
-    repositories {
-        mavenDeployer {
-            pom.groupId = groupId
-            pom.artifactId = artifactId
-            pom.version = version
-            repository(url: uri('../snapshotRepo'))
-        }
-    }
-}
-
-//utils.gradle中定义了一个获取AndroidManifests.xmlversionName的函数
-def getVersionNameAdvanced() {
-    println "结果是：执行了这个方法"
-}
-
-ext {
-//    getVersionNameAdvanced = this.&getVersionNameAdvanced
-    setVersionProperties = { versionName, _, artifact ->
-        artifactId = artifact
-        println "版本是：$versionName,groupId：$groupId,artifactId：$artifact"
-    }
-}
-
+//apply plugin: 'maven-publish'
+//
+//afterEvaluate {
+//    publishing {
+//        publications {
+//            release(MavenPublication) {
+//                from components.java
+//                groupId = "com.xiaozhu.gradle"
+//                artifactId = 'router'
+//                version = '1.0.0'
+//            }
+//        }
+//
+//        repositories {
+//            maven {
+//                allowInsecureProtocol = true
+//                url = uri("http://10.4.10.31:10000/repository/maven-plugins/")
+//
+//                credentials {
+//                    username = "admin"
+//                    password = "admin"
+//                }
+//            }
+//        }
+//    }
+//}

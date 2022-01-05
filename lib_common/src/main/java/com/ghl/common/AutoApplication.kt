@@ -20,8 +20,8 @@ class AutoApplication : Application() {
 
         initNet()
 
-        ModuleServiceManager.getClassTarget(AutoModuleService::class.java).init()
-        ModuleServiceManager.getClassTarget(FlutterModuleService::class.java).initFlutterBoost(this)
+        ModuleServiceManager.getClassTarget(AutoModuleService::class.java)?.init()
+        ModuleServiceManager.getClassTarget(FlutterModuleService::class.java)?.initFlutterBoost(this)
     }
 
 

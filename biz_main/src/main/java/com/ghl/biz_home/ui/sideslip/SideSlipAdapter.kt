@@ -33,7 +33,7 @@ class SideSlipAdapter(private val mContext: Context, private val mDatas: List<Sw
         }
 
 //        holder.btnUnRead.setVisibility(position % 3 == 0 ? View.GONE : View.VISIBLE);
-        holder.btnDelete.setOnClickListener { v: View? ->
+        holder.btnDelete.setOnClickListener { _: View? ->
             if (null != onDelListener) {
                 //如果删除时，不使用mAdapter.notifyItemRemoved(pos)，则删除没有动画效果，
                 //且如果想让侧滑菜单同时关闭，需要同时调用 ((CstSwipeDelMenu) holder.itemView).quickClose();

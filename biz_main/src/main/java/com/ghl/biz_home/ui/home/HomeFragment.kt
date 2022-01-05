@@ -11,23 +11,27 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView
+import androidx.viewpager2.widget.ViewPager2
 import com.ghl.biz_home.R
 import com.ghl.biz_home.ui.HomePageAdapter
 import com.ghl.common.util.HookUtils
-import kotlinx.android.synthetic.main.fragment_home.*
 
 class HomeFragment : Fragment() {
 
     private lateinit var homeViewModel: HomeViewModel
 
+    private var mInflate: View? = null
+
+
     override fun onCreateView(
-            inflater: LayoutInflater,
-            container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
         homeViewModel =
-                ViewModelProviders.of(this).get(HomeViewModel::class.java)
-        return inflater.inflate(R.layout.fragment_home, container, false)
+            ViewModelProviders.of(this).get(HomeViewModel::class.java)
+        mInflate = inflater.inflate(R.layout.fragment_home, container, false)
+        return mInflate
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -35,26 +39,22 @@ class HomeFragment : Fragment() {
         initView()
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-    }
-
     private fun initView() {
-        val params = GridLayoutManager(activity, 2)
-        params.orientation = LinearLayoutManager.VERTICAL
-        with(rv_home_page) {
+        mInflate?.findViewById<RecyclerView>(R.id.rv_home_page)?.run {
+            val params = GridLayoutManager(activity, 2)
+            params.orientation = LinearLayoutManager.VERTICAL
             layoutManager = params
             adapter = HomePageAdapter(initData())
-        }
 
-        val mAdapter = HomeV2BannerAdapter()
-        val manager = LinearLayoutManager(activity)
-        manager.orientation = LinearLayoutManager.HORIZONTAL
-        val snapHelper = PagerSnapHelper()
-        snapHelper.attachToRecyclerView(tv_home_page_banner)
-        with(tv_home_page_banner) {
-            layoutManager = manager
-            adapter = mAdapter
+            val mAdapter = HomeV2BannerAdapter()
+            val manager = LinearLayoutManager(activity)
+            manager.orientation = LinearLayoutManager.HORIZONTAL
+            val snapHelper = PagerSnapHelper()
+            snapHelper.attachToRecyclerView(this)
+            mInflate?.findViewById<RecyclerView>(R.id.tv_home_page_banner)?.run {
+                layoutManager = manager
+                adapter = mAdapter
+            }
         }
     }
 
@@ -91,14 +91,16 @@ class HomeV2BannerAdapter : RecyclerView.Adapter<HomeV2BannerViewHolder>() {
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeV2BannerViewHolder {
-        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.activity_viewpager2_item, parent, false)
+        val itemView = LayoutInflater.from(parent.context)
+            .inflate(R.layout.activity_viewpager2_item, parent, false)
         return HomeV2BannerViewHolder(itemView)
     }
 }
 
 class HomeV2BannerViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     private var mIv: AppCompatImageView? = itemView.findViewById(R.id.iv_item)
-    private val colors: Array<Int> = arrayOf(R.drawable.banner_1, R.drawable.banner_2, R.drawable.banner_3, R.drawable.banner_4)
+    private val colors: Array<Int> =
+        arrayOf(R.drawable.banner_1, R.drawable.banner_2, R.drawable.banner_3, R.drawable.banner_4)
 
     init {
         mIv?.let { it ->

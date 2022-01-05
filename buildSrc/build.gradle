@@ -3,12 +3,12 @@ apply plugin: 'groovy'
 dependencies {
     implementation gradleApi()//gradle sdk
     implementation localGroovy()//groovy sdk
-    implementation 'com.android.tools.build:gradle:4.0.1'
+    implementation 'com.android.tools.build:gradle:7.0.4'
+    implementation 'commons-io:commons-io:2.4'
+    implementation 'commons-codec:commons-codec:1.15'
 }
 
 repositories {
-    jcenter()
-    maven {
-        url 'https://maven.google.com'
-    }
+    google()
+    mavenCentral()
 }

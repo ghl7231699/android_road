@@ -18,6 +18,5 @@ if (liteMode) {
 }
 
 dependencies {
-    implementation project(':biz_flutter')
     implementation project(':androidservice')
 }

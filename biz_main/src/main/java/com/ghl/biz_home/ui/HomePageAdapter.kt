@@ -8,7 +8,6 @@ import android.widget.TextView
 import android.widget.Toast
 import android.widget.Toast.makeText
 import androidx.recyclerview.widget.RecyclerView
-import com.ghl.biz_flutter.flutter.PageRouter
 import com.ghl.biz_home.R
 import com.ghl.common.constants.Constants
 import com.ghl.common.constants.login.LOGIN_TEST_PAGE
@@ -64,7 +63,7 @@ class HomePageViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
                     val params = HashMap<String, Any>()
                     params["test1"] = "v_test1"
                     params["test2"] = "v_test2"
-                    PageRouter.openPageByUrl(mContext, PageRouter.FLUTTER_PAGE_URL, params)
+//                    PageRouter.openPageByUrl(mContext, PageRouter.FLUTTER_PAGE_URL, params)
                 }
                 11 -> jump(ACTIVITY_LIVE_DATA_VIEW_MODEL)
                 12 -> {

@@ -1,6 +1,6 @@
 package com.ghl.sensors.plugin
 
-import com.ghl.sensors.plugin.log.InjectLogger
+import InjectLogger
 import org.objectweb.asm.AnnotationVisitor
 import org.objectweb.asm.Attribute
 import org.objectweb.asm.Label

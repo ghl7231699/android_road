@@ -1,7 +1,7 @@
 package com.ghl.sensors.plugin
 
 import com.android.build.gradle.AppExtension
-import com.ghl.sensors.plugin.log.InjectLogger
+import InjectLogger
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.internal.reflect.Instantiator

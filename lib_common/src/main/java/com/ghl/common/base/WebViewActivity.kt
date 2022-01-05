@@ -7,19 +7,31 @@ import android.util.Log
 import android.view.View
 import android.webkit.WebView
 import android.webkit.WebViewClient
+import android.widget.ProgressBar
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.ghl.common.R
-import kotlinx.android.synthetic.main.activity_webview.*
 
 class WebViewActivity : AppCompatActivity() {
+    private val webView: WebView by lazy {
+        findViewById(R.id.webView)
+    }
+    private val webviewBack: TextView by lazy {
+        findViewById(R.id.webview_back)
+    }
+    private val progressBar: ProgressBar by lazy {
+        findViewById(R.id.WebView_Progress)
+    }
+
     @SuppressLint("SetJavaScriptEnabled", "JavascriptInterface")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_webview)
-        if (intent != null) {
-            val url = intent.getStringExtra(KEY_URL)
-            webView.loadUrl(url)
+        intent?.run {
+            getStringExtra(KEY_URL)?.let { url ->
+                webView.loadUrl(url)
+            }
         }
 
 //        with(webView) {
@@ -31,22 +43,23 @@ class WebViewActivity : AppCompatActivity() {
 //            settings.javaScriptEnabled = true//允许使用js
 //        }
 
-        webview_back.setOnClickListener { finish() }
+        webviewBack.setOnClickListener { finish() }
     }
 
     var mClient: WebViewClient = object : WebViewClient() {
         override fun onPageFinished(view: WebView, url: String) { //页面加载完成
-            WebView_Progress.visibility = View.GONE
+            progressBar.visibility = View.GONE
         }
 
         override fun onPageStarted(view: WebView, url: String, favicon: Bitmap) { //页面开始加载
-            WebView_Progress.visibility = View.VISIBLE
+            progressBar.visibility = View.VISIBLE
         }
 
         override fun shouldOverrideUrlLoading(view: WebView, url: String): Boolean {
             Log.i("ansen", "拦截url:$url")
             if (url == "http://www.google.com/") {
-                Toast.makeText(this@WebViewActivity, "国内不能访问google,拦截该url", Toast.LENGTH_LONG).show()
+                Toast.makeText(this@WebViewActivity, "国内不能访问google,拦截该url", Toast.LENGTH_LONG)
+                    .show()
                 return true //表示我已经处理过了
             }
             return super.shouldOverrideUrlLoading(view, url)
