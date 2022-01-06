@@ -17,7 +17,6 @@ public class RouterPlugin implements Plugin<Project> {
     @Override
     void apply(Project project) {
         println "router ----- start "
-        println "router ----- start "
         //加载相应的lib 与 apt
         def compile = "implementation"
 //        def apt = "annotationProcessor"
@@ -86,7 +85,6 @@ public class RouterPlugin implements Plugin<Project> {
             }))
         }
 
-        println "router ----- end "
         println "router ----- end "
     }
 

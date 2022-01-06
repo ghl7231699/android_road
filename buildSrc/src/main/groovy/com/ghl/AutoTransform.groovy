@@ -2,7 +2,7 @@
 //import com.android.annotations.NonNull
 //import com.android.annotations.Nullable
 //import com.android.build.api.transform.*
-//import com.android.build.gradle.internal.pipeline.TransformManager
+//import com.android.build.gradle.kts.internal.pipeline.TransformManager
 //import com.ghl.asm.AutoModify
 //import com.ghl.config.GlobalConfig
 //import com.ghl.util.AutoMatchUtil

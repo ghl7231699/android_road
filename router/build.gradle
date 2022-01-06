@@ -1,9 +1,9 @@
 apply plugin: 'com.android.library'
 
-def app_android = rootProject.ext.android
+def app_android = Version.INSTANCE
 
 android {
-    compileSdkVersion app_android.compileSdkVersion
+    compileSdk app_android.compileSdkVersion
     defaultConfig {
         minSdkVersion app_android.minSdkVersion
         targetSdkVersion app_android.targetSdkVersion
@@ -19,7 +19,7 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation supportDeps.appcompat
-    implementation supportDeps.annotation
+    implementation Libs.INSTANCE.supportDeps.appcompat
+    implementation Libs.INSTANCE.supportDeps.annotation
     api project(':router:router_annotation')
 }

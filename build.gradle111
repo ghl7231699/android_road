@@ -3,7 +3,7 @@ apply from: "./buildConfig/app_config.gradle"
 //apply from: "./buildConfig/upload.gradle"
 
 buildscript {
-    ext.kotlin_version = '1.6.0'
+    ext.kotlin_version = '1.6.10'
 
     repositories {
         mavenLocal()
@@ -12,20 +12,8 @@ buildscript {
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:7.0.4'
-//        classpath 'com.xiaozhu:injectcode-gradle-plugin:1.0.2'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-    }
-}
-
-
-allprojects {
-    repositories {
-        google()
-        mavenCentral()
-        jcenter()
-        maven {
-            url uri('../snapshotRepo')
-        }
+//        classpath 'com.xiaozhu:injectcode-gradle-plugin:1.0.2'
     }
 }
 

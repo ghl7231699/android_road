@@ -33,7 +33,7 @@ public class ModuleServicePlugin implements Plugin<Project> {
 
         // 只有主项目才会加入transform 插入代码
         if (project.plugins.hasPlugin(AppPlugin)) {
-            println "imc --- start"
+//            println "imc --- start"
             android.registerTransform(new PigTransform("ModuleService", { transformInvocation ->
                 final String targetClass = "com/ghl/imc/ModuleServiceManager.class"
                 final String interfaceClass = "com/ghl/imc/ModuleService"

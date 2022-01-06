@@ -1,8 +1,8 @@
 //package com.ghl.plugin
 //
 //
-//import com.android.build.gradle.AppPlugin
-//import com.android.build.gradle.BaseExtension
+//import com.android.build.gradle.kts.AppPlugin
+//import com.android.build.gradle.kts.BaseExtension
 //import com.ghl.bean.AutoClassFilter
 //import com.ghl.bean.AutoSettingParams
 //import com.ghl.config.GlobalConfig
