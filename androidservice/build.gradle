@@ -1,1 +1,2 @@
-rootProject.ext.android_library_biz this,"bizService"
+rootProject.ext.android_library_biz this, "bizService"
+//Libs.INSTANCE.androidLibraryBiz(project)

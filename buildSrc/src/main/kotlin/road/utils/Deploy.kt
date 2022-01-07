@@ -1,4 +1,4 @@
-package com.road.utils
+package road.utils
 
 import java.text.SimpleDateFormat
 import java.util.*

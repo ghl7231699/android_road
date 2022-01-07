@@ -3,6 +3,7 @@ package com.ghl.plugin
 import com.android.build.api.transform.JarInput
 import com.android.build.gradle.AppPlugin
 import com.ghl.PigTransform
+import com.ghl.TempTransform
 import com.ghl.flow.EachEveryone
 import com.ghl.flow.TargetCodeScanner
 import com.ghl.inject.InjectInfo
@@ -31,6 +32,7 @@ public class RouterPlugin implements Plugin<Project> {
         //开始为apt设置相应的项目数据
         def android = project.extensions.findByName("android")
         if (android) {
+            println "闭包的类型"+android.class.name
             //在android 的 闭包下才能设置
             String inputName = project.name.replaceAll("[^0-9a-zA-Z\u4e00-\u9fa5.，,。？“”]+", "")
             inputName = inputName.substring(0, 1).toUpperCase() + inputName.substring(1)
@@ -39,7 +41,7 @@ public class RouterPlugin implements Plugin<Project> {
 
         // 只有主项目才会加入transform 插入代码
         if (project.plugins.hasPlugin(AppPlugin)) {
-            android.registerTransform(new PigTransform("PigRouter", { transformInvocation ->
+            android.registerTransform(new TempTransform("PigRouter", { transformInvocation ->
                 //常量
                 final String targetClass = "com/ghl/router/lib/Router.class"
                 final String interfaceClass = "com/ghl/router/lib/RouterClassProvider"

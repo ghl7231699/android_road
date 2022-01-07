@@ -1,7 +1,7 @@
 package com.ghl.plugin
 
 import com.android.build.gradle.AppPlugin
-import com.ghl.PigTransform
+import com.ghl.TempTransform
 import com.ghl.flow.EachEveryone
 import com.ghl.flow.TargetCodeScanner
 import com.ghl.inject.InjectInfo
@@ -34,7 +34,7 @@ public class ModuleServicePlugin implements Plugin<Project> {
         // 只有主项目才会加入transform 插入代码
         if (project.plugins.hasPlugin(AppPlugin)) {
 //            println "imc --- start"
-            android.registerTransform(new PigTransform("ModuleService", { transformInvocation ->
+            android.registerTransform(new TempTransform("ModuleService", { transformInvocation ->
                 final String targetClass = "com/ghl/imc/ModuleServiceManager.class"
                 final String interfaceClass = "com/ghl/imc/ModuleService"
                 final String superClass = "com/ghl/imc/AbsModuleService"

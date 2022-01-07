@@ -1,6 +1,6 @@
-//import com.ghl.plugin.ModuleServicePlugin
 //import com.ghl.plugin.RouterPlugin
-import com.android.build.api.dsl.ApplicationExtension
+//import com.ghl.plugin.ModuleServicePlugin
+import com.android.build.api.dsl.LibraryExtension
 import org.gradle.api.JavaVersion
 import org.gradle.api.Project
 
@@ -59,10 +59,7 @@ object Libs {
      * lib 统一依赖的方法  TODO
      */
     fun androidLibraryBiz(
-        projectLibrary: Project,
-        projectName: String,
-        versionCodes: Int = 1,
-        versionNames: String = "1.0"
+        projectLibrary: Project
     ) {
         projectLibrary.run {
             apply {
@@ -96,12 +93,14 @@ object Libs {
             )
 
             extensions.getByName("android").run {
-                if (this is ApplicationExtension) {
+//                if (this is ApplicationExtension) {
+                if (this is LibraryExtension) {
+
+                    compileSdk = Version.compileSdkVersion
+
                     defaultConfig.run {
                         minSdk = Version.minSdkVersion
                         targetSdk = Version.targetSdkVersion
-                        versionCode = Version.versionCode
-                        versionName = Version.versionName
                     }
 
                     compileOptions.run {

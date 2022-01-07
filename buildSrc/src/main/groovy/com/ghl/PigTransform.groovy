@@ -5,18 +5,20 @@ import com.android.build.api.transform.Transform
 import com.android.build.api.transform.TransformException
 import com.android.build.api.transform.TransformInvocation
 import com.android.build.gradle.internal.pipeline.TransformManager
+import com.ghl.flow.EachEveryone
+import com.ghl.flow.TargetCodeScanner
+import com.ghl.inject.InjectInfo
+import com.ghl.inject.RegistryCodeGenerator
+import com.ghl.util.Logger
 
 public class PigTransform extends Transform {
+
 
     // plugin 所需要的name
     private String mName
 
-    // transform
-    private Closure<TransformInvocation> mTransformAction
-
-    public PigTransform(String name, Closure transformInvocationAction) {
-        this.mName = name
-        this.mTransformAction = transformInvocationAction
+    PigTransform(String mName) {
+        this.mName = mName
     }
 
     @Override
@@ -45,7 +47,51 @@ public class PigTransform extends Transform {
     @Override
     void transform(TransformInvocation transformInvocation) throws TransformException, InterruptedException, IOException {
         super.transform(transformInvocation)
-        this.mTransformAction.call(transformInvocation)
+        //常量
+        final String targetClass = "com/ghl/router/lib/Router.class";
+        final String interfaceClass = "com/ghl/router/lib/RouterClassProvider";
+        final String invokingMethodName = "bindClassProvider";
+
+        TargetCodeScanner mScanner = new TargetCodeScanner(targetClass, interfaceClass);
+
+        EachEveryone.each(transformInvocation,
+                { jarInput, dest ->
+                    if (isNeedScanJar(jarInput)) {
+                        mScanner.scanJar(jarInput.file, dest);
+                    }
+                },
+                {
+                    file ->
+                        if (isNeedScanFile(file)) {
+                            mScanner.scanClass(file.newInputStream(), file.absolutePath);
+                        }
+                }
+        )
+
+        // info 生成 start
+        InjectInfo info = new InjectInfo();
+        //目标类 需要去掉.class
+        info.targetClass = targetClass.substring(0, targetClass.lastIndexOf('.'));
+        //插入代码的位置 静态代码块
+        info.initMethodName = "<clinit>";
+        //被实现的接口
+        info.interfaceClass = interfaceClass;
+        // jar包
+        info.targetFile = mScanner.fileHasClass;
+        // 所有类
+        info.allInter.addAll(mScanner.allNeedInner);
+        //注册方法
+        info.invokingMethodName = invokingMethodName;
+        //父类
+        // info 生成 end
+
+        Logger.info("||---目标类，${info.targetClass}\t${info.allInter}");
+        //生成代码
+        if (info.targetClass && info.allInter.size() > 0) {
+            //文件存在 ，并且实现类存在时，才修改字节码
+            RegistryCodeGenerator.insertInitCodeTo(info);
+            Logger.info("||---找到目标类，开始进行替换。。。。。。");
+        }
     }
 
 }

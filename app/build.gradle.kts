@@ -1,6 +1,6 @@
 import com.ghl.plugin.ModuleServicePlugin
 import com.ghl.plugin.RouterPlugin
-import com.road.utils.Deploy
+import road.utils.Deploy
 
 plugins {
     id("com.android.application")
@@ -12,7 +12,7 @@ apply<ModuleServicePlugin>()
 apply<CustomPlugin>()
 
 configurations {
-//    getByName(" profileImplementation")
+    create(" profileImplementation")
 }
 
 android {
