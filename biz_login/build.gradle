@@ -1,1 +1,9 @@
 rootProject.ext.android_library_biz this, "bizLogin"
+dependencies {
+    implementation project(':net')
+    // 协程库
+    //noinspection GradleDependency
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:1.5.0"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.0"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.0"
+}

@@ -24,3 +24,5 @@ include ':router:router_apt'
 //        settingsDir,
 //        '/flutter_mall/.android/include_flutter.groovy'
 //))
+include ':net'
+include ':login'

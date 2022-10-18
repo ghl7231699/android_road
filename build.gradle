@@ -3,7 +3,7 @@ apply from: "./buildConfig/app_config.gradle"
 //apply from: "./buildConfig/upload.gradle"
 
 buildscript {
-    ext.kotlin_version = '1.6.0'
+    ext.kotlin_version = '1.6.10'
 
     repositories {
         mavenLocal()
@@ -11,7 +11,7 @@ buildscript {
         google()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.0.4'
+        classpath 'com.android.tools.build:gradle:7.2.2'
 //        classpath 'com.xiaozhu:injectcode-gradle-plugin:1.0.2'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
@@ -31,38 +31,4 @@ allprojects {
 
 task clean(type: Delete) {
     delete rootProject.buildDir
-}
-
-//dependencies {
-//    implementation project(path: ':plugin')
-//}
-
-
-task checkoutGit() {
-//    doLast {
-//        println "开始进行下载"
-//        clone("main", "git@gitlab.idc.xiaozhu.com:frontend/xuxiake.git", "master")
-//    }
-}
-
-/**
- * 下载项目源码
- * @param dir
- * @param remote
- * @param branch
- */
-void clone(String dir, String remote, String branch) {
-    File dirFile = new File("${this.rootDir}/$dir")
-    println "现有路径是：$dirFile,是否存在：${dirFile.exists()},rootProject：${this.rootProject.rootDir.path}"
-//    if (dirFile.path == this.rootProject.path) {
-//        return
-//    }
-    def grGit
-    if (!dirFile.exists()) {
-        grGit = Grgit.clone(dir: dir, uri: remote)
-        grGit.checkout(branch: branch)
-    } else {
-        grGit = Grgit.open(dir: "${this.rootDir}")
-//        grGit.pull(rebase: false)
-    }
 }

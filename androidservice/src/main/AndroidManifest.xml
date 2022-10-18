@@ -6,6 +6,7 @@
     <application>
         <service
             android:name="com.ghl.androidservice.ServerService"
+            android:exported="true"
             tools:ignore="ExportedService">
             <intent-filter>
                 <action android:name="com.example.androidservice.ServerService" />

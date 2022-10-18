@@ -1,14 +1,26 @@
 package com.ghl.biz_login
 
-import android.app.Application
 import androidx.lifecycle.MutableLiveData
-import com.ghl.common.net.base.BaseViewModel
-import com.ghl.common.net.base.bizSubscribe
-import com.ghl.common.util.ToastUtils
+import androidx.lifecycle.viewModelScope
+import com.ghl.biz_login.entity.LoginRegisterResponseWrapper
+import com.ghl.biz_login.entity.LoginRegisterResponse
+import com.ghl.net.viewmodel.BaseViewModel
+import kotlinx.coroutines.launch
 
-class LoginViewModel(application: Application) : BaseViewModel<LoginRepository>(application) {
+
+class LoginViewModel : BaseViewModel<LoginRepository>() {
     val articleListData: MutableLiveData<ArticleListInfo> by lazy {
         MutableLiveData<ArticleListInfo>()
+    }
+
+    var userLiveData = MutableLiveData<LoginRegisterResponseWrapper<LoginRegisterResponse>>()
+
+
+    fun requestLogin(username: String, userPwd: String) {
+        viewModelScope.launch {  // viewModelScope是main线程，这个是特殊点，其他的默认是Default
+            // 左边：主线程                  右边：异步线程
+            userLiveData.value = mRepository.login(username, userPwd)
+        }
     }
 
     fun getList() {
@@ -27,11 +39,11 @@ class LoginViewModel(application: Application) : BaseViewModel<LoginRepository>(
 
         //TODO  添加conver 转换成BaseBean类型
 
-        mRepository?.getList()
-                ?.bizSubscribe(mDisposables, next = {
-                    articleListData.value = it
-                }, errorBiz = {
-                    ToastUtils.show("我是错误")
-                })
+//        mRepository?.getList()
+//                ?.bizSubscribe(mDisposables, next = {
+//                    articleListData.value = it
+//                }, errorBiz = {
+//                    ToastUtils.show("我是错误")
+//                })
     }
 }

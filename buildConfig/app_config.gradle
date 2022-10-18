@@ -3,16 +3,16 @@ import com.ghl.plugin.RouterPlugin
 
 ext {
     android = [
-            compileSdkVersion        : 30,
+            compileSdkVersion        : 31,
             minSdkVersion            : 21,
-            targetSdkVersion         : 30,
+            targetSdkVersion         : 31,
             versionCode              : 1,
             versionName              : "1.0",
             buildToolsVersion        : "30.0.2",
             testInstrumentationRunner: "androidx.test.runner.AndroidJUnitRunner"
     ]
 
-    kotlin_version = "1.4.21"
+    kotlin_version = "1.6.10"
     def version_okHttp = "3.12.6"
     def version_retrofit = "2.6.4"
 
@@ -73,6 +73,9 @@ ext {
                             buildMode = false, applicationIds = null ->
 
         println "xxxxxxxxx------------>${rootProject.getName()}"
+        projectLibrary.apply{
+
+        }
         projectLibrary.apply {
             if (buildMode) {
                 plugin 'com.android.application'
@@ -130,6 +133,9 @@ ext {
             if (projectLibrary.name != 'lib_common') {
                 implementation project(':lib_common')
             }
+//            if (projectLibrary.name != 'net') {
+//                api project(':net')
+//            }
         }
     }
 }

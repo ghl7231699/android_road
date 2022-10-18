@@ -1,13 +1,17 @@
 package com.ghl.biz_login
 
-import com.ghl.common.net.base.BaseRepository
-import io.reactivex.Observable
+import com.ghl.biz_login.entity.LoginRegisterResponse
+import com.ghl.biz_login.entity.LoginRegisterResponseWrapper
+import com.ghl.net.repository.BaseRepository
 
-class LoginRepository : BaseRepository() {
-    private val mService = createService(LoginService::class.java)
+class LoginRepository : BaseRepository<LoginService>() {
 
-    fun getList(): Observable<ArticleListInfo> {
-        return mService.getList()
+    suspend fun login(
+        userName: String,
+        userPwd: String
+    ): LoginRegisterResponseWrapper<LoginRegisterResponse> {
+        return service.login(userName, userPwd)
     }
+
 
 }
