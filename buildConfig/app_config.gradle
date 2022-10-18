@@ -11,6 +11,8 @@ ext {
 
     android_library_biz = { projectLibrary, projectName, version_code = 1, version_name = "1.0",
                             buildMode = false, applicationIds = null ->
+
+        println "xxxxxxxxx------------>${rootProject.getName()}"
         projectLibrary.apply {
             if (buildMode) {
                 plugin 'com.android.application'
@@ -60,6 +62,9 @@ ext {
             if (projectLibrary.name != 'lib_common') {
                 implementation project(':lib_common')
             }
+//            if (projectLibrary.name != 'net') {
+//                api project(':net')
+//            }
         }
     }
 }

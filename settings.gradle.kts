@@ -11,7 +11,9 @@ include(
     ":androidservice",
     ":router",
     ":router:router_annotation",
-    ":router:router_apt"
+    ":router:router_apt",
+    ":net",
+    ":login"
 )
 rootProject.name = "android-road"
 
