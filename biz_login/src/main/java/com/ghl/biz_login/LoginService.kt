@@ -70,5 +70,5 @@ interface LoginService {
         @Field("username") username: String,
         @Field("password") password: String
     )
-            : LoginRegisterResponseWrapper<LoginRegisterResponse>
+            : LoginRegisterResponse
 }

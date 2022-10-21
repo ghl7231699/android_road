@@ -2,7 +2,6 @@ package com.ghl.biz_login
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.ghl.biz_login.entity.LoginRegisterResponseWrapper
 import com.ghl.biz_login.entity.LoginRegisterResponse
 import com.ghl.net.viewmodel.BaseViewModel
 import kotlinx.coroutines.launch
@@ -13,7 +12,7 @@ class LoginViewModel : BaseViewModel<LoginRepository>() {
         MutableLiveData<ArticleListInfo>()
     }
 
-    var userLiveData = MutableLiveData<LoginRegisterResponseWrapper<LoginRegisterResponse>>()
+    var userLiveData = MutableLiveData<LoginRegisterResponse>()
 
 
     fun requestLogin(username: String, userPwd: String) {

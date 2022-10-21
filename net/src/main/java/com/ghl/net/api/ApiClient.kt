@@ -1,9 +1,12 @@
 package com.ghl.net.api
 
+import com.ghl.net.converter.CwlGsonConverterFactory
+import com.ghl.net.base.interceptor.HeaderInterceptor
+import com.ghl.net.base.interceptor.LogInterceptor
+import com.ghl.net.base.interceptor.RequestInterceptor
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
-import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
 /**
@@ -32,24 +35,30 @@ class ApiClient {
 
     fun init() {
         // 设置okHttpClient
-        val client = OkHttpClient().newBuilder().onlyApply {
-            connectTimeout(connectTimeOut, TimeUnit.SECONDS)// 连接超时
-            readTimeout(readTimeout, TimeUnit.SECONDS)// 读超时
-            writeTimeout(writeTimeout, TimeUnit.SECONDS)// 写超时
-        }.build()
+        val client = OkHttpClient()
+            .newBuilder()
+            .onlyApply {
+                connectTimeout(connectTimeOut, TimeUnit.SECONDS)// 连接超时
+                readTimeout(readTimeout, TimeUnit.SECONDS)// 读超时
+                writeTimeout(writeTimeout, TimeUnit.SECONDS)// 写超时
+                addInterceptor(HeaderInterceptor())
+                addInterceptor(RequestInterceptor())
+                addInterceptor(LogInterceptor())
+            }.build()
 
-        mClient = Retrofit.Builder().baseUrl(baseUrl).client(client)
+        mClient = Retrofit.Builder()
+            .baseUrl(baseUrl)
+            .client(client)
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-            .addConverterFactory(GsonConverterFactory.create()).build()
+            .addConverterFactory(CwlGsonConverterFactory.create())
+            .build()
     }
 
-
-    fun <T> instanceRetrofit(clazz: Class<T>): T {
+    fun <T> crate(clazz: Class<T>): T {
         return mClient.create(clazz)
     }
 
 }
-
 
 fun <T> T.onlyApply(block: T.() -> Unit): T {
     block()

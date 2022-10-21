@@ -2,7 +2,7 @@ package com.ghl.biz_login.ui
 
 import android.os.Bundle
 import android.util.Log
-import androidx.appcompat.app.AppCompatActivity
+import android.widget.TextView
 import com.ghl.biz_login.LoginViewModel
 import com.ghl.biz_login.R
 import com.ghl.common.base.BaseAacActivity
@@ -14,12 +14,19 @@ class LoginActivity : BaseAacActivity<LoginViewModel>() {
 
     override val layoutId: Int = R.layout.activity_login_layout
 
+    private val tvName: TextView by lazy {
+        findViewById(R.id.tv_name)
+    }
+
     override fun initView() {
     }
 
     override fun subscribeOnViewModelLiveData() {
         mViewModel?.userLiveData?.observe(this) {
-            Log.e("ghl", it.data.toString())
+            it.run {
+                tvName.text = nickname
+            }
+            Log.e("ghl", it.toString())
         }
 
     }

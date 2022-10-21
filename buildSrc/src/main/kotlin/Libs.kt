@@ -5,6 +5,14 @@ import org.gradle.api.JavaVersion
 import org.gradle.api.Project
 
 object Libs {
+
+    val android_core = "androidx.core:core-ktx:${Version.version_core}"
+    val android_appcompat = "androidx.appcompat:appcompat:${Version.version_appcompat}"
+    val android_material = "com.google.android.material:material:${Version.version_material}"
+
+    // Gson库
+    val gson = "com.google.code.gson:gson:${Version.version_gson}"
+
     val app_implementation = mapOf(
         "annotation" to "androidx.annotation:annotation:1.0.2",
         "lifecycle-extensions" to "androidx.lifecycle:lifecycle-extensions:2.0.0",
@@ -37,18 +45,26 @@ object Libs {
         "recyclerView" to "androidx.recyclerview:recyclerview:1.1.0",
         "constraintLayout" to "androidx.constraintlayout:constraintlayout:1.1.3",
         "coordinatorlayout" to "androidx.coordinatorlayout:coordinatorlayout:1.1.0",
-        "flexbox" to "com.google.android:flexbox:2.0.1",
+//        "flexbox" to "com.google.android:flexbox:2.0.1",
+    )
+
+    // 协程库
+    val coroutines = mapOf(
+        "kotlin-stdlib" to "org.jetbrains.kotlin:kotlin-stdlib:1.5.0",
+        "coroutines-core" to "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.0",
+        "coroutines-android" to "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2"
+    )
+
+    val retrofit = mapOf(
+        "retrofit" to "com.squareup.retrofit2:retrofit:${Version.version_retrofit}",
+        "rxAdapter" to "com.squareup.retrofit2:adapter-rxjava2:${Version.version_adapter_rxjava}",
+        "gsonConverter" to "com.squareup.retrofit2:converter-gson:${Version.version_converter_gson}",
+        "mock" to "com.squareup.retrofit2:retrofit-mock:${Version.version_converter_gson}",
     )
 
     val okHttp = mapOf(
         "okhttp" to "com.squareup.okhttp3:okhttp:${Version.version_okHttp}",
         "logger" to "com.squareup.okhttp3:logging-interceptor:${Version.version_okHttp}"
-    )
-
-    val retrofit = mapOf(
-        "retrofit" to "com.squareup.retrofit2:retrofit:${Version.version_retrofit}",
-        "rxAdapter" to "com.squareup.retrofit2:adapter-rxjava2:${Version.version_retrofit}",
-        "gsonConverter" to "com.squareup.retrofit2:converter-gson:${Version.version_retrofit}",
     )
 
     val rxJava = mapOf(

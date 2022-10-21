@@ -8,7 +8,7 @@ android {
     compileSdk Version.INSTANCE.compileSdkVersion
 
     defaultConfig {
-        minSdk Version.INSTANCE.compileSdkVersion
+        minSdk Version.INSTANCE.minSdkVersion
         targetSdk Version.INSTANCE.targetSdkVersion
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -30,25 +30,23 @@ android {
     }
 }
 
+def libs = Libs.INSTANCE
+
 dependencies {
 
-    implementation 'androidx.core:core-ktx:1.7.0'
-    implementation 'androidx.appcompat:appcompat:1.4.1'
-    implementation 'com.google.android.material:material:1.5.0'
-    testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+    implementation libs.android_core
+    implementation libs.android_appcompat
+    implementation libs.android_material
 
     // Retrofit库
-    implementation "com.squareup.retrofit2:retrofit:2.9.0"
-    implementation "com.squareup.retrofit2:retrofit-mock:2.7.2"
-    implementation "com.squareup.retrofit2:converter-gson:2.7.2"
-    implementation 'com.squareup.okhttp3:logging-interceptor:3.5.0'
-    implementation "com.squareup.retrofit2:converter-scalars:2.7.2"
-    implementation "com.squareup.retrofit2:adapter-rxjava2:2.7.2"
+    implementation libs.retrofit.values()
+    implementation libs.supportDeps.values()
 
     // Gson库
-    implementation "com.google.code.gson:gson:2.8.9"
+    implementation libs.gson
+
+    // 协程库
+    implementation libs.coroutines.values()
 
 //    // Okhttp库
 //    implementation 'com.squareup.okhttp3:okhttp:5.0.0-alpha.2'
