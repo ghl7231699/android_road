@@ -1,9 +1,9 @@
 package com.ghl.net.api
 
 import com.ghl.net.converter.CwlGsonConverterFactory
-import com.ghl.net.base.interceptor.HeaderInterceptor
-import com.ghl.net.base.interceptor.LogInterceptor
-import com.ghl.net.base.interceptor.RequestInterceptor
+import com.ghl.net.interceptor.HeaderInterceptor
+import com.ghl.net.interceptor.LogInterceptor
+import com.ghl.net.interceptor.RequestInterceptor
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory

@@ -29,5 +29,6 @@
             android:name=".ui.activity.SplashActivity"
             android:exported="true">
         </activity>
+        <activity android:name=".ui.activity.HomeActivity"  />
     </application>
 </manifest>

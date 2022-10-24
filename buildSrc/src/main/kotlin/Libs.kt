@@ -75,11 +75,11 @@ object Libs {
      * lib 统一依赖的方法  TODO
      */
     fun androidLibraryBiz(
-        projectLibrary: Project
+        projectLibrary: Project, app: Boolean, nameSpace: String,
     ) {
         projectLibrary.run {
             apply {
-                plugin("com.android.application")
+                plugin(if (app) "com.android.application" else "com.android.library")
                 plugin("org.jetbrains.kotlin.android")
                 plugin("org.jetbrains.kotlin.kapt")
 //                plugin(RouterPlugin::class.java)
@@ -109,9 +109,10 @@ object Libs {
             )
 
             extensions.getByName("android").run {
-//                if (this is ApplicationExtension) {
+                println("我的类型是${this.javaClass}")
+//                if (this is BaseAppModuleExtension) {
                 if (this is LibraryExtension) {
-
+                    namespace = nameSpace
                     compileSdk = Version.compileSdkVersion
 
                     defaultConfig.run {
@@ -130,9 +131,11 @@ object Libs {
                 }
             }
 
-            if (name != "lib_common") {
+            if (name != "lib_common" && name != "net") {
                 dependencies.add("implementation", project(":lib_common"))
+                dependencies.add("implementation", project(":net"))
             }
+
         }
 
     }

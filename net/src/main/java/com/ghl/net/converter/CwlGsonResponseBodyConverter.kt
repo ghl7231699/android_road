@@ -19,18 +19,9 @@ class CwlGsonResponseBodyConverter<T>(private val gson: Gson, private val type: 
             value.close()
             return null
         }
-        val body = "{\n" +
-                "    \"code\":200,\n" +
-                "    \"data\":[\n" +
-                "        {\n" +
-                "            \"nickname\":\"Derry-vip\"\n" +
-                "        }\n" +
-                "    ],\n" +
-                "    \"msg\":\"不好意思失败了\"\n" +
-                "}"
         value.use {
             val wrapper = gson.fromJson(responseBody, ResponseWrapper::class.java)
-            if (wrapper.errorCode == 200) {
+            if (wrapper.errorCode == 0) {
                 return fromJson<T>(responseBody, type)
             } else {
                 val msg = wrapper.errorMsg ?: ""

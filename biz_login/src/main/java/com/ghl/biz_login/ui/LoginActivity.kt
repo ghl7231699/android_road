@@ -2,11 +2,14 @@ package com.ghl.biz_login.ui
 
 import android.os.Bundle
 import android.util.Log
+import android.widget.Button
 import android.widget.TextView
-import com.ghl.biz_login.LoginViewModel
 import com.ghl.biz_login.R
+import com.ghl.biz_login.viewmodel.LoginViewModel
 import com.ghl.common.base.BaseAacActivity
 import com.ghl.common.constants.login.LOGIN_MAIN_PAGE
+import com.ghl.common.constants.main.ACTIVITY_HOME_V2
+import com.ghl.router.lib.Router
 import com.ghl.router_annotation.Route
 
 @Route(LOGIN_MAIN_PAGE)
@@ -18,7 +21,22 @@ class LoginActivity : BaseAacActivity<LoginViewModel>() {
         findViewById(R.id.tv_name)
     }
 
+    private val button: Button by lazy {
+        findViewById(R.id.get)
+    }
+
+    private val article: Button by lazy {
+        findViewById(R.id.getArticleList)
+    }
+
     override fun initView() {
+        button.setOnClickListener {
+            mViewModel?.requestLogin("Derry-vip", "123456")
+        }
+
+        article.setOnClickListener {
+            Router.with(this).target(ACTIVITY_HOME_V2).start()
+        }
     }
 
     override fun subscribeOnViewModelLiveData() {
@@ -29,10 +47,14 @@ class LoginActivity : BaseAacActivity<LoginViewModel>() {
             Log.e("ghl", it.toString())
         }
 
+        mViewModel?.articleListData?.observe(this) {
+            if (it == null) return@observe
+            Log.e("ghl", it.datas.toString())
+        }
     }
 
     override fun create(savedInstanceState: Bundle?) {
-        mViewModel?.requestLogin("Derry-vip", "123456")
+
     }
 
     override fun showLoading(isFull: Boolean) {
@@ -42,5 +64,4 @@ class LoginActivity : BaseAacActivity<LoginViewModel>() {
     }
 
 }
-
 

@@ -1,21 +1,10 @@
-rootProject.ext.android_library_biz this, "bizMain", 1, "1.0", isBuildModule == "true", "com.ghl.biz_home"
+import com.ghl.plugin.ModuleServicePlugin
+import com.ghl.plugin.RouterPlugin
+def libs = Libs.INSTANCE
+libs.androidLibraryBiz(this.project, false, "com.ghl.biz_home")
 
-if (liteMode) {
-    android {
-        buildTypes {
-            debug {
-                minifyEnabled false
-                shrinkResources false
-                zipAlignEnabled false
-                debuggable true
-                testProguardFile 'proguard-test-rules.pro'
-                ndk {
-                    abiFilters 'armeabi-v7a'
-                }
-            }
-        }
-    }
-}
+apply plugin: RouterPlugin
+apply plugin: ModuleServicePlugin
 
 dependencies {
     implementation project(':androidservice')

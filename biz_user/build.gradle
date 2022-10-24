@@ -1,1 +1,9 @@
-rootProject.ext.android_library_biz this, "bizMine"
+import com.ghl.plugin.ModuleServicePlugin
+import com.ghl.plugin.RouterPlugin
+
+Libs.INSTANCE.androidLibraryBiz(this.project, false, "com.ghl.biz_mine")
+
+apply plugin: RouterPlugin
+apply plugin: ModuleServicePlugin
+
+//rootProject.ext.android_library_biz this, "bizMine"

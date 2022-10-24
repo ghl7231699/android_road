@@ -17,7 +17,7 @@ class WebViewActivity : AppCompatActivity() {
     private val webView: WebView by lazy {
         findViewById(R.id.webView)
     }
-    private val webviewBack: TextView by lazy {
+    private val webViewBack: TextView by lazy {
         findViewById(R.id.webview_back)
     }
     private val progressBar: ProgressBar by lazy {
@@ -43,7 +43,7 @@ class WebViewActivity : AppCompatActivity() {
 //            settings.javaScriptEnabled = true//允许使用js
 //        }
 
-        webviewBack.setOnClickListener { finish() }
+        webViewBack.setOnClickListener { finish() }
     }
 
     var mClient: WebViewClient = object : WebViewClient() {
