@@ -10,6 +10,8 @@ object Libs {
     val android_appcompat = "androidx.appcompat:appcompat:${Version.version_appcompat}"
     val android_material = "com.google.android.material:material:${Version.version_material}"
 
+    val coil = "io.coil-kt:coil:1.1.0"
+
     // Gson库
     val gson = "com.google.code.gson:gson:${Version.version_gson}"
 
@@ -34,6 +36,10 @@ object Libs {
         "kotlinx-coroutines-core" to "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.2"
     )
 
+    val result = mapOf(
+        "activity-ktx" to "androidx.activity:activity-ktx:1.4.0",
+        "fragment-ktx" to "androidx.fragment:fragment-ktx:1.4.1"
+    )
 
     val supportDeps = mapOf(
         "design" to "com.google.android.material:material:1.1.0",
@@ -103,10 +109,15 @@ object Libs {
                 dependencies.add("implementation", v)
             }
 
+            result.forEach { (_, value) ->
+                dependencies.add("implementation", value)
+            }
             dependencies.add(
                 "implementation",
                 fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar")))
             )
+
+            dependencies.add("implementation", coil)
 
             extensions.getByName("android").run {
                 println("我的类型是${this.javaClass}")
@@ -133,6 +144,9 @@ object Libs {
 
             if (name != "lib_common" && name != "net") {
                 dependencies.add("implementation", project(":lib_common"))
+            }
+
+            if (name != "net") {
                 dependencies.add("implementation", project(":net"))
             }
 

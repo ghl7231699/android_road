@@ -1,4 +1,15 @@
-rootProject.ext.android_library_biz this, "libDirty"
+//rootProject.ext.android_library_biz this, "libDirty"
+//dependencies {
+//    implementation project(':net')
+//}
+import com.ghl.plugin.ModuleServicePlugin
+import com.ghl.plugin.RouterPlugin
+
+
+Libs.INSTANCE.androidLibraryBiz(this.project, false, "com.ghl.common")
+
+apply plugin: RouterPlugin
+apply plugin: ModuleServicePlugin
 dependencies {
-    implementation project(':net')
+    implementation project(path: ':net')
 }

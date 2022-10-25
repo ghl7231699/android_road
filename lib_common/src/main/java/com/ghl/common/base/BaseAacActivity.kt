@@ -3,7 +3,7 @@ package com.ghl.common.base
 import android.os.Bundle
 import android.widget.Toast
 import androidx.annotation.LayoutRes
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import com.ghl.common.net.getT1
 import com.ghl.net.viewmodel.BaseViewModel
 
@@ -22,7 +22,10 @@ abstract class BaseAacActivity<T : BaseViewModel<*>?> : BaseActivity() {
     private fun setBaseViewModel() {
         val tClass = viewModel
         if (tClass != null) {
-            mViewModel = ViewModelProviders.of(this).get(tClass)
+            mViewModel = ViewModelProvider(
+                this,
+                ViewModelProvider.AndroidViewModelFactory.getInstance(application)
+            ).get(tClass)
 //            lifecycle.addObserver(mViewModel)
         }
     }

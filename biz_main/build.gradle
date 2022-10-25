@@ -1,7 +1,7 @@
 import com.ghl.plugin.ModuleServicePlugin
 import com.ghl.plugin.RouterPlugin
-def libs = Libs.INSTANCE
-libs.androidLibraryBiz(this.project, false, "com.ghl.biz_home")
+
+Libs.INSTANCE.androidLibraryBiz(this.project, false, "com.ghl.biz_home")
 
 apply plugin: RouterPlugin
 apply plugin: ModuleServicePlugin

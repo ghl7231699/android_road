@@ -3,9 +3,10 @@ package com.ghl.common.base
 import android.content.Context
 import android.os.Bundle
 import android.view.Window
+import androidx.activity.ComponentActivity
 import androidx.appcompat.app.AppCompatActivity
 
-abstract class BaseActivity : AppCompatActivity() {
+abstract class BaseActivity : ComponentActivity() {
     protected var mActivity: Context? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         setBaseConfig()

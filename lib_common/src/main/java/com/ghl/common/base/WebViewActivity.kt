@@ -12,7 +12,10 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.ghl.common.R
+import com.ghl.common.constants.web.PAGE_WEB_VIEW
+import com.ghl.router_annotation.Route
 
+@Route(PAGE_WEB_VIEW)
 class WebViewActivity : AppCompatActivity() {
     private val webView: WebView by lazy {
         findViewById(R.id.webView)

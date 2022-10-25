@@ -9,13 +9,19 @@ import com.ghl.biz_login.viewmodel.LoginViewModel
 import com.ghl.common.base.BaseAacActivity
 import com.ghl.common.constants.login.LOGIN_MAIN_PAGE
 import com.ghl.common.constants.main.ACTIVITY_HOME_V2
+import com.ghl.common.intent.BizContract
 import com.ghl.router.lib.Router
+import com.ghl.router.lib.RouterUtils
 import com.ghl.router_annotation.Route
 
 @Route(LOGIN_MAIN_PAGE)
 class LoginActivity : BaseAacActivity<LoginViewModel>() {
 
-    override val layoutId: Int = R.layout.activity_login_layout
+    private var mResult =
+        registerForActivityResult(BizContract()) {
+            println("我是返回的值?${it}")
+        }
+
 
     private val tvName: TextView by lazy {
         findViewById(R.id.tv_name)
@@ -29,13 +35,15 @@ class LoginActivity : BaseAacActivity<LoginViewModel>() {
         findViewById(R.id.getArticleList)
     }
 
+    override val layoutId: Int = R.layout.activity_login_layout
+
     override fun initView() {
         button.setOnClickListener {
             mViewModel?.requestLogin("Derry-vip", "123456")
         }
 
         article.setOnClickListener {
-            Router.with(this).target(ACTIVITY_HOME_V2).start()
+            mResult.launch("fffffffflajfaolf")
         }
     }
 

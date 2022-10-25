@@ -2,12 +2,17 @@ package com.ghl.biz_home.ui.activity
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import android.widget.FrameLayout
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
 import com.ghl.biz_home.R
 import com.ghl.biz_home.bean.ArticleListDatas
+import com.ghl.biz_home.bean.HomeBannerInfo
 import com.ghl.biz_home.databinding.AdapterHomeLayoutBinding
 import com.ghl.common.extension.d2p
 
@@ -75,3 +80,53 @@ class HomeAdapter : RecyclerView.Adapter<HomeAdapter.HomeViewHolder>() {
     }
 }
 
+class HomeBannerAdapter : RecyclerView.Adapter<HomeBannerAdapter.HomeBannerViewHolder>() {
+
+    var itemClick: ((String) -> Unit)? = null
+    private val mList = mutableListOf<HomeBannerInfo>()
+
+    fun notify(list: List<HomeBannerInfo>) {
+        mList.clear()
+        mList.addAll(list)
+        notifyDataSetChanged()
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeBannerViewHolder {
+        return HomeBannerViewHolder(ImageView(parent.context).apply {
+            scaleType = ImageView.ScaleType.CENTER_INSIDE
+        })
+    }
+
+    override fun onBindViewHolder(holder: HomeBannerViewHolder, position: Int) {
+        holder.bind(position)
+    }
+
+    override fun getItemCount(): Int = mList.size
+
+
+    inner class HomeBannerViewHolder(itemView: View) :
+        RecyclerView.ViewHolder(itemView) {
+
+        private var mImageView = itemView as ImageView
+
+        init {
+            mImageView.layoutParams = FrameLayout.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT
+            )
+//                .apply {
+//                height = ScreenUtil.getScreenWidthPx(itemView.context) * 300 / 375
+//            }
+        }
+
+        fun bind(position: Int) {
+            val info = mList[position]
+            info.imagePath.run {
+                mImageView.load(this)
+            }
+            itemView.setOnClickListener {
+                itemClick?.invoke(info.url)
+            }
+        }
+    }
+}
