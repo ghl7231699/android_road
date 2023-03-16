@@ -14,10 +14,9 @@ import com.ghl.router_annotation.Route
 @Route(ACTIVITY_HOME_V2)
 class HomeActivity : BaseAacActivity<HomeViewModel>() {
 
-    private var mResult =
-        registerForActivityResult(WebViewContract()) {
-            println("我是返回的值?${it}")
-        }
+    private var mResult = registerForActivityResult(WebViewContract()) {
+        println("我是返回的值?${it}")
+    }
 
     private var mAdapter: HomeAdapter? = null
     private val rv: RecyclerView by lazy {
@@ -73,7 +72,23 @@ class HomeActivity : BaseAacActivity<HomeViewModel>() {
 
     override fun create(savedInstanceState: Bundle?) {
         mViewModel?.getHomeBanner()
-        mViewModel?.getArticleList("0")
+        mViewModel?.getArticleList("0")?.run {
+            mAdapter?.run {
+                itemClick = {
+                    mResult.launch(it)
+                }
+                notify(datas.toMutableList())
+            }
+        }
+        mViewModel?.setListener(url = "https://www.baidu.com", callBack = {code,content->
+            if (code==0){
+                println("result is $content")
+            }
+
+        })
+
+
+        mViewModel?.apply {  }
     }
 
     override fun showLoading(isFull: Boolean) {
