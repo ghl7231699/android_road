@@ -15,6 +15,7 @@ include(
 //    ":login"
 )
 rootProject.name = "android-road"
+includeBuild("version-plugin")
 
 //include ":kotlin"
 //include ":flutter_mall"

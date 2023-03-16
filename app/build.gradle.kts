@@ -1,4 +1,3 @@
-import com.ghl.plugin.ModuleServicePlugin
 import com.ghl.plugin.RouterPlugin
 import road.utils.Deploy
 
@@ -6,9 +5,10 @@ plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("org.jetbrains.kotlin.kapt")
+    id("version-plugin")
+    id("moduleService-plugin")
 }
 apply<RouterPlugin>()
-apply<ModuleServicePlugin>()
 apply<CustomPlugin>()
 
 configurations {
@@ -16,7 +16,7 @@ configurations {
 }
 
 android {
-    compileSdk = 31
+    compileSdk = com.ghl.plugin.Version.compileSdk
 
     defaultConfig {
         applicationId = "com.gh"
@@ -46,8 +46,7 @@ android {
         getByName("release") {
             isMinifyEnabled = false
             proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
+                getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
             )
         }
 
@@ -108,13 +107,8 @@ android {
                 if (name != "debug") {
                     val filter =
                         getFilter(com.android.build.api.variant.FilterConfiguration.FilterType.ABI.name)
-                    outputFileName = filter + "/" +
-                            flavor +
-                            name + "_" +
-                            abiCodes[filter] + "_" +
-                            version + "_" +
-                            Deploy.releaseTime() +
-                            ".apk"
+                    outputFileName =
+                        filter + "/" + flavor + name + "_" + abiCodes[filter] + "_" + version + "_" + Deploy.releaseTime() + ".apk"
                 }
             }
 
@@ -137,12 +131,7 @@ android {
 
 
 val bizModules = arrayOf(
-    ":biz_main",
-    ":biz_login",
-    ":biz_user",
-    ":opt_track",
-    ":lib_common",
-    ":opt_startup"
+    ":biz_main", ":biz_login", ":biz_user", ":opt_track", ":lib_common", ":opt_startup"
 )
 
 dependencies {
