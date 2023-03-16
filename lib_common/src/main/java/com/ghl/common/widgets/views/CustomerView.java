@@ -13,7 +13,7 @@ import android.util.DisplayMetrics;
 import android.util.TypedValue;
 import android.view.View;
 
-import com.ghl.common.R;
+import com.ghl.lib_common.R;
 
 
 public class CustomerView extends View {

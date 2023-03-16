@@ -1,3 +1,19 @@
+pluginManagement {
+    includeBuild("version-plugin")
+    repositories {
+        gradlePluginPortal()
+        google()
+        mavenCentral()
+    }
+}
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+
 include(
     ":app",
     ":biz_main",
@@ -12,12 +28,11 @@ include(
     ":router:router_annotation",
     ":router:router_apt",
     ":net",
-//    ":login"
+    ":login"
 )
 rootProject.name = "android-road"
-includeBuild("version-plugin")
 
-//include ":kotlin"
+//include(":kotlin")
 //include ":flutter_mall"
 //include ":design_mode"
 //include ":hot_fix"

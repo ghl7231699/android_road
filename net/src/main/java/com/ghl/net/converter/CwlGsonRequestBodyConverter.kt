@@ -3,6 +3,7 @@ package com.ghl.net.converter
 import com.google.gson.Gson
 import com.google.gson.TypeAdapter
 import okhttp3.MediaType
+import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.RequestBody
 import okio.Buffer
 import retrofit2.Converter
@@ -26,7 +27,7 @@ internal class CwlGsonRequestBodyConverter<T>(
     }
 
     companion object {
-        private val MEDIA_TYPE = MediaType.get("application/json; charset=UTF-8")
+        private val MEDIA_TYPE = "application/json; charset=UTF-8".toMediaType()
         private val UTF_8 = StandardCharsets.UTF_8
     }
 }

@@ -61,8 +61,6 @@ object Libs {
 
     // 协程库
     val coroutines = mapOf(
-
-
         "kotlin-stdlib" to "org.jetbrains.kotlin:kotlin-stdlib:1.5.0",
         "coroutines-core" to "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.0",
         "coroutines-android" to "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2"
@@ -87,8 +85,6 @@ object Libs {
     )
 
 
-    val rxJava = mapOf(
-        "rxAndroid" to "io.reactivex.rxjava2:rxandroid:${Version.version_rxandroid}"
-    )
+    val rxJava = "io.reactivex.rxjava2:rxandroid:${Version.version_rxandroid}"
 
 }

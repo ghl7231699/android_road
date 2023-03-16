@@ -3,7 +3,7 @@ package com.ghl.net.interceptor
 import android.text.TextUtils
 import com.ghl.net.interceptor.JSONFormatter.Companion.formatJSON
 import okhttp3.*
-import okhttp3.internal.http.HttpHeaders
+import okhttp3.internal.http.promisesBody
 import okhttp3.internal.platform.Platform
 import okio.Buffer
 import java.io.EOFException
@@ -16,7 +16,9 @@ import java.util.concurrent.atomic.AtomicInteger
 class LogInterceptor @JvmOverloads constructor(
     private val logger: Logger = object : Logger {
         override fun log(message: String?) {
-            Platform.get().log(Platform.WARN, message, null)
+            if (message != null) {
+                Platform.get().log(message, Platform.WARN)
+            }
         }
     }
 ) : Interceptor {
@@ -27,15 +29,15 @@ class LogInterceptor @JvmOverloads constructor(
         // request 处理
         run {
             val logPrefix = "[$id request]"
-            val requestBody = request.body()
+            val requestBody = request.body
             val hasRequestBody = requestBody != null
             val connection = chain.connection()
-            val protocol = if (connection != null) connection.protocol() else Protocol.HTTP_1_1
-            var requestStartMessage = "--> " + request.method() + ' ' + request.url() + ' '
+            val protocol = connection?.protocol() ?: Protocol.HTTP_1_1
+            var requestStartMessage = "--> " + request.method + ' ' + request.url + ' '
 
             // post请求参数打印
             var requestString = ""
-            if ("POST" == request.method()) {
+            if ("POST" == request.method) {
                 val buffer = Buffer()
                 try {
                     requestBody?.writeTo(buffer)
@@ -70,9 +72,9 @@ class LogInterceptor @JvmOverloads constructor(
                 logger.log(logPrefix + "Content-Length: " + requestBody?.contentLength())
             }
 
-            val headers = request.headers()
+            val headers = request.headers
             var i = 0
-            val count = headers.size()
+            val count = headers.size
             while (i < count) {
                 val name = headers.name(i)
                 // Skip headers from the request body as they are explicitly logged above.
@@ -86,9 +88,9 @@ class LogInterceptor @JvmOverloads constructor(
                 i++
             }
             if (!hasRequestBody) {
-                logger.log(logPrefix + "--> END " + request.method())
-            } else if (bodyEncoded(request.headers())) {
-                logger.log(logPrefix + "--> END " + request.method() + " (encoded body omitted)")
+                logger.log(logPrefix + "--> END " + request.method)
+            } else if (bodyEncoded(request.headers)) {
+                logger.log(logPrefix + "--> END " + request.method + " (encoded body omitted)")
             } else {
                 val buffer = Buffer()
                 var charset = UTF8
@@ -99,16 +101,16 @@ class LogInterceptor @JvmOverloads constructor(
                 if (isPlaintext(buffer) && charset != null) {
                     val bufferString = buffer.readString(charset)
                     logger.log(logPrefix + bufferString)
-                    if (contentType != null && "json" == contentType.subtype()) {
+                    if (contentType != null && "json" == contentType.subtype) {
                         logger.log("""$logPrefix${formatJSON(bufferString)}""".trimIndent())
                     }
                     logger.log(
-                        logPrefix + "--> END " + request.method()
+                        logPrefix + "--> END " + request.method
                                 + " (" + requestBody?.contentLength() + "-byte body)"
                     )
                 } else {
                     logger.log(
-                        logPrefix + "--> END " + request.method() + " (binary "
+                        logPrefix + "--> END " + request.method + " (binary "
                                 + requestBody?.contentLength() + "-byte body omitted)"
                     )
                 }
@@ -124,22 +126,22 @@ class LogInterceptor @JvmOverloads constructor(
                 throw e
             }
             val tookMs = TimeUnit.NANOSECONDS.toMillis(System.nanoTime() - startNs)
-            val responseBody = response.body() ?: return response
+            val responseBody = response.body ?: return response
             val contentLength = responseBody.contentLength()
             logger.log(
-                logPrefix + "<-- " + response.code() + ' ' + response.message() + ' ' + response.request()
-                    .url() + " (" + tookMs + "ms" + "" + ')'
+                logPrefix + "<-- " + response.code + ' ' + response.message + ' ' + response.request
+                    .url + " (" + tookMs + "ms" + "" + ')'
             )
-            val headers = response.headers()
+            val headers = response.headers
             var i = 0
-            val count = headers.size()
+            val count = headers.size
             while (i < count) {
                 logger.log(logPrefix + headers.name(i) + ": " + headers.value(i))
                 i++
             }
-            if (!HttpHeaders.hasBody(response)) {
+            if (!response.promisesBody()) {
                 logger.log("$logPrefix<-- END HTTP")
-            } else if (bodyEncoded(response.headers())) {
+            } else if (bodyEncoded(response.headers)) {
                 logger.log("$logPrefix<-- END HTTP (encoded body omitted)")
             } else {
                 val source = responseBody.source()
@@ -158,13 +160,13 @@ class LogInterceptor @JvmOverloads constructor(
                     }
                 }
                 if (!isPlaintext(buffer)) {
-                    logger.log(logPrefix + "<-- END HTTP (binary " + buffer.size() + "-byte body omitted)")
+                    logger.log(logPrefix + "<-- END HTTP (binary " + buffer.size + "-byte body omitted)")
                     return response
                 }
                 if (contentLength != 0L && charset != null) {
                     val bufferString = buffer.clone().readString(charset)
                     logger.log(logPrefix + bufferString)
-                    if (contentType != null && "json" == contentType.subtype()) {
+                    if (contentType != null && "json" == contentType.subtype) {
                         logger.log(
                             """
     $logPrefix
@@ -173,7 +175,7 @@ class LogInterceptor @JvmOverloads constructor(
                         )
                     }
                 }
-                logger.log(logPrefix + "<-- END HTTP (" + buffer.size() + "-byte body)")
+                logger.log(logPrefix + "<-- END HTTP (" + buffer.size + "-byte body)")
             }
             return response
         }
@@ -194,7 +196,7 @@ class LogInterceptor @JvmOverloads constructor(
         fun isPlaintext(buffer: Buffer): Boolean {
             return try {
                 val prefix = Buffer()
-                val byteCount = if (buffer.size() < 64) buffer.size() else 64
+                val byteCount = if (buffer.size < 64) buffer.size else 64
                 buffer.copyTo(prefix, 0, byteCount)
                 for (i in 0..15) {
                     if (prefix.exhausted()) {

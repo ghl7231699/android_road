@@ -10,7 +10,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ghl.common.AutoApplication;
-import com.ghl.common.R;
+import com.ghl.lib_common.R;
 
 import org.jetbrains.annotations.NotNull;
 

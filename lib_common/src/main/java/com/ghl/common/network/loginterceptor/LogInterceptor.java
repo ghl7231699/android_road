@@ -34,7 +34,7 @@ public class LogInterceptor implements Interceptor {
     private final Logger logger;
 
     public LogInterceptor() {
-        this(message -> Platform.get().log(Platform.WARN, message, null));
+        this(message -> Platform.get().log(message, Platform.WARN, null));
     }
 
     public LogInterceptor(Logger logger) {

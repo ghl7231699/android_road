@@ -5,6 +5,7 @@ dependencies {
     api project(":router:router_annotation")
     implementation 'com.squareup:javapoet:1.12.1'
 }
-
-sourceCompatibility = "8"
-targetCompatibility = "8"
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+}

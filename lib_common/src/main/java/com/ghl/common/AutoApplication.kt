@@ -12,7 +12,6 @@ const val ENGINE_ID = "1"
 class AutoApplication : Application() {
     override fun onCreate() {
         super.onCreate()
-        println("我是release模式下的组合模式")
         instance = this
         mContext = applicationContext
 
@@ -21,7 +20,8 @@ class AutoApplication : Application() {
         initNet()
 
         ModuleServiceManager.getClassTarget(AutoModuleService::class.java)?.init()
-        ModuleServiceManager.getClassTarget(FlutterModuleService::class.java)?.initFlutterBoost(this)
+        ModuleServiceManager.getClassTarget(FlutterModuleService::class.java)
+            ?.initFlutterBoost(this)
     }
 
 
