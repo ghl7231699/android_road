@@ -10,7 +10,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.ghl.biz_home.R;
+import com.ghl.biz_main.R;
 
 
 /**
@@ -34,7 +34,7 @@ public class ParentViewHolder extends BaseViewHolder {
         this.view = itemView;
     }
 
-    public void bindView(final DataBean dataBean, final int pos, final ItemClickListener listener){
+    public void bindView(final DataBean dataBean, final int pos, final ItemClickListener listener) {
 
         containerLayout = (RelativeLayout) view.findViewById(R.id.container);
         parentLeftView = (TextView) view.findViewById(R.id.parent_left_text);

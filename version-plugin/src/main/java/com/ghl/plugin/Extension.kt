@@ -1,6 +1,7 @@
 package com.ghl.plugin
 
 import org.gradle.kotlin.dsl.DependencyHandlerScope
+import org.gradle.kotlin.dsl.project
 
 /**
  * Time：2023/3/14
@@ -16,10 +17,13 @@ fun DependencyHandlerScope.appUi() {
     Libs.app_implementation.forEach { (_, value) ->
         "implementation"(value)
     }
+
+    Libs.rxJava.forEach { (_, value) ->
+        "implementation"(value)
+    }
     "implementation"(Libs.android_core)
     "implementation"(Libs.android_appcompat)
     "implementation"(Libs.android_material)
-    "implementation"(Libs.rxJava)
 }
 
 fun DependencyHandlerScope.supportDeps(tag: String = "implementation") {
@@ -44,6 +48,16 @@ fun DependencyHandlerScope.test() {
     Libs.test.forEach { (_, value) ->
         "implementation"(value)
     }
+}
+
+fun DependencyHandlerScope.imc() {
+    Libs.supportDeps["annotation"]?.let { "implementation"(it) }
+    Libs.supportDeps["appcompat"]?.let { "implementation"(it) }
+    "api"(project(":router:router_annotation"))
+}
+
+fun DependencyHandlerScope.coil() {
+    "implementation"(Libs.coil)
 }
 
 

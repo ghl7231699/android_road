@@ -15,7 +15,7 @@
 //import android.view.animation.AccelerateInterpolator;
 //import android.view.animation.OvershootInterpolator;
 //
-//import com.ghl.biz_home.R;
+//import com.ghl.lib_main.R;
 //
 ///**
 // * 【Item侧滑删除菜单】

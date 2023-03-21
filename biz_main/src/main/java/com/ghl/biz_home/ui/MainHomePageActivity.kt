@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
-import com.ghl.biz_home.R
+import com.ghl.biz_main.R
 import com.ghl.common.constants.main.ACTIVITY_HOME
 import com.ghl.common.util.StatusBarUtils
 import com.ghl.router_annotation.Route

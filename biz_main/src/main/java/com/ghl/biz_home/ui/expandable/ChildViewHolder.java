@@ -4,7 +4,7 @@ import android.content.Context;
 import android.view.View;
 import android.widget.TextView;
 
-import com.ghl.biz_home.R;
+import com.ghl.biz_main.R;
 
 
 public class ChildViewHolder extends BaseViewHolder {

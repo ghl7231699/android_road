@@ -9,7 +9,7 @@ import android.util.AttributeSet
 import android.view.*
 import android.view.animation.AccelerateInterpolator
 import android.view.animation.OvershootInterpolator
-import com.ghl.biz_home.R
+import com.ghl.biz_main.R
 import kotlin.math.abs
 import kotlin.math.max
 

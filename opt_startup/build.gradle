@@ -1,7 +1,0 @@
-rootProject.ext.android_library_biz this, "optStartUp"
-dependencies {
-    implementation "androidx.startup:startup-runtime:1.0.0"
-    implementation 'androidx.work:work-runtime:2.3.4'
-}
-
-

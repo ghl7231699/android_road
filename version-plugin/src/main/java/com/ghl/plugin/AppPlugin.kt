@@ -10,7 +10,7 @@ import org.gradle.kotlin.dsl.configure
 import org.gradle.kotlin.dsl.dependencies
 import org.jetbrains.kotlin.gradle.dsl.KotlinJvmOptions
 
-class VersionPlugin : Plugin<Project> {
+class AppPlugin : Plugin<Project> {
     override fun apply(target: Project) {
         with(target) {
             plugins.run {
@@ -56,9 +56,9 @@ class VersionPlugin : Plugin<Project> {
                         )
                     }
                 }
-//                buildFeatures {
-//                    viewBinding = true
-//                }
+                buildFeatures {
+                    viewBinding = true
+                }
 
                 compileOptions {
                     sourceCompatibility = JavaVersion.VERSION_1_8
@@ -90,10 +90,9 @@ class VersionPlugin : Plugin<Project> {
                 val bizModules = arrayOf(
                     ":biz_main",
                     ":biz_login",
-                    ":biz_user",
-                    ":opt_track",
+//                    ":biz_user",
+//                    ":opt_track",
                     ":lib_common",
-                    ":opt_startup"
                 )
 
                 bizModules.forEach { biz ->

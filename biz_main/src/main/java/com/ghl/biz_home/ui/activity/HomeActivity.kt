@@ -4,8 +4,8 @@ import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView
-import com.ghl.biz_home.R
 import com.ghl.biz_home.viewmodel.HomeViewModel
+import com.ghl.biz_main.R
 import com.ghl.common.base.BaseAacActivity
 import com.ghl.common.constants.main.ACTIVITY_HOME_V2
 import com.ghl.common.intent.WebViewContract
@@ -64,7 +64,6 @@ class HomeActivity : BaseAacActivity<HomeViewModel>() {
                         mResult.launch(it)
                     }
                     notify(it)
-
                 }
             }
         }
@@ -80,15 +79,15 @@ class HomeActivity : BaseAacActivity<HomeViewModel>() {
                 notify(datas.toMutableList())
             }
         }
-        mViewModel?.setListener(url = "https://www.baidu.com", callBack = {code,content->
-            if (code==0){
+        mViewModel?.setListener(url = "https://www.baidu.com", callBack = { code, content ->
+            if (code == 0) {
                 println("result is $content")
             }
 
         })
 
 
-        mViewModel?.apply {  }
+        mViewModel?.apply { }
     }
 
     override fun showLoading(isFull: Boolean) {

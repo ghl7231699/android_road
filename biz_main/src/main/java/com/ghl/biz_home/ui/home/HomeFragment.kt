@@ -12,8 +12,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
-import com.ghl.biz_home.R
 import com.ghl.biz_home.ui.HomePageAdapter
+import com.ghl.biz_main.R
 import com.ghl.common.util.HookUtils
 
 class HomeFragment : Fragment() {

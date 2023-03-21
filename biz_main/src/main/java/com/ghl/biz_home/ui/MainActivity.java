@@ -5,7 +5,8 @@ import android.os.Bundle;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.ghl.biz_home.R;
+import com.ghl.biz_main.R;
+
 
 public class MainActivity extends AppCompatActivity {
     @Override

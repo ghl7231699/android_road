@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.ghl.biz_home.R
+import com.ghl.biz_main.R
 
 class MineFragment : Fragment() {
 

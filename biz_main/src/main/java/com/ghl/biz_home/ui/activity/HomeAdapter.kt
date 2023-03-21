@@ -10,10 +10,10 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
-import com.ghl.biz_home.R
+import com.ghl.biz_main.R
 import com.ghl.biz_home.bean.ArticleListDatas
 import com.ghl.biz_home.bean.HomeBannerInfo
-import com.ghl.biz_home.databinding.AdapterHomeLayoutBinding
+import com.ghl.biz_main.databinding.AdapterHomeLayoutBinding
 import com.ghl.common.extension.d2p
 
 class HomeAdapter : RecyclerView.Adapter<HomeAdapter.HomeViewHolder>() {

@@ -8,7 +8,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import com.ghl.biz_home.R
+import com.ghl.biz_main.R
 
 class NotificationsFragment : Fragment() {
 

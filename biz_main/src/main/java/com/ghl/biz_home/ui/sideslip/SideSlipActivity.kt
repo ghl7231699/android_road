@@ -8,9 +8,9 @@ import android.view.View
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.ghl.biz_home.R
 import com.ghl.biz_home.ui.sideslip.SideSlipAdapter.OnSwipeListener
 import com.ghl.biz_home.ui.sideslip.SwipeMenuLayout.Companion.viewCache
+import com.ghl.biz_main.R
 import com.ghl.common.constants.main.ACTIVITY_SIDE_SLIP
 import com.ghl.router_annotation.Route
 import java.util.*

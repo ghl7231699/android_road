@@ -8,7 +8,8 @@ import android.view.ViewGroup;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.ghl.biz_home.R;
+
+import com.ghl.biz_main.R;
 
 import java.util.List;
 
@@ -33,17 +34,12 @@ public class RecyclerAdapter extends RecyclerView.Adapter<BaseViewHolder> {
     @Override
     public BaseViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = null;
-        switch (viewType){
-            case DataBean.PARENT_ITEM:
-                view = mInflater.inflate(R.layout.recycleview_item_parent, parent, false);
-                return new ParentViewHolder(context, view);
-            case DataBean.CHILD_ITEM:
-                view = mInflater.inflate(R.layout.recycleview_item_child, parent, false);
-                return new ChildViewHolder(context, view);
-            default:
-                view = mInflater.inflate(R.layout.recycleview_item_parent, parent, false);
-                return new ParentViewHolder(context, view);
+        if (viewType == DataBean.CHILD_ITEM) {
+            view = mInflater.inflate(R.layout.recycleview_item_child, parent, false);
+            return new ChildViewHolder(context, view);
         }
+        view = mInflater.inflate(R.layout.recycleview_item_parent, parent, false);
+        return new ParentViewHolder(context, view);
     }
 
     /**

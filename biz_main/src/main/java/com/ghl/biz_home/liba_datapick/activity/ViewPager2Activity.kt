@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
 import androidx.viewpager2.widget.ViewPager2
-import com.ghl.biz_home.R
+import com.ghl.biz_main.R
 import com.ghl.common.base.BaseActivity
 import com.ghl.common.constants.Constants.View_Pager2_Activity
 import com.ghl.common.widgets.transform.ScaleInTransformer
@@ -53,7 +53,11 @@ class ViewPager2Activity : BaseActivity(), View.OnClickListener {
         mViewPager2?.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
                 super.onPageSelected(position)
-                Toast.makeText(this@ViewPager2Activity, "page selected $position", Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    this@ViewPager2Activity,
+                    "page selected $position",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
         })
 
@@ -130,7 +134,8 @@ class ViewPager2Adapter(list: List<String>) : RecyclerView.Adapter<ViewPager2Hol
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewPager2Holder {
-        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.activity_viewpager2_item, parent, false)
+        val itemView = LayoutInflater.from(parent.context)
+            .inflate(R.layout.activity_viewpager2_item, parent, false)
         return ViewPager2Holder(itemView)
     }
 
@@ -139,7 +144,8 @@ class ViewPager2Adapter(list: List<String>) : RecyclerView.Adapter<ViewPager2Hol
 class ViewPager2Holder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     private val mIv: AppCompatImageView = itemView.findViewById(R.id.iv_item)
     private val mGiv: AppCompatImageView = itemView.findViewById(R.id.giv_item)
-    private var colors = arrayOf(R.drawable.banner_1, R.drawable.banner_2, R.drawable.banner_3, R.drawable.banner_4)
+    private var colors =
+        arrayOf(R.drawable.banner_1, R.drawable.banner_2, R.drawable.banner_3, R.drawable.banner_4)
 
     fun bindData(i: String, position: Int) {
 //        val random = Random

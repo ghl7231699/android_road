@@ -8,7 +8,7 @@ import android.widget.TextView
 import android.widget.Toast
 import android.widget.Toast.makeText
 import androidx.recyclerview.widget.RecyclerView
-import com.ghl.biz_home.R
+import com.ghl.biz_main.R
 import com.ghl.common.constants.Constants
 import com.ghl.common.constants.login.LOGIN_TEST_PAGE
 import com.ghl.common.constants.main.ACTIVITY_EXPANDABLE_LIST

@@ -9,8 +9,8 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
-import com.ghl.biz_home.R
 import com.ghl.biz_home.ui.sideslip.SideSlipAdapter.FullDelDemoVH
+import com.ghl.biz_main.R
 
 class SideSlipAdapter(private val mContext: Context, private val mDatas: List<SwipeBean>?) : RecyclerView.Adapter<FullDelDemoVH>() {
     private val mInflater: LayoutInflater = LayoutInflater.from(mContext)

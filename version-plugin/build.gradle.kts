@@ -10,8 +10,8 @@ dependencies {
 gradlePlugin {
     plugins {
         register("versionPlugin") {
-            id = "version-plugin"
-            implementationClass = "com.ghl.plugin.VersionPlugin"
+            id = "app-plugin"
+            implementationClass = "com.ghl.plugin.AppPlugin"
         }
         register("libPlugin") {
             id = "library-plugin"
@@ -24,6 +24,14 @@ gradlePlugin {
         register("moduleServicePlugin") {
             id = "moduleService-plugin"
             implementationClass = "com.ghl.plugin.ModuleServicePlugin"
+        }
+        register("routerPlugin") {
+            id = "router-plugin"
+            implementationClass = "com.ghl.plugin.RoutersPlugin"
+        }
+        register("imcPlugin") {
+            id = "imc-plugin"
+            implementationClass = "com.ghl.plugin.ImcPlugin"
         }
     }
 }

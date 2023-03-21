@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModelProviders
-import com.ghl.biz_home.R
+import com.ghl.biz_main.R
 import com.ghl.common.constants.main.ACTIVITY_LIVE_DATA_VIEW_MODEL
 import com.ghl.router_annotation.Route
 
