@@ -11,7 +11,7 @@ import org.gradle.kotlin.dsl.dependencies
  * Time：2023/3/16
  * description:
  **/
-class RoutersPlugin : Plugin<Project> {
+class ModuleRouterPlugin : Plugin<Project> {
     override fun apply(target: Project) {
         with(target) {
             plugins.run {

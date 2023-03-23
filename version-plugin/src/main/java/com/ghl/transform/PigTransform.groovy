@@ -1,4 +1,4 @@
-package com.ghl
+package com.ghl.transform
 
 import com.android.build.api.transform.QualifiedContent
 import com.android.build.api.transform.Transform
@@ -9,7 +9,6 @@ import com.ghl.flow.EachEveryone
 import com.ghl.flow.TargetCodeScanner
 import com.ghl.inject.InjectInfo
 import com.ghl.inject.RegistryCodeGenerator
-import com.ghl.util.Logger
 
 public class PigTransform extends Transform {
 

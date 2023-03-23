@@ -1,16 +1,6 @@
 plugins {
-//    id("com.android.application")
-//    id("org.jetbrains.kotlin.android")
-//    id("org.jetbrains.kotlin.kapt")
     id("app-plugin")
-//    id("moduleService-plugin")
 }
-
-apply<com.ghl.plugin.RouterPlugin>()
-apply<com.ghl.plugin.ModuleServicePlugin>()
-//apply<RouterPlugin>()
-//apply<CustomPlugin>()
-
 //configurations {
 //    create(" profileImplementation")
 //}
@@ -127,21 +117,4 @@ apply<com.ghl.plugin.ModuleServicePlugin>()
 ////        manifestPlaceholders["CHANNEL_VALUE"] = name
 ////    }
 //
-//}
-//
-//
-//val bizModules = arrayOf(
-//    ":biz_main", ":biz_login", ":biz_user", ":opt_track", ":lib_common", ":opt_startup"
-//)
-//
-//dependencies {
-//    implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
-//    // 更简洁的方式，由于我们config那边定义的是 map，遍历
-//    Libs.app_implementation.forEach { (_, v) ->
-//        implementation(v)
-//    }
-//
-////    bizModules.forEach { biz ->
-////        implementation(project(biz))
-////    }
 //}

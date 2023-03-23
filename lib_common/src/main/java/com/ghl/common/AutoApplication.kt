@@ -2,6 +2,7 @@ package com.ghl.common
 
 import android.app.Application
 import android.content.Context
+import android.util.Log
 import com.ghl.common.network.initNet
 import com.ghl.common.service.AutoModuleService
 import com.ghl.common.service.FlutterModuleService

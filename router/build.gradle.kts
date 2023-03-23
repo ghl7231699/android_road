@@ -1,3 +1,3 @@
 plugins {
-    id("router-plugin")
+    id("module-router-plugin")
 }

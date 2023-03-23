@@ -10,11 +10,13 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
-import com.ghl.biz_main.R
 import com.ghl.biz_home.bean.ArticleListDatas
 import com.ghl.biz_home.bean.HomeBannerInfo
+import com.ghl.biz_main.R
 import com.ghl.biz_main.databinding.AdapterHomeLayoutBinding
 import com.ghl.common.extension.d2p
+import com.ghl.common.service.LoginModuleService
+import com.ghl.imc.ModuleServiceManager
 
 class HomeAdapter : RecyclerView.Adapter<HomeAdapter.HomeViewHolder>() {
 
@@ -74,6 +76,9 @@ class HomeAdapter : RecyclerView.Adapter<HomeAdapter.HomeViewHolder>() {
             }
 
             binding.root.setOnClickListener {
+                ModuleServiceManager
+                    .getClassTarget(LoginModuleService::class.java)
+                    .openPageByUrl(mContext, "baidu.com", mutableMapOf("1" to "2"))
                 itemClick?.invoke(bean.link)
             }
         }

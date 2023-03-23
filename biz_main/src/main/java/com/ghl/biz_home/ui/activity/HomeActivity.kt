@@ -1,6 +1,7 @@
 package com.ghl.biz_home.ui.activity
 
 import android.os.Bundle
+import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView
@@ -9,6 +10,7 @@ import com.ghl.biz_main.R
 import com.ghl.common.base.BaseAacActivity
 import com.ghl.common.constants.main.ACTIVITY_HOME_V2
 import com.ghl.common.intent.WebViewContract
+import com.ghl.imc.ModuleServiceManager
 import com.ghl.router_annotation.Route
 
 @Route(ACTIVITY_HOME_V2)

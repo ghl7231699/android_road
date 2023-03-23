@@ -17,6 +17,8 @@ class AppPlugin : Plugin<Project> {
                 apply("com.android.application")
                 apply("org.jetbrains.kotlin.android")
                 apply("org.jetbrains.kotlin.kapt")
+                apply("router-plugin")
+                apply("moduleService-plugin")
             }
             extensions.configure<ApplicationExtension> {
                 namespace = "com.ghl.demo"
@@ -33,6 +35,12 @@ class AppPlugin : Plugin<Project> {
                     versionName = Version.versionName
 
                     testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+//                    javaCompileOptions {
+//                        annotationProcessorOptions {
+//                            isIncludeCompileClasspath()
+//                        }
+//                    }
                 }
 
                 buildTypes {
@@ -90,7 +98,8 @@ class AppPlugin : Plugin<Project> {
                 val bizModules = arrayOf(
                     ":biz_main",
                     ":biz_login",
-//                    ":biz_user",
+                    ":imc",
+                    ":biz_user",
 //                    ":opt_track",
                     ":lib_common",
                 )

@@ -22,7 +22,7 @@ include(
     ":lib_common",
 //    ":opt_track",
     ":imc",
-    ":androidservice",
+//    ":androidservice",
     ":router",
     ":router:router_annotation",
     ":router:router_apt",

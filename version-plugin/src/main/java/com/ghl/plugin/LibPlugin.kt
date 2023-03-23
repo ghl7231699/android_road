@@ -18,10 +18,9 @@ class LibPlugin : Plugin<Project> {
                 apply("com.android.library")
                 apply("org.jetbrains.kotlin.android")
                 apply("org.jetbrains.kotlin.kapt")
+                apply("moduleService-plugin")
+                apply("router-plugin")
             }
-//            apply {
-//                from("../buildConfig/upload.gradle")
-//            }
             extensions.configure<LibraryExtension> {
                 namespace = "com.ghl.${target.name}"
                 compileSdk = Version.compileSdk
@@ -46,16 +45,12 @@ class LibPlugin : Plugin<Project> {
                 okHttp()
                 retrofit()
                 coil()
-//                add(
-//                    "implementation",
-//                    project(if (target.name != "lib_common") ":lib_common" else ":net")
-//                )
-                if (name != "lib_common" && name != "net") {
-                    dependencies.add("implementation", project(":lib_common"))
-                }
-
-                if (name != "net") {
-                    dependencies.add("implementation", project(":net"))
+                "implementation"(project(":imc"))
+                "implementation"(project(":router"))
+                "kapt"(project(":router:router_apt"))
+                "implementation"(project(":net"))
+                if (name != "lib_common") {
+                    "implementation"(project(":lib_common"))
                 }
             }
         }

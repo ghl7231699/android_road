@@ -1,6 +1,7 @@
 package com.ghl.imc;
 
 import android.app.Application;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 
@@ -62,6 +63,7 @@ public class ModuleServiceManager {
     public static <T> T getClassTarget(@NonNull Class<T> clazz) {
         T t = null;
         String key = clazz.getCanonicalName();
+        Log.e("ghl", "组件通信：" + mServiceMap.size());
         if (mServiceMap.containsKey(key)) {
             ModuleService service = mServiceMap.get(key);
             t = (T) service;
